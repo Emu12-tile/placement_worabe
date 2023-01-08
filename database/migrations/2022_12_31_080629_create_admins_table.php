@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('education_level')->nullable();
-            // $table->string('education_type')->nullable();
+            $table->string('education_type')->nullable();
+            $table->string('position')->nullable();
 
             $table->timestamps();
         });

@@ -51,8 +51,8 @@ License: You must have a valid license purchased only from themeforest to legall
                         <ul class="navbar-nav ml-auto">
 
                             <li class="nav-item">
-                                {{-- <a class="nav-link" data-scroll href="{{ route('login') }}">Login as</a> --}}
-                                <div class="btn-group">
+                                <a class="nav-link" data-scroll href="{{ route('login') }}">Login </a>
+                                {{-- <div class="btn-group">
                                     <button type="button" class="btn btn-light">Login as</button>
                                     <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,7 +63,7 @@ License: You must have a valid license purchased only from themeforest to legall
                                         <a class="dropdown-item" href="#">ፕሬዚዳንት</a>
 
                                     </div>
-                                </div>
+                                </div> --}}
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">Register</a>
@@ -74,6 +74,7 @@ License: You must have a valid license purchased only from themeforest to legall
             </div>
         </div>
         @yield('content')
+
         <div class="hk-footer-wrap container">
             <footer class="footer">
                 <div class="row">
@@ -108,7 +109,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <!-- /HK Wrapper -->
 
     <!-- jQuery -->
-    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendors/jquery/dist/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('assets/vendors/popper.js/dist/umd/popper.min.js') }}"></script>
@@ -128,6 +129,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <script src="{{ asset('assets/dist/js/lightgallery-all.js') }}"></script>
     <script src="{{ asset('assets/dist/js/landing-data.js') }}"></script>
     <script src="{{ asset('assets/dist/js/init.js') }}"></script>
+    <script src="{{ asset('vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 </body>
 @yield('javascript')
 

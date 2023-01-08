@@ -14,7 +14,7 @@
 
 
             </div>
-            <h5 class="hk-sec-title">List if applicants </h5>
+            <h5 class="hk-sec-title">List of applicants </h5>
 
             <div class="row">
                 <div class="col-sm">
@@ -23,16 +23,22 @@
                             <table class="table table-sm mb-0">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>First Name</th>
+                                        <th>ተቁ</th>
+                                        <th>የመጀመርያ ስም</th>
                                         <th>የ አባት ስም</th>
                                         <th>የ አያት ስም</th>
-                                        <th></th>
+
                                         {{-- <th>Specification</th> --}}
                                         <th>ኢሜይል</th>
                                         {{-- <th>Description</th> --}}
                                         <th>የ ትምህርት ደረጃ</th>
-                                        <th>የ ትምህርት ደረጃ</th>
+                                        {{-- <th>የ ትምህርት አይነት</th> --}}
+                                        @role('president')
+                                        <th>የፕሬዝዳንት ግምገማ</th>
+                                        @endrole
+                                          @role('hr')
+                                        <th>የሰው ኃይል ግምገማ</th>
+                                        @endrole
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,43 +46,43 @@
                                     @foreach ($forms as $i => $form)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                             <td>{{ $form->firstName }}</td>
-                                             <td>{{ $form->middleName }}</td>
-                                             <td>{{ $form->lastName }}</td>
-                                             <td>{{ $form->firstName }}</td>
+                                            <td>{{ $form->firstName }}</td>
+                                            <td>{{ $form->middleName }}</td>
+                                            <td>{{ $form->lastName }}</td>
+                                            <td>{{ $form->email }}</td>
                                             <td>{{ $form->admin->education_level }}</td>
+                                           @role('president')
 
-                                            <td>{{ $form->educationtype->education_type }}</td>
-                                            {{-- <td>{{ $stock->specification }}</td> --}}
+                               <td> <a class="btn btn-dark" href="{{ route('addHr',$form->id) }}"> evaluate</a></td>
 
-                                            
-                                            <td> <a class="btn btn-dark" href="{{ route('addReq', $stock->id) }}"> Add to
-                                                    Cart</a></td>
-                                            <td>
-                                                <form action="{{ route('stock.destroy', $stock->id) }}" method="POST">
-                                                    <a href="{{ route('stock.show', $stock->id) }}" class="mr-25"
-                                                        data-toggle="tooltip" data-original-title="show"> <i
-                                                            class="icon-eye"></i> </a>
-                                                    <a href="{{ route('stock.edit', $stock->id) }}" class="mr-25"
-                                                        data-toggle="tooltip" data-original-title="Edit"> <i
-                                                            class="icon-pencil"></i> </a>
+                                      @endrole
 
-                                                    @csrf
-                                                    @method('DELETE')
+                                       @role('hr')
 
-                                                    <button type="submit" class="btn btn-danger">
-                                                        <a data-toggle="tooltip" data-original-title="delete"> <i
-                                                                class=" icon-trash txt-danger"></i> </a>
-                                                    </button>
-                                                </form>
+                               <td> <a class="btn btn-dark" href=""> evaluate</a></td>
 
-                                            </td>
-                                        </tr>
+                                      @endrole
+                                            {{-- <td>
+                                                @if({{ $allow_edit }})
+                                                edibutton
+                                    @endif
+                                    </td> --}}
+
+
+                                    {{-- <td>{{ $form->educationtype->education_type }}</td> --}}
+                                    {{-- <td>{{ $stock->specification }}</td> --}}
+
+
+
+                                    </form>
+
+                                    </td>
+                                    </tr>
                                     @endforeach
 
                                 </tbody>
                             </table>
-                            {!! $stocks->links() !!}
+                            {!! $forms->links() !!}
 
                         </div>
                     </div>

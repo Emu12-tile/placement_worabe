@@ -125,10 +125,14 @@ License: You must have a valid license purchased only from themeforest to legall
     <script src="{{ asset('assets/dist/js/init.js') }}"></script>
     {{-- <script src="{{asset('assets/dist/js/dashboard-data.js')}}"></script> --}}
 
+    <script src="{{ asset('assets/vendors/editable-table/mindmup-editabletable.js') }}"></script>
+    <script src="{{ asset('assets/vendors/editable-table/numeric-input-example.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/editable-table-data.js') }}"></script>
 
 </body>
 
 </body>
 @yield('javascript')
+
 
 </html>
