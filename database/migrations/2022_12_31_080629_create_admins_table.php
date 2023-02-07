@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('education_level')->nullable();
             $table->string('education_type')->nullable();
-            $table->string('position')->nullable();
+            $table->string('position')->nullable(); //አሁን ያሉበት የ ስራ መደብ
+            $table->string('position_type')->nullable();
+            $table->string('apply_for_position')->nullable();//የስራ መደብ
+            $table->string('job_category')->nullable();//የስራ ክፍል
+            $table->string('level')->nullable();
+
 
             $table->timestamps();
         });

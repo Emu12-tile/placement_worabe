@@ -14,7 +14,7 @@ Project:	pinkman
 	++Border++
 	++Colors++
 	++Shadow++
-	++Font Size++	
+	++Font Size++
 	++Font Weight++
 	++Text Case++
 	++Letter Spacing++
@@ -53,7 +53,7 @@ Project:	pinkman
 	++Morris Chart++
 	++Sparkline++
 	++Flot Chart++
-	++Peity chart++	
+	++Peity chart++
 	++Echats++
 	++Easy pie chart++
 	++Nestable++
@@ -61,7 +61,7 @@ Project:	pinkman
 	++Sweet-alert++
 	++Notification++
 	++Tooltop++
-	++Images++  
+	++Images++
 	++Icons++
 	++Checkbox++
 	++Radio++
@@ -136,9 +136,9 @@ body {
   color: #5e7d8a;
   font-size: 1rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-family: "Roboto", sans-serif;
-  line-height: 1.5;
+  line-height: 2;
   background: #acb0b1;
   overflow-x: hidden; }
 

@@ -1,12 +1,19 @@
 <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
     <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i
             class="ion ion-ios-menu"></i></a>
-    <a class="navbar-brand" href="{{ route('home') }}">
+    <a class="navbar-brand" href="{{ route('hr.index') }}">
         {{-- <img class="brand-img d-inline-block" src="{{asset('assets/dist/img/logo-dark.png')}}" alt="brand" /> --}}
-        <h5 class="text-primary">Inventory</h5>
+        <h5 class="text-primary">Evaluation</h5>
     </a>
     <ul class="navbar-nav hk-navbar-content">
-
+        <li class="nav-item">
+            <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
+                    class="ion ion-ios-search"></i></a>
+        </li>
+        <li class="nav-item">
+            <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
+                    class="ion ion-ios-settings"></i></a>
+        </li>
         <li class="nav-item">
             <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
                     class="ion ion-ios-settings"></i></a>
@@ -171,3 +178,10 @@
         </li>
     </ul>
 </nav>
+<form role="search" class="navbar-search" id="search" type="get" action="{{ url('search') }}">
+    <div class="position-relative">
+        <a href="javascript:void(0);" class="navbar-search-icon"><i class="ion ion-ios-search"></i></a>
+        <input type="text" name="query" class="form-control" placeholder="Type here to Search">
+        <a id="navbar_search_close" class="navbar-search-close" href="#"><i class="ion ion-ios-close"></i></a>
+    </div>
+</form>

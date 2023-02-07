@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
     <div class="hk-pg-wrapper">
         <div class="container">
             <div class="row">
@@ -89,7 +90,7 @@
                                         </div>
 
                                         <div class="col-md-6 form-group">
-                                            <label for="education level">የ ትምህርት ደረጃ</label>
+                                            <label for="education level">የ ትምህርት ክፍል</label>
 
 
                                             <select class="form-control custom-select d-block w-100 "  id="admin_id" name="admin_id">
@@ -113,7 +114,19 @@
                                             </select>
                                         </div>
                                          <div class="col-md-6 form-group">
-                                            <label for="education level"> አመልካች  </label>
+                                            <label for="education level"> የ አመልካች መደብ </label>
+
+
+                                            <select class="form-control custom-select d-block w-100 " name="admin_id">
+                                                @foreach ($level as $col)
+                                                    <option value="{{ $col->id }}"
+                                                        {{ old('admin_id') == $col->id ? 'selected' : '' }}>
+                                                        {{ $col->position }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label for="education level"> የ መወዳደርያ መደብ </label>
 
 
                                             <select class="form-control custom-select d-block w-100 " name="admin_id">
@@ -219,7 +232,7 @@
                                     </div>
                                     <div class="form-group row mb-0 pull-right">
                                         <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary" id="add_btn">Submit</button>
+                                            <button type="submit" class="btn btn-primary" id="add_btn" >Submit</button>
                                         </div>
                                     </div>
                                 </form>
@@ -230,6 +243,11 @@
             </div>
         </div>
     </div>
+
+
+
+                                    <!-- Modal -->
+
 @endsection
 
 
@@ -264,9 +282,9 @@
 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="date" name="startDate"
-                                                        class="form-control mt-15 @error('startDate') is-invalid @enderror"
-                                                        id="inputname" placeholder=" number">
+                                                    <input type="date" name="startingDate"
+                                                        class="form-control mt-15 @error('startingDate') is-invalid @enderror"
+                                                        id="inputname" placeholder=" date">
                                                     @error('number')
                                                         <span class=" error invalid-feedback">
                                                             <strong>{{ $message }}</strong>
@@ -310,8 +328,7 @@
         });
 
         $("#add_form").on("submit", function(e) {
-            // console.log('hi')
-            // alert('hi');
+
             e.preventDefault();
             form_groups = $(this).find(".form-group");
             var flag = true;
@@ -359,6 +376,7 @@
                     item.endingDate=endingDate
                     quantities.push(item)
                 }
+
             })
     //  console.log('hi',quantities.length+1 ,form_groups.length);
             // if(quantities.length+1 == form_groups.length)
@@ -378,16 +396,20 @@
                         "admin_id":$("#admin_id").val(),
 
 
-                        "educationtype_id":$("educationtype_id").val(),
+                        // "educationtype_id":$("educationtype_id").val(),
 
                     },
                     headers: {
                         "X-CSRF-TOKEN": "{{csrf_token()}}"
                     },
+                    // try modal
+
                     success: function(data){
                         if(data.success)
                         {
-                            location.href="/hr"
+                             swal("Thank You ","Successfully Submitted","success")
+                            
+                            location.href="/"
                         }
                     }
                 })

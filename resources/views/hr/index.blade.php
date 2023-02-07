@@ -16,75 +16,69 @@
             </div>
             <h5 class="hk-sec-title">List of applicants </h5>
 
-            <div class="row">
+
+            <div class="row" id="search_list">
                 <div class="col-sm">
                     <div class="table-wrap">
-                        <div class="table-responsive">
-                            <table class="table table-sm mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>ተቁ</th>
-                                        <th>የመጀመርያ ስም</th>
-                                        <th>የ አባት ስም</th>
-                                        <th>የ አያት ስም</th>
 
-                                        {{-- <th>Specification</th> --}}
-                                        <th>ኢሜይል</th>
-                                        {{-- <th>Description</th> --}}
-                                        <th>የ ትምህርት ደረጃ</th>
-                                        {{-- <th>የ ትምህርት አይነት</th> --}}
-                                        @role('president')
-                                        <th>የፕሬዝዳንት ግምገማ</th>
-                                        @endrole
-                                          @role('hr')
+                        <table id="datable_1" class="table table-hover  table-bordered w-100  pb-30">
+                            <thead>
+                                <tr>
+                                    <th>ተቁ</th>
+                                    <th>ሙሉ ስም</th>
+
+
+
+                                    <th>የስራ መደብ</th>
+
+                                    <th>የ ትምህርት ደረጃ</th>
+
+                                    <th>የ ትምህርት አይነት</th>
+                                    @role('hr')
                                         <th>የሰው ኃይል ግምገማ</th>
-                                        @endrole
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                    @endrole
 
-                                    @foreach ($forms as $i => $form)
+
+
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach ($forms as $i => $form)
+                                    @if ($form->h_r_id==null)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $form->firstName }}</td>
-                                            <td>{{ $form->middleName }}</td>
-                                            <td>{{ $form->lastName }}</td>
-                                            <td>{{ $form->email }}</td>
-                                            <td>{{ $form->admin->education_level }}</td>
-                                           @role('president')
+                                            <td>
+                                                <form action="" method="POST"><a
+                                                        href="{{ route('hr.show', $form->id) }}" class="mr-25"
+                                                        data-toggle="tooltip"
+                                                        data-original-title="show">{{ $form->full_name }} </a>
+                                            </td>
+                                            </form>
+                                            {{-- <td>{{$form->h_r_id}}</td> --}}
+                                            <td>{{ $form->position->position }}</td>
+                                            <td>{{ $form->edu_level->education_level }}</td>
+                                            <td>{{ $form->education_type->education_type }}</td>
 
-                               <td> <a class="btn btn-dark" href="{{ route('addHr',$form->id) }}"> evaluate</a></td>
+                                            @role('hr')
+                                                <td> <button><a class="btn " type="submit" id="btn-evaluate"
+                                                            href="{{ route('addHr', $form->id) }}"> evaluate</a></button>
+                                                </td>
+                                            @endrole
 
-                                      @endrole
-
-                                       @role('hr')
-
-                               <td> <a class="btn btn-dark" href=""> evaluate</a></td>
-
-                                      @endrole
-                                            {{-- <td>
-                                                @if({{ $allow_edit }})
-                                                edibutton
+                                            </td>
+                                        </tr>
                                     @endif
-                                    </td> --}}
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                        {{-- {!! $forms->links() !!} --}}
 
 
-                                    {{-- <td>{{ $form->educationtype->education_type }}</td> --}}
-                                    {{-- <td>{{ $stock->specification }}</td> --}}
-
-
-
-                                    </form>
-
-                                    </td>
-                                    </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                            {!! $forms->links() !!}
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -96,3 +90,45 @@
 
     </div>
 @endsection
+@section('javascript')
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    </head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+
+
+            $("#btn-evaluate").submit(function(e) {
+                console.log('hi');
+                if ($(this).val() != '') {
+
+                    $("#btn-submit").prop("disabled", );
+
+                } else {
+                    $("#btn-submit").prop("disabled", false);
+
+                }
+
+
+
+            });
+            $('#search').on('keyup', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "search",
+                    type: "GET",
+                    data: {
+                        'search': query
+                    },
+                    success: function(data) {
+                        $('#search_list').html(data);
+                    }
+                });
+                //end of ajax call
+            });
+
+        });
+    </script>

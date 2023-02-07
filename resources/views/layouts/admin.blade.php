@@ -11,7 +11,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <meta charset="UTF-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Result</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -34,6 +34,10 @@ License: You must have a valid license purchased only from themeforest to legall
 
     <!-- Custom CSS -->
     <link href="{{ asset('assets/dist/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/vendors/datatables.net-dt/css/jquery.dataTables.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    {{-- <link href="{{ asset('assets/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}" --}}
+        {{-- rel="stylesheet" type="text/css" /> --}}
 </head>
 
 <body>
@@ -52,10 +56,12 @@ License: You must have a valid license purchased only from themeforest to legall
 
         <x-sidenav />
 
+
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
             <!-- Container -->
             <div class="container-fluid mt-xl-50 mt-sm-30 mt-15">
+
                 <!-- Row -->
                 <main>
                     @yield('content')
@@ -128,6 +134,24 @@ License: You must have a valid license purchased only from themeforest to legall
     <script src="{{ asset('assets/vendors/editable-table/mindmup-editabletable.js') }}"></script>
     <script src="{{ asset('assets/vendors/editable-table/numeric-input-example.js') }}"></script>
     <script src="{{ asset('assets/dist/js/editable-table-data.js') }}"></script>
+
+
+    {{-- datatable
+         --}}
+
+    <script src="{{asset('assets/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-dt/js/dataTables.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+    <script src="{{asset('asset/vendors/jszip/dist/jszip.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
+    <script src="{{asset('asset/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/dist/js/dataTables-data.js')}}"></script>
 
 </body>
 

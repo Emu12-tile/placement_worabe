@@ -15,11 +15,15 @@ return new class extends Migration
     {
         Schema::create('h_r_s', function (Blueprint $table) {
             $table->id();
-            $table->integer('performance');
-            $table->integer('exam');
-            $table->integer('experience');
-            $table->integer('resultbased');
-            $table->foreignId('form_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('performance')->nullable();
+            $table->integer('exam')->nullable();
+            $table->integer('experience')->nullable();
+            $table->integer('resultbased')->nullable();
+            $table->integer('presidentGrade')->nullable();
+            $table->boolean('status_hr')->default(0);
+            $table->boolean('status_president')->default(0);
+            $table->foreignId('user_id')->references('id')->on('users')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('form_id')->references('id')->on('forms')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 
 
 

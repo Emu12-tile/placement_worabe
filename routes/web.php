@@ -1,10 +1,21 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HRController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\MultiformController;
+use App\Http\Controllers\JobCategoryController;
+use App\Http\Controllers\LowPositionController;
+use App\Http\Controllers\PresidentialController;
+use App\Http\Controllers\EducationTypeController;
+use App\Http\Controllers\EducationLevelController;
+use App\Http\Controllers\ExperienceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +31,20 @@ use App\Http\Controllers\ResourceController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/try', [FormController::class, 'create'])->name('try');
 
-Route::get('/', [FormController::class, 'create'])->name('welcome');
+Route::get('/', [MultiformController::class, 'createStepOne'])->name('multiforms.create-step-one');
+Route::post('/', [MultiformController::class, 'postCreateStepOne'])->name('multiforms.create.step.one.post');
+
+Route::get('/steptwo', [MultiformController::class, 'createStepTwo'])->name('multiforms.create.step.two');
+Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->name('multiforms.create.step.two.post');
+Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
+
+Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
+Route::get('/experience', [ExperienceController::class, 'create']);
+Route::post('/experience', [ExperienceController::class, 'store']);
+// Route::get('')
+
 // Route::post('/hr', [FormController::class, 'store']);
 Route::get('/home', function () {
     return view('home');
@@ -32,28 +55,65 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-// Route::middleware([
-//     'auth:sanctum',
-//     'verified',
-//     'role:admin'
-// ])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'role:admin'
+])->group(function () {
 
+    Route::resource('/admin', AdminController::class);
+    Route::resource('/educationlevel', EducationLevelController::class);
+    Route::resource('/level', LevelController::class);
 
-//     Route::get('/', function () {
-//         // return Inertia::render('Admin/Index');
-//     })->name('index');
+    Route::post('/level', [LevelController::class, 'store']);
+    Route::post('/educationtype', [EducationTypeController::class, 'store']);
+    Route::resource('/educationtype', EducationTypeController::class);
+    Route::resource('/position', PositionController::class);
+    // Route::post('/position', [PositionController::class, 'store']);
+    Route::resource('/jobcategory', JobCategoryController::class);
+});
+// $emu = (DB::table('positions')->where('position_type_id', 1)->first());
 
+// if ($emu->position_type_id == 1) {
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'role:hr|president',
+    // 'role:hr'
+])->group(
+    function () {
+        // if (DB::table('positions')->where('position_type_id', 1)->first()) {
+
+        Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
+        Route::resource('/resource', ResourceController::class);
+        Route::get('/lowresource',[ ResourceController::class,'index2'])->name('lowresource.lowresource');
+
+        Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
+    }
+    //  elseif ($emu->position_type_id == 2) {
+
+    //
+    //     }
+
+);
 
 
 Route::resource('/hr', FormController::class);
+Route::get("search", [FormController::class, 'search']);
+Route::get('/table', [FormController::class, 'table']);
+// Route::get('/hr', [MultiformController::class, 'index']);
+//     }
+// );
+Route::get('/export_pdf/{id}', [MultiformController::class, 'export_pdf'])->name('export_pdf');
 
-// Route::resource('/hr', Controller::class);
-Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
-Route::resource('/resource', ResourceController::class);
-Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
+
+
+Route::get('/evaluation', [PresidentialController::class, 'index'])->name('presidential.index');
 
 
 
-// Route::post('/laboratoryEquipment/status/change', [LaboratoryEquipmentController::class, 'changeStatus'])->name("change_status");
+
+
+
 
 require __DIR__ . '/auth.php';

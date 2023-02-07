@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <p>Developed for<a href="#" class="text-dark" target="_blank">MinT Company</a> © 2022</p>
+                <p>Developed for<a href="#" class="text-dark" target="_blank">AASTU University</a> © 2023</p>
             </div>
             <div class="col-md-6 col-sm-12">
                 <p class="d-inline-block">Follow us</p>

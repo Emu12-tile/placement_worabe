@@ -10,8 +10,12 @@ class Admin extends Model
     use HasFactory;
     protected $fillable = [
         'position',
+        'position_type',
         'education_type',
-        'education_level'
+        'education_level',
+        'apply_for_position',
+        'job_category',
+        'level'
 
 
     ];

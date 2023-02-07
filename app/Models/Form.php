@@ -14,15 +14,61 @@ class Form extends Model
         'lastName',
         'email',
         'phone',
-        'admin_id',
         'startingDate',
         'endingDate',
-        'file',
-        
+
+        'sex',
+        'fee',
+        'positionofnow',
+        'positionyouworked',
+        'UniversityHiringEra',
+        'servicPeriodAtUniversity',
+        'servicPeriodAtAnotherPlace',
+        'serviceBeforeDiplo',
+        'serviceAfterDiplo',
+        'resultOfrecentPerform',
+        'DisciplineFlaw',
+        'MoreRoles',
+        'position_id',
+        'edu_level_id',
+        'education_type_id',
+        'job_category_id',
+        'level_id',
+        'h_r_id'
+
 
     ];
-    public function admin()
+    public function hr()
     {
-        return $this->hasOne(Admin::class, 'id', 'admin_id');
+        return $this->hasOne(HR::class, 'h_r_id', 'id');
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(experience::class, 'form_id', 'id');
+    }
+    public function position()
+    {
+        return $this->hasOne(Position::class, 'id', 'position_id');
+    }
+    public function edu_level()
+    {
+        return $this->hasOne(EduLevel::class, 'id', 'edu_level_id');
+    }
+    public function education_type()
+    {
+        return $this->hasOne(EducationType::class, 'id', 'education_type_id');
+    }
+    public function job_category()
+    {
+        return $this->hasOne(JobCategory::class, 'id', 'job_category_id');
+    }
+    public function level()
+    {
+        return $this->hasOne(Level::class, 'id', 'level_id');
+    }
+    public function getFullNameAttribute()
+    {
+        return "{$this->firstName} {$this->middleName} {$this->lastName}";
     }
 }
