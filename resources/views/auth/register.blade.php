@@ -170,18 +170,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <select class="form-control @error('department') is-invalid @enderror"
-                                            name="department" id="department">
 
-                                            <option selected disabled>-- Select Department --</option>
-                                            @foreach ($dept as $name)
-                                                <option value="{{ $name->dept_name }}">{{ $name->dept_name }}</option>
-                                            @endforeach
-
-
-                                        </select>
-                                    </div>
                                     <div class="form-group">
                                         <input placeholder="Password" id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror" name="password"

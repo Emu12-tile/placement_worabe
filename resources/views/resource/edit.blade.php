@@ -4,7 +4,7 @@
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
                 <div class="pull-right">
-                    <a class="btn btn-dark" href="{{ route('hr.index') }}"> Back</a>
+                    <a class="btn btn-dark" href="{{ route('resource.index') }}"> Back</a>
                 </div>
                 <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች
                 </h5>
@@ -109,7 +109,7 @@
                             </div>
 
 
-                            <div class="col-md-6 ">
+                            {{-- <div class="col-md-6 "> --}}
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
 
@@ -306,14 +306,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                         <form action="{{ route('resource.update', $hr->id) }}" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6"> --}}
 
 
                                     <div class="col-sm">
@@ -327,7 +327,7 @@
 
                                                             <th>የትምህርት ደረጃ</th>
                                                             <th>የ ስራ መደብ</th>
-                                                            
+
 
 
                                                         </tr>
@@ -354,7 +354,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                             <div class="row">
                                 @role('president')

@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <!-- Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
     <link href="{{ asset('assets/dist/css/style.css') }}" rel="stylesheet" type="text/css">
-     <link href="{{ asset('assets/src/scss/style.scss') }}" rel="stylesheet" type="text/scss">
+    <link href="{{ asset('assets/src/scss/style.scss') }}" rel="stylesheet" type="text/scss">
 
 
 </head>
@@ -174,8 +174,19 @@ License: You must have a valid license purchased only from themeforest to legall
         .parsley-errors-list {
             color: red;
             border-color: red;
+
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .myDIV:hover+.hide {
+            display: block;
+            color: red;
         }
     </style>
+
     {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
 </body>
 @yield('javascript')

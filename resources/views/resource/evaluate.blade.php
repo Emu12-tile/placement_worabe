@@ -3,9 +3,13 @@
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
+                
                 <div class="pull-right">
                     <a class="btn btn-dark" href="{{ route('hr.index') }}"> Back</a>
                 </div>
+
+
+
                 <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች
                 </h5>
                 {{-- <p class="mb-40">A tiny editable jQuery Bootstrap spreadsheet. Just start typing to edit, or move around
@@ -14,8 +18,7 @@
                 <div class="row">
 
                     <div class="col-sm">
-                        {{-- @foreach ($main as $user) --}}
-                        {{-- @if ($user == 'high') --}}
+
                         <div class="row">
                             <div class="col-md-6">
 
@@ -36,23 +39,14 @@
 
                                                 </tr>
                                             </thead>
-                                            {{-- <div class="collapse" id="collapseExample"> --}}
-                                            {{-- <div class="card card-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid.
-                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                                nesciunt sapiente ea proident.
-                                            </div> --}}
-                                            {{-- </div> --}}
+
                                             <tbody>
                                                 @role('president')
                                                     <tr>
                                                         <th scope="row">1</th>
                                                         <td> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ </td>
                                                         <td>
-                                                            {{-- <button class="btn btn-primary hide" onclick="tableToggle()">
-                                                            25
-                                                        </button> --}}
+
                                                             <button class="btn btn-primary" type="button"
                                                                 data-toggle="collapse" data-target="#collapseExamplepres"
                                                                 aria-expanded="false" aria-controls="collapseExample">
@@ -338,9 +332,9 @@
 
                         <form action="{{ route('addHrPost', $id) }}" method="POST" id="add_evaluation">
                             @csrf
-                           
+
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6"> --}}
 
 
                                     <div class="col-sm">
@@ -379,7 +373,8 @@
 
                                                                     $years = $tdate - $fdate;
 
-                                                                    echo $years;
+
+                                                                    echo $years,"(",$fo->positionyouworked,"), ";
 
                                                                     ?>
                                                                 @endforeach
@@ -395,7 +390,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                             <div class="row mt-40">
                                 @role('president')

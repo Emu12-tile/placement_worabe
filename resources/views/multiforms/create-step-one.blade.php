@@ -1,28 +1,21 @@
 @extends('app')
 @section('content')
-    <div class="hk-pg-wrapper    ">
+    <div class="hk-pg-wrapper   ">
+        {{-- bg-light-60    --}}
         <div class="container ">
             <div class="row">
                 <div class="col-xl-12 ">
 
-                    <section class="hk-sec-wrapper mt-100  ">
+                    <section class="hk-sec-wrapper mt-100">
 
-                        <h1 class="hk-sec-title text-white text-center">የመወዳደርያ ቅጽ</h1>
+                        <h1 class="hk-sec-title text-primary text-center">የመወዳደርያ ቅጽ</h1>
                         <p class="mb-25"> </p>
 
                         <div class="row">
                             <div class="col-sm">
                                 <form action="{{ route('multiforms.create.step.one.post') }}" method="POST">
                                     @csrf
-                                    {{-- @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif --}}
+                                    
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="firstName">የመጀመሪያ ስም</label>

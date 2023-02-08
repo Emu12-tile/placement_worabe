@@ -6,11 +6,11 @@
         <div class="nicescroll-bar">
             <div class="navbar-nav-wrap">
                 <ul class="navbar-nav flex-column">
-                    {{-- <li class="nav-item active">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ route('home') }}">
                             <i class="ion ion-ios-keypad"></i>
                             <span class="nav-link-text">Dashboard</span>
-                        </a> --}}
+                        </a>
 
 
                     {{-- <ul id="dash_drp" class="nav flex-column collapse collapse-level-1"> --}}
@@ -43,15 +43,15 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationlevel.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    የትምህርት ደረጃ
+                                   የትምህርት ዓይነት
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationtype.index') }}">

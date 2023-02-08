@@ -74,7 +74,7 @@
                                             <div class="col-md-6">
 
 
-                                                <input type="text" name="addMoreInputFields['+i+'][education_level]"
+                                                <input type="text" name="addMoreInputFields[${i}][education_level]"
                                                     value="{{ old('education_level') }}"
                                                     class="form-control  @error('education_level') is-invalid @enderror"
                                                     id="education_level" placeholder=" የትምህርት ደረጃ">

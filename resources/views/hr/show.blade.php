@@ -153,11 +153,11 @@
                                 </div>
 
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Experience</label>
-                                    {{-- @foreach ($form ) --}}
+
                                         <div class="col-sm-10">
-                                            <input type="text" value="{{ $form->startingDate }}" name="startingDate"
+                                            <input type="text" value="{{ $form->experience->startingDate }}" name="startingDate"
                                                 class="form-control" id="inputname" placeholder="startingDate" disabled>
                                         </div>
                                 </div>
@@ -169,7 +169,7 @@
                                             disabled>
                                     </div>
                                 </div>
-                                {{-- @endforeach --}}
+                                --}}
 
                             </form>
                         </div>

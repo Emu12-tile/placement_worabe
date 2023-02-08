@@ -12,7 +12,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('hr.index') }}" class="mr-25"> back </a>
+                <a href="{{ url('add-user') }}" class="mr-25"> ADD </a>
             </div>
             <h5 class="hk-sec-title">Evaluation </h5>
 
@@ -25,52 +25,58 @@
                                     <tr>
                                         <th>ተ.ቁ</th>
                                         <th>ሙሉ ስም</th>
-                                        <th>ውጤት ሰጪ</th>
-                                        <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
-                                        <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
-                                        <th>ለውጤት ተኮር ምዘና</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>edit</th>
+                                        <th>delete</th>
 
-                                        <th>ለፈተና ውጤት</th>
-                                        <th>አጠቃላይ ውጤት(65%)</th>
 
-                                        {{-- <th>አጠቃላይ ውጤት(100%)</th> --}}
-                                        @role('president')
-                                            <th>presidential</th>
-                                        @endrole
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($hrs as $i => $hr)
+                                    @foreach ($users as $i => $user)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
 
-                                            <tr>
-                                                <td>{{ ++$i }}</td>
-                                                <td>{{ $hr->form->firstName }}
-                                                </td>
-                                                <td>{{ $hr->user->name }}</td>
-                                                <td>{{ $hr->performance }}</td>
-                                                <td>{{ $hr->experience }}</td>
-                                                <td>{{ $hr->resultbased }}</td>
-                                                <td>{{ $hr->exam }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            {{-- <td>{{DB::table('roles')->pluck('name', 'name')->first()}}</td> --}}
+                                            <td>
 
-                                                <td>
-                                                    {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
+                                            </td>
 
-                                                </td>
+                                            <td>
+                                                <a href="{{ url('delete-user/'. $user->id) }}"> <button type="submit"
+                                                        class="btn btn-danger pd-10">
+                                                        <a data-toggle="tooltip" data-original-title="delete"> <i
+                                                                class=" icon-trash txt-danger"></i> </a>
+                                                    </button>
+                                                    </i>
+                                                </a>
+                                            </td>
 
+                                            <td>
 
-
-
-
-                                                @role('president')
-                                                    <td> <a class="btn btn-dark" href="{{ route('resource.edit', $hr->id) }}">
-                                                            evaluate
-                                                        </a></td>
-                                                @endrole
+                                                <a href="{{ url('edit-user/'. $user->id) }}" data-toggle="tooltip"
+                                                    data-original-title="Edit"> <i class="icon-pencil"></i> </a>
+                                            </td>
 
 
-                                            </tr>
-                                            @endif
-                                       
+
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                        </tr>
+                                    @endforeach
+
 
                                 </tbody>
                             </table>

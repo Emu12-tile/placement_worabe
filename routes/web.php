@@ -10,12 +10,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\MultiformController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\LowPositionController;
 use App\Http\Controllers\PresidentialController;
 use App\Http\Controllers\EducationTypeController;
 use App\Http\Controllers\EducationLevelController;
-use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Choice2Controller;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,7 @@ use App\Http\Controllers\ExperienceController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 Route::get('/try', [FormController::class, 'create'])->name('try');
 
 Route::get('/', [MultiformController::class, 'createStepOne'])->name('multiforms.create-step-one');
@@ -46,9 +50,9 @@ Route::post('/experience', [ExperienceController::class, 'store']);
 // Route::get('')
 
 // Route::post('/hr', [FormController::class, 'store']);
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
+// Route::get('/home', function () {
+//     return view('home');
+    Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -60,6 +64,16 @@ Route::middleware([
     'verified',
     'role:admin'
 ])->group(function () {
+    Route::get('/user', [RegisteredUserController::class, 'index'])->name('index');
+    Route::get('/add-user', [RegisteredUserController::class, 'crt']);
+    Route::post('/user', [RegisteredUserController::class, 'store']);
+    Route::get('edit-user/{id}', [RegisteredUserController::class, 'edit']);
+    Route::put('update-user/{id}', [RegisteredUserController::class, 'update']);
+    Route::get('delete-user/{id}', [RegisteredUserController::class, 'destroy']);
+
+
+
+
 
     Route::resource('/admin', AdminController::class);
     Route::resource('/educationlevel', EducationLevelController::class);
@@ -69,6 +83,7 @@ Route::middleware([
     Route::post('/educationtype', [EducationTypeController::class, 'store']);
     Route::resource('/educationtype', EducationTypeController::class);
     Route::resource('/position', PositionController::class);
+    Route::resource('/choice2', Choice2Controller::class);
     // Route::post('/position', [PositionController::class, 'store']);
     Route::resource('/jobcategory', JobCategoryController::class);
 });
@@ -86,7 +101,7 @@ Route::middleware([
 
         Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
         Route::resource('/resource', ResourceController::class);
-        Route::get('/lowresource',[ ResourceController::class,'index2'])->name('lowresource.lowresource');
+        Route::get('/lowresource', [ResourceController::class, 'index2'])->name('lowresource.lowresource');
 
         Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
     }

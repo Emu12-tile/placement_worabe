@@ -24,52 +24,71 @@
                                 <thead>
                                     <tr>
                                         <th>ተ.ቁ</th>
-                                        <th>ሙሉ ስም</th>
-                                        <th>ውጤት ሰጪ</th>
-                                        <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
-                                        <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
-                                        <th>ለውጤት ተኮር ምዘና</th>
 
-                                        <th>ለፈተና ውጤት</th>
-                                        <th>አጠቃላይ ውጤት(65%)</th>
+                                        <th>ሙሉ ስም</th>
+                                        @role('hr')
+                                            <th>ውጤት ሰጪ</th>
+
+                                            <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
+                                            <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
+                                            <th>ለውጤት ተኮር ምዘና</th>
+
+                                            <th>ለፈተና ውጤት</th>
+                                        @endrole
+
 
                                         {{-- <th>አጠቃላይ ውጤት(100%)</th> --}}
                                         @role('president')
+                                            <th>የሚወዳደሩበት የስራ መደብ</th>
+                                            <th>የ ትምህርት ደረጃ</th>
+                                            <th>የ ትምህርት አይነት</th>
+                                        @endrole
+                                        <th>አጠቃላይ ውጤት(65%)</th>
+                                        @role('president')
                                             <th>presidential</th>
                                         @endrole
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($hrs as $i => $hr)
                                         @if ($hr->form->position->position_type_id == 1)
-                                          @if ($hr->status_president == 0)
-                                            <tr>
-                                                <td>{{ ++$i }}</td>
-                                                <td>{{ $hr->form->firstName }}
-                                                </td>
-                                                <td>{{ $hr->user->name }}</td>
-                                                <td>{{ $hr->performance }}</td>
-                                                <td>{{ $hr->experience }}</td>
-                                                <td>{{ $hr->resultbased }}</td>
-                                                <td>{{ $hr->exam }}</td>
+                                            @if ($hr->status_president == 0)
+                                                <tr>
+                                                    <td>{{ ++$i }}</td>
+                                                    <td>{{ $hr->form->full_name }}
+                                                    </td>
+                                                    @role('hr')
+                                                        <td>{{ $hr->user->name }}</td>
+                                                        <td>{{ $hr->performance }}</td>
+                                                        <td>{{ $hr->experience }}</td>
+                                                        <td>{{ $hr->resultbased }}</td>
+                                                        <td>{{ $hr->exam }}</td>
+                                                    @endrole
+                                                    @role('president')
+                                                        <td>{{ $hr->form->position->position }}</td>
+                                                        <td>{{ $hr->form->edu_level->education_level }}</td>
+                                                        <td>{{ $hr->form->education_type->education_type }}</td>
+                                                    @endrole
 
-                                                <td>
-                                                    {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
+                                                    <td>
+                                                        {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
-                                                </td>
-
-
-
-
-
-                                                @role('president')
-                                                    <td> <a class="btn btn-dark" href="{{ route('resource.edit', $hr->id) }}">
-                                                            evaluate
-                                                        </a></td>
-                                                @endrole
+                                                    </td>
 
 
-                                            </tr>
+
+
+
+                                                    @role('president')
+                                                        <td> <a class="btn btn-dark"
+                                                                href="{{ route('resource.edit', $hr->id) }}">
+                                                                evaluate
+                                                            </a></td>
+                                                    @endrole
+
+
+                                                </tr>
                                             @endif
                                         @endif
                                     @endforeach

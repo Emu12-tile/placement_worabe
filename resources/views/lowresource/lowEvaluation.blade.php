@@ -15,8 +15,8 @@
 
                     <div class="col-sm">
 
-                        <div class="row">
-                            <div class="col-md-6">
+                        {{-- <div class="row"> --}}
+                            {{-- <div class="col-md-6"> --}}
 
                                 <div class="table-wrap mb-20">
                                     <div class="table-responsive">
@@ -74,10 +74,10 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            {{-- </div> --}}
 
 
-                            <div class="col-md-6 ">
+                            {{-- <div class="col-md-6 "> --}}
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
 
@@ -333,13 +333,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            {{-- </div> --}}
+                        {{-- </div> --}}
 
                         <form action="{{ route('addHrPost', $id) }}" method="POST" id="add_evaluation">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6"> --}}
 
 
                                     <div class="col-sm">
@@ -362,16 +362,16 @@
 
                                                         <tr>
 
-                                                            <td>{{ $form->firstName }}
+                                                            <td>{{ $form->full_name }}
                                                             </td>
                                                             <td>{{ $form->edu_level->education_level }}</td>
 
                                                             <td>
                                                                 {{ $form->position->position }}
                                                             </td>
-                                                            @foreach ($forms as $fo)
-                                                                <td>
 
+                                                            <td>
+                                                                @foreach ($forms as $fo)
                                                                     <?php
 
                                                                     $fdate = Carbon::parse($fo->startingDate)->year;
@@ -380,11 +380,12 @@
 
                                                                     $years = $tdate - $fdate;
 
-                                                                    echo $years;
+                                                                    echo $years,"(",$fo->positionyouworked,"), ";
 
                                                                     ?>
-                                                                </td>
-                                                            @endforeach
+                                                                @endforeach
+                                                            </td>
+
 
 
 
@@ -398,7 +399,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                             <div class="row">
 

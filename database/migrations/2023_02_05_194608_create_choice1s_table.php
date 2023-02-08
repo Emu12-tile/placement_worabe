@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('choice1s', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_category_id')->references('id')->on('job_categories')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('position_id')->references('id')->on('positions')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('form_id')->references('id')->on('forms')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('position');
+            $table->string('experience');
+
+            $table->foreignId('level_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('edu_level_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+
+            $table->foreignId('position_type_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }

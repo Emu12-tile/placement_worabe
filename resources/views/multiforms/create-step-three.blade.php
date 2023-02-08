@@ -11,16 +11,16 @@
 
                     <div class="row">
                         <div class="col-sm">
-                            @if($errors->any())
+                            {{-- @if($errors->any())
     {!! implode('', $errors->all('<div>:message</div>')) !!}
-@endif
+@endif --}}
 
                             <form action="{{ route('multiforms.create.step.three.post') }}" id='add_form' method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን</label>
-                                        <input class="form-control @error('UniversityHiringEra') is-invalid @enderror" id="UniversityHiringEra" placeholder="UniversityHiringEra" value="{{ $form->UniversityHiringEra ?? '' }}" type="date" name="UniversityHiringEra">
+                                        <input type="date" value="{{ $form->UniversityHiringEra ?? '' }}" class="form-control @error('UniversityHiringEra') is-invalid @enderror" id="UniversityHiringEra" placeholder="በዩኒቨርስቲዉ የቅጥር ዘመን"  name="UniversityHiringEra">
                                         @error('UniversityHiringEra')
                                         <span class=" error invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                                     <div class="col-md-6 form-group">
                                         <label for="servicPeriodAtUniversity">በዩኒቨርስቲዉ አገልግሎት ዘመን</label>
                                         <input class="form-control
-                                                @error('servicPeriodAtUniversity') is-invalid @enderror" id="servicPeriodAtUniversity" placeholder="servicPeriodAtUniversity" value="{{ $form->servicPeriodAtUniversity ?? '' }}" type="text" name="servicPeriodAtUniversity">
+                                                @error('servicPeriodAtUniversity') is-invalid @enderror" id="servicPeriodAtUniversity" placeholder="በዩኒቨርስቲዉ አገልግሎት ዘመን" value="{{ $form->servicPeriodAtUniversity ?? '' }}" type="text" name="servicPeriodAtUniversity">
                                         @error('servicPeriodAtUniversity')
                                         <span class=" error invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -189,7 +189,7 @@
                                                 <div class="col-md-3">
 <label for="startingDate"></label>
 
-                                                    <input type="date" name="addMoreInputFields['+i+'][startingDate]" value="{{ $form->startingDate ?? '' }}"
+                                                    <input type="date" name="addMoreInputFields[${i}][startingDate]" value="{{ $form->startingDate ?? '' }}"
                                                         class="form-control  @error('startingDate') is-invalid @enderror"
                                                         id="startingDate" placeholder=" ">
                                                     @error('startingDate')
@@ -201,7 +201,7 @@
                                                 </div>
                                                 <div class="col-md-3">
   <label for="endingDate"></label>
-                                                    <input type="date" name="addMoreInputFields['+i+'][endingDate]" value="{{ $form->endingDate ?? '' }}"
+                                                    <input type="date" name="addMoreInputFields[${i}][endingDate]" value="{{ $form->endingDate ?? '' }}"
                                                         class="form-control  @error('endingDate') is-invalid @enderror"
                                                         id="endingDate" placeholder=" endingDate">
                                                     @error('endingDate')
@@ -213,7 +213,7 @@
                                                 <div class="col-md-4">
                                                     <label for="positionyouworked"></label>
 
-                                                    <input type="text" name="addMoreInputFields['+i+'][positionyouworked]" value="{{ $form->positionyouworked ?? '' }}"
+                                                    <input type="text" name="addMoreInputFields[${i}][positionyouworked]" value="{{ $form->positionyouworked ?? '' }}"
                                                         class="form-control  @error('positionyouworked') is-invalid @enderror"
                                                         id="positionyouworked" placeholder="የሰሩበት የስራ መደብ">
                                                     @error('positionyouworked')

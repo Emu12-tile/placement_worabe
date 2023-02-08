@@ -8,6 +8,7 @@ use App\Models\Form;
 use App\Models\Admin;
 use App\Models\Level;
 use App\Models\choice1;
+use App\Models\choice2;
 use App\Models\EduLevel;
 use App\Models\Position;
 use App\Models\experience;
@@ -70,6 +71,7 @@ class MultiformController extends Controller
         $edu_level = EduLevel::all();
         $job_category = JobCategory::all();
         $position = Position::all();
+        $choice2 = choice2::all();
 
         $job_category2 = JobCategory::all();
         $edutype = EducationType::all();
@@ -79,7 +81,7 @@ class MultiformController extends Controller
         $form = $request->session()->get('form');
 
 
-        return view('multiforms.create-step-two', compact('level', 'level2', 'position', 'position2', 'job_category2', 'edu_level', 'job_category', 'edutype', 'form'));
+        return view('multiforms.create-step-two', compact('level', 'level2', 'position', 'position2', 'job_category2', 'edu_level', 'job_category', 'edutype', 'form', 'choice2'));
     }
     public function postCreateStepTwo(Request $request)
     {
@@ -119,12 +121,20 @@ class MultiformController extends Controller
     {
 
         $data = $request->session()->get('form');
-
-        $request->validate(
+        // dd($request->addMoreInputFields);
+        $validatedData = $request->validate(
             [
                 'addMoreInputFields.*.startingDate' => 'date|nullable',
                 'addMoreInputFields.*.endingDate' => 'after:startingDate|nullable',
-                'addMoreInputFields.*.positionyouworked' => 'required'
+                'addMoreInputFields.*.positionyouworked' => 'required',
+                'UniversityHiringEra' => 'required',
+                'servicPeriodAtUniversity' => 'required',
+                'servicPeriodAtAnotherPlace' => 'required',
+                'serviceBeforeDiplo' => 'required',
+                'serviceAfterDiplo' => 'required',
+                'resultOfrecentPerform' => 'required',
+                'DisciplineFlaw' => 'required',
+                'MoreRoles' => 'required',
 
 
             ]
@@ -158,16 +168,8 @@ class MultiformController extends Controller
         $request->session()->put('form', $form);
         $form->save();
 
-        //     foreach ($request->input as $key => $val) {
 
-        //     choice1::create([
-        //         "form_id" => $form->id,
-        //             "position_id" => $val["position_id"],
-        //             "job_category_id" => $val["job_category_id"],
-        //         // "position_id "=> $request->position_id,
-        //         // 'job_category_id' => $request->job_category_id,
-        //     ]);
-        // }
+
 
 
 
@@ -183,12 +185,22 @@ class MultiformController extends Controller
             // $exp->save();
 
         }
+        if (empty($request->session()->get('form'))) {
+            $form = new Form();
+            $form->fill($validatedData);
+            $request->session()->put('form', $form);
+        } else {
+            $form = $request->session()->get('form');
+            $form->fill($validatedData);
+            $request->session()->put('form', $form);
+        }
 
 
 
-
+        // $form->$request->session()->get('form');
+        // $exp->$request->session->get('form');
         $request->session()->forget('form');
-        // dd($form);
+
         return redirect('/export_pdf/' . $form->id);
     }
 

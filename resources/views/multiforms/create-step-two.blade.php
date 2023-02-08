@@ -98,13 +98,22 @@
 
                                         </div>
                                         <div class="col-md-6 form-group">
+
                                             <label for="position_id"> የስራ መደብ</label>
-                                            <select class="form-control custom-select d-block w-100 "
+                                            <select class="form-control custom-select d-block w-100 " id="position_id"
                                                 value="{{ $form->position_id ?? '' }}" name="position_id">
                                                 @foreach ($position2 as $col)
-                                                    <option value="{{ $col->id }}"
-                                                        {{ old('position_id') == $col->id ? 'selected' : '' }}>
-                                                        {{ $col->position }}</option>
+                                                    <button type="button" class="btn btn-secondary" data-toggle="tooltip"
+                                                        data-placement="top" title="Tooltip on top">
+                                                        <option value="{{ $col->id }}" id="position_id"
+                                                            {{ old('position_id') == $col->id ? 'selected' : '' }}>
+                                                            {{ $col->position }} (ሥ/ልምድ {{ $col->experience }}፣ደረጃ
+                                                            {{ $col->level->level }}፣ት/ት
+                                                            ደረጃ {{ $col->edu_level->education_level }})</option>
+
+
+
+                                                    </button>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -126,28 +135,28 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
                                         <div class="col-md-6 form-group">
+
                                             <label for="position_id"> የስራ መደብ</label>
-                                            <select class="form-control custom-select d-block w-100 "
-                                                value="{{ $form->position_id ?? '' }}" name="position_id">
-                                                @foreach ($position2 as $col)
-                                                    <option value="{{ $col->id }}"
-                                                        {{ old('position_id') == $col->id ? 'selected' : '' }}>
-                                                        {{ $col->position }}</option>
+                                            <select class="form-control custom-select d-block w-100 " id="position_id"
+                                                value="{{ $form->choice2_id ?? '' }}" name="choice2_id">
+                                                @foreach ($choice2 as $col)
+                                                    <button type="button" class="btn btn-secondary" data-toggle="tooltip"
+                                                        data-placement="top" title="Tooltip on top">
+                                                        <option value="{{ $col->id }}" id="position_id"
+                                                            {{ old('choice2_id') == $col->id ? 'selected' : '' }}>
+                                                            {{ $col->position }} (ሥ/ልምድ {{ $col->experience }}፣ደረጃ
+                                                            {{ $col->level->level }}፣ት/ት
+                                                            ደረጃ {{ $col->edu_level->education_level }})</option>
+
+
+
+                                                    </button>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {{-- <div class="col-md-4 form-group">
-                                            <label for="level_id"> ደረጃ</label>
-                                            <select class="form-control custom-select d-block w-100 "
-                                                value="{{ $form->level_id ?? '' }}" name="level_id">
-                                                @foreach ($level2 as $col)
-                                                    <option value="{{ $col->id }}"
-                                                        {{ old('level_id') == $col->id ? 'selected' : '' }}>
-                                                        {{ $col->level }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div> --}}
+
 
 
                                     </div>
@@ -171,16 +180,23 @@
         </div>
     @endsection
     @section('javascript')
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         <script>
-            ("select")
-            .change(function(){
-                var str="";
-                $("select option:selected").each(function(){
-                    str+=$(this).text('hi')+"";
-                });
-                $("div").text(str);
-            }).trigger("change");
+            let selected;
+            let level;
+            let experience;
+            const select = document.querySelector('#position_id');
+            $(".reqStatus").on('change', function()) {
+                console.log('hi');
+                selected = parseInt(this.value);
+                set();
+            }
+
+            function set() {
+                level = 1
+                experience = 2
+            }
             // data  level , experience
             // function onPosSelect(id){
             // using postion get position entity level, experience

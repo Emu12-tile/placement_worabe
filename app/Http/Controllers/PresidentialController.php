@@ -18,8 +18,8 @@ class PresidentialController extends Controller
             // where posion type 2
             // prod id
         // hr-
-        $hrs = HR::paginate(5);
-        
+        $hrs = HR::paginate(8);
+
 
         return view('presidential.index', compact('hrs'));
     }

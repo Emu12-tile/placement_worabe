@@ -16,7 +16,7 @@ class LowPositionController extends Controller
     public function index()
     {
 
-        $hrs = lowhrs::paginate(5);
+        $hrs = lowhrs::paginate(8);
         $form = Form::all();
 
         return view('lowresource.index', compact('hrs'));
@@ -84,7 +84,7 @@ class LowPositionController extends Controller
 
         return redirect('lowresource')->with('status', 'evaluation added successfully');
 
-    
+
 
 }
 }

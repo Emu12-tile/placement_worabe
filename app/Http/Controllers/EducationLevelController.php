@@ -10,7 +10,7 @@ class EducationLevelController extends Controller
     public function index()
     {
 
-        $admins = EduLevel::paginate(4);
+        $admins = EduLevel::paginate(8);
 
 
         return view('adminpage.education_level.index', compact('admins'));
@@ -24,7 +24,7 @@ class EducationLevelController extends Controller
     }
     public function store(Request $request)
     {
-      
+
         $this->validate($request, [
             'addMoreInputFields.*.education_level' => 'required',
         ]);

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EduLevel;
 use App\Models\Level;
-use App\Models\Position;
+use App\Models\choice2;
+use App\Models\EduLevel;
 use App\Models\PositionType;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class Choice2Controller extends Controller
 {
     public function index()
     {
 
-        $admins = Position::latest()->paginate(8);
+        $admins = choice2::latest()->paginate(4);
 
 
-        return view('adminpage.position.index', compact('admins'));
+        return view('adminpage.choice2.index', compact('admins'));
     }
     public function create()
     {
@@ -28,23 +28,14 @@ class PositionController extends Controller
 
 
 
-        return view('adminpage.position.create', compact('level', 'position', 'edu_level'));
+        return view('adminpage.choice2.create', compact('level', 'position', 'edu_level'));
     }
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'addMoreInputFields.*.position' => 'required',
-        //     'addMoreInputFields.*.position_type' => 'required',
-        //     'addMoreInputFields.*.edu_level_id' => 'required',
-        //     'addMoreInputFields.*.experience' => 'required',
-        //     'addMoreInputFields.*.level_id' => 'required',
 
-
-        // ]);
-        // dd($request);
         foreach ($request->addMoreInputFields as $key => $value) {
             // dd($value);
-            Position::create(
+            choice2::create(
                 [
                     "position" => $value["position"],
                     "position_type_id" => $value["position_type_id"],
@@ -56,43 +47,34 @@ class PositionController extends Controller
                 ]
             );
         };
-        return redirect()->route('position.index');
-
-
-
-
-
-
-
+        return redirect()->route('choice2.index');
     }
     public function edit($id)
     {
-        $edu_level = EduLevel::all();
-
         $level = PositionType::all();
-        $admin = Position::find($id);
-        return view('adminpage.position.edit', compact('admin', 'level','edu_level'));
+        $admin = choice2::find($id);
+        $edu_level = EduLevel::all();
+        return view('adminpage.choice2.edit', compact('admin', 'level', 'edu_level'));
     }
     public function update(Request $request, $id)
     {
 
-        $admin = Position::find($id);
+        $admin = choice2::find($id);
         $admin->position = $request->Input('position');
         $admin->experience = $request->Input('experience');
-
         $admin->position_type_id = $request->position_type_id;
         $admin->edu_level_id = $request->education_level_id;
         $admin->update();
 
 
-        return redirect('position')->with('status', 'position updated successfully');
+        return redirect('choice2')->with('status', 'position updated successfully');
     }
     public function destroy($id)
     {
-        $admin = Position::find($id);
+        $admin = choice2::find($id);
 
 
         $admin->delete();
-        return redirect('position')->with('status', 'position  deleted successfully');
+        return redirect('choice2')->with('status', 'position  deleted successfully');
     }
 }

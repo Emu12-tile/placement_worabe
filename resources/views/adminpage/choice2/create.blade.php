@@ -7,14 +7,14 @@
 
                 <section class="hk-sec-wrapper mt-100">
                     <div class="pull-right">
-                        <a class="btn btn-dark" href="{{ route('position.index') }}"> Back</a>
+                        <a class="btn btn-dark" href="{{ route('choice2.index') }}"> Back</a>
                     </div>
                     <h5 class="hk-sec-title">በአስተዳዳሪው የሚሞላ መረጃ</h5>
                     {{-- <p class="mb-25">Create Schedule forms </p> --}}
 
                     <div class="row">
                         <div class="col-sm">
-                            <form action="{{ route('position.store') }}" id="add_form" method="POST">
+                            <form action="{{ route('choice2.store') }}" id="add_form" method="POST">
                                 @csrf
 
                                 <div class="row">
