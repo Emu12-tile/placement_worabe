@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\Level;
 use App\Models\choice1;
 use App\Models\choice2;
+use App\Models\jobcat2;
 use App\Models\EduLevel;
 use App\Models\Position;
 use App\Models\experience;
@@ -73,7 +74,7 @@ class MultiformController extends Controller
         $position = Position::all();
         $choice2 = choice2::all();
 
-        $job_category2 = JobCategory::all();
+        $job_category2 = jobcat2::all();
         $edutype = EducationType::all();
         $level2 = Level::all();
 
@@ -91,11 +92,13 @@ class MultiformController extends Controller
                 'fee' => 'required',
                 'position_id' => 'required',
                 'job_category_id' => 'required',
+                'jobcat2_id' => 'required',
                 'level_id' => 'required',
                 'edu_level_id' => 'required',
                 'education_type_id' => 'required',
                 'positionofnow' => 'required',
-                'choice2_id' => 'required'
+                'choice2_id' => 'required',
+
 
             ]
         );
@@ -155,6 +158,7 @@ class MultiformController extends Controller
                 'position_id' => $data->position_id,
                 'choice2_id' => $data->choice2_id,
                 'job_category_id' => $data->job_category_id,
+                'jobcat2_id' => $data->jobcat2_id,
                 'positionofnow' => $data->positionofnow,
                 'sex' => $data->sex,
                 'fee' => $data->fee,

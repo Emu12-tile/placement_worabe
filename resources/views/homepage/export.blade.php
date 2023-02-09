@@ -81,7 +81,7 @@
         <p> የስራ ክፍል :-{{ $form->job_category->job_category }}፤ የስራ መደብ፣ {{ $form->position->position }}</p>
         <p>
             ምርጫ 2</p>
-        <p> የስራ ክፍል:- {{ $form->job_category->job_category }} ፤ የስራ መደብ:- {{ $form->choice2->position }}</p>
+        <p> የስራ ክፍል:- {{ $form->jobcat2->job_category }} ፤ የስራ መደብ:- {{ $form->choice2->position }}</p>
         <p>9/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
 
         <table id="customers">
@@ -122,7 +122,7 @@
                             
                             $years = $tdate - $fdate;
                             
-                            echo $years;
+                            echo abs($years);
                             
                             ?>
                         </td>

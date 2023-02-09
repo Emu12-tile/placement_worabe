@@ -127,10 +127,10 @@
 
 
                                             <select class="form-control custom-select d-block w-100 "
-                                                value="{{ $form->job_category_id ?? '' }}" name="job_category_id">
+                                                value="{{ $form->jobcat2_id ?? '' }}" name="jobcat2_id">
                                                 @foreach ($job_category2 as $col)
                                                     <option value="{{ $col->id }}"
-                                                        {{ old('job_category_id') == $col->id ? 'selected' : '' }}>
+                                                        {{ old('jobcat2_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->job_category }}</option>
                                                 @endforeach
                                             </select>

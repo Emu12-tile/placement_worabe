@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HRController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\Choice2Controller;
+use App\Http\Controllers\JobCat2Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ResourceController;
@@ -17,8 +20,6 @@ use App\Http\Controllers\PresidentialController;
 use App\Http\Controllers\EducationTypeController;
 use App\Http\Controllers\EducationLevelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Choice2Controller;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Route::post('/experience', [ExperienceController::class, 'store']);
 // Route::post('/hr', [FormController::class, 'store']);
 // Route::get('/home', function () {
 //     return view('home');
-    Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -86,6 +87,7 @@ Route::middleware([
     Route::resource('/choice2', Choice2Controller::class);
     // Route::post('/position', [PositionController::class, 'store']);
     Route::resource('/jobcategory', JobCategoryController::class);
+    Route::resource('/jobcat2', JobCat2Controller::class);
 });
 // $emu = (DB::table('positions')->where('position_type_id', 1)->first());
 

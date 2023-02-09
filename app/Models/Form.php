@@ -35,7 +35,8 @@ class Form extends Model
         'job_category_id',
         'level_id',
         'h_r_id',
-        'choice2_id'
+        'choice2_id',
+        'jobcat2_id'
 
 
     ];
@@ -63,6 +64,10 @@ class Form extends Model
     public function job_category()
     {
         return $this->hasOne(JobCategory::class, 'id', 'job_category_id');
+    }
+    public function jobcat2()
+    {
+        return $this->hasOne(jobcat2::class, 'id', 'jobcat2_id');
     }
     public function level()
     {
