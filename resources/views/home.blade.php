@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 
-   
+
 
 @section('content')
     <div class="hk-row">
@@ -35,11 +35,10 @@
                         </div>
                         <div>
                             <span class="text-success font-18 font-weight-500">
-                                {{-- @if ($pres == 1) --}}
-                                {{ \App\Models\HR::query()->where('status_president', '==', '1')->select('presidentGrade')->distinct()->count() }}
+                               
+                                {{ \App\Models\HR::where('status_president', '!=', '0')->count() }}
 
-                                {{-- {{ $pres->count('president_status',1) }} --}}
-                                {{-- @endif --}}
+                                
                             </span>
                         </div>
                     </div>
@@ -58,7 +57,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-5">
                         <div>
-                            <span class="d-block font-15 text-dark font-weight-500">በሰው ኃብት ውጤት</span>
+                            <span class="d-block font-15 text-dark font-weight-500">በሰው ኃብት የተሰጠ ውጤት</span>
                         </div>
                         <div>
                             <span
@@ -145,5 +144,3 @@
 
     </div>
 @endsection
-
-
