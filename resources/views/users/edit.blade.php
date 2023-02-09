@@ -49,6 +49,22 @@
 
 
                                     </div>
+                                    <div class="col-sm">
+                                        <div class="form-group row">
+                                            <label for="position_type_id" >የስራ መደብ
+                                                ዓይነት</label>
+                                            {{-- <div class="col-sm-10"> --}}
+                                                <select class="form-control custom-select  " name="position_type_id">
+
+                                                    @foreach ($role as $col)
+                                                        <option value="{{ $col->id }}"
+                                                            {{ $col->id == $user->role_id ? 'selected' : '' }}>
+                                                            {{ $col->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            {{-- </div> --}}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group row mb-0 pull-right">
                                     <div class="col-sm-10">

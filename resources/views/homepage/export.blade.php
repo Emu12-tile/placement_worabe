@@ -75,7 +75,15 @@
         <p>5/ በዩኒቨርስቲዉ የቅጥር ዘመን:-{{ $form->UniversityHiringEra }}</p>
         <p>6/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
         <p>7/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
-        <p>8/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
+        <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
+        <p> ምርጫ 1</p>
+
+        <p> የስራ ክፍል :-{{ $form->job_category->job_category }}፤ የስራ መደብ፣ {{ $form->position->position }}</p>
+        <p>
+            ምርጫ 2</p>
+        <p> የስራ ክፍል:- {{ $form->job_category->job_category }} ፤ የስራ መደብ:- {{ $form->choice2->position }}</p>
+        <p>9/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
+
         <table id="customers">
             <thead>
                 <tr>
@@ -107,41 +115,41 @@
                         <td>{{ $fo->positionyouworked }}</td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate)->year;
-
+                            
                             $tdate = Carbon::parse($fo->endingDate)->year;
-
+                            
                             $years = $tdate - $fdate;
-
+                            
                             echo $years;
-
+                            
                             ?>
                         </td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate)->month;
-
+                            
                             $tdate = Carbon::parse($fo->endingDate)->month;
-
+                            
                             $months = $tdate - $fdate;
-
+                            
                             echo abs($months);
-
+                            
                             ?>
                         </td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate)->day;
-
+                            
                             $tdate = Carbon::parse($fo->endingDate)->day;
-
+                            
                             $days = $tdate - $fdate;
-
+                            
                             echo abs($days);
-
+                            
                             ?>
                         </td>
                         <td></td>
@@ -150,20 +158,24 @@
                 @endforeach
             </tbody>
         </table>
-        <p>9/ አገልግሎት ከዲፕሎማ በፊት አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ:- {{ $form->serviceBeforeDiplo }} ከዲፕሎማ/ዲግሪ በኋላ
+        <p>10/ አገልግሎት ከዲፕሎማ በፊት አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ:- {{ $form->serviceBeforeDiplo }} ከዲፕሎማ/ዲግሪ በኋላ
             {{ $form->serviceAfterDiplo }}</p>
-        <p>10/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
-        <p>11/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
-        <p>12/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
-        <p>ቅጹን የሞላው ባለሙያ ስም &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+        <p>11/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
+        <p>12/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
+        <p>13/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
+        <p>ቅጹን የሞላው ባለሙያ ስም
+            &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
-        <p>ስለትክክለኛነቱ የሰራትኛዉ ፊርማ&mdash;&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
+        <p>ስለትክክለኛነቱ የሰራትኛዉ ፊርማ&mdash;&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+        </p>
 
     </div>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"
     integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script> --}}
 <script>
     var element = document.getElementById("element-to-print")
     html2pdf(element, {

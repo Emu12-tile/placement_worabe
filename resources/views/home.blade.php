@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 
-    @extends('layouts.admin')
+   
 
 @section('content')
     <div class="hk-row">
@@ -10,7 +10,7 @@
                 <div class="card-body ">
                     <div class="d-flex justify-content-between mb-5 ">
                         <div>
-                            <span class="d-block font-15 text-dark font-weight-500">Applicants</span>
+                            <span class="d-block font-15 text-dark font-weight-500">የተወዳዳሪዉ ብዛት</span>
                         </div>
                         <div>
                             <span class="text-success font-14 font-weight-500"> {{ \App\Models\Form::count() }}</span>
@@ -31,7 +31,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-5">
                         <div>
-                            <span class="d-block font-15 text-dark font-weight-500">Evaluated</span>
+                            <span class="d-block font-15 text-dark font-weight-500">በበላይ አመራር የተሰጠ ውጤት</span>
                         </div>
                         <div>
                             <span class="text-success font-18 font-weight-500">
@@ -58,7 +58,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-5">
                         <div>
-                            <span class="d-block font-15 text-dark font-weight-500">Stock in</span>
+                            <span class="d-block font-15 text-dark font-weight-500">በሰው ኃብት ውጤት</span>
                         </div>
                         <div>
                             <span
@@ -75,7 +75,7 @@
             </div>
 
         </div>
-        <div class="col-lg-3 col-md-6">
+        {{-- <div class="col-lg-3 col-md-6">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-5">
@@ -86,21 +86,21 @@
                             <span class="text-success font-18 font-weight-500">
                                 
 
-                                {{-- {{ \App\Models\HR::query()->where('performance', '+', 'exam','>=','40')->select('presidentGrade')->distinct()->count() }}</span> --}}
+                                {{ \App\Models\Form::query()->where( 'position_id',=>'position_type_id','=',1)->select('name')->distinct()->count() }}</span>
                         </div>
                     </div>
                     <div class="text-center">
-                        {{-- <span class="d-block display-4 text-dark mb-5"><i
+                        <span class="d-block display-4 text-dark mb-5"><i
                                 class='material-icons'style="font-size:48px;color:blue">add_shopping_cart
-                            </i></span> --}}
+                            </i></span>
                         <small class="d-block"></small>
                     </div>
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
-        <div class="col-lg-3 col-md-6">
+        {{-- <div class="col-lg-3 col-md-6">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-5">
@@ -108,7 +108,7 @@
                             <span class="d-block font-15 text-dark font-weight-500">Stock Out</span>
                         </div>
                         <div>
-                            {{-- <span class="text-success font-14 font-weight-500">{{ \App\Models\StockOut::count() }}</span> --}}
+                            <span class="text-success font-14 font-weight-500">{{ \App\Models\StockOut::count() }}</span>
                         </div>
                     </div>
                     <div class="text-center">
@@ -120,8 +120,8 @@
                 </div>
             </div>
 
-        </div>
-        <div class="col-lg-3 col-md-6">
+        </div> --}}
+        {{-- <div class="col-lg-3 col-md-6">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-5">
@@ -129,7 +129,7 @@
                             <span class="d-block font-15 text-dark font-weight-500">Products</span>
                         </div>
                         <div>
-                            {{-- <span class="text-success font-14 font-weight-500"> {{ \App\Models\Product::count() }}</span> --}}
+                            <span class="text-success font-14 font-weight-500"> {{ \App\Models\Product::count() }}</span>
                         </div>
                     </div>
                     <div class="text-center">
@@ -141,7 +141,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
     </div>
 @endsection

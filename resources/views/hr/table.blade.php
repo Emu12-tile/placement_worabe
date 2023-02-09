@@ -20,7 +20,7 @@
                 <div class="col-sm">
                     <div class="table-wrap">
                         <div class="table-responsive">
-                            <table class="table table-sm  table-bordered mb-0">
+                            <table id="datable_3" class="table table-hover  table-bordered w-100  pb-30">
                                 <thead>
                                     <tr>
                                         <th rowspan="3">ተቁ</th>
@@ -35,7 +35,7 @@
                                         <th rowspan="3">ደረጃ</th>
 
                                         <th rowspan="3">ደምወዝ</th>
-                                        <th colspan="8">የተወዳደሩበት የ ሥራ ክፍልና የሥራ መደብ</th>
+                                        <th colspan="8">የተወዳደሩበት የሥራ ክፍልና የሥራ መደብ</th>
                                     </tr>
 
                                     <tr>
@@ -79,7 +79,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- {!! $forms->links() !!} --}}
+                            {!! $forms->links() !!}
 
                         </div>
                     </div>
@@ -93,31 +93,3 @@
 
     </div>
 @endsection
-{{-- @section('javascript')
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
-
-
-{{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-
-
-            $("#add_evaluation").submit(function(e) {
-
-                if ($(this).val() != '') {
-
-                    $("#btn-submit").prop("disabled", );
-
-                } else {
-                    $("#btn-submit").prop("disabled", false);
-
-                }
-
-
-
-            });
-
-        });
-    </script> --}}

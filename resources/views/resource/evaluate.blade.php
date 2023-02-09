@@ -396,7 +396,7 @@
                                 @role('president')
                                     <div class="col-md-6 form-group">
                                         <label for="firstName">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                        <input class="form-control" @error('presidentGrade') is-invalid @enderror"
+                                        <input class="form-control @error('presidentGrade') is-invalid @enderror"
                                             id="firstName" placeholder="ለትምህርት ዝግጅት የሚሰጥ ነጥብ ከ (35%)"
                                             value="{{ old('presidentGrade') }}" type="number" name="presidentGrade"
                                             min="1" max="35">
@@ -410,7 +410,7 @@
                                 @role('hr')
                                     <div class="col-md-6 form-group">
                                         <label for="firstName">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                        <input class="form-control" @error('performance') is-invalid @enderror" id="firstName"
+                                        <input class="form-control @error('performance') is-invalid @enderror" id="firstName"
                                             placeholder="ለትምህርት ዝግጅት" value="{{ old('performance') }}" type="number"
                                             name="performance" min="1" max="25">
                                         @error('performance')
@@ -421,7 +421,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="middleName">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                        <input class="form-control" @error('experience') is-invalid @enderror" id="middleName"
+                                        <input class="form-control @error('experience') is-invalid @enderror" id="middleName"
                                             placeholder="ለስራ ልምድ" value="{{ old('experience') }}" type="number"
                                             name="experience" min="1" max="15">
                                         @error('experience')
@@ -432,7 +432,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="lastName">ለውጤት ተኮር ምዘና </label>
-                                        <input class="form-control" @error('resultbased') is-invalid @enderror"
+                                        <input class="form-control @error('resultbased') is-invalid @enderror"
                                             id="resultbased" placeholder="ለውጤት ተኮር" value="{{ old('resultbased') }}"
                                             type="number" name="resultbased" min="1" max="10">
                                         @error('resultbased')
@@ -443,7 +443,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="exam">ለፈተና ውጤት</label>
-                                        <input class="form-control" @error('exam') is-invalid @enderror" id="exam"
+                                        <input class="form-control @error('exam') is-invalid @enderror" id="exam"
                                             placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="number"
                                             name="exam" min="1" max="15">
                                         @error('exam')

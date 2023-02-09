@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('resultOfrecentPerform')->nullable();
             $table->string('DisciplineFlaw')->nullable();
             $table->string('MoreRoles')->nullable();
-            
+            $table->foreignId('choice2_id')->nullable()->references('id')->on('choice2s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('h_r_id')->nullable()->references('id')->on('h_r_s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('position_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('education_type_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();

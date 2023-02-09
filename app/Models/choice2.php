@@ -15,6 +15,7 @@ class choice2 extends Model
         'edu_level_id',
         'level_id',
         'experience',
+        'choice2_id'
     ];
     public function position_type()
     {
@@ -28,4 +29,5 @@ class choice2 extends Model
     {
         return $this->hasOne(Level::class, 'id', 'level_id');
     }
+    
 }

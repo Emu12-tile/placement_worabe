@@ -43,7 +43,7 @@
                                             <td>{{ $user->email }}</td>
                                             {{-- <td>{{DB::table('roles')->pluck('name', 'name')->first()}}</td> --}}
                                             <td>
-
+                                          
                                             </td>
 
                                             <td>

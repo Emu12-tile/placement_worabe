@@ -24,21 +24,21 @@ class RegisteredUserController extends Controller
     {
         // $role = DB::table('roles')->get();
         $user = User::create([
-            'name' => 'Eyob',
+            'name' => 'Fkr Tadesse',
 
-            'email' => 'eyob@gmail.com',
+            'email' => 'fkr@gmail.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
         ]);
 
-        $user->assignRole('president');
+        $user->assignRole('hr');
 
         return view('auth.register');
     }
     public function index()
     {
-        $role = Role::where('name', 'president');
-        $roles = Role::get()->pluck('name', 'name');
-
+        $role = Role::all();
+        $role = DB::table('roles')->select('name')->get();
+        // dd($hr);
         $users = User::paginate(8);
         return view('users.index', compact('users'));
     }
@@ -81,9 +81,9 @@ class RegisteredUserController extends Controller
     // public function edit($id)
     // {
     //     $user = User::find($id);
-
-    //     $user->assignRole('president');
-    //     return view('users.edit', compact('user'));
+    //     $role = Role::all();
+    //     $user->assignRole($role);
+    //     return view('users.edit', compact('user','role'));
     // }
     public function destroy($id)
     {

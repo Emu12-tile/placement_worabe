@@ -95,6 +95,7 @@ class MultiformController extends Controller
                 'edu_level_id' => 'required',
                 'education_type_id' => 'required',
                 'positionofnow' => 'required',
+                'choice2_id' => 'required'
 
             ]
         );
@@ -152,6 +153,7 @@ class MultiformController extends Controller
                 'level_id' => $data->level_id,
                 'edu_level_id' => $data->edu_level_id,
                 'position_id' => $data->position_id,
+                'choice2_id' => $data->choice2_id,
                 'job_category_id' => $data->job_category_id,
                 'positionofnow' => $data->positionofnow,
                 'sex' => $data->sex,

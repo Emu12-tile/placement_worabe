@@ -59,6 +59,7 @@
                             {!! $hrs->links() !!}
 
                         </div> --}}
+                        {{-- datable_3 --}}
                         <table id="datable_3" class="table table-hover table-bordered w-100  pb-30">
                             <thead>
                                 <tr>
@@ -81,7 +82,7 @@
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $hr->form->full_name }}
                                             </td>
-                                            <td>{{$hr->user->name}}</td>
+                                            <td>{{ $hr->user->name }}</td>
                                             <td>{{ $hr->performance }}</td>
                                             <td>{{ $hr->experience }}</td>
                                             <td>{{ $hr->resultbased }}</td>

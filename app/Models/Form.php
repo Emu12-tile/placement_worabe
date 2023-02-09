@@ -34,7 +34,8 @@ class Form extends Model
         'education_type_id',
         'job_category_id',
         'level_id',
-        'h_r_id'
+        'h_r_id',
+        'choice2_id'
 
 
     ];
@@ -67,6 +68,11 @@ class Form extends Model
     {
         return $this->hasOne(Level::class, 'id', 'level_id');
     }
+    public function choice2()
+    {
+        return $this->hasOne(choice2::class, 'id', 'choice2_id');
+    }
+
     public function getFullNameAttribute()
     {
         return "{$this->firstName} {$this->middleName} {$this->lastName}";

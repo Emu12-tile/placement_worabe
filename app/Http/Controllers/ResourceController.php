@@ -71,11 +71,35 @@ class ResourceController extends Controller
     public function store(Request $request)
     {
 
+        // $this->validate($request, [
+        //     'product_name'     => 'required',
+
+        //     'category_id' => 'required',
+        //     'description' => 'required'
+        // ]);
+
+        // Product::create($request->all());
+
+      $resource= $request->validate(
+            [
+
+                // 'performance' => 'required',
+                'performance' => 'required',
+                'experience' => 'required',
+                'resultbased' => 'required',
+                'exam' => 'required',
+                // 'MoreRoles' => 'required',
+
+
+            ]
+        );
+
+
         $resource = new HR;
 
 
         $resource->performance = $request->Input('performance');
-        $resource->presidentGrade = $request->Input('performance');
+        $resource->presidentGrade = $request->Input('presidentGrade');
         $resource->user_id = auth()->user()->id;
         $resource->experience = $request->Input('experience');
         $resource->resultbased = $request->Input('resultbased');

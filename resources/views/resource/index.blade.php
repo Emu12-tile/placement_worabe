@@ -55,10 +55,11 @@
                                         @if ($hr->form->position->position_type_id == 1)
                                             @if ($hr->status_president == 0)
                                                 <tr>
-                                                    <td>{{ ++$i }}</td>
-                                                    <td>{{ $hr->form->full_name }}
-                                                    </td>
                                                     @role('hr')
+                                                        <td>{{ ++$i }}</td>
+                                                        <td>{{ $hr->form->full_name }}
+                                                        </td>
+
                                                         <td>{{ $hr->user->name }}</td>
                                                         <td>{{ $hr->performance }}</td>
                                                         <td>{{ $hr->experience }}</td>
@@ -66,6 +67,9 @@
                                                         <td>{{ $hr->exam }}</td>
                                                     @endrole
                                                     @role('president')
+                                                        <td>{{ ++$i }}</td>
+                                                        <td>{{ $hr->form->full_name }}
+                                                        </td>
                                                         <td>{{ $hr->form->position->position }}</td>
                                                         <td>{{ $hr->form->edu_level->education_level }}</td>
                                                         <td>{{ $hr->form->education_type->education_type }}</td>
