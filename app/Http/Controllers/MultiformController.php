@@ -49,7 +49,7 @@ class MultiformController extends Controller
                 'middleName' => 'required',
                 'lastName' => 'required',
                 'sex' => 'required',
-                'email' => 'required',
+                'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:users'],
                 'phone' => 'required',
             ]
         );
@@ -58,7 +58,8 @@ class MultiformController extends Controller
             $form = new Form();
             $form->fill($validatedData);
             $request->session()->put('form', $form);
-        } else {
+        }
+        else {
             $form = $request->session()->get('form');
             $form->fill($validatedData);
             $request->session()->put('form', $form);
@@ -74,7 +75,7 @@ class MultiformController extends Controller
         $position = Position::all();
         $choice2 = choice2::all();
 
-        $job_category2 = jobcat2::all();
+        $jobcat2 = jobcat2::all();
         $edutype = EducationType::all();
         $level2 = Level::all();
 
@@ -82,10 +83,51 @@ class MultiformController extends Controller
         $form = $request->session()->get('form');
 
 
-        return view('multiforms.create-step-two', compact('level', 'level2', 'position', 'position2', 'job_category2', 'edu_level', 'job_category', 'edutype', 'form', 'choice2'));
+        return view('multiforms.create-step-two', compact('level', 'level2', 'position', 'position2', 'jobcat2', 'edu_level', 'job_category', 'edutype', 'form', 'choice2'));
+    }
+    // public function position($id)
+    // {
+    //     $position = DB::table("positions")
+    //         ->where("job_category_id", $id)
+    //         ->pluck('position', 'id');
+
+
+    //     return json_encode($position);
+    // }
+    public function position(Request $request)
+    {
+        $position = Position::select('position', 'id')
+            ->where("job_category_id", $request->id)->take(100)->get();
+
+
+        return response()->json($position);
+    }
+    public function position2(Request $request)
+    {
+        $position2 = choice2::select('position', 'id')
+            ->where("jobcat2_id", $request->id)->take(100)->get();
+
+
+        return response()->json($position2);
+    }
+
+    public function selection(Request $request)
+    {
+        $selected = Position::all()->where("id", $request->id)->first();
+
+
+        return response()->json($selected);
+    }
+    public function selection2(Request $request)
+    {
+        $selected = choice2::all()->where("id", $request->id)->first();
+
+
+        return response()->json($selected);
     }
     public function postCreateStepTwo(Request $request)
     {
+        // dd($request);
 
         $validatedData = $request->validate(
             [
@@ -102,6 +144,7 @@ class MultiformController extends Controller
 
             ]
         );
+
         if (empty($request->session()->get('form'))) {
             $form = new Form();
             $form->fill($validatedData);
@@ -111,6 +154,7 @@ class MultiformController extends Controller
             $form->fill($validatedData);
             $request->session()->put('form', $form);
         }
+
         return redirect()->route('multiforms.create.step.three');
     }
     public function createStepThree(Request $request)
@@ -125,11 +169,12 @@ class MultiformController extends Controller
     {
 
         $data = $request->session()->get('form');
+
         // dd($request->addMoreInputFields);
         $validatedData = $request->validate(
             [
                 'addMoreInputFields.*.startingDate' => 'date|nullable',
-                'addMoreInputFields.*.endingDate' => 'after:startingDate|nullable',
+                'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
                 'addMoreInputFields.*.positionyouworked' => 'required',
                 'UniversityHiringEra' => 'required',
                 'servicPeriodAtUniversity' => 'required',
@@ -143,6 +188,7 @@ class MultiformController extends Controller
 
             ]
         );
+
 
         $form =
             Form::create([

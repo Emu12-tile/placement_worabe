@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jobcat2;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 
@@ -24,13 +25,7 @@ class JobCategoryController extends Controller
     }
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'addMoreInputFields.*.level' => 'required',
-        // ]);
-        // foreach ($request->addMoreInputFields as $key => $value) {
-        //     Level::create($value);
-        // };
-        // return redirect()->route('level.index');
+
         if ($request->ajax()) {
 
 
@@ -40,6 +35,11 @@ class JobCategoryController extends Controller
                     "job_category" => $value["job_category"],
 
                 ]);
+                jobcat2::create([
+                    "job_category" => $value["job_category"],
+
+                ]);
+
             }
         }
         return response()->json(array("success" => true));

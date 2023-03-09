@@ -26,6 +26,7 @@
                                     <tr>
                                         <th>ተ.ቁ</th>
                                         <th> የስራ መደብ </th>
+                                        <th>የስራ ክፍል</th>
                                         <th>የትምህርት ደረጃ </th>
                                         <th> ደረጃ </th>
                                         <th> የስራ ልምድ </th>
@@ -42,9 +43,13 @@
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $admin->position }}
                                             </td>
-                                            <td>{{ $admin->edu_level->education_level }}
+                                            <td>{{ $admin->job_category->job_category}}
                                             </td>
-                                            <td>{{ $admin->level->level }}
+                                            {{-- <td>{{ $admin->edu_level->education_level }}
+                                            </td> --}}
+                                             <td>{{ $admin->edu_level }}
+                                            </td>
+                                            <td>{{ $admin->level }}
                                             </td>
                                             <td>{{ $admin->experience }}
                                             </td>
@@ -55,8 +60,9 @@
                                             <td>
                                                 <form action="{{ route('position.destroy', $admin->id) }}" method="POST">
                                                     {{-- <a href="{{ route('admin.category.show',$college->id) }}" class="mr-25" data-toggle="tooltip" data-original-title="show"> <i class="icon-eye"></i> </a> --}}
-                                                    <a href="{{ route('position.edit', $admin->id) }}" data-toggle="tooltip"
-                                                        data-original-title="Edit"> <i class="icon-pencil"></i> </a>
+                                                    <a href="{{ route('position.edit', $admin->id) }}"
+                                                        data-toggle="tooltip" data-original-title="Edit"> <i
+                                                            class="icon-pencil"></i> </a>
 
                                                     @csrf
                                                     @method('DELETE')

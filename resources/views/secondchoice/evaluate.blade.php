@@ -5,7 +5,7 @@
             <section class="hk-sec-wrapper">
 
                 <div class="pull-right">
-                    <a class="btn btn-dark" href="{{ route('hr.index') }}"> Back</a>
+                    <a class="btn btn-dark" href="{{ route('secondhr.index') }}"> Back</a>
                 </div>
 
 
@@ -330,7 +330,7 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('addHrPost', $id) }}" method="POST" id="add_evaluation">
+                        <form action="{{ route('addHrPost1', $id) }}" method="POST" id="add_evaluation">
                             @csrf
 
                             <div class="row">
@@ -360,7 +360,7 @@
                                                         <td>{{ $form->full_name }}
                                                         </td>
                                                         <td>{{ $form->edu_level->education_level }}</td>
-                                                        <td>{{ $form->position->position }}</td>
+                                                        <td>{{ $form->choice2->position }}</td>
 
 
                                                         <td>
@@ -451,7 +451,7 @@
                                         @enderror
                                     </div>
                                 @endrole
-                                <input type="hidden" name="type" value="high">
+                                <input type="hidden" name="type" value="first">
 
 
 
@@ -479,40 +479,3 @@
         </div>
     </div>
 @endsection
-{{-- @section('javascript')
-    <script>
-        const exper = document.querySelector('.detail');
-
-        function tableToggle() {
-
-            exper.classList.toggle('hide');
-        }
-    </script>
-@endsection --}}
-
-{{-- <section class="hk-sec-wrapper">
-    <h5 class="hk-sec-title">Collapse</h5>
-    <p class="mb-25">The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as
-        triggers that are mapped to specific elements you toggle.</p>
-    <div class="row">
-        <div class="col-sm">
-            <div class="button-list mb-15">
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Link with href
-                </a>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Button with data-target
-                </button>
-            </div>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section> --}}

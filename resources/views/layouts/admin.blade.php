@@ -10,6 +10,7 @@ License: You must have a valid license purchased only from themeforest to legall
 <head>
     <meta charset="UTF-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Result</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
@@ -17,7 +18,8 @@ License: You must have a valid license purchased only from themeforest to legall
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+    {{-- select 2 --}}
+    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
     <!-- vector map CSS -->
     <link href="{{ asset('assets/vendors/vectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" type="text/css" />
 
@@ -37,7 +39,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <link href="{{ asset('assets/vendors/datatables.net-dt/css/jquery.dataTables.min.css') }}" rel="stylesheet"
         type="text/css" />
     {{-- <link href="{{ asset('assets/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}" --}}
-        {{-- rel="stylesheet" type="text/css" /> --}}
+    {{-- rel="stylesheet" type="text/css" /> --}}
 </head>
 
 <body>
@@ -139,20 +141,22 @@ License: You must have a valid license purchased only from themeforest to legall
     {{-- datatable
          --}}
 
-    <script src="{{asset('assets/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-dt/js/dataTables.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-    <script src="{{asset('asset/vendors/jszip/dist/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
-    <script src="{{asset('asset/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/dist/js/dataTables-data.js')}}"></script>
-
+    <script src="{{ asset('assets/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-dt/js/dataTables.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jszip/dist/jszip.min.js') }}"></script>
+    {{-- <script src="{{asset('assets/vendors/pdfmake/build/pdfmake.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('assets/vendors/pdfmake/build/vfs_fonts.js')}}"></script> --}}
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/dataTables-data.js') }}"></script>
+    {{-- select 2 --}}
+    <script src="{{ asset('assets/vendors/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/select2-data.js') }}"></script>
 </body>
 
 </body>

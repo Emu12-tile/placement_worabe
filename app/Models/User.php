@@ -23,12 +23,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        
+
+
     ];
-    public function role()
-    {
-        return $this->hasOne(Role::class, 'id', 'role_id');
-    }
+    // public function roles()
+    // {
+    //     return $this->hasOne(Role::class, 'id', 'role_id');
+    // }
 
 
     /**

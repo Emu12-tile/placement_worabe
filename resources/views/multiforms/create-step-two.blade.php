@@ -21,7 +21,8 @@
 
 
                                             <select class="form-control custom-select d-block w-100 " id="education_type_id"
-                                                value="{{ $form->education_type_id ?? '' }}" name="education_type_id">
+                                                value="{{ $form->education_type_id ?? '' }}{{ old('education_type_id') }}"
+                                                name="education_type_id">
                                                 @foreach ($edutype as $col)
                                                     <option value="{{ $col->id }}"
                                                         {{ old('education_type_id') == $col->id ? 'selected' : '' }}>
@@ -45,7 +46,8 @@
 
                                         <div class="col-md-4 form-group">
                                             <label for="positionofnow">አሁን ያሉበት የስራ መደብ</label>
-                                            <input type="text" value="{{ $form->positionofnow ?? '' }}"
+                                            <input type="text"
+                                                value="{{ $form->positionofnow ?? '' }}{{ old('positionofnow') }}"
                                                 class="form-control @error('positionofnow') is-invalid @enderror"
                                                 id="positionofnow" placeholder="አሁን ያሉበት የስራ መደብ" name="positionofnow">
                                             @error('positionofnow')
@@ -87,8 +89,10 @@
                                             <label for=""> የስራ ክፍሉ</label>
 
 
-                                            <select class="form-control custom-select d-block w-100 "
-                                                value="{{ $form->job_category_id ?? '' }}" name="job_category_id">
+                                            <select class="form-control custom-select d-block w-100 dynamic "
+                                                value="{{ $form->job_category_id ?? '' }}" name="job_category_id"
+                                                id="job_category_id">
+                                                <option value="">Chose </option>
                                                 @foreach ($job_category as $col)
                                                     <option value="{{ $col->id }}"
                                                         {{ old('job_category_id') == $col->id ? 'selected' : '' }}>
@@ -100,22 +104,25 @@
                                         <div class="col-md-6 form-group">
 
                                             <label for="position_id"> የስራ መደብ</label>
-                                            <select class="form-control custom-select d-block w-100 " id="position_id"
-                                                value="{{ $form->position_id ?? '' }}" name="position_id">
-                                                @foreach ($position2 as $col)
-                                                    <button type="button" class="btn btn-secondary" data-toggle="tooltip"
-                                                        data-placement="top" title="Tooltip on top">
-                                                        <option value="{{ $col->id }}" id="position_id"
-                                                            {{ old('position_id') == $col->id ? 'selected' : '' }}>
-                                                            {{ $col->position }} (ሥ/ልምድ {{ $col->experience }}፣ደረጃ
-                                                            {{ $col->level->level }}፣ት/ት
-                                                            ደረጃ {{ $col->edu_level->education_level }})</option>
+                                            <select class="form-control custom-select d-block w-100  positionofone"
+                                                id="position_id" name="position_id">
+                                                <option value="0" disabled="true" selected="true"> position</option>
 
 
-
-                                                    </button>
-                                                @endforeach
                                             </select>
+                                            <div id="details">
+
+
+                                            </div>
+                                            <div id="details2">
+
+
+                                            </div>
+                                            <div id="details3">
+
+
+                                            </div>
+
                                         </div>
 
 
@@ -126,9 +133,10 @@
                                             <label for=""> የስራ ክፍሉ</label>
 
 
-                                            <select class="form-control custom-select d-block w-100 "
+                                            <select class="form-control custom-select d-block w-100  dynamic2"
                                                 value="{{ $form->jobcat2_id ?? '' }}" name="jobcat2_id">
-                                                @foreach ($job_category2 as $col)
+                                                <option value="">Chose </option>
+                                                @foreach ($jobcat2 as $col)
                                                     <option value="{{ $col->id }}"
                                                         {{ old('jobcat2_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->job_category }}</option>
@@ -138,24 +146,28 @@
 
                                         <div class="col-md-6 form-group">
 
-                                            <label for="position_id"> የስራ መደብ</label>
-                                            <select class="form-control custom-select d-block w-100 " id="position_id"
-                                                value="{{ $form->choice2_id ?? '' }}" name="choice2_id">
-                                                @foreach ($choice2 as $col)
-                                                    <button type="button" class="btn btn-secondary" data-toggle="tooltip"
-                                                        data-placement="top" title="Tooltip on top">
-                                                        <option value="{{ $col->id }}" id="position_id"
-                                                            {{ old('choice2_id') == $col->id ? 'selected' : '' }}>
-                                                            {{ $col->position }} (ሥ/ልምድ {{ $col->experience }}፣ደረጃ
-                                                            {{ $col->level->level }}፣ት/ት
-                                                            ደረጃ {{ $col->edu_level->education_level }})</option>
+                                            <label for="choice2_id"> የስራ መደብ</label>
+                                            <select class="form-control custom-select d-block w-100  positionofone"
+                                                id="choice2_id" name="choice2_id">
+                                                <option value="0" disabled="true" selected="true"> position</option>
 
 
-
-                                                    </button>
-                                                @endforeach
                                             </select>
+                                            <div id="detail">
+
+
+                                            </div>
+                                            <div id="detail2">
+
+
+                                            </div>
+                                            <div id="detail3">
+
+
+                                            </div>
+
                                         </div>
+
 
 
 
@@ -182,29 +194,172 @@
     @section('javascript')
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        <script>
-            let selected;
-            let level;
-            let experience;
-            const select = document.querySelector('#position_id');
-            $(".reqStatus").on('change', function()) {
-                console.log('hi');
-                selected = parseInt(this.value);
-                set();
-            }
 
-            function set() {
-                level = 1
-                experience = 2
-            }
-            // data  level , experience
-            // function onPosSelect(id){
-            // using postion get position entity level, experience
-            // let level ="";
-            // let experience = "";
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            // res = {level}  {exprience}
-            // return res
-            // }
+
+
+                $(document).on('change', '.dynamic', function() {
+                    // console.log("hmm its change");
+
+                    var cat_id = $(this).val();
+
+
+                    var div = $(this).parent();
+
+
+                    var op = " ";
+
+                    $.ajax({
+                        type: "GET",
+                        url: "steptwo/job",
+                        data: {
+                            "id": cat_id
+                        },
+                        success: function(data) {
+
+                            op += '<option value="0" selected disabled>select</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                op += '<option value="' + data[i].id + '">' + data[i].position +
+                                    '</option>';
+                            }
+
+                            $('select[name="position_id"]').html(" ");
+                            $('select[name="position_id"]').append(op);
+                        },
+                        error: function() {
+
+                        }
+                    });
+                });
+
+
+
+                $(document).on('change', '#position_id', function() {
+                    var selected = $(this).val();
+                    var a = $(this).parent();
+                    var div = " ";
+                    var div2 = " ";
+                    var div3 = " ";
+                    // console.log(selected);
+                    $.ajax({
+                        url: "/steptwo/selection",
+                        type: "GET",
+                        data: {
+                            "id": selected
+                        },
+                        dataType: "json",
+
+                        success: function(data) {
+
+
+                            div += "<b> የስራ ልምድ:</b> " + data.experience
+                            $('#details').html(" ");
+                            $('#details').append(div);
+
+                            div2 += "<b> የትምህርት ደረጃ:</b> " + data.edu_level
+
+                            $('#details2').html(" ");
+                            $('#details2').append(div2);
+                            div3 += "<b> ደረጃ:</b> " + data.level
+
+                            $('#details3').html(" ");
+                            $('#details3').append(div3);
+
+
+                        },
+                        error: function() {
+
+                        }
+
+                    });
+
+
+
+
+                });
+
+
+                $(document).on('change', '.dynamic2', function() {
+                    // console.log("hmm its change");
+
+                    var categ_id = $(this).val();
+
+                    console.log(categ_id);
+                    var div = $(this).parent();
+
+
+                    var op = " ";
+
+                    $.ajax({
+                        type: "GET",
+                        url: "steptwo/categ2",
+                        data: {
+                            "id": categ_id
+                        },
+                        success: function(data) {
+
+                            op += '<option value="0" selected disabled>select</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                op += '<option value="' + data[i].id + '">' + data[i].position +
+                                    '</option>';
+                            }
+
+                            $('select[name="choice2_id"]').html(" ");
+                            $('select[name="choice2_id"]').append(op);
+                        },
+                        error: function() {
+
+                        }
+                    });
+                });
+                $(document).on('change', '#choice2_id', function() {
+                    var selected = $(this).val();
+                    var a = $(this).parent();
+                    var div = " ";
+                    var div2 = " ";
+                    var div3 = " ";
+                    // console.log(selected);
+                    $.ajax({
+                        url: "/steptwo/selection2",
+                        type: "GET",
+                        data: {
+                            "id": selected
+                        },
+                        dataType: "json",
+
+                        success: function(data) {
+
+
+                            div += "<b> የስራ ልምድ:</b> " + data.experience
+                            $('#detail').html(" ");
+                            $('#detail').append(div);
+
+                            div2 += "<b> የትምህርት ደረጃ:</b> " + data.edu_level
+
+                            $('#detail2').html(" ");
+                            $('#detail2').append(div2);
+                            div3 += "<b> ደረጃ:</b> " + data.level
+
+                            $('#detail3').html(" ");
+                            $('#detail3').append(div3);
+
+
+                        },
+                        error: function() {
+
+                        }
+
+                    });
+
+
+
+
+                });
+
+
+
+            })
         </script>
     @endsection

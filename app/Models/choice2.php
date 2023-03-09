@@ -14,12 +14,18 @@ class choice2 extends Model
         'position_type_id',
         'edu_level_id',
         'level_id',
+        'jobcat2_id',
         'experience',
-        'choice2_id'
+        'edu_level',
+        'level'
     ];
     public function position_type()
     {
         return $this->hasOne(PositionType::class, 'id', 'position_type_id');
+    }
+    public function jobcat2()
+    {
+        return $this->hasOne(jobcat2::class, 'id', 'jobcat2_id');
     }
     public function edu_level()
     {
@@ -29,5 +35,4 @@ class choice2 extends Model
     {
         return $this->hasOne(Level::class, 'id', 'level_id');
     }
-    
 }

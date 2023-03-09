@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('position_type')->nullable();
             $table->string('apply_for_position')->nullable();//የስራ መደብ
             $table->string('job_category')->nullable();//የስራ ክፍል
+            
             $table->string('level')->nullable();
 
 

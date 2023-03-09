@@ -18,7 +18,7 @@ class HomeController extends Controller
         // $form=$names->position_type_id;
     //     $hr = DB::table('h_r_s')->pluck('exam');
     //    dd(\App\Models\HR::query()->where('status_hr', '==', '0')->select('form_id')->distinct()->count());
-
+//  dd(HR::where('exam', '=', null)->count());
         return view('home',compact('forms'));
     }
 }

@@ -336,7 +336,7 @@
                         {{-- </div> --}}
                         {{-- </div> --}}
 
-                        <form action="{{ route('addHrPost', $id) }}" method="POST" id="add_evaluation">
+                        <form action="{{ route('addHrPost1', $id) }}" method="POST" id="add_evaluation">
                             @csrf
                             <div class="row">
                                 {{-- <div class="col-md-6"> --}}
@@ -439,7 +439,7 @@
                                         @enderror
                                     </div>
                                 @endrole
-                                <input type="hidden" name="type" value="low">
+                                <input type="hidden" name="type" value="second">
 
 
 

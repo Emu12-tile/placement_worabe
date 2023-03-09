@@ -9,6 +9,7 @@ use App\Models\Position;
 use App\Models\experience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class ResourceController extends Controller
 {
@@ -20,32 +21,28 @@ class ResourceController extends Controller
     public function index()
     {
 
-        $hrs = HR::latest()->paginate(10);
-        $form = Form::all();
+        $hrs = HR::all();
+        // $form = Form::all();
+        // $hrs = HR::join('forms', 'forms.id', '=', 'h_r_s.form_id')
+        //     ->join('positions', 'positions.id', '=', 'forms.position_id')
+        //     ->where('positions.position_type_id', 1)->get();
 
-        //dd($hrs[0]->form->position->position_type_id);
-        // hrs -> form ->postion->prositontype_id
+
         return view('resource.index', compact('hrs'));
     }
     public function index2()
     {
 
-        $hrs = HR::latest()->paginate(5);
-
-
+        $hrs = HR::latest()->paginate(8);
+        // dd($hrs);
+        // $hrs = HR::join('forms', 'forms.id', '=', 'h_r_s.form_id')
+        //     ->join('positions', 'positions.id', '=', 'forms.position_id')
+        //     ->where('positions.position_type_id', 2)->get();
+        // dd($hrs);
 
         return view('lowresource.lowresource', compact('hrs'));
     }
 
-    public function create()
-    {
-        $form = Form::all();
-
-        // $position_type = 'high';
-        // if (DB::table('admins')->where('position_type', 'high')->first()) {
-
-        return view('resource.evaluate', compact('form'));
-    }
 
 
 
@@ -71,29 +68,6 @@ class ResourceController extends Controller
     public function store(Request $request)
     {
 
-        // $this->validate($request, [
-        //     'product_name'     => 'required',
-
-        //     'category_id' => 'required',
-        //     'description' => 'required'
-        // ]);
-
-        // Product::create($request->all());
-
-      $resource= $request->validate(
-            [
-
-                // 'performance' => 'required',
-                'performance' => 'required',
-                'experience' => 'required',
-                'resultbased' => 'required',
-                'exam' => 'required',
-                // 'MoreRoles' => 'required',
-
-
-            ]
-        );
-
 
         $resource = new HR;
 
@@ -107,7 +81,6 @@ class ResourceController extends Controller
         if (($resource->save() == true)) {
             // $resource->status_hr ->fill(1) ;
             $resource->status_hr = 1;
-
         }
         $resource->save();
 
@@ -129,7 +102,6 @@ class ResourceController extends Controller
 
 
 
-
         $resource = new HR;
 
 
@@ -145,12 +117,13 @@ class ResourceController extends Controller
         if (($resource->save() == true)) {
             // $resource->status_hr ->fill(1) ;
             $resource->status_hr = 1;
-            $prod->h_r_id=1;
+            $prod->hrs = 1;
         }
         $resource->save();
-       $prod->save();
+        $prod->save();
 
-        // }
+
+
         if ($request->type == 'high') {
             return redirect('resource')->with('status', 'evaluation added successfully');
         } else if ($request->type == 'low') {

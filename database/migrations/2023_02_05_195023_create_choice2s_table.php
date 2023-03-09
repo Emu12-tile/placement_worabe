@@ -17,11 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('position');
             $table->string('experience');
+            $table->string('edu_level')->nullable();
+            $table->string('level')->nullable();
 
-            $table->foreignId('level_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('edu_level_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-
+            $table->foreignId('level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('edu_level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('jobcat2_id')->nullable();
+            // $table->foreignId('jobcat2_id')->nullable()->references('id')->on('jobcat2s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('position_type_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+
 
             $table->timestamps();
         });

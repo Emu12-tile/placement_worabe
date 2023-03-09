@@ -12,7 +12,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('hr.index') }}" class="mr-25"> back </a>
+                <a href="{{ route('secondhr.index') }}" class="mr-25"> back </a>
             </div>
             <h5 class="hk-sec-title">Evaluation </h5>
 

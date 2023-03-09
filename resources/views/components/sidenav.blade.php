@@ -6,6 +6,7 @@
         <div class="nicescroll-bar">
             <div class="navbar-nav-wrap">
                 <ul class="navbar-nav flex-column">
+
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('home') }}">
                             <i class="ion ion-ios-keypad"></i>
@@ -13,8 +14,8 @@
                         </a>
 
 
-                    {{-- <ul id="dash_drp" class="nav flex-column collapse collapse-level-1"> --}}
-                    {{-- <li class="nav-item">
+                        {{-- <ul id="dash_drp" class="nav flex-column collapse collapse-level-1"> --}}
+                        {{-- <li class="nav-item">
                                 <ul class="nav flex-column">
                                     <li class="nav-item active">
                                         <a class="nav-link" href="">CRM</a>
@@ -22,8 +23,9 @@
 
                                 </ul>
                             </li> --}}
-                    {{-- </ul> --}}
+                        {{-- </ul> --}}
                     </li>
+
 
 
                     <hr class="nav-separator">
@@ -33,7 +35,14 @@
                     </div>
                     {{-- <ul class="navbar-nav flex-column"> --}}
                     @role('admin')
-                        {{-- <ul class="navbar-nav flex-column"> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('hr.index') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የተወዳዳሪዎች 1ኛ ምርጫ
+                                </span>
+                            </a>
+                        </li>
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationlevel.index') }}">
@@ -149,13 +158,26 @@
                     @role('hr')
                         <li class="nav-item">
 
-                            <a class="nav-link" href="{{ route('hr.index') }}">
+                            <a class="nav-link" href="{{ route('list.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     የአመልካቾች ዝርዝር
                                 </span>
                             </a>
                         </li>
+
+
+                        <li class="nav-item active">
+
+                            {{-- <span class="nav-link-text"> ምርጫ 1</span> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('hr.index') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የተወዳዳሪዎች 1ኛ ምርጫ
+                                </span>
+                            </a>
+                        </li>
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('resource.index') }}">
@@ -165,55 +187,92 @@
                                 </span>
                             </a>
                         </li>
-                         <li class="nav-item">
 
+
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('lowresource.lowresource') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                     ውጤት (ከ ቡድን መሪ በታች)
+                                    ውጤት (ከ ቡድን መሪ
+                                    በታች)
                                 </span>
                             </a>
                         </li>
+
+
+                        </li>
+
+
+
 
 
 
                         {{-- <li class="nav-item active">
-                            <a class="nav-link" href="" data-toggle="collapse" data-target="#dash_drp1">
-                                <i class="ion ion-ios-keypad"></i>
-                                <span class="nav-link-text">HR page</span>
+
+                            <span class="nav-link-text"> ምርጫ 2</span>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('secondchoice.secondchoice') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የተወዳዳሪዎች 2ኛ ምርጫ
+                                </span>
                             </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ route('secondhr.index') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የሰው ሀብት ውጤት
+                                </span>
+                            </a>
+                        </li>
 
 
-                            <ul id="dash_drp1" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
 
-                                            <a class="nav-link" href="{{ route('hr.index') }}">
-                                                <i class="ion ion-ios-list-box"></i>
-                                                <span class="nav-link-text">
-                                                    List of Applicants
-                                                </span>
-                                            </a>
-                                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('secondchoice.lowresource') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ውጤት (ከ ቡድን መሪ
+                                    በታች)
+                                </span>
+                            </a>
+                        </li>
 
-                                        <li class="nav-item">
-
-                                            <a class="nav-link" href="{{ route('resource.index') }}">
-                                                <i class="ion ion-ios-list-box"></i>
-                                                <span class="nav-link-text">
-                                                    HR Result
-                                                </span>
-                                            </a>
-                                        </li>
+                        </li> --}}
 
 
-                                    </ul>
-                                </li>
-                            </ul>
+
+
+
+                        {{-- <li class="nav-item">
+
+                            <a class="nav-link" href="{{ route('resource.index') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የሰው ሀብት ውጤት
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ route('lowresource.lowresource') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ውጤት (ከ ቡድን መሪ በታች)
+                                </span>
+                            </a>
                         </li> --}}
                     @endrole
                     @role('president')
+                        <li class="nav-item active">
+
+                            {{-- <span class="nav-link-text"> ምርጫ 1</span> --}}
+
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('resource.index') }}">
@@ -223,8 +282,6 @@
                                 </span>
                             </a>
                         </li>
-                    @endrole
-                    @role('president')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('presidential.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -233,7 +290,39 @@
                                 </span>
                             </a>
                         </li>
+
+
+                        </li>
+                        {{-- <li class="nav-item active">
+
+                            <span class="nav-link-text"> ምርጫ 2</span>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ route('secondhr.index') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የሰው ሀብት ውጤት
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('presidential.choice2evaluation') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    አጠቃላይ ውጤት
+                                </span>
+                            </a>
+                        </li>
+
+
+                        </li> --}}
                     @endrole
+
+
+
+
+
+
 
 
 

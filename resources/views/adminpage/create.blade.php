@@ -17,16 +17,13 @@
                             <form action="{{ route('admin.store') }}" method="POST">
                                 @csrf
 
+                               
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">የ ትምህርት ደረጃ</label>
                                     <div class="col-sm-10">
                                         <input type="text" value="{{ old('education_level') }}" name="education_level"
                                             class="form-control " id="numberPerWeek" placeholder="የ ትምህርት ደረጃ ">
-                                        {{-- @error('education_level')
-                                            <span class=" error invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror --}}
+
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -34,11 +31,7 @@
                                     <div class="col-sm-10">
                                         <input type="text" value="{{ old('education_type') }}" name="education_type"
                                             class="form-control " id="education_type" placeholder="የ ትምህርት ዓይነት">
-                                        {{-- @error('education_type')
-                                            <span class=" error invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror --}}
+
                                     </div>
                                 </div>
                                 <div class="form-group row">

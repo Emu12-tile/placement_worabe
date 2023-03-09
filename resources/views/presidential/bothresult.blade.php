@@ -28,29 +28,30 @@
 
 
 
-                                        <th rowspan="3">ጾታ</th>
 
-                                        <th rowspan="3">አሁን ያሉበት የስራ መደብ</th>
 
-                                        <th rowspan="3">ደረጃ</th>
 
-                                        <th rowspan="3">ደምወዝ</th>
-                                        <th colspan="8">የተወዳደሩበት የሥራ ክፍልና የሥራ መደብ</th>
+                                        <th colspan="4">የተወዳደሩበት የሥራ ክፍልና የሥራ መደብ</th>
+                                        <th rowspan="3"> ፊርማ </th>
+                                        <th rowspan="3">ምርጫ1 </th>
+                                        <th rowspan="3">ምርጫ2</th>
+
+
                                     </tr>
 
                                     <tr>
-                                        <th colspan="3"> ምርጫ 1</th>
-                                        <th colspan="3"> ምርጫ 2</th>
-                                        <th rowspan="2"> ፊርማ </th>
-                                        <th rowspan="2"> መግለጫ </th>
+                                        <th colspan="2"> ምርጫ 1</th>
+                                        <th colspan="2"> ምርጫ 2</th>
+
+
                                     </tr>
                                     <tr>
                                         <td>የስራ ክፍሉ</td>
                                         <td>የስራ መደብ</td>
-                                        <td>ደረጃ</td>
+
                                         <td>የስራ ክፍሉ</td>
                                         <td>የስራ መደብ</td>
-                                        <td>ደረጃ</td>
+
                                     </tr>
 
 
@@ -59,27 +60,30 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($forms as $i => $form)
+                                    @foreach ($hrs as $i => $hr)
                                         <tr>
+
                                             <td>{{ ++$i }}</td>
-                                            <td>{{ $form->full_name }}</td>
-                                            <td>{{ $form->sex }}</td>
-                                            <td>{{ $form->positionofnow }}</td>
-                                            <td>{{ $form->level->level }}</td>
-                                            <td>{{ $form->fee }}</td>
-                                            <td>{{ $form->job_category->job_category }}</td>
-                                            <td>{{ $form->position->position }}</td>
-                                            <td>{{ $form->position->level }}</td>
-                                            <td>{{ $form->jobcat2->job_category }}</td>
-                                            <td>{{ $form->choice2->position }}</td>
-                                            <td>{{ $form->choice2->level }}</td>
+                                            <td>{{ $hr->full_name }}</td>
+
+                                            <td>{{ $hr->form->job_category->job_category }}</td>
+                                            <td>{{ $hr->form->position->position }}</td>
+
+                                            <td>{{ $hr->form->jobcat2->job_category }}</td>
+                                            <td>{{ $hr->form->choice2->position }}</td>
+
+                                            {{-- <td>{{ $form->h_r->performance }}</td> --}}
+                                            {{-- <td>{{ $hr->secondhr->performance }}</td> --}}
                                             <td></td>
                                             <td></td>
+                                            <td></td>
+
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
-                            {!! $forms->links() !!}
+                            {{-- {!! $hrs->links() !!} --}}
 
                         </div>
                     </div>

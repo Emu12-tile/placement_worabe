@@ -7,18 +7,18 @@
     </a>
     <ul class="navbar-nav hk-navbar-content">
         <li class="nav-item">
-            <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
-                    class="ion ion-ios-search"></i></a>
+            {{-- <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
+                    class="ion ion-ios-search"></i></a> --}}
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
                     class="ion ion-ios-settings"></i></a>
         </li>
         <li class="nav-item">
             <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><i
                     class="ion ion-ios-settings"></i></a>
-        </li>
-        <li class="nav-item dropdown dropdown-notifications">
+        </li> --}}
+        {{-- <li class="nav-item dropdown dropdown-notifications">
             <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><i class="ion ion-ios-notifications"></i><span
                     class="badge-wrap"><span
@@ -124,7 +124,7 @@
                     </a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item dropdown dropdown-authentication">
             <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -144,14 +144,14 @@
             <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                 <a class="dropdown-item" href="profile.html"><i
                         class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
-                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My
-                        balance</span></a>
-                <a class="dropdown-item" href="inbox.html"><i
+                {{-- <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My
+                        balance</span></a> --}}
+                {{-- <a class="dropdown-item" href="inbox.html"><i
                         class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a>
                 <a class="dropdown-item" href="#"><i
                         class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
-                <div class="dropdown-divider"></div>
-                <div class="sub-dropdown-menu show-on-hover">
+                <div class="dropdown-divider"></div> --}}
+                {{-- <div class="sub-dropdown-menu show-on-hover">
                     <a href="#" class="dropdown-toggle dropdown-item no-caret"><i
                             class="zmdi zmdi-check text-success"></i>Online</a>
                     <div class="dropdown-menu open-left-side">
@@ -162,7 +162,7 @@
                         <a class="dropdown-item" href="#"><i
                                 class="dropdown-icon zmdi zmdi-minus-circle-outline text-danger"></i><span>Offline</span></a>
                     </div>
-                </div>
+                </div> --}}
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
@@ -178,10 +178,10 @@
         </li>
     </ul>
 </nav>
-<form role="search" class="navbar-search" id="search" type="get" action="{{ url('search') }}">
+{{-- <form role="search" class="navbar-search" id="search" type="get" action="{{ url('search') }}">
     <div class="position-relative">
         <a href="javascript:void(0);" class="navbar-search-icon"><i class="ion ion-ios-search"></i></a>
         <input type="text" name="query" class="form-control" placeholder="Type here to Search">
         <a id="navbar_search_close" class="navbar-search-close" href="#"><i class="ion ion-ios-close"></i></a>
     </div>
-</form>
+</form> --}}

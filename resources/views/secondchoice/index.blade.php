@@ -12,7 +12,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('hr.index') }}" class="mr-25"> back </a>
+                <a href="{{ route('secondchoice.secondchoice') }}" class="mr-25"> back </a>
             </div>
             <h5 class="hk-sec-title">Evaluation </h5>
 
@@ -34,7 +34,6 @@
                                             <th>ለውጤት ተኮር ምዘና</th>
 
                                             <th>ለፈተና ውጤት</th>
-                                           
                                         @endrole
 
 
@@ -57,8 +56,6 @@
                                     ?>
                                     @foreach ($hrs as $i => $hr)
                                         @if ($hr->form->position->position_type_id == 1)
-                                            {{-- @if ($hr->status_president == 0) --}}
-
                                             <tr>
                                                 <td>{{ ++$j }}</td>
                                                 <td>{{ $hr->form->full_name }}
@@ -69,10 +66,9 @@
                                                     <td>{{ $hr->experience }}</td>
                                                     <td>{{ $hr->resultbased }}</td>
                                                     <td>{{ $hr->exam }}</td>
-
                                                 @endrole
                                                 @role('president')
-                                                    <td>{{ $hr->form->position->position }}</td>
+                                                    <td>{{ $hr->form->choice2->position }}</td>
                                                     <td>{{ $hr->form->edu_level->education_level }}</td>
                                                     <td>{{ $hr->form->education_type->education_type }}</td>
                                                 @endrole
@@ -90,23 +86,15 @@
                                                     <td>
                                                         @if ($hr->status_president == 0)
                                                             <a class="btn btn-dark"
-                                                                href="{{ route('resource.edit', $hr->id) }}">
+                                                                href="{{ route('secondhr.edit', $hr->id) }}">
                                                                 evaluate
                                                             </a>
                                                         @endif
-                                                        @if ($hr->status_president == 1)
-                                                            <a class="btn btn-red"
-                                                                href="{{ route('resource.edit', $hr->id) }}">
-                                                                Edit
-                                                            </a>
-                                                        @endif
-
                                                     </td>
                                                 @endrole
 
                                             </tr>
                                         @endif
-                                        {{-- @endif --}}
                                     @endforeach
                                 </tbody>
                             </table>

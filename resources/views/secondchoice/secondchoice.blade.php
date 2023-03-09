@@ -14,7 +14,7 @@
 
 
             </div>
-            <h5 class="hk-sec-title">List of applicants </h5>
+            <h5 class="hk-sec-title">ምርጫ 2 </h5>
 
 
             <div class="row" id="search_list">
@@ -35,11 +35,11 @@
 
                                     <th>የ ትምህርት አይነት</th>
                                     @role('hr')
+                                        <th>action</th>
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
-                                    @role('admin')
-                                        <th>action</th>
-                                    @endrole
+
+
 
 
 
@@ -59,18 +59,13 @@
                                         </td>
                                         </form>
                                         {{-- <td>{{$form->h_r_id}}</td> --}}
-                                        <td>{{ $form->position->position }}</td>
+                                        <td>{{ $form->choice2->position }}</td>
                                         <td>{{ $form->edu_level->education_level }}</td>
                                         <td>{{ $form->education_type->education_type }}</td>
 
                                         @role('hr')
-                                            <td> <button><a class="btn " type="submit" id="btn-evaluate"
-                                                        href="{{ route('addHr', $form->id) }}"> evaluate</a></button>
-                                            </td>
-                                        @endrole
-                                        @role('admin')
                                             <td>
-                                                <form action="{{ route('hr.destroy', $form->id) }}" method="POST">
+                                                <form action="{{ route('secondhr.destroy', $form->id) }}" method="POST">
 
                                                     @csrf
                                                     @method('DELETE')
@@ -81,8 +76,10 @@
                                                     </button>
                                                 </form>
                                             </td>
+                                            <td> <button><a class="btn " type="submit" id="btn-evaluate"
+                                                        href="{{ route('addsecond', $form->id) }}"> evaluate</a></button>
+                                            </td>
                                         @endrole
-
 
                                         </td>
                                     </tr>
@@ -105,45 +102,3 @@
 
     </div>
 @endsection
-@section('javascript')
-    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
-    </head>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-
-
-            $("#btn-evaluate").submit(function(e) {
-                console.log('hi');
-                if ($(this).val() != '') {
-
-                    $("#btn-submit").prop("disabled", );
-
-                } else {
-                    $("#btn-submit").prop("disabled", false);
-
-                }
-
-
-
-            });
-            $('#search').on('keyup', function() {
-                var query = $(this).val();
-                $.ajax({
-                    url: "search",
-                    type: "GET",
-                    data: {
-                        'search': query
-                    },
-                    success: function(data) {
-                        $('#search_list').html(data);
-                    }
-                });
-                //end of ajax call
-            });
-
-        });
-    </script>

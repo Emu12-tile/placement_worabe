@@ -41,13 +41,36 @@
 
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            {{-- <td>{{DB::table('roles')->pluck('name', 'name')->first()}}</td> --}}
+
+
                                             <td>
-                                          
+                                                {{-- @foreach ($user->roles as $role)
+                                                    <span class="badge bg-primary">{{ $role->name }}</span>
+                                                @endforeach --}}
+                                                {{ $user->roles->implode('name', ', ') }}
+                                            </td>
+                                            <td>
+
+                                                <select data-target="{{ $user->id }}"
+                                                    class="form-control  requestStatus  " name="name">
+
+
+                                                    <option selected disabled>action</option>
+                                                    @foreach ($roles as $name)
+                                                        @if ($user->roles->implode('name', ', ') == $name->name)
+                                                            <option value="{{ $name->name }}" selected>
+                                                                {{ $name->name }}
+                                                            </option>
+                                                        @else
+                                                            <option value="{{ $name->name }}">{{ $name->name }}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
                                             </td>
 
                                             <td>
-                                                <a href="{{ url('delete-user/'. $user->id) }}"> <button type="submit"
+                                                <a href="{{ url('delete-user/' . $user->id) }}"> <button type="submit"
                                                         class="btn btn-danger pd-10">
                                                         <a data-toggle="tooltip" data-original-title="delete"> <i
                                                                 class=" icon-trash txt-danger"></i> </a>
@@ -58,7 +81,7 @@
 
                                             <td>
 
-                                                <a href="{{ url('edit-user/'. $user->id) }}" data-toggle="tooltip"
+                                                <a href="{{ url('edit-user/' . $user->id) }}" data-toggle="tooltip"
                                                     data-original-title="Edit"> <i class="icon-pencil"></i> </a>
                                             </td>
 
@@ -94,4 +117,34 @@
 
 
     </div>
+@endsection
+@section('javascript')
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(".requestStatus").on("change", function() {
+            if ($(this).val() != "") {
+
+                $.ajax({
+                    url: "user/change_status",
+
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        "roles": $(this).val(),
+                        "user": $(this).attr("data-target")
+                    },
+                    success: function(response) {
+                        // console.log(data.roles);
+                        if (response.roles) {
+                            alert(" changed succussfully");
+                        }
+                    },
+                    error: function(response) {}
+                });
+            }
+        });
+    </script>
 @endsection

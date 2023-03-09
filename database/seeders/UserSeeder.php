@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'publish articles']);
         Permission::create(['name' => 'create articles']);
         $role1 = Role::create(['name' => 'president']);
+       
         $role1->givePermissionTo($permission1);
         $role1->givePermissionTo('create articles');
 

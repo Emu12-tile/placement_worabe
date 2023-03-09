@@ -20,6 +20,7 @@ use App\Http\Controllers\PresidentialController;
 use App\Http\Controllers\EducationTypeController;
 use App\Http\Controllers\EducationLevelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\SecondhrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::get('/', [MultiformController::class, 'createStepOne'])->name('multiforms
 Route::post('/', [MultiformController::class, 'postCreateStepOne'])->name('multiforms.create.step.one.post');
 
 Route::get('/steptwo', [MultiformController::class, 'createStepTwo'])->name('multiforms.create.step.two');
+Route::get('/steptwo/job', [MultiformController::class, 'position']);
+Route::get('/steptwo/categ2', [MultiformController::class, 'position2']);
+Route::get('/steptwo/selection', [MultiformController::class, 'selection']);
+Route::get('/steptwo/selection2', [MultiformController::class, 'selection2']);
 Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->name('multiforms.create.step.two.post');
 Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
 
@@ -66,6 +71,7 @@ Route::middleware([
     'role:admin'
 ])->group(function () {
     Route::get('/user', [RegisteredUserController::class, 'index'])->name('index');
+    Route::post('/user/change_status', [RegisteredUserController::class, 'changeStatus'])->name("change_status");
     Route::get('/add-user', [RegisteredUserController::class, 'crt']);
     Route::post('/user', [RegisteredUserController::class, 'store']);
     Route::get('edit-user/{id}', [RegisteredUserController::class, 'edit']);
@@ -76,7 +82,7 @@ Route::middleware([
 
 
 
-    Route::resource('/admin', AdminController::class);
+
     Route::resource('/educationlevel', EducationLevelController::class);
     Route::resource('/level', LevelController::class);
 
@@ -106,6 +112,13 @@ Route::middleware([
         Route::get('/lowresource', [ResourceController::class, 'index2'])->name('lowresource.lowresource');
 
         Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
+
+        //for secon choice
+        Route::resource('/secondhr', SecondhrController::class);
+        Route::get('/secondhr/add/{id}', [SecondhrController::class, 'createhr1'])->name('addsecond');
+        Route::post('/secondhr/add/{id}', [SecondhrController::class, 'storeRestore1'])->name('addHrPost1');
+        Route::get('/secondchoice', [SecondhrController::class, 'secondchoice'])->name('secondchoice.secondchoice');
+        Route::get('/secondlow', [SecondhrController::class, 'index2'])->name('secondchoice.lowresource');
     }
     //  elseif ($emu->position_type_id == 2) {
 
@@ -114,7 +127,7 @@ Route::middleware([
 
 );
 
-
+Route::resource('/list', AdminController::class);
 Route::resource('/hr', FormController::class);
 Route::get("search", [FormController::class, 'search']);
 Route::get('/table', [FormController::class, 'table']);
@@ -126,6 +139,9 @@ Route::get('/export_pdf/{id}', [MultiformController::class, 'export_pdf'])->name
 
 
 Route::get('/evaluation', [PresidentialController::class, 'index'])->name('presidential.index');
+Route::get('/allresult', [PresidentialController::class, 'all'])->name('presidential.bothresult');
+Route::get('/choice2evaluation', [PresidentialController::class, 'choice2'])->name('presidential.choice2evaluation');
+
 
 
 

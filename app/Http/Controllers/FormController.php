@@ -28,26 +28,21 @@ class FormController extends Controller
     public function index()
     {
 
-        $forms = Form::latest()->paginate(10);
+
+
+        $forms = Form::where('hrs', null)->paginate(5);
+
+        return view('hr.index', compact('forms'));
 
 
 
 
-            return view('hr.index', compact('forms'));
-        
 
 
-
-
-
-        // ) {
-
-        // $hr = DB::table('h_r_s')->select('status_hr')->get();
-        // dd(DB::table('h_r_s')->select('status_hr')->get());
 
 
     }
-    // return view('hr.index', compact('forms', 'allow_edit'));
+   
     public function create()
     {
         $level = Level::all();
@@ -154,5 +149,13 @@ class FormController extends Controller
         $forms = Form::where('firstName',  'LIKE', '%' . $search_text . '%')->get();
         // $cat = Product::where('category_name',  'LIKE', '%' . $search_text . '%')->get();
         return view('hr.index', compact('forms'));
+    }
+    public function destroy($id)
+    {
+        $form = Form::find($id);
+
+
+        $form->delete();
+        return back()->with('status', '  deleted successfully');
     }
 }

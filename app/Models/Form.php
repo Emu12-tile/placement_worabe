@@ -36,13 +36,19 @@ class Form extends Model
         'level_id',
         'h_r_id',
         'choice2_id',
-        'jobcat2_id'
+        'jobcat2_id',
+        'secondhr_id',
+        'level'
 
 
     ];
-    public function hr()
+    public function h_r_s()
     {
-        return $this->hasOne(HR::class, 'h_r_id', 'id');
+        return $this->belongsTo(HR::class, 'h_r_id', 'id');
+    }
+    public function secondhr()
+    {
+        return $this->belongsTo(Secondhr::class, 'secondhr_id', 'id');
     }
 
     public function experiences()

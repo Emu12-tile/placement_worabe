@@ -76,10 +76,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $j = 0;
+                                ?>
                                 @foreach ($hrs as $i => $hr)
                                     @if ($hr->form->position->position_type_id == 2)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ ++$j }}</td>
                                             <td>{{ $hr->form->full_name }}
                                             </td>
                                             <td>{{ $hr->user->name }}</td>
@@ -106,7 +109,7 @@
                                 </tr>
                             </tfoot> --}}
                         </table>
-                        {{-- {!! $hrs->links() !!} --}}
+                        {!! $hrs->links() !!}
                     </div>
                 </div>
             </div>

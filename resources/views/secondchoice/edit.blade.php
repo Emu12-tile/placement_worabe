@@ -308,7 +308,7 @@
                             </div>
                             {{-- </div> --}}
                         </div>
-                        <form action="{{ route('resource.update', $hr->id) }}" method="POST">
+                        <form action="{{ route('secondhr.update', $hr->id) }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -339,7 +339,7 @@
                                                         <td>{{ $hr->form->full_name }}
                                                         </td>
                                                         <td>{{ $hr->form->edu_level->education_level }}</td>
-                                                        <td>{{ $hr->form->position->position }}</td>
+                                                        <td>{{ $hr->form->jobcat2->position }}</td>
 
 
 

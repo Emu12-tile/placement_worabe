@@ -15,13 +15,14 @@
                             <div class="col-sm">
                                 <form action="{{ route('multiforms.create.step.one.post') }}" method="POST">
                                     @csrf
-                                    
+
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="firstName">የመጀመሪያ ስም</label>
-                                            <input type="text" value="{{ $form->firstName ?? '' }}"
-                                                class="form-control @error('firstName') is-invalid @enderror" id="firstName"
-                                                placeholder="የመጀመሪያ ስም" name="firstName">
+                                            <input class="form-control @error('firstName') is-invalid @enderror"
+                                                type="text" placeholder="የመጀመሪያ ስም"
+                                                value="{{ $form->firstName ?? '' }}{{ old('firstName') }}" id="firstName"
+                                                name="firstName">
                                             @error('firstName')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -31,8 +32,9 @@
                                         <div class="col-md-6 form-group">
                                             <label for="middleName">የ አባት ስም</label>
                                             <input class="form-control @error('middleName') is-invalid @enderror"
-                                                id="middleName" placeholder="የ አባት ስም" value="{{ $form->middleName ?? '' }}"
-                                                type="text" name="middleName">
+                                                id="middleName" placeholder="የ አባት ስም"
+                                                value="{{ $form->middleName ?? '' }}{{ old('middleName') }}" type="text"
+                                                name="middleName">
                                             @error('middleName')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -42,8 +44,9 @@
                                         <div class="col-md-6 form-group">
                                             <label for="lastName">የ አያት ስም</label>
                                             <input class="form-control @error('lastName') is-invalid @enderror"
-                                                id="lastName" placeholder="የ አያት ስም" value="{{ $form->lastName ?? '' }}"
-                                                type="text" name="lastName">
+                                                id="lastName" placeholder="የ አያት ስም"
+                                                value="{{ $form->lastName ?? '' }}{{ old('lastName') }}" type="text"
+                                                name="lastName">
                                             @error('lastName')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -53,7 +56,8 @@
 
                                         <div class="col-md-6 form-group">
                                             <label for="sex">ጾታ</label>
-                                            <select class="form-control custom-select "value="{{ $form->sex ?? '' }}"
+                                            <select
+                                                class="form-control custom-select "value="{{ $form->sex ?? '' }}{{ old('sex') }}"
                                                 id="sex" name="sex">
 
                                                 <option value="ሴት ">ሴት</option>
@@ -71,7 +75,7 @@
                                                     class="form-control
                                                     @error('email') is-invalid @enderror"
                                                     id="email" placeholder="Enter email"
-                                                    value="{{ $form->email ?? '' }}">
+                                                    value="{{ $form->email ?? '' }}{{ old('email') }}">
                                                 @error('email')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -88,7 +92,8 @@
                                                 </div>
                                                 <input type="tel"name="phone" id="phone"
                                                     class="form-control @error('phone') is-invalid @enderror"
-                                                    placeholder="Enter phone" value="{{ $form->phone ?? '' }}">
+                                                    placeholder="Enter phone"
+                                                    value="{{ $form->phone ?? '' }}{{ old('phone') }}">
                                                 @error('phone')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>

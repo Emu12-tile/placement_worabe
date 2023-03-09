@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ModelhasRoles;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -23,24 +24,30 @@ class RegisteredUserController extends Controller
     public function create()
     {
         // $role = DB::table('roles')->get();
-        $user = User::create([
-            'name' => 'Fkr Tadesse',
+        // $user = User::create([
+        //     'name' => 'required',
 
-            'email' => 'fkr@gmail.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
-        ]);
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
 
-        $user->assignRole('hr');
+        // $user->assignRole('user');
 
         return view('auth.register');
     }
     public function index()
     {
-        $role = Role::all();
-        $role = DB::table('roles')->select('name')->get();
-        // dd($hr);
-        $users = User::paginate(8);
-        return view('users.index', compact('users'));
+
+        // $roles = DB::table('roles')->join('model_has_roles', 'model_has_roles.role_id', '=', 'roles.id')
+        // ->join('users', 'users.id', '=', 'model_has_roles.model_id')->get('roles.name');
+
+        // dd($roles);
+        $users = User::with('roles')->get();
+        $roles = Role::get('name');
+
+
+        //  dd($roles);
+        return view('users.index', compact('users', 'roles'));
     }
     public function crt()
     {
@@ -49,7 +56,28 @@ class RegisteredUserController extends Controller
         // $user->assignRole('hr');
         return view('users.create', compact('user'));
     }
+    public function changeStatus(Request $request)
+    {
+        // $item = DB::tables('model_has_roles')->select('role_id', 'id')
+        //     ->where("model_id", $request->user)->take(100)->get();
 
+        // $item = DB::tables('model_has_roles')->find($request->user);
+
+        if ($request->ajax()) {
+            $item =
+                User::with('roles')->find($request->user);
+
+            // $users_without_any_roles = User::doesntHave('roles')->find($request->user);
+            if ($item) {
+                // $item->role->name = $request->name;
+                // $item->store_status = $request->status;
+                $item->assignRole($request->input('roles'));
+                $item->update();
+                // dd($item);
+                return response()->json(array("success" => true));
+            }
+        }
+    }
     /**
      * Handle an incoming registration request.
      *
@@ -78,13 +106,7 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-    // public function edit($id)
-    // {
-    //     $user = User::find($id);
-    //     $role = Role::all();
-    //     $user->assignRole($role);
-    //     return view('users.edit', compact('user','role'));
-    // }
+
     public function destroy($id)
     {
         $user = User::find($id);
