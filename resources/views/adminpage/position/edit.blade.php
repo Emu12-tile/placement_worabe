@@ -7,9 +7,9 @@
 
                 <section class="hk-sec-wrapper mt-100">
                     <div class="pull-right">
-                        <a class="btn btn-dark" href="{{ route('position.index') }}"> Back</a>
+                        <a class="btn btn-dark" href="{{ route('position.index') }}"> ወደ ኋላ</a>
                     </div>
-                    <h5 class="hk-sec-title">Edit በአስተዳዳሪው የሚሞላ መረጃ</h5>
+                    <h5 class="hk-sec-title"> በአስተዳዳሪው የሚሞላ መረጃ </h5>
                     {{-- <p class="mb-25">Edit staff forms </p> --}}
 
                     <div class="row">
@@ -30,6 +30,20 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="job_category_id" class="col-sm-2 col-form-label">የስራ ክፍል</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control custom-select  mt-15" name="job_category_id">
+
+                                            @foreach ($job_category as $col)
+                                                <option value="{{ $col->id }}"
+                                                    {{ $col->id == $admin->job_category_id ? 'selected' : '' }}>
+                                                    {{ $col->job_category }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label"> የስራ ልምድ </label>
                                     <div class="col-sm-10">

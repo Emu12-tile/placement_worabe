@@ -178,9 +178,9 @@
                                             Previous</button> --}}
 
                                         <a href="{{ route('multiforms.create-step-one') }}"
-                                            class="btn btn-danger float-left">&lt;Previous</a>
+                                            class="btn btn-danger float-left">&lt;የቀድሞ</a>
 
-                                        <button type="submit" class="next btn btn-primary float-right">Next &gt;</button>
+                                        <button type="submit" class="next btn btn-primary float-right">ቀጣይ &gt;</button>
                                         {{-- <button type="submit" class="btn btn-success  float-right">Submit</button> --}}
                                     </div>
                                 </form>
@@ -254,7 +254,7 @@
                         success: function(data) {
 
 
-                            div += "<b> የስራ ልምድ:</b> " + data.experience
+                            div += "<b> የስራ ልምድ (በ አመት):</b> " + data.experience
                             $('#details').html(" ");
                             $('#details').append(div);
 
@@ -332,7 +332,7 @@
                         success: function(data) {
 
 
-                            div += "<b> የስራ ልምድ:</b> " + data.experience
+                            div += "<b> የስራ ልምድ(በ አመት):</b> " + data.experience
                             $('#detail').html(" ");
                             $('#detail').append(div);
 

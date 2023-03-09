@@ -12,8 +12,8 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('position.create') }}" class="mr-25" data-toggle="tooltip" data-original-title="add">
-                    <i class="icon-plus icon-4x"> </i> add </a>
+                <a href="{{ route('position.create') }}" class="mr-25" data-toggle="tooltip" data-original-title="ይጨምሩ">
+                    <i class="icon-plus icon-4x"> </i> ይጨምሩ </a>
             </div>
             <h5 class="hk-sec-title">በአስተዳዳሪው የተሞላ መረጃ </h5>
 
@@ -31,7 +31,7 @@
                                         <th> ደረጃ </th>
                                         <th> የስራ ልምድ </th>
                                         <th> የስራ መደብ ዓይነት</th>
-                                        <th>Action</th>
+                                        <th>ድርጊት</th>
 
 
 

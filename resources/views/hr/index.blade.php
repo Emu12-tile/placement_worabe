@@ -14,7 +14,7 @@
 
 
             </div>
-            <h5 class="hk-sec-title">List of applicants </h5>
+            <h5 class="hk-sec-title">የአመልካቾች ዝርዝር</h5>
 
 
             <div class="row" id="search_list">
@@ -38,7 +38,7 @@
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
                                     @role('admin')
-                                        <th>action</th>
+                                        <th>ድርጊት</th>
                                     @endrole
 
 

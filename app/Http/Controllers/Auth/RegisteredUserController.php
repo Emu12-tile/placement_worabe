@@ -71,9 +71,10 @@ class RegisteredUserController extends Controller
             if ($item) {
                 // $item->role->name = $request->name;
                 // $item->store_status = $request->status;
+                $item->roles()->detach();
                 $item->assignRole($request->input('roles'));
                 $item->update();
-                // dd($item);
+
                 return response()->json(array("success" => true));
             }
         }

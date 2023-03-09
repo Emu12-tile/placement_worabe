@@ -64,7 +64,7 @@
                                                 <label for="edu_level">የትምህርት ደረጃ </label>
                                                 <select class="form-control custom-select d-block w-100 "
                                                     name="addMoreInputFields[0][edu_level]">
-                                                    <option selected disabled>-- Select   --</option>
+                                                    <option selected disabled>-- የት/ት ደረጃ ይምረጡ --</option>
                                                     @foreach ($educ as $name)
                                                         <option value="{{ $name->education_level }}">
                                                             {{ $name->education_level }}</option>
@@ -78,7 +78,7 @@
                                                 <input type="number" name="addMoreInputFields[0][experience]"
                                                     value="{{ old('experience') }}"
                                                     class="form-control  @error('experience') is-invalid @enderror"
-                                                    id="experience" placeholder="  የስራ ልምድ">
+                                                    id="experience" placeholder="  የስራ ልምድ(በዓመት)">
                                                 @error('experience')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                                                 <label for="level"> ደረጃ </label>
                                                 <select class="form-control custom-select d-block w-100 "
                                                     name="addMoreInputFields[0][level]">
-                                                    <option selected disabled>-- Select level --</option>
+                                                    <option selected disabled>--ደረጃ ይምረጡ --</option>
                                                     @foreach ($lev as $name)
                                                         <option value="{{ $name->level }}">
                                                             {{ $name->level }}</option>
@@ -198,7 +198,7 @@
                                                 <label for="edu_level"> </label>
                                                 <select class="form-control custom-select d-block w-100 "
                                                     name="addMoreInputFields[${i}][edu_level]">
-                                                    <option selected disabled>-- Select brand type --</option>
+                                                    <option selected disabled>--  የት/ት ደረጃ ይምረጡ --</option>
                                                     @foreach ($educ as $name)
                                                         <option value="{{ $name->education_level }}">
                                                             {{ $name->education_level }}</option>
@@ -225,7 +225,7 @@
                                                 <label for="level">  </label>
                                                 <select class="form-control custom-select d-block w-100 "
                                                     name="addMoreInputFields[${i}][level]">
-                                                    <option selected disabled>-- Select level --</option>
+                                                    <option selected disabled>-- ደረጃ ይምረጡ --</option>
                                                     @foreach ($lev as $name)
                                                         <option value="{{ $name->level }}">
                                                             {{ $name->level }}</option>

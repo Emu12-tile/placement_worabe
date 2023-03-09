@@ -6,10 +6,15 @@
 @section('content')
     <div class="hk-row">
         @role('admin')
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Welcome To Admin Dashboard') }}
-            </h2>
-
+            <div class="col-lg-5 col-sm  ml-25">
+                <div class=" card card-sm ">
+                    <div class="card-body ">
+                        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                            {{ __('እንኳን ወደ አድሚን ዳሽቦርድ በደህና መጡ ') }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
         @endrole
         @role('hr|president')
             <div class="col-lg-3 col-md-6 ">

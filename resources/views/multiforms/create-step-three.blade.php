@@ -71,7 +71,7 @@
                                             አፈጻፀም
                                             ውጤት</label>
                                         <input class="form-control mt-25
-                                                @error('resultOfrecentPerform') is-invalid @enderror" id="resultOfrecentPerform" placeholder=" የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም" 
+                                                @error('resultOfrecentPerform') is-invalid @enderror" id="resultOfrecentPerform" placeholder=" የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም"
                                                 value="{{ $form->resultOfrecentPerform ?? '' }}{{old('resultOfrecentPerform')}}"
                                                  type="text" name="resultOfrecentPerform">
                                         @error('resultOfrecentPerform')
@@ -151,9 +151,9 @@
                                     {{-- <button type="button" class="previous btn btn-primary  float-left">&lt;
                                             Previous</button> --}}
 
-                                    <a href="{{ route('multiforms.create.step.two') }}" class="btn btn-danger float-left">&lt;Previous</a>
+                                    <a href="{{ route('multiforms.create.step.two') }}" class="btn btn-danger float-left">&lt;የቀድሞ</a>
 
-                                    <button type="submit" class="next btn btn-success float-right">Submit</a> </button>
+                                    <button type="submit" class="next btn btn-success float-right">አስረክብ</a> </button>
                                     {{-- <button type="submit" class="btn btn-success  float-right">Submit</button> --}}
                                 </div>
 

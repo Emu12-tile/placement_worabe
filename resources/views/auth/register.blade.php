@@ -133,11 +133,11 @@
                                 </a>
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
-                                    <h1 class="display-4 mb-10 text-center">Sign up</h1>
-                                    <p class="mb-30 text-center">Create your account</p>
+                                    <h1 class="display-4 mb-10 text-center">እንኳን ደህና መጡ :)</h1>
+                                    <p class="mb-30 text-center">የእርስዎን አካውንት ይፍጠሩ </p>
                                     {{-- <div class="form-row"> --}}
                                     <div class=" form-group">
-                                        <input placeholder="Full name" value="" type="text"
+                                        <input placeholder="ሙሉ ስም" value="" type="text"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
                                             value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -160,7 +160,7 @@
                                     {{-- </div> --}}
                                     <div class="form-group">
 
-                                        <input placeholder="Email" id="email" type="email"
+                                        <input placeholder="ኢሜይል" id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
                                             value="{{ old('email') }}" required autocomplete="email">
 
@@ -172,7 +172,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input placeholder="Password" id="password" type="password"
+                                        <input placeholder="የይለፍ ቃል" id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror" name="password"
                                             required autocomplete="new-password">
 
@@ -185,7 +185,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
 
-                                            <input placeholder="Confirm Password" id="password-confirm" type="password"
+                                            <input placeholder="የይለፍ ቃል ያረጋግጡ" id="password-confirm" type="password"
                                                 class="form-control" name="password_confirmation" required
                                                 autocomplete="new-password">
 
@@ -199,12 +199,12 @@
 
 
                                     <button type="submit" class="btn btn-primary  btn-block">
-                                        {{ __('Register') }}
+                                        {{ __('ይመዝገቡ') }}
                                     </button>
-                                    <div class="option-sep">or</div>
-
-                                    <p class="text-center">Already have an account? <a href="{{ route('login') }}">Sign
-                                            In</a></p>
+                                    <div class="option-sep">ወይም</div>
+{{-- Already have an account? --}}
+                                    <p class="text-center">ክዚህ በፊት ተመዝግበዋል? <a href="{{ route('login') }}">በመለያ
+                                            ይግቡ</a></p>
                                 </form>
                             </div>
                         </div>

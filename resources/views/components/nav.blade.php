@@ -3,7 +3,7 @@
             class="ion ion-ios-menu"></i></a>
     <a class="navbar-brand" href="{{ route('hr.index') }}">
         {{-- <img class="brand-img d-inline-block" src="{{asset('assets/dist/img/logo-dark.png')}}" alt="brand" /> --}}
-        <h5 class="text-primary">Evaluation</h5>
+        <h5 class="text-primary">ለአመልካቾች ግምገማ</h5>
     </a>
     <ul class="navbar-nav hk-navbar-content">
         <li class="nav-item">

@@ -106,8 +106,9 @@ License: You must have a valid license purchased only from themeforest to legall
                                 </a>
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
-                                    <h1 class="display-4 text-center mb-10">Welcome Back :)</h1>
-                                    <p class="text-center mb-30">Sign in to your account and enjoy</p>
+                                    <h1 class="display-4 text-center mb-10">በድጋሚ እንኳን ደህና መጡ :)</h1>
+                                    {{-- Sign in to your account and enjoy --}}
+                                    <p class="text-center mb-30">ወደ አካዉንትዎ በመግባት አገልግሎት ያግኙ</p>
                                     <div class="form-group">
 
                                         <input placeholder="Email" id="email" type="email"
@@ -142,21 +143,21 @@ License: You must have a valid license purchased only from themeforest to legall
                                         <input class="custom-control-input" id="same-address" type="checkbox"
                                             name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                        <label class="custom-control-label font-14" for="same-address">Keep me logged
-                                            in</label>
+                                        {{-- <label class="custom-control-label font-14" for="same-address">Keep me logged
+                                            in</label> --}}
                                     </div>
-                                    <button class="btn btn-pink btn-block" type="submit">Login</button>
+                                    <button class="btn btn-pink btn-block" type="submit">ይግቡ</button>
 
-                                    <div class="option-sep">or</div>
+                                    <div class="option-sep">ወይም</div>
                                     <p class="text-center">
                                         @if (Route::has('password.request'))
                                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
+                                                {{ __('የይለፍ ቃል ረስተዋል?') }}
                                             </a>
                                         @endif
                                     </p>
-                                    <p class="text-center">Do have an account yet? <a
-                                            href="{{ route('register') }}">Sign Up</a></p>
+                                    <p class="text-center">ከዚህ በፊት አካዉንት የሎትም? <a
+                                            href="{{ route('register') }}">ይዝመገቡ</a></p>
                                 </form>
                             </div>
                         </div>

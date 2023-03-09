@@ -39,7 +39,6 @@ class JobCategoryController extends Controller
                     "job_category" => $value["job_category"],
 
                 ]);
-
             }
         }
         return response()->json(array("success" => true));
@@ -55,12 +54,19 @@ class JobCategoryController extends Controller
         $admin = JobCategory::find($id);
         $admin->job_category = $request->Input('job_category');
         $admin->update();
+        $admin2 = jobCat2::find($id);
+        $admin2->job_category = $request->Input('job_category');
+        $admin2->update();
 
 
         return redirect('jobcategory')->with('status', 'jobcategory updated successfully');
     }
     public function destroy($id)
     {
+        $admin2 = Jobcat2::find($id);
+
+
+        $admin2->delete();
         $admin = JobCategory::find($id);
 
 

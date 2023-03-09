@@ -111,7 +111,7 @@
                                     <div class="form-navigation mt-3">
                                         {{-- <button type="button" class="previous btn btn-primary  float-left">&lt;
                                             Previous</button> --}}
-                                        <button type="submit" class="next btn btn-primary float-right">Next &gt;</button>
+                                        <button type="submit" class="next btn btn-primary float-right">ቀጣይ &gt;</button>
                                         {{-- <button type="submit" class="btn btn-success  float-right">Submit</button> --}}
                                     </div>
 

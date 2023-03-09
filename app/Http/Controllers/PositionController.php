@@ -88,19 +88,35 @@ class PositionController extends Controller
         $admin->position = $request->Input('position');
         $admin->experience = $request->Input('experience');
         $admin->job_category_id = $request->job_category_id;
+
         $admin->position_type_id = $request->position_type_id;
         $admin->edu_level_id = $request->education_level_id;
         $admin->update();
+        $admin2 = choice2::find($id);
+        $admin2->position = $request->Input('position');
+        $admin2->experience = $request->Input('experience');
+        $admin2->jobcat2_id = $request->job_category_id;
+        $admin2->position_type_id = $request->position_type_id;
+        $admin2->edu_level_id = $request->education_level_id;
+        $admin2->update();
+
+
 
 
         return redirect('position')->with('status', 'position updated successfully');
     }
     public function destroy($id)
     {
+
+        $admin2 = choice2::find($id);
+        $admin2->delete();
         $admin = Position::find($id);
-
-
         $admin->delete();
+
+        // dd($admin,$admin2);
+
+        // $admin2 = choice2::where($id, $admin->id)->get()->delete();
+
         return redirect('position')->with('status', 'position  deleted successfully');
     }
 }

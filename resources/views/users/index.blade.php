@@ -43,12 +43,12 @@
                                             <td>{{ $user->email }}</td>
 
 
-                                            <td>
-                                                {{-- @foreach ($user->roles as $role)
+                                            {{-- <td>
+                                                @foreach ($user->roles as $role)
                                                     <span class="badge bg-primary">{{ $role->name }}</span>
-                                                @endforeach --}}
+                                                @endforeach
                                                 {{ $user->roles->implode('name', ', ') }}
-                                            </td>
+                                            </td> --}}
                                             <td>
 
                                                 <select data-target="{{ $user->id }}"

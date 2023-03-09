@@ -10,7 +10,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('home') }}">
                             <i class="ion ion-ios-keypad"></i>
-                            <span class="nav-link-text">Dashboard</span>
+                            <span class="nav-link-text">ዳሽቦርድ</span>
                         </a>
 
 
@@ -36,6 +36,14 @@
                     {{-- <ul class="navbar-nav flex-column"> --}}
                     @role('admin')
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ url('user') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ተጠቃሚዎች
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('hr.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
@@ -43,6 +51,7 @@
                                 </span>
                             </a>
                         </li>
+
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationlevel.index') }}">
