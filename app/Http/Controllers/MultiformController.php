@@ -76,7 +76,8 @@ class MultiformController extends Controller
         $choice2 = choice2::all();
 
         $jobcat2 = jobcat2::all();
-        $edutype = EducationType::all();
+        // $edutype = EducationType::all();
+        $edutype=EducationType::all();
         $level2 = Level::all();
 
         $position2 = Position::all();

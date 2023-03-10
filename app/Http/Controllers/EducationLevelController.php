@@ -13,14 +13,14 @@ class EducationLevelController extends Controller
         $admins = EduLevel::paginate(8);
 
 
-        return view('adminpage.education_level.index', compact('admins'));
+        return view('adminpage.Education_level.index', compact('admins'));
     }
     public function create()
     {
 
 
 
-        return view('adminpage.education_level.create');
+        return view('adminpage.Education_level.create');
     }
     public function store(Request $request)
     {
@@ -36,7 +36,7 @@ class EducationLevelController extends Controller
     public function edit($id)
     {
         $admin = EduLevel::find($id);
-        return view('adminpage.education_level.edit', compact('admin'));
+        return view('adminpage.Education_level.edit', compact('admin'));
     }
     public function update(Request $request, $id)
     {
