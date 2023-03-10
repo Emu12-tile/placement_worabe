@@ -14,8 +14,9 @@ use App\Models\EduLevel;
 use App\Models\Position;
 use App\Models\experience;
 use App\Models\JobCategory;
-use Illuminate\Http\Request;
 use App\Models\EducationType;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -58,8 +59,7 @@ class MultiformController extends Controller
             $form = new Form();
             $form->fill($validatedData);
             $request->session()->put('form', $form);
-        }
-        else {
+        } else {
             $form = $request->session()->get('form');
             $form->fill($validatedData);
             $request->session()->put('form', $form);
@@ -77,7 +77,7 @@ class MultiformController extends Controller
 
         $jobcat2 = jobcat2::all();
         // $edutype = EducationType::all();
-        $edutype=EducationType::all();
+        $edutype = EducationType::all();
         $level2 = Level::all();
 
         $position2 = Position::all();
