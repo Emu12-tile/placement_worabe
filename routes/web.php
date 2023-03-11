@@ -87,8 +87,9 @@ Route::middleware([
     Route::resource('/level', LevelController::class);
 
     Route::post('/level', [LevelController::class, 'store']);
-    Route::post('/educationtype', [EducationTypeController::class, 'store']);
+
     Route::resource('/educationtype', EducationTypeController::class);
+    Route::post('/educationtype', [EducationTypeController::class, 'store']);
     Route::resource('/position', PositionController::class);
     Route::resource('/choice2', Choice2Controller::class);
     // Route::post('/position', [PositionController::class, 'store']);
