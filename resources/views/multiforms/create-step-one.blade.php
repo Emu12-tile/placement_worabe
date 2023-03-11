@@ -8,7 +8,9 @@
 
                     <section class="hk-sec-wrapper mt-100">
 
-                        <h1 class="hk-sec-title text-primary text-center">የመወዳደርያ ቅጽ</h1>
+                        <h3 class="hk-sec-title text-gold text-center color-wrap  "
+                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
 
                         <div class="row">
@@ -66,7 +68,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label class="control-label mb-10" for="email">ኢሜይል</label>
+                                            <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ብቻ ይጠቀሙ )</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
@@ -74,7 +76,7 @@
                                                 <input name="email" type="email"
                                                     class="form-control
                                                     @error('email') is-invalid @enderror"
-                                                    id="email" placeholder="Enter email"
+                                                    id="email" placeholder="@aastu.edu.et"
                                                     value="{{ $form->email ?? '' }}{{ old('email') }}">
                                                 @error('email')
                                                     <span class=" error invalid-feedback">
@@ -90,9 +92,9 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                                 </div>
-                                                <input type="tel"name="phone" id="phone"
+                                                <input type="number" name="phone" id="phone"
                                                     class="form-control @error('phone') is-invalid @enderror"
-                                                    placeholder="Enter phone"
+                                                    placeholder="09..."
                                                     value="{{ $form->phone ?? '' }}{{ old('phone') }}">
                                                 @error('phone')
                                                     <span class=" error invalid-feedback">
@@ -109,10 +111,10 @@
 
 
                                     <div class="form-navigation mt-3">
-                                        {{-- <button type="button" class="previous btn btn-primary  float-left">&lt;
-                                            Previous</button> --}}
-                                        <button type="submit" class="next btn btn-primary float-right">ቀጣይ &gt;</button>
-                                        {{-- <button type="submit" class="btn btn-success  float-right">Submit</button> --}}
+
+                                        <button type="submit" class="next btn btn-primary float-right">ቀጣይ <i
+                                                class="fa fa-angle-right"></i> </button>
+
                                     </div>
 
                                 </form>

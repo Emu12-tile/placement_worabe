@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="education_level_id" class="col-sm-2 col-form-label">የትምህርት ደረጃ</label>
+                                    <label for="edu_level" class="col-sm-2 col-form-label">የትምህርት ደረጃ</label>
                                     <div class="col-sm-10">
                                         <select class="form-control custom-select  mt-15" name="education_level_id">
 

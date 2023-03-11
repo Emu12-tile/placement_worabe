@@ -261,7 +261,7 @@
                                         </div>
                                         <input name="email" type="email" class="form-control"
                                             @error('email') is-invalid @enderror" id="email"
-                                            placeholder="Enter email" value="{{ old('email') }}">
+                                            placeholder="@aastu.edu.et" value="{{ old('email') }}">
                                         @error('email')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -278,7 +278,7 @@
                                         </div>
                                         <input type="tel"name="phone" id="phone"
                                             class="form-control"@error('phone') is-invalid @enderror"
-                                            placeholder="Enter phone" value="{{ old('phone') }}">
+                                            placeholder="09..." value="{{ old('phone') }}" max=10>
                                         @error('phone')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>

@@ -176,7 +176,7 @@ class MultiformController extends Controller
             [
                 'addMoreInputFields.*.startingDate' => 'date|nullable',
                 'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
-                'addMoreInputFields.*.positionyouworked' => 'required',
+                'addMoreInputFields.*.positionyouworked' => 'nullable',
                 'UniversityHiringEra' => 'required',
                 'servicPeriodAtUniversity' => 'required',
                 'servicPeriodAtAnotherPlace' => 'required',
@@ -254,7 +254,8 @@ class MultiformController extends Controller
         // $exp->$request->session->get('form');
         $request->session()->forget('form');
 
-        return redirect('/export_pdf/' . $form->id);
+        // return redirect('/export_pdf/' . $form->id);
+        return redirect('/submitted/'.$form->id);
     }
 
 
@@ -268,13 +269,18 @@ class MultiformController extends Controller
 
         return view('hr.show', ['form' => $form, 'forms' => $forms]);
     }
+    public function submit($id)
+    {
+        $form = Form::find($id);
+        return view('homepage.submit', compact('form'));
+    }
     public function export_pdf($id)
     {
 
         $form = Form::find($id);
 
         $forms = experience::where('form_id', $form->id)->get();
-        // dd($forms);
+
         return view('homepage.export', compact('form', 'forms'));
     }
 }

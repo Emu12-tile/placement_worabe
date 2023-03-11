@@ -17,6 +17,7 @@ class choice2 extends Model
         'jobcat2_id',
         'experience',
         'edu_level',
+        'education_type',
         'level'
     ];
     public function position_type()

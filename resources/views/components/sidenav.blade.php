@@ -7,10 +7,10 @@
             <div class="navbar-nav-wrap">
                 <ul class="navbar-nav flex-column">
 
-                    <li class="nav-item active">
+                    <li class="nav-item active mt-20">
                         <a class="nav-link" href="{{ route('home') }}">
                             <i class="ion ion-ios-keypad"></i>
-                            <span class="nav-link-text">ዳሽቦርድ</span>
+                            <span class="nav-link-text ">ዳሽቦርድ</span>
                         </a>
 
 

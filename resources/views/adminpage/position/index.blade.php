@@ -28,6 +28,7 @@
                                         <th> የስራ መደብ </th>
                                         <th>የስራ ክፍል</th>
                                         <th>የትምህርት ደረጃ </th>
+                                        <th>የትምህርት ዝግጅት </th>
                                         <th> ደረጃ </th>
                                         <th> የስራ ልምድ </th>
                                         <th> የስራ መደብ ዓይነት</th>
@@ -43,11 +44,13 @@
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $admin->position }}
                                             </td>
-                                            <td>{{ $admin->job_category->job_category}}
+                                            <td>{{ $admin->job_category->job_category }}
                                             </td>
                                             {{-- <td>{{ $admin->edu_level->education_level }}
                                             </td> --}}
-                                             <td>{{ $admin->edu_level }}
+                                            <td>{{ $admin->edu_level }}
+                                            </td>
+                                            <td>{{ $admin->education_type }}
                                             </td>
                                             <td>{{ $admin->level }}
                                             </td>

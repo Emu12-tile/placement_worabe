@@ -28,18 +28,19 @@ class PositionController extends Controller
         $level = Level::all();
         $edu_level = EduLevel::all();
         $educ = DB::table('edu_levels')->get();
+        $eductype = DB::table('education_types')->get();
         $lev = DB::table('levels')->get();
         $job_category = JobCategory::all();
 
 
 
-        return view('adminpage.position.create', compact('lev', 'position', 'edu_level', 'job_category', 'educ'));
+        return view('adminpage.position.create', compact('lev', 'position', 'edu_level', 'eductype', 'job_category', 'educ'));
     }
     public function store(Request $request)
     {
 
         foreach ($request->addMoreInputFields as $key => $value) {
-            // dd($value);
+
             Position::create(
                 [
                     "position" => $value["position"],
@@ -48,7 +49,8 @@ class PositionController extends Controller
                     "experience" => $value["experience"],
 
                     "edu_level" => $value["edu_level"],
-
+                    "education_type" => $value["education_type"],
+                
                     "level" => $value["level"],
 
 
@@ -63,6 +65,7 @@ class PositionController extends Controller
                     "experience" => $value["experience"],
 
                     "edu_level" => $value["edu_level"],
+                    "education_type" => $value["education_type"],
 
                     "level" => $value["level"],
 

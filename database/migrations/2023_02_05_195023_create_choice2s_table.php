@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('experience');
             $table->string('edu_level')->nullable();
+            $table->string('education_type')->nullable();
             $table->string('level')->nullable();
 
             $table->foreignId('level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();

@@ -62,6 +62,7 @@
 </head>
 
 <body>
+
     <div id="element-to-print">
         {{-- @foreach ($formList as $i => $form) --}}
         <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ </h1>
@@ -78,10 +79,12 @@
         <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
         <p> ምርጫ 1</p>
 
-        <p> የስራ ክፍል :-{{ $form->job_category->job_category }}፤ የስራ መደብ፣ {{ $form->position->position }}</p>
+        <p> የስራ ክፍል :-{{ $form->job_category->job_category }}</p>
+        <p> የስራ መደብ፣ {{ $form->position->position }}</p>
         <p>
             ምርጫ 2</p>
-        <p> የስራ ክፍል:- {{ $form->jobcat2->job_category }} ፤ የስራ መደብ:- {{ $form->choice2->position }}</p>
+        <p> የስራ ክፍል:- {{ $form->jobcat2->job_category }} </p>
+        <p> የስራ መደብ:- {{ $form->choice2->position }}</p>
         <p>9/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
 
         <table id="customers">
@@ -115,41 +118,41 @@
                         <td>{{ $fo->positionyouworked }}</td>
                         <td>
                             <?php
-                            
+
                             $fdate = Carbon::parse($fo->startingDate)->year;
-                            
+
                             $tdate = Carbon::parse($fo->endingDate)->year;
-                            
+
                             $years = $tdate - $fdate;
-                            
+
                             echo abs($years);
-                            
+
                             ?>
                         </td>
                         <td>
                             <?php
-                            
+
                             $fdate = Carbon::parse($fo->startingDate)->month;
-                            
+
                             $tdate = Carbon::parse($fo->endingDate)->month;
-                            
+
                             $months = $tdate - $fdate;
-                            
+
                             echo abs($months);
-                            
+
                             ?>
                         </td>
                         <td>
                             <?php
-                            
+
                             $fdate = Carbon::parse($fo->startingDate)->day;
-                            
+
                             $tdate = Carbon::parse($fo->endingDate)->day;
-                            
+
                             $days = $tdate - $fdate;
-                            
+
                             echo abs($days);
-                            
+
                             ?>
                         </td>
                         <td></td>
@@ -171,6 +174,7 @@
 
     </div>
 
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"
     integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg=="
@@ -180,7 +184,7 @@
     var element = document.getElementById("element-to-print")
     html2pdf(element, {
         margin: 9,
-        filename: 'myfile.pdf',
+        filename: 'Application form.pdf',
         image: {
             type: 'jpeg',
             quality: 0.98

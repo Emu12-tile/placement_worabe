@@ -16,6 +16,7 @@ class Position extends Model
         'job_category_id',
         'experience',
         'edu_level',
+        'education_type',
         'level'
     ];
     public function position_type()

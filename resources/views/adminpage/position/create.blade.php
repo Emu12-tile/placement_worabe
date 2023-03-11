@@ -74,7 +74,20 @@
                                             </div>
                                             <div class="col-md-4">
 
-                                                <label for="experience"> የስራ ልምድ</label>
+                                                <label for="education_level">የትምህርት ዝግጅት </label>
+                                                <select class="form-control custom-select d-block w-100 "
+                                                    name="addMoreInputFields[0][education_type]">
+                                                    <option selected disabled>-- የት/ት ዝግጅት ይምረጡ --</option>
+                                                    @foreach ($eductype as $name)
+                                                        <option value="{{ $name->education_type }}">
+                                                            {{ $name->education_type }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+                                            <div class="col-md-2">
+
+                                                <label for="experience"> የስራ ልምድ(በዓመት)</label>
                                                 <input type="number" name="addMoreInputFields[0][experience]"
                                                     value="{{ old('experience') }}"
                                                     class="form-control  @error('experience') is-invalid @enderror"
@@ -86,20 +99,8 @@
                                                 @enderror
 
                                             </div>
-                                            {{-- <div class="col-md-4">
 
-                                                <label for="level_id">ደረጃ</label>
-                                                <select class="form-control custom-select d-block w-100 "
-                                                    name="addMoreInputFields[0][level]">
-                                                    @foreach ($level as $col)
-                                                        <option value="{{ $col->id }}"
-                                                            {{ old('level_id') == $col->id ? 'selected' : '' }}>
-                                                            {{ $col->level }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                            </div> --}}
-                                            <div class="col-md-4">
+                                            <div class="col-md-2">
 
                                                 <label for="level"> ደረጃ </label>
                                                 <select class="form-control custom-select d-block w-100 "
@@ -206,7 +207,20 @@
                                                 </select>
 
                                             </div>
-                                                <div class="col-md-4">
+                                              <div class="col-md-4">
+
+                                                <label for="edu_level"> </label>
+                                                <select class="form-control custom-select d-block w-100 "
+                                                    name="addMoreInputFields[${i}][education_type]">
+                                                    <option selected disabled>--  የት/ት ዝግጅት ይምረጡ --</option>
+                                                    @foreach ($eductype as $name)
+                                                        <option value="{{ $name->education_type }}">
+                                                            {{ $name->education_type }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+                                                <div class="col-md-2">
                                                    <label for="position_type_id"></label>
 
                                                    <input type="number" name="addMoreInputFields[${i}][experience]"
@@ -220,7 +234,7 @@
                                                 @enderror
 
                                                   </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-2">
 
                                                 <label for="level">  </label>
                                                 <select class="form-control custom-select d-block w-100 "

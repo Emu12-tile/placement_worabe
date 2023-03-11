@@ -135,7 +135,7 @@ Route::get('/table', [FormController::class, 'table']);
 //     }
 // );
 Route::get('/export_pdf/{id}', [MultiformController::class, 'export_pdf'])->name('export_pdf');
-
+Route::get('/submitted/{id}', [MultiformController::class, 'submit'])->name('submit');
 
 
 Route::get('/evaluation', [PresidentialController::class, 'index'])->name('presidential.index');

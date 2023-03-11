@@ -7,7 +7,9 @@
 
                     <section class="hk-sec-wrapper mt-100">
 
-                        <h1 class="hk-sec-title text-primary text-center">የመወዳደርያ ቅጽ</h1>
+                        <h3 class="hk-sec-title text-gold text-center color-wrap  "
+                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
 
                         <div class="row">
@@ -17,7 +19,7 @@
 
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <label for="education level">የትምህርት ዓይነት</label>
+                                            <label for="education level">የትምህርት ዝግጅት</label>
 
 
                                             <select class="form-control custom-select d-block w-100 " id="education_type_id"
@@ -82,8 +84,11 @@
 
                                     </div>
 
-                                    <h3 class="text-secondary text-center mt-3 mb-4"> የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h3>
-                                    <h4 class="text-success text-left mt-3 mb-4"> ምርጫ 1</h4>
+                                    <h3 class="text-white text-center mt-3 mb-4 ml-100 mr-100 "
+                                        style=" background-color:rgb(17,40,77); margin:center"> የሚወዳደሩበት የስራ ክፍልና የስራ መደብ
+                                    </h3>
+                                    <button class="text-gold text-left mt-3 mb-4 mr-150"
+                                        style=" background-color:rgb(17,40,77)"> ምርጫ 1</button>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for=""> የስራ ክፍሉ</label>
@@ -110,15 +115,21 @@
 
 
                                             </select>
-                                            <div id="details">
+                                            <div id="detailsd" class=" font-20 ">
 
 
                                             </div>
-                                            <div id="details2">
+                                            <div id="details" class=" ml-25 ">
 
 
                                             </div>
-                                            <div id="details3">
+                                            <div id="details2" class=" ml-25 ">
+
+
+                                            </div>
+                                            <div id="details4" class=" ml-25 "></div>
+
+                                            <div id="details3" class=" ml-25 ">
 
 
                                             </div>
@@ -127,7 +138,8 @@
 
 
                                     </div>
-                                    <h4 class="text-success text-left mt-3 mb-4"> ምርጫ 2</h4>
+                                    <button class="text-gold text-left mt-3 mb-4" style=" background-color:rgb(17,40,77)">
+                                        ምርጫ 2</button>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for=""> የስራ ክፍሉ</label>
@@ -153,15 +165,18 @@
 
 
                                             </select>
-                                            <div id="detail">
+                                            <div id="detaild" class=" font-20 "></div>
+                                            <div id="detail" class=" ml-25 ">
 
 
                                             </div>
-                                            <div id="detail2">
+                                            <div id="detail2" class=" ml-25 ">
 
 
                                             </div>
-                                            <div id="detail3">
+                                            <div id="detail4" class=" ml-25 "></div>
+
+                                            <div id="detail3" class=" ml-25 ">
 
 
                                             </div>
@@ -178,9 +193,12 @@
                                             Previous</button> --}}
 
                                         <a href="{{ route('multiforms.create-step-one') }}"
-                                            class="btn btn-danger float-left">&lt;የቀድሞ</a>
+                                            class="btn color-wrap text-white bg-red-dark-4 float-left"><i
+                                                class="fa fa-angle-left"></i> የቀድሞ</a>
 
-                                        <button type="submit" class="next btn btn-primary float-right">ቀጣይ &gt;</button>
+                                        <button type="submit"
+                                            class="next btn text-white color-wrap bg-blue-dark-3 float-right">ቀጣይ <i
+                                                class="fa fa-angle-right"></i></button>
                                         {{-- <button type="submit" class="btn btn-success  float-right">Submit</button> --}}
                                     </div>
                                 </form>
@@ -239,7 +257,9 @@
                 $(document).on('change', '#position_id', function() {
                     var selected = $(this).val();
                     var a = $(this).parent();
+                    var di = " ";
                     var div = " ";
+                    div21 = " ";
                     var div2 = " ";
                     var div3 = " ";
                     // console.log(selected);
@@ -253,8 +273,11 @@
 
                         success: function(data) {
 
+                            di += " <b>ስራዉ የሚፈልገው ዝቅተኛ መስፈርት </b>  "
+                            $('#detailsd').html(" ");
+                            $('#detailsd').append(di);
 
-                            div += "<b> የስራ ልምድ (በ አመት):</b> " + data.experience
+                            div += " <b> የስራ ልምድ (በ አመት):</b> " + data.experience
                             $('#details').html(" ");
                             $('#details').append(div);
 
@@ -262,6 +285,10 @@
 
                             $('#details2').html(" ");
                             $('#details2').append(div2);
+                            div21 += "<b> የትምህርት ዝግጅት:</b> " + data.education_type
+
+                            $('#details4').html(" ");
+                            $('#details4').append(div21);
                             div3 += "<b> ደረጃ:</b> " + data.level
 
                             $('#details3').html(" ");
@@ -317,7 +344,9 @@
                 $(document).on('change', '#choice2_id', function() {
                     var selected = $(this).val();
                     var a = $(this).parent();
+                    var di = " ";
                     var div = " ";
+                    var div21 = " ";
                     var div2 = " ";
                     var div3 = " ";
                     // console.log(selected);
@@ -331,6 +360,9 @@
 
                         success: function(data) {
 
+                            di += " <b>ስራዉ የሚፈልገው ዝቅተኛ መስፈርት </b>  "
+                            $('#detaild').html(" ");
+                            $('#detaild').append(di);
 
                             div += "<b> የስራ ልምድ(በ አመት):</b> " + data.experience
                             $('#detail').html(" ");
@@ -340,6 +372,10 @@
 
                             $('#detail2').html(" ");
                             $('#detail2').append(div2);
+                            div21 += "<b> የትምህርት ዝግጅት:</b> " + data.education_type
+
+                            $('#detail4').html(" ");
+                            $('#detail4').append(div21);
                             div3 += "<b> ደረጃ:</b> " + data.level
 
                             $('#detail3').html(" ");
