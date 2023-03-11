@@ -15,7 +15,7 @@ use App\Models\Position;
 use App\Models\experience;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
-use App\Models\Educationtype;
+use App\Models\EducationType;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -64,7 +64,7 @@ class FormController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->ajax());
+       
 
         if ($request->ajax()) {
             $input = $request->all();
