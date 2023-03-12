@@ -34,7 +34,7 @@
                                             <th>ለውጤት ተኮር ምዘና</th>
 
                                             <th>ለፈተና ውጤት</th>
-                                           
+
                                         @endrole
 
 
@@ -42,7 +42,7 @@
                                         @role('president')
                                             <th>የሚወዳደሩበት የስራ መደብ</th>
                                             <th>የ ትምህርት ደረጃ</th>
-                                            <th>የ ትምህርት አይነት</th>
+                                            <th>የ ትምህርት ዝግጅት</th>
                                         @endrole
                                         <th>አጠቃላይ ውጤት(65%)</th>
                                         @role('president')

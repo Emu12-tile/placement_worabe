@@ -64,7 +64,7 @@
                                         <td>{{ $form->education_type->education_type }}</td>
 
                                         @role('hr')
-                                            <td> <button><a class="btn " type="submit" id="btn-evaluate"
+                                            <td> <button class="btn btn-dark btn-rounded text-white btn-xs"><a class="btn " type="submit" id="btn-evaluate"
                                                         href="{{ route('addHr', $form->id) }}"> evaluate</a></button>
                                             </td>
                                         @endrole

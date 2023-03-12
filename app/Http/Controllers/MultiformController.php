@@ -164,7 +164,7 @@ class MultiformController extends Controller
         $form = $request->session()->get('form');
 
 
-        return view('multiforms.create-step-three', compact('level', 'form'));
+        return view('multiforms.create-step-three', compact( 'form'));
     }
     public function postCreateStepThree(Request $request)
     {

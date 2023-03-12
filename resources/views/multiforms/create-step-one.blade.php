@@ -92,7 +92,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                                 </div>
-                                                <input type="number" name="phone" id="phone"
+                                                <input type="tel" name="phone" id="phone"
                                                     class="form-control @error('phone') is-invalid @enderror"
                                                     placeholder="09..."
                                                     value="{{ $form->phone ?? '' }}{{ old('phone') }}">
