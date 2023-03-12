@@ -90,6 +90,13 @@
                                                                 evaluate
                                                             </a>
                                                         @endif
+                                                        @if ($hr->status_president == 1)
+                                                            <a class="btn btn-red"
+                                                                href="{{ route('secondhr.edit', $hr->id) }}">
+                                                                Edit
+                                                            </a>
+                                                        @endif
+
                                                     </td>
                                                 @endrole
 

@@ -325,8 +325,9 @@
 
                                                         <th>ሙሉ ስም</th>
 
-                                                        <th>የትምህርት ደረጃ</th>
-                                                        <th>የ ስራ መደብ</th>
+                                                        <th> የ ተወዳዳሪዉ የትምህርት ደረጃ</th>
+                                                        <th>የሚወዳደሩበት የስራ መደብ</th>
+                                                        <th>የቅርብ ጊዜ የስራ  አፈጻፀም አማካይ ውጤት </th>
 
 
 
@@ -339,7 +340,8 @@
                                                         <td>{{ $hr->form->full_name }}
                                                         </td>
                                                         <td>{{ $hr->form->edu_level->education_level }}</td>
-                                                        <td>{{ $hr->form->jobcat2->position }}</td>
+                                                        <td>{{ $hr->form->choice2->position }}</td>
+                                                        <td>{{ $hr->form->resultOfrecentPerform }}</td>
 
 
 
