@@ -51,7 +51,7 @@ class MultiformController extends Controller
                 'lastName' => 'required',
                 'sex' => 'required',
                 'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:users'],
-                'phone' => 'required',
+                'phone' => 'required|numeric|digits:10',
             ]
         );
 
@@ -164,7 +164,7 @@ class MultiformController extends Controller
         $form = $request->session()->get('form');
 
 
-        return view('multiforms.create-step-three', compact( 'form'));
+        return view('multiforms.create-step-three', compact('form'));
     }
     public function postCreateStepThree(Request $request)
     {
@@ -255,7 +255,7 @@ class MultiformController extends Controller
         $request->session()->forget('form');
 
         // return redirect('/export_pdf/' . $form->id);
-        return redirect('/submitted/'.$form->id);
+        return redirect('/submitted/' . $form->id);
     }
 
 

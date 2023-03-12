@@ -20,38 +20,38 @@
 
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <label for="firstName">የመጀመሪያ ስም</label>
+                                            <label for="firstName">የመጀመሪያ ስም *</label>
                                             <input class="form-control @error('firstName') is-invalid @enderror"
                                                 type="text" placeholder="የመጀመሪያ ስም"
                                                 value="{{ $form->firstName ?? '' }}{{ old('firstName') }}" id="firstName"
                                                 name="firstName">
                                             @error('firstName')
                                                 <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>የመጀመሪያ ስም ያስፈልጋል </strong>
                                                 </span>
                                             @enderror
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label for="middleName">የ አባት ስም</label>
+                                            <label for="middleName">የ አባት ስም *</label>
                                             <input class="form-control @error('middleName') is-invalid @enderror"
                                                 id="middleName" placeholder="የ አባት ስም"
                                                 value="{{ $form->middleName ?? '' }}{{ old('middleName') }}" type="text"
                                                 name="middleName">
                                             @error('middleName')
                                                 <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>የ አባት ስም ያስፈልጋል</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label for="lastName">የ አያት ስም</label>
+                                            <label for="lastName">የ አያት ስም *</label>
                                             <input class="form-control @error('lastName') is-invalid @enderror"
                                                 id="lastName" placeholder="የ አያት ስም"
                                                 value="{{ $form->lastName ?? '' }}{{ old('lastName') }}" type="text"
                                                 name="lastName">
                                             @error('lastName')
                                                 <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong>የ አያት ስም ያስፈልጋል</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -68,7 +68,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ብቻ ይጠቀሙ )</label>
+                                            <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ብቻ ይጠቀሙ
+                                                )</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
@@ -80,14 +81,14 @@
                                                     value="{{ $form->email ?? '' }}{{ old('email') }}">
                                                 @error('email')
                                                     <span class=" error invalid-feedback">
-                                                        <strong>{{ $message }}</strong>
+                                                        <strong>የአ.አ.ሳ.ቴን ኢሜይል ይጠቀሙ </strong>
                                                     </span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label class="control-label mb-10">ስልክ
-                                                ቁጥር</label>
+                                                ቁጥር *</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -98,7 +99,8 @@
                                                     value="{{ $form->phone ?? '' }}{{ old('phone') }}">
                                                 @error('phone')
                                                     <span class=" error invalid-feedback">
-                                                        <strong>{{ $message }}</strong>
+                                                        <strong>ትክክለኛዉን ስልክ
+                                                            ቁጥር ያስገቡ</strong>
                                                     </span>
                                                 @enderror
                                             </div>
