@@ -12,7 +12,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('secondchoice.secondchoice') }}"  class="btn btn-dark mr-25"> back </a>
+                <a href="{{ route('secondchoice.secondchoice') }}" class="btn btn-dark mr-25"> back </a>
             </div>
             <h5 class="hk-sec-title">Evaluation </h5>
 
@@ -55,7 +55,7 @@
                                     $j = 0;
                                     ?>
                                     @foreach ($hrs as $i => $hr)
-                                        @if ($hr->form->position->position_type_id == 1)
+                                        @if ($hr->form->choice2->position_type_id == 1)
                                             <tr>
                                                 <td>{{ ++$j }}</td>
                                                 <td>{{ $hr->form->full_name }}
