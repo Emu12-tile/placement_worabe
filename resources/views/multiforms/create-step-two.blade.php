@@ -70,7 +70,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <label for="fee">ደምወዝ</label>
+                                            <label for="fee">ደምወዝ (ETB)</label>
                                             <input class="form-control @error('fee') is-invalid @enderror" id="fee"
                                                 placeholder="ደምወዝ" value="{{ $form->fee ?? '' }}" type="number"
                                                 name="fee">

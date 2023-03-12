@@ -57,7 +57,7 @@
                                         </div>
 
                                         <div class="col-md-6 form-group">
-                                            <label for="sex">ጾታ</label>
+                                            <label for="sex">ጾታ *</label>
                                             <select
                                                 class="form-control custom-select "value="{{ $form->sex ?? '' }}{{ old('sex') }}"
                                                 id="sex" name="sex">
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ብቻ ይጠቀሙ
-                                                )</label>
+                                                ) *</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="icon-envelope-open"></i></span>
@@ -114,7 +114,7 @@
 
                                     <div class="form-navigation mt-3">
 
-                                        <button type="submit" class="next btn btn-primary float-right">ቀጣይ <i
+                                        <button type="submit" class="next btn bg-blue-dark-3 text-white float-right">ቀጣይ <i
                                                 class="fa fa-angle-right"></i> </button>
 
                                     </div>

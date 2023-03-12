@@ -53,11 +53,7 @@ Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name(
 Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
 Route::get('/experience', [ExperienceController::class, 'create']);
 Route::post('/experience', [ExperienceController::class, 'store']);
-// Route::get('')
 
-// Route::post('/hr', [FormController::class, 'store']);
-// Route::get('/home', function () {
-//     return view('home');
 Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 Route::middleware('auth')->group(function () {
@@ -68,7 +64,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware([
     'auth:sanctum',
     'verified',
-    'role:admin'
+    'role:admin',
 ])->group(function () {
     Route::get('/user', [RegisteredUserController::class, 'index'])->name('index');
     Route::post('/user/change_status', [RegisteredUserController::class, 'changeStatus'])->name("change_status");
@@ -77,6 +73,7 @@ Route::middleware([
     Route::get('edit-user/{id}', [RegisteredUserController::class, 'edit']);
     Route::put('update-user/{id}', [RegisteredUserController::class, 'update']);
     Route::get('delete-user/{id}', [RegisteredUserController::class, 'destroy']);
+
 
 
 
@@ -96,53 +93,64 @@ Route::middleware([
     Route::resource('/jobcategory', JobCategoryController::class);
     Route::resource('/jobcat2', JobCat2Controller::class);
 });
-// $emu = (DB::table('positions')->where('position_type_id', 1)->first());
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'role:hr|admin|president',
 
-// if ($emu->position_type_id == 1) {
+])->group(
+    function () {
+        Route::resource('/hr', FormController::class);
+        Route::get('/secondchoice', [SecondhrController::class, 'secondchoice'])->name('secondchoice.secondchoice');
+        Route::resource('/secondhr', SecondhrController::class);
+    }
+);
+
 Route::middleware([
     'auth:sanctum',
     'verified',
     'role:hr|president',
-    // 'role:hr'
+
 ])->group(
     function () {
         // if (DB::table('positions')->where('position_type_id', 1)->first()) {
-
+        Route::resource('/list', AdminController::class);
+        // Route::resource('/hr', FormController::class);
         Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
         Route::resource('/resource', ResourceController::class);
         Route::get('/lowresource', [ResourceController::class, 'index2'])->name('lowresource.lowresource');
 
         Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
 
-        //for secon choice
-        Route::resource('/secondhr', SecondhrController::class);
+        // Route::resource('/secondhr', SecondhrController::class);
         Route::get('/secondhr/add/{id}', [SecondhrController::class, 'createhr1'])->name('addsecond');
         Route::post('/secondhr/add/{id}', [SecondhrController::class, 'storeRestore1'])->name('addHrPost1');
-        Route::get('/secondchoice', [SecondhrController::class, 'secondchoice'])->name('secondchoice.secondchoice');
+
         Route::get('/secondlow', [SecondhrController::class, 'index2'])->name('secondchoice.lowresource');
     }
-    //  elseif ($emu->position_type_id == 2) {
-
-    //
-    //     }
 
 );
 
-Route::resource('/list', AdminController::class);
-Route::resource('/hr', FormController::class);
-Route::get("search", [FormController::class, 'search']);
-Route::get('/table', [FormController::class, 'table']);
-// Route::get('/hr', [MultiformController::class, 'index']);
-//     }
-// );
+
+
+// Route::get("search", [FormController::class, 'search']);
+// Route::get('/table', [FormController::class, 'table']);
+
 Route::get('/export_pdf/{id}', [MultiformController::class, 'export_pdf'])->name('export_pdf');
 Route::get('/submitted/{id}', [MultiformController::class, 'submit'])->name('submit');
 
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'role:president',
 
-Route::get('/evaluation', [PresidentialController::class, 'index'])->name('presidential.index');
-Route::get('/allresult', [PresidentialController::class, 'all'])->name('presidential.bothresult');
-Route::get('/choice2evaluation', [PresidentialController::class, 'choice2'])->name('presidential.choice2evaluation');
-
+])->group(
+    function () {
+        Route::get('/evaluation', [PresidentialController::class, 'index'])->name('presidential.index');
+        Route::get('/allresult', [PresidentialController::class, 'all'])->name('presidential.bothresult');
+        Route::get('/choice2evaluation', [PresidentialController::class, 'choice2'])->name('presidential.choice2evaluation');
+    }
+);
 
 
 

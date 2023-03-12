@@ -79,7 +79,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {!! $forms->links() !!}
+                            {{-- {!! $forms->links() !!} --}}
 
                         </div>
                     </div>

@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <p>Developed by<a href="#" class="text-dark" target="_blank">Yonas T.</a> © 2023</p>
+                <p>Developed by<a href="#" class="text-dark" target="_blank">Yonas T. ,Eyob B. & Emebet T.</a> © 2023</p>
             </div>
             {{-- <div class="col-md-6 col-sm-12">
                 <p class="d-inline-block">Follow us</p>

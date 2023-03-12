@@ -22,7 +22,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን</label>
+                                            <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን(በኢትዮጵያ አቆጣጠር)</label>
                                             <input type="date"
                                                 value="{{ $form->UniversityHiringEra ?? '' }}{{ old('UniversityHiringEra') }}"
                                                 class="form-control @error('UniversityHiringEra') is-invalid @enderror"

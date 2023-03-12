@@ -51,6 +51,14 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('secondchoice.secondchoice') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የተወዳዳሪዎች 2ኛ ምርጫ
+                                </span>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
 
@@ -178,7 +186,7 @@
 
                         <li class="nav-item active">
 
-                            {{-- <span class="nav-link-text"> ምርጫ 1</span> --}}
+                            <span class="nav-link-text"> ምርጫ 1</span>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('hr.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -217,7 +225,7 @@
 
 
 
-                        {{-- <li class="nav-item active">
+                        <li class="nav-item active">
 
                             <span class="nav-link-text"> ምርጫ 2</span>
 
@@ -252,7 +260,7 @@
                             </a>
                         </li>
 
-                        </li> --}}
+                        </li>
 
 
 
@@ -280,7 +288,7 @@
                     @role('president')
                         <li class="nav-item active">
 
-                            {{-- <span class="nav-link-text"> ምርጫ 1</span> --}}
+                            <span class="nav-link-text"> ምርጫ 1</span>
 
                         <li class="nav-item">
 
@@ -302,7 +310,7 @@
 
 
                         </li>
-                        {{-- <li class="nav-item active">
+                        <li class="nav-item active">
 
                             <span class="nav-link-text"> ምርጫ 2</span>
                         <li class="nav-item">
@@ -324,7 +332,7 @@
                         </li>
 
 
-                        </li> --}}
+                        </li>
                     @endrole
 
 
@@ -347,8 +355,8 @@
         <div class="nicescroll-bar position-relative">
             <div class="settings-panel-wrap">
                 <div class="settings-panel-head">
-                    <img class="brand-img d-inline-block align-top" src="{{ asset('assets/dist/img/logo-light.png') }}"
-                        alt="brand" />
+                    <img class="brand-img d-inline-block align-top"
+                        src="{{ asset('assets/dist/img/logo-light.png') }}" alt="brand" />
                     <a href="javascript:void(0);" id="settings_panel_close" class="settings-panel-close"><span
                             class="feather-icon"><i data-feather="x"></i></span></a>
                 </div>

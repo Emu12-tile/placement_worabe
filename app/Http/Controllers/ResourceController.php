@@ -60,7 +60,7 @@ class ResourceController extends Controller
         } elseif ($form->position->position_type_id == 2) {
 
 
-            return view('lowresource.lowevaluation', ['id' => $prod_id, 'form' => $form, 'forms' => $forms]);
+            return view('lowresource.lowEvaluation', ['id' => $prod_id, 'form' => $form, 'forms' => $forms]);
         } else {
             return back();
         }

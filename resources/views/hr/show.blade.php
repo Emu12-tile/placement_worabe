@@ -6,10 +6,10 @@
             <div class="col-xl-12">
 
                 <section class="hk-sec-wrapper mt-100">
-                    <div class="pull-right">
+                    {{-- <div class="pull-right">
                         <a class="btn btn-dark" href="{{ route('hr.index') }}"> Back</a>
 
-                    </div>
+                    </div> --}}
                     <h5 class="hk-sec-title">Detail Information </h5>
 
 
@@ -84,14 +84,7 @@
                                             disabled>
                                     </div>
                                 </div>
-                                 <div class="form-group row">
-                                    <label for="level" class="col-sm-2 col-form-label">ደረጃ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->level->level }}"
-                                            name="level"class="form-control font-weight-bold" id="level"
-                                            disabled>
-                                    </div>
-                                </div>
+
                                  <div class="form-group row">
                                     <label for="fee" class="col-sm-2 col-form-label">ደምወዝ</label>
                                     <div class="col-sm-10">
@@ -118,19 +111,19 @@
                                             disabled>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="level" class="col-sm-2 col-form-label">ደረጃ</label>
                                     <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->level->level }}"
+                                        <input type="text" value="{{ $form->position->level->level }}"
                                             name="level"class="form-control font-weight-bold" id="level"
                                             disabled>
                                     </div>
-                                </div>
+                                </div> --}}
                                  <h6 class="text-secondary text-left mt-3 mb-4"> ምርጫ 2</h6>
                                   <div class="form-group row">
                                     <label for="inputname" class="col-sm-2 col-form-label">የስራ ክፍሉ</label>
                                     <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->job_category->job_category }}"
+                                        <input type="text" value="{{ $form->jobcat2->job_category }}"
                                             name="job_category"class="form-control font-weight-bold" id="job_category"
                                             disabled>
                                     </div>
@@ -138,19 +131,12 @@
                                  <div class="form-group row">
                                     <label for="position" class="col-sm-2 col-form-label">የስራ መደብ</label>
                                     <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->position->position }}"
+                                        <input type="text" value="{{ $form->choice2->position }}"
                                             name="position"class="form-control font-weight-bold" id="position"
                                             disabled>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="level" class="col-sm-2 col-form-label">ደረጃ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->level->level }}"
-                                            name="level"class="form-control font-weight-bold" id="level"
-                                            disabled>
-                                    </div>
-                                </div>
+
 
 
                                 {{-- <div class="form-group row">

@@ -31,9 +31,9 @@
 
                                     <th>የሚወዳደሩበት የስራ መደብ</th>
 
-                                    <th>የ ትምህርት ደረጃ</th>
+                                    <th> አሁን ያሉበት የትምህርት ደረጃ</th>
 
-                                    <th>የ ትምህርት አይነት</th>
+                                    <th>አሁን ያሉበት የትምህርት ዝግጅት</th>
                                     @role('hr')
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
@@ -64,8 +64,9 @@
                                         <td>{{ $form->education_type->education_type }}</td>
 
                                         @role('hr')
-                                            <td> <button class="btn btn-dark btn-rounded text-white btn-xs"><a class="btn " type="submit" id="btn-evaluate"
-                                                        href="{{ route('addHr', $form->id) }}"> evaluate</a></button>
+                                            <td> <a class="btn  btn-dark "
+                                                        type="submit" id="btn-evaluate" href="{{ route('addHr', $form->id) }}">
+                                                        evaluate</a>
                                             </td>
                                         @endrole
                                         @role('admin')

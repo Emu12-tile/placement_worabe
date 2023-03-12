@@ -35,8 +35,10 @@
 
                                     <th>የ ትምህርት አይነት</th>
                                     @role('hr')
-                                        <th>action</th>
                                         <th>የሰው ኃይል ግምገማ</th>
+                                    @endrole
+                                    @role('admin')
+                                        <th>action</th>
                                     @endrole
 
 
@@ -63,7 +65,7 @@
                                         <td>{{ $form->edu_level->education_level }}</td>
                                         <td>{{ $form->education_type->education_type }}</td>
 
-                                        @role('hr')
+                                        @role('admin')
                                             <td>
                                                 <form action="{{ route('secondhr.destroy', $form->id) }}" method="POST">
 
@@ -76,8 +78,10 @@
                                                     </button>
                                                 </form>
                                             </td>
-                                            <td> <button><a class="btn " type="submit" id="btn-evaluate"
-                                                        href="{{ route('addsecond', $form->id) }}"> evaluate</a></button>
+                                        @endrole
+                                        @role('hr')
+                                            <td><a class="btn  btn-dark " type="submit" id="btn-evaluate"
+                                                        href="{{ route('addsecond', $form->id) }}"> evaluate</a>
                                             </td>
                                         @endrole
 

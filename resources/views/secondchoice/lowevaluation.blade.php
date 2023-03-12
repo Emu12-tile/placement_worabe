@@ -350,11 +350,12 @@
                                                     <tr>
 
                                                         <th>ሙሉ ስም</th>
-
+                                                        <th>የሚወዳደሩበት የስራ መደብ</th>
                                                         {{-- <th>የትምህርት ደረጃ</th> --}}
-                                                        <th>የትምህርት ደረጃ</th>
-                                                        <th>የ ስራ መደብ</th>
-                                                        <th>ለስራ ልምድ </th>
+                                                        <th>የትምህርት ደረጃዎ</th>
+
+                                                        <th>የስራ ልምድዎ </th>
+                                                        {{-- <th>ተጨማሪ መረጃ</th> --}}
 
                                                     </tr>
                                                 </thead>
@@ -364,11 +365,12 @@
 
                                                         <td>{{ $form->full_name }}
                                                         </td>
-                                                        <td>{{ $form->edu_level->education_level }}</td>
-
                                                         <td>
                                                             {{ $form->position->position }}
                                                         </td>
+
+                                                        <td>{{ $form->edu_level->education_level }}</td>
+
 
                                                         <td>
                                                             @foreach ($forms as $fo)
@@ -385,6 +387,14 @@
                                                                 ?>
                                                             @endforeach
                                                         </td>
+                                                        {{-- <td>
+                                                            <form action="" method="POST"><a
+                                                                    href="{{ route('hr.show', $form->id) }}" class="mr-25"
+                                                                    data-toggle="tooltip"
+                                                                    data-original-title="show">show</a>
+                                                        </td> --}}
+
+
 
 
 
