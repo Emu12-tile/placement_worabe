@@ -4,7 +4,7 @@
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
                 <div class="pull-right">
-                    <a class="btn btn-dark" href="{{ route('hr.index') }}"> Back</a>
+                    <a class="btn btn-dark" href="{{ route('secondhr.index') }}"> Back</a>
                 </div>
                 <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች
                 </h5>
@@ -366,7 +366,7 @@
                                                         <td>{{ $form->full_name }}
                                                         </td>
                                                         <td>
-                                                            {{ $form->position->position }}
+                                                            {{ $form->choice2->position }}
                                                         </td>
 
                                                         <td>{{ $form->edu_level->education_level }}</td>
@@ -375,15 +375,15 @@
                                                         <td>
                                                             @foreach ($forms as $fo)
                                                                 <?php
-                                                                
+
                                                                 $fdate = Carbon::parse($fo->startingDate)->year;
-                                                                
+
                                                                 $tdate = Carbon::parse($fo->endingDate)->year;
-                                                                
+
                                                                 $years = $tdate - $fdate;
-                                                                
+
                                                                 echo $years, '(', $fo->positionyouworked, '), ';
-                                                                
+
                                                                 ?>
                                                             @endforeach
                                                         </td>
