@@ -83,7 +83,7 @@
                             <a class="nav-link" href="{{ route('educationtype.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    የትምህርት ዓይነት
+                                    የትምህርት ዝግጅት
                                 </span>
                             </a>
                         </li>
@@ -200,7 +200,7 @@
                             <a class="nav-link" href="{{ route('resource.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    የሰው ሀብት ውጤት
+                                    ያወዳዳሪ ኮሚቴ ውጤት
                                 </span>
                             </a>
                         </li>
@@ -243,7 +243,7 @@
                             <a class="nav-link" href="{{ route('secondhr.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    የሰው ሀብት ውጤት
+                                    ያወዳዳሪ ኮሚቴ ውጤት
                                 </span>
                             </a>
                         </li>
