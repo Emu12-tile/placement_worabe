@@ -22,7 +22,8 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን(በኢትዮጵያ አቆጣጠር)</label>
+                                            <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
+                                                አቆጣጠር(ወር/ቀን/ዓመት)</label>
                                             <input type="date"
                                                 value="{{ $form->UniversityHiringEra ?? '' }}{{ old('UniversityHiringEra') }}"
                                                 class="form-control @error('UniversityHiringEra') is-invalid @enderror"
@@ -91,7 +92,7 @@
                                         <div class="col-md-6 form-group">
                                             <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
                                                 አፈጻፀም አማካይ
-                                                ውጤት(ክ 100 በቁጥር)</label>
+                                                ውጤት(ከ100 በቁጥር)</label>
                                             <input
                                                 class="form-control mt-25
                                                 @error('resultOfrecentPerform') is-invalid @enderror"
@@ -142,7 +143,7 @@
 
                                                 <div class="col-md-3">
 
-                                                    <label for="startingDate">የጀመሩበት ዐመት</label>
+                                                    <label for="startingDate">የጀመሩበት ዐመት(ወር/ቀን/ዓመት)</label>
                                                     <input type="date" name="addMoreInputFields[0][startingDate]"
                                                         value="{{ $form->startingDate ?? '' }}{{ old('startingDate') }}"
                                                         class="form-control  @error('startingDate') is-invalid @enderror"
@@ -155,7 +156,7 @@
 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="endingDate">ያበቃበት ቀን </label>
+                                                    <label for="endingDate">ያበቃበት ቀን(ወር/ቀን/ዓመት) </label>
                                                     <input type="date" min="startingDate"
                                                         name="addMoreInputFields[0][endingDate]"
                                                         value="{{ $form->endingDate ?? '' }}{{ old('endingDate') }}"

@@ -18,7 +18,7 @@
                                 <h1 class="text-center text-wrap font-30 font-weight-600">ማመልከችዎ በተሳካ ሁኔታ ተልኳል።</h1>
                                 <h1 class="text-center text-wrap font-24 font-weight-600">ማመልከቻዎን download በማድረግ ፕሪንት አድርገዉ
                                     በመፈረም ወደ ሰው ኅብት ያስገቡ። </h1>
-                                <a href="{{ route('export_pdf', $form->id) }}">
+                                <a href="{{ url('export_pdf/' . $form->id) }}">
                                     <button
                                         class="btn  float-right text-white bg-blue-dark-4 btn-wth-icon btn-rounded icon-right  "
                                         style="text-align:center"><span class="btn-text">Download</span><i
