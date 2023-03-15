@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
-                                            አፈጻፀም
+                                            አፈጻፀም አማካይ
                                             ውጤት</label>
                                         <input class="form-control mt-25
                                                 @error('resultOfrecentPerform') is-invalid @enderror" id="resultOfrecentPerform" placeholder=" የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም" value="{{ $form->resultOfrecentPerform ?? '' }}" type="text" name="resultOfrecentPerform">

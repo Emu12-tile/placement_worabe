@@ -13,7 +13,7 @@ class AdminController extends Controller
 
         $forms = Form::paginate(5);
 
-     
+
         return view('hr.table', compact('forms'));
     }
 }

@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Form extends Model
 {
     use HasFactory;
@@ -39,7 +41,8 @@ class Form extends Model
         'choice2_id',
         'jobcat2_id',
         'secondhr_id',
-        'level'
+        'level',
+        'tag_slug',
 
 
     ];

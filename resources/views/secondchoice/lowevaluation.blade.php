@@ -4,9 +4,9 @@
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
                 <div class="pull-right">
-                    <a class="btn btn-dark" href="{{ route('secondhr.index') }}"> Back</a>
+                    <a class="btn btn-dark" href="{{ route('secondchoice.secondchoice') }}"> Back</a>
                 </div>
-                <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች
+                <h5 class="hk-sec-title">የመመዘኛ መስፈርቶች ከቡድን መሪ በታች
                 </h5>
                 {{-- <p class="mb-40">A tiny editable jQuery Bootstrap spreadsheet. Just start typing to edit, or move around
                     with arrow keys or mouse clicks!</p> --}}
@@ -355,6 +355,7 @@
                                                         <th>የትምህርት ደረጃዎ</th>
 
                                                         <th>የስራ ልምድዎ </th>
+                                                        <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
                                                         {{-- <th>ተጨማሪ መረጃ</th> --}}
 
                                                     </tr>
@@ -387,6 +388,7 @@
                                                                 ?>
                                                             @endforeach
                                                         </td>
+                                                        <td>{{ round($form->resultOfrecentPerform * 0.3, 2) }}</td>
                                                         {{-- <td>
                                                             <form action="" method="POST"><a
                                                                     href="{{ route('hr.show', $form->id) }}" class="mr-25"
@@ -438,7 +440,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
-                                        <input type="number" value="{{ old('resultbased') }}"
+                                        <input type="float" value="{{ old('resultbased') }}"
                                             class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
                                             placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
                                             required>

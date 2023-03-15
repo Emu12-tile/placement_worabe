@@ -14,9 +14,10 @@ use App\Models\EduLevel;
 use App\Models\Position;
 use App\Models\experience;
 use App\Models\JobCategory;
-use App\Models\EducationType;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+use App\Models\EducationType;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -50,7 +51,7 @@ class MultiformController extends Controller
                 'middleName' => 'required',
                 'lastName' => 'required',
                 'sex' => 'required',
-                'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:' . Form::class],
                 'phone' => 'required|numeric|digits:10',
             ]
         );
@@ -182,7 +183,7 @@ class MultiformController extends Controller
                 'servicPeriodAtAnotherPlace' => 'required',
                 'serviceBeforeDiplo' => 'required',
                 'serviceAfterDiplo' => 'required',
-                'resultOfrecentPerform' => 'required',
+                'resultOfrecentPerform' => 'required', 'regex:/^(?:d*.d{1,2}|d+)$/', 'min:1', 'max:100',
                 'DisciplineFlaw' => 'required',
                 'MoreRoles' => 'required',
 
@@ -198,6 +199,8 @@ class MultiformController extends Controller
                 'lastName' => $data->lastName,
                 'email' => $data->email,
                 'phone' => $data->phone,
+                // slug
+                'tag_slug' => Str::slug($data->lastName, '-' . Str::random()),
 
                 'education_type_id' => $data->education_type_id,
                 'level_id' => $data->level_id,
@@ -221,7 +224,7 @@ class MultiformController extends Controller
         $request->session()->put('form', $form);
         $form->save();
 
-
+        // dd($form);
 
 
 
@@ -272,7 +275,8 @@ class MultiformController extends Controller
     public function submit($id)
     {
         $form = Form::find($id);
-        return view('homepage.submit', compact('form'));
+        // dd($form);
+        return view('homepage.submit', ['form' => $form]);
     }
     public function export_pdf($id)
     {
@@ -280,7 +284,93 @@ class MultiformController extends Controller
         $form = Form::find($id);
 
         $forms = experience::where('form_id', $form->id)->get();
-
+        //  dd($forms);
         return view('homepage.export', compact('form', 'forms'));
+    }
+    public function edit1($id)
+    {
+        $level = Level::all();
+        $edu_level = EduLevel::all();
+        $job_category = JobCategory::all();
+        $position = Position::all();
+        $choice2 = choice2::all();
+
+        $jobcat2 = jobcat2::all();
+        // $edutype = EducationType::all();
+        $edutype = EducationType::all();
+        $level2 = Level::all();
+
+        $position2 = Position::all();
+        $form = Form::find($id);
+
+        $forms = experience::where('form_id', $form->id)->get();
+
+        $form = Form::find($id);
+
+        $forms = experience::where('form_id', $form->id)->get();
+        return view('multiforms.edit', compact('form', 'forms', 'level', 'level2', 'position', 'position2', 'jobcat2', 'edu_level', 'job_category', 'edutype', 'form', 'choice2'));
+    }
+    public function update1(Request $request, $id)
+    {
+        $form = Form::find($id);
+
+
+        $form->firstName = $request->Input('firstName');
+        $form->middleName = $request->Input('middleName');
+        $form->lastName = $request->Input('lastName');
+        $form->email = $request->Input('email');
+        $form->sex = $request->Input('sex');
+        $request->session()->put('form', $form);
+        // $form->update();
+        // $listing->profile_image=$request->Input('profile_image');
+        // return view('listing.create');
+        return redirect('edit-steptwo/', $id);
+    }
+    public function edit2($id)
+    {
+        $level = Level::all();
+        $edu_level = EduLevel::all();
+        $job_category = JobCategory::all();
+        $position = Position::all();
+        $choice2 = choice2::all();
+
+        $jobcat2 = jobcat2::all();
+        // $edutype = EducationType::all();
+        $edutype = EducationType::all();
+        $level2 = Level::all();
+
+        $position2 = Position::all();
+        $form = Form::find($id);
+
+        $forms = experience::where('form_id', $form->id)->get();
+        return view('multiforms.edit2', compact('form', 'forms', 'level', 'level2', 'position', 'position2', 'jobcat2', 'edu_level', 'job_category', 'edutype', 'form', 'choice2'));
+    }
+    // public function edit3($id)
+    // {
+
+    //     $form = Form::find($id);
+
+    //     $forms = experience::where('form_id', $form->id)->get();
+    //     return view('multiforms.edit', compact('form', 'forms'));
+    // }
+    public function update2(Request $request, $id)
+    {
+        $form = Form::find($id);
+
+
+        $form->fee = $request->Input('fee');
+        $form->position_id = $request->Input('position_id');
+        $form->job_category_id = $request->Input('job_category_id');
+        $form->jobcat2_id = $request->Input('jobcat2_id');
+        $form->level_id = $request->Input('level_id');
+        $form->edu_level_id = $request->Input('edu_level_id');
+        $form->education_type_id = $request->Input('education_type_id');
+        $form->positionofnow = $request->Input('positionofnow');
+        $form->choice2_id = $request->Input('choice2_id');
+
+        $form->update();
+        // $listing->profile_image=$request->Input('profile_image');
+        // return view('listing.create');
+        return redirect()->route('edit-steptwo');
     }
 }

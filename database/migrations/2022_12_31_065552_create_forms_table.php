@@ -29,11 +29,15 @@ return new class extends Migration
             $table->string('servicPeriodAtAnotherPlace')->nullable();
             $table->string('serviceBeforeDiplo')->nullable();
             $table->string('serviceAfterDiplo')->nullable();
-            $table->string('resultOfrecentPerform')->nullable();
+            $table->decimal('resultOfrecentPerform')->nullable();
             $table->string('DisciplineFlaw')->nullable();
             $table->string('MoreRoles')->nullable();
             $table->string('hrs')->nullable();
             $table->string('secondhrs')->nullable();
+
+            $table->boolean('isEditable')->default(false);
+            $table->string('tag_slug')->unique();
+            // $table->softDeletes();
 
             $table->foreignId('jobcat2_id')->nullable()->references('id')->on('jobcat2s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('choice2_id')->nullable()->references('id')->on('choice2s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();

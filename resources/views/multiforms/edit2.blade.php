@@ -14,9 +14,9 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                <form action="{{ route('multiforms.create.step.two.post') }}" method="POST">
+                                <form action="{{ url('update-steptwo',$form->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-
+                                    @method('PUT')
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="education level">የትምህርት ዝግጅት</label>
@@ -27,7 +27,7 @@
                                                 name="education_type_id">
                                                 @foreach ($edutype as $col)
                                                     <option value="{{ $col->id }}"
-                                                         {{ $col->id == $form->education_type_id ? 'selected' : ''  }}>
+                                                        {{ old('education_type_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->education_type }}</option>
                                                 @endforeach
                                             </select>
@@ -39,7 +39,7 @@
                                                 name="edu_level_id">
                                                 @foreach ($edu_level as $col)
                                                     <option value="{{ $col->id }}"
-                                                        {{$col->id == $form->edu_level_id ? 'selected' : ''  }}>
+                                                        {{ old('edu_level_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->education_level }}</option>
                                                 @endforeach
                                             </select>
@@ -64,7 +64,7 @@
                                                 value="{{ $form->level_id ?? '' }}" name="level_id">
                                                 @foreach ($level as $col)
                                                     <option value="{{ $col->id }}"
-                                                          {{ $col->id == $form->level_id ? 'selected' : '' }}>
+                                                        {{ old('level_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->level }}</option>
                                                 @endforeach
                                             </select>
@@ -100,7 +100,7 @@
                                                 <option value="">Chose </option>
                                                 @foreach ($job_category as $col)
                                                     <option value="{{ $col->id }}"
-                                                        {{$col->id == $form->job_category_id ? 'selected' : '' }}>
+                                                        {{ old('job_category_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->job_category }}</option>
                                                 @endforeach
                                             </select>
@@ -150,7 +150,7 @@
                                                 <option value="">Chose </option>
                                                 @foreach ($jobcat2 as $col)
                                                     <option value="{{ $col->id }}"
-                                                        {{  $col->id == $form->jobcat2_id ? 'selected' : '' }}>
+                                                        {{ old('jobcat2_id') == $col->id ? 'selected' : '' }}>
                                                         {{ $col->job_category }}</option>
                                                 @endforeach
                                             </select>
@@ -189,6 +189,8 @@
                                     </div>
 
                                     <div class="form-navigation mt-3">
+                                        {{-- <button type="button" class="previous btn btn-primary  float-left">&lt;
+                                            Previous</button> --}}
 
                                         <a href="{{ route('multiforms.create-step-one') }}"
                                             class="btn color-wrap text-white bg-red-dark-4 float-left"><i
@@ -219,8 +221,8 @@
                 $(document).on('change', '.dynamic', function() {
                     // console.log("hmm its change");
 
-                    // var cat_id = $(this).val();
-                   var cat_id = $(this).val();
+                    var cat_id = $(this).val();
+
 
                     var div = $(this).parent();
 

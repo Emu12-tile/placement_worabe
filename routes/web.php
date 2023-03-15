@@ -51,6 +51,18 @@ Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->nam
 Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
 
 Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
+
+Route::get('edit-stepone/{id}', [MultiformController::class, 'edit1']);
+Route::put('update-stepone/{id}', [MultiformController::class, 'update1']);
+
+Route::get('edit-steptwo/{id}', [MultiformController::class, 'edit2']);
+Route::put('update-steptwoe/{id}', [MultiformController::class, 'update2']);
+
+// Route::get('edit-stepthree/{id}', [MultiformController::class, 'edit3']);
+// Route::put('update-stepthree/{id}', [MultiformController::class, 'update3']);
+
+
+
 Route::get('/experience', [ExperienceController::class, 'create']);
 Route::post('/experience', [ExperienceController::class, 'store']);
 

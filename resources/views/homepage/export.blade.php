@@ -65,15 +65,15 @@
 
     <div id="element-to-print">
         {{-- @foreach ($formList as $i => $form) --}}
-        <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ </h1>
+        <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
         <h3 style="text-align:center">የአስተዳደር ሠራተኞች ፕሮፋይል</h3>
         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }} {{ $form->middleName }} {{ $form->lastName }} </p>
         <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p>
         <p>3/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
-            ደረጃ፦{{ $form->level->level }}  &emsp; ደምወዝ:-{{ $form->fee }}
+            ደረጃ፦{{ $form->level->level }} &emsp; ደምወዝ:-{{ $form->fee }}
         </p>
         <p>4/ የተማሩት የት/ት አይነት:-{{ $form->edu_level->education_level }}</p>
-        <p>5/ በዩኒቨርስቲዉ የቅጥር ዘመን:-{{ $form->UniversityHiringEra }}</p>
+        <p>5/ በዩኒቨርስቲዉ የቅጥር ዘመን:-{{ Carbon::parse($form->UniversityHiringEra)->day }}/{{ Carbon::parse($form->UniversityHiringEra)->month }}/{{ Carbon::parse($form->UniversityHiringEra)->year }}</p>
         <p>6/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
         <p>7/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
         <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
@@ -113,7 +113,13 @@
                         <td>{{ ++$i }}</td>
                         {{-- <td>{{ date('m/d/y', strtotime($form->startingDate)) }}-{{ date('m/d/y', strtotime($form->endingDate)) }} --}}
                         <td>
-                            {{ $fo->startingDate }}-{{ $fo->endingDate }}
+                            {{-- {{ Carbon::createFromFormat( $fo->startingDate)->format('d/m/y') }}-{{ $fo->endingDate }} --}}
+                            {{-- {{   Carbon::createFromFormat('m/d/Y', $fo->startingDate)->format('d-m-Y')}} --}}
+                            {{-- {{ Carbon::createFromFormat('d/m/Y', $fo->startingDate) }} --}}
+                            ከ{{ Carbon::parse($fo->startingDate)->day }}/{{ Carbon::parse($fo->startingDate)->month }}/{{ Carbon::parse($fo->startingDate)->year }}
+                            እስከ
+                            {{ Carbon::parse($fo->endingDate)->day }}/{{ Carbon::parse($fo->endingDate)->month }}/{{ Carbon::parse($fo->endingDate)->year }}
+                        </td>
                         </td>
                         <td>{{ $fo->positionyouworked }}</td>
                         <td>

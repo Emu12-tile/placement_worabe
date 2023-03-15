@@ -4,11 +4,12 @@
     <a class="navbar-brand" href="{{ route('hr.index') }}">
         {{-- <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/aastuimage.jpg') }}"
             style="width:80px; height:80px" alt="brand" /> --}}
-        <img class="brand-img d-inline-block " src="{{asset('assets/dist/img/aastuimage.jpg')}}"  style="width:80px; height:80px" alt="brand" />
+        <img class="brand-img d-inline-block " src="{{ asset('assets/dist/img/aastuimage.jpg') }}"
+            style="width:80px; height:80px" alt="brand" />
         {{-- <nav class="navbar navbar-expand-xl navbar-light  hk-navbar hk-navbar-alt shadow-none"
                     style=" background-color:rgb(17,40,77)"> --}}
 
-        <h5 class="text-gold font-24 font-weight-600 ml-50 "> አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ</h5>
+        <h5 class="text-gold font-24 font-weight-600 ml-50 "> አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h5>
         {{--  ለአመልካቾች ግምገማ --}}
     </a>
     <ul class="navbar-nav hk-navbar-content">
@@ -34,9 +35,9 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                <a class="dropdown-item" href="{{route('profile.edit')}}"><i
+                <a class="dropdown-item" href="{{ route('profile.edit') }}"><i
                         class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
-               
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();

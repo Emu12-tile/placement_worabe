@@ -9,7 +9,7 @@
                     <section class="hk-sec-wrapper mt-100">
 
                         <h3 class="hk-sec-title text-gold text-center color-wrap  "
-                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
 
@@ -62,13 +62,13 @@
                                                 class="form-control custom-select "value="{{ $form->sex ?? '' }}{{ old('sex') }}"
                                                 id="sex" name="sex">
 
-                                                <option value="ሴት ">ሴት</option>
-                                                <option value="ወንድ">ወንድ</option>
+                                                <option value="ሴት " {{old('sex')  == 'ሴት' ? 'selected' : '' }}>ሴት</option>
+                                                <option value="ወንድ"{{ old('sex') == 'ወንድ' ? 'selected' : '' }}>ወንድ</option>
 
                                             </select>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ብቻ ይጠቀሙ
+                                            <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ኢሜይል ብቻ ይጠቀሙ
                                                 ) *</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label class="control-label mb-10">ስልክ
-                                                ቁጥር *</label>
+                                                ቁጥር(09...) *</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>

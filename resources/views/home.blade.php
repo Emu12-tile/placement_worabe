@@ -6,7 +6,7 @@
 @section('content')
     <div class="hk-row">
 
-        
+
 
         @role('admin')
             <div class="col-lg-5 col-sm  ml-25">
@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-5">
                             <div>
-                                <span class="d-block font-20 text-dark font-weight-500"> ከ ደረጃ በታች ተወዳዳሪዎች</span>
+                                <span class="d-block font-20 text-dark font-weight-500"> ከ ቡድን መሪ በታች ተወዳዳሪዎች</span>
                             </div>
                             <div>
                                 <span
@@ -70,7 +70,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-5">
                             <div>
-                                <span class="d-block font-20 text-dark font-weight-500"> ከ ደረጃ በላይ ተወዳዳሪዎች</span>
+                                <span class="d-block font-20 text-dark font-weight-500"> ከ ቡድን መሪ በላይ ተወዳዳሪዎች</span>
                             </div>
                             <div>
                                 <span class="text-success font-34 font-weight-600">

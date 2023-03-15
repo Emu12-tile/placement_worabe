@@ -90,14 +90,14 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
-                                                አፈጻፀም
-                                                ውጤት</label>
+                                                አፈጻፀም አማካይ
+                                                ውጤት(ክ 100 በቁጥር)</label>
                                             <input
                                                 class="form-control mt-25
                                                 @error('resultOfrecentPerform') is-invalid @enderror"
                                                 id="resultOfrecentPerform" placeholder=" የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም"
                                                 value="{{ $form->resultOfrecentPerform ?? '' }}{{ old('resultOfrecentPerform') }}"
-                                                type="text" name="resultOfrecentPerform">
+                                                type="float" name="resultOfrecentPerform">
                                             @error('resultOfrecentPerform')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -132,7 +132,7 @@
 
 
                                     </div>
-                                    <h3 class="text-white text-center mt-3 mb-4 ml-100 mr-100 "
+                                    <h3 class="text-gold text-center mt-3 mb-4  "
                                         style=" background-color:rgb(17,40,77); margin:center">የ ስራ ልምድ</h3>
                                     {{-- <h5 class="text-secondary text-center mt-3 mb-4" id="dynamicAddRemove">የ ስራ ልምድ</h5> --}}
                                     <div class="row">
@@ -200,7 +200,7 @@
                                                 class="fa fa-angle-left"></i> የቀድሞ</a>
 
                                         <button type="submit"
-                                            class="next btn color-wrap text-white bg-green-dark-4 float-right">አስረክብ</a>
+                                            class="next btn color-wrap text-white bg-blue-dark-4 float-right">አስረክብ</a>
                                         </button>
                                         {{-- <button type="submit" class="btn btn-success  float-right">Submit</button> --}}
                                     </div>

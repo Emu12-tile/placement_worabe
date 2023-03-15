@@ -10,7 +10,7 @@
 
 
 
-                <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች
+                <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች ከቡድን መሪ በላይ
                 </h5>
                 {{-- <p class="mb-40">A tiny editable jQuery Bootstrap spreadsheet. Just start typing to edit, or move around
                     with arrow keys or mouse clicks!</p> --}}
@@ -349,6 +349,7 @@
                                                         <th>የትምህርት ደረጃ</th>
                                                         <th>የ ስራ መደብ</th>
                                                         <th>ለስራ ልምድ </th>
+                                                        <th>ውጤት ተኮር(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.1) </th>
 
 
                                                     </tr>
@@ -366,18 +367,19 @@
                                                         <td>
                                                             @foreach ($forms as $fo)
                                                                 <?php
-                                                                
+
                                                                 $fdate = Carbon::parse($fo->startingDate)->year;
-                                                                
+
                                                                 $tdate = Carbon::parse($fo->endingDate)->year;
-                                                                
+
                                                                 $years = $tdate - $fdate;
-                                                                
+
                                                                 echo $years, '(', $fo->positionyouworked, '), ';
-                                                                
+
                                                                 ?>
                                                             @endforeach
                                                         </td>
+                                                        <td>{{ round($form->resultOfrecentPerform * 0.1, 2) }}</td>
 
 
                                                     </tr>
@@ -432,7 +434,7 @@
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
                                         <input class="form-control @error('resultbased') is-invalid @enderror"
                                             id="resultbased" placeholder="ለውጤት ተኮር" value="{{ old('resultbased') }}"
-                                            type="number" name="resultbased" min="1" max="10" required>
+                                            type="float" name="resultbased" min="1" max="10" required>
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>

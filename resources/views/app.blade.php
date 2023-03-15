@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest to legall
                             src="{{ asset('assets/dist/img/aastuimage.jpg') }}" style="width:80px; height:80px"
                             alt="brand" />
                     </a>
-                    <h1 class="text-gold font-24 font-weight-600 ml-50 " style="">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ</h1>
+                    <h1 class="text-gold font-24 font-weight-600 ml-50 " style="">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h1>
 
                     <div class="collapse navbar-collapse ml-auto" id="navbarCollapseAlt">
                         <ul class="navbar-nav ml-auto">
