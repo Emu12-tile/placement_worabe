@@ -43,6 +43,19 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="edu_level" class="col-sm-2 col-form-label">የትምህርት ደረጃ</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control custom-select  mt-15" name="edu_level">
+
+                                            @foreach ($edu_level as $col)
+                                                <option value="{{ $col->education_level }}"
+                                                    {{ $col->education_level == $admin->edu_level ? 'selected' : '' }}>
+                                                    {{ $col->education_level }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label"> የስራ ልምድ </label>
@@ -62,7 +75,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control custom-select  mt-15" name="position_type_id">
 
-                                            @foreach ($level as $col)
+                                            @foreach ($pos as $col)
                                                 <option value="{{ $col->id }}"
                                                     {{ $col->id == $admin->position_type_id ? 'selected' : '' }}>
                                                     {{ $col->position_type }}</option>
@@ -70,15 +83,29 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="edu_level" class="col-sm-2 col-form-label">የትምህርት ደረጃ</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control custom-select  mt-15" name="education_level_id">
 
-                                            @foreach ($edu_level as $col)
-                                                <option value="{{ $col->id }}"
-                                                    {{ $col->id == $admin->education_level_id ? 'selected' : '' }}>
-                                                    {{ $col->education_level }}</option>
+                                <div class="form-group row">
+                                    <label for="education_type" class="col-sm-2 col-form-label">የትምህርት ዝግጅት</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control custom-select  mt-15" name="education_type">
+
+                                            @foreach ($edutype as $col)
+                                                <option value="{{ $col->education_type }}"
+                                                    {{ $col->education_type == $admin->education_type ? 'selected' : '' }}>
+                                                    {{ $col->education_type }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="level" class="col-sm-2 col-form-label">ደረጃ</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control custom-select  mt-15" name="level">
+
+                                            @foreach ($level as $col)
+                                                <option value="{{ $col->level }}"
+                                                    {{ $col->level == $admin->level ? 'selected' : '' }}>
+                                                    {{ $col->level }}</option>
                                             @endforeach
                                         </select>
                                     </div>

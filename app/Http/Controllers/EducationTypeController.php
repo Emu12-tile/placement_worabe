@@ -9,7 +9,7 @@ class EducationTypeController extends Controller
 {
     public function index()
     {
-        $admins = EducationType::latest()->paginate(8);
+        $admins = EducationType::paginate(20);
 
 
         return view('adminpage.education_type.index', compact('admins'));

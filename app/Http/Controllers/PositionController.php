@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Level;
 use App\Models\choice2;
+use App\Models\EducationType;
 use App\Models\EduLevel;
 use App\Models\Position;
 use App\Models\JobCategory;
@@ -16,7 +17,7 @@ class PositionController extends Controller
     public function index()
     {
 
-        $admins = Position::latest()->paginate(8);
+        $admins = Position::latest()->paginate(10);
 
 
         return view('adminpage.position.index', compact('admins'));
@@ -50,7 +51,7 @@ class PositionController extends Controller
 
                     "edu_level" => $value["edu_level"],
                     "education_type" => $value["education_type"],
-                
+
                     "level" => $value["level"],
 
 
@@ -78,11 +79,13 @@ class PositionController extends Controller
     public function edit($id)
     {
         $edu_level = EduLevel::all();
+        $edutype = EducationType::all();
 
-        $level = PositionType::all();
+        $pos = PositionType::all();
         $job_category = JobCategory::all();
+        $level = Level::all();
         $admin = Position::find($id);
-        return view('adminpage.position.edit', compact('admin', 'level', 'edu_level', 'job_category'));
+        return view('adminpage.position.edit', compact('admin', 'pos', 'level', 'edu_level', 'job_category', 'edutype'));
     }
     public function update(Request $request, $id)
     {
@@ -93,14 +96,20 @@ class PositionController extends Controller
         $admin->job_category_id = $request->job_category_id;
 
         $admin->position_type_id = $request->position_type_id;
-        $admin->edu_level_id = $request->education_level_id;
+        $admin->edu_level = $request->Input('edu_level');
+        $admin->level = $request->Input('level');
+
+        $admin->education_type = $request->Input('education_type');
         $admin->update();
         $admin2 = choice2::find($id);
         $admin2->position = $request->Input('position');
         $admin2->experience = $request->Input('experience');
         $admin2->jobcat2_id = $request->job_category_id;
         $admin2->position_type_id = $request->position_type_id;
-        $admin2->edu_level_id = $request->education_level_id;
+        $admin2->edu_level = $request->Input('edu_level');
+        $admin2->level = $request->Input('level');
+        $admin2->education_type = $request->Input('education_type');
+
         $admin2->update();
 
 

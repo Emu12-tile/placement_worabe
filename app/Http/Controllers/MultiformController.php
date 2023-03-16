@@ -130,22 +130,42 @@ class MultiformController extends Controller
     public function postCreateStepTwo(Request $request)
     {
         // dd($request);
+        if ($request->edu_level_id == 6) {
+            $validatedData = $request->validate(
+                [
+                    'firstdergee' => 'required',
+                    'fee' => 'required',
+                    'position_id' => 'required',
+                    'job_category_id' => 'required',
+                    'jobcat2_id' => 'required',
+                    'level_id' => 'required',
+                    'edu_level_id' => 'required',
+                    'education_type_id' => 'required',
+                    'positionofnow' => 'required',
+                    'choice2_id' => 'required',
+                ]
+            );
+        } else {
+            $validatedData = $request->validate(
+                [
+                    'fee' => 'required',
+                    'position_id' => 'required',
+                    'job_category_id' => 'required',
+                    'jobcat2_id' => 'required',
+                    'level_id' => 'required',
+                    'edu_level_id' => 'required',
+                    'education_type_id' => 'required',
+                    'positionofnow' => 'required',
+                    'choice2_id' => 'required',
 
-        $validatedData = $request->validate(
-            [
-                'fee' => 'required',
-                'position_id' => 'required',
-                'job_category_id' => 'required',
-                'jobcat2_id' => 'required',
-                'level_id' => 'required',
-                'edu_level_id' => 'required',
-                'education_type_id' => 'required',
-                'positionofnow' => 'required',
-                'choice2_id' => 'required',
 
 
-            ]
-        );
+                ]
+            );
+        }
+
+
+
 
         if (empty($request->session()->get('form'))) {
             $form = new Form();
@@ -210,6 +230,7 @@ class MultiformController extends Controller
                 'job_category_id' => $data->job_category_id,
                 'jobcat2_id' => $data->jobcat2_id,
                 'positionofnow' => $data->positionofnow,
+                'firstdergee' => $data->firstdergee,
                 'sex' => $data->sex,
                 'fee' => $data->fee,
                 "UniversityHiringEra" => $request->UniversityHiringEra,
@@ -224,7 +245,7 @@ class MultiformController extends Controller
         $request->session()->put('form', $form);
         $form->save();
 
-        // dd($form);
+
 
 
 

@@ -37,6 +37,7 @@ return new class extends Migration
 
             $table->boolean('isEditable')->default(false);
             $table->string('tag_slug')->unique();
+            $table->string('firstdergee')->nullable();
             // $table->softDeletes();
 
             $table->foreignId('jobcat2_id')->nullable()->references('id')->on('jobcat2s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();

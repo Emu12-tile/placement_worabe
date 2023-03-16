@@ -43,6 +43,8 @@ class Form extends Model
         'secondhr_id',
         'level',
         'tag_slug',
+        'firstdergee'
+      
 
 
     ];

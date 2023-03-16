@@ -11,7 +11,7 @@ class JobCategoryController extends Controller
     public function index()
     {
 
-        $admins = JobCategory::latest()->paginate(8);
+        $admins = JobCategory::latest()->paginate(15);
 
 
         return view('adminpage.job_category.index', compact('admins'));
