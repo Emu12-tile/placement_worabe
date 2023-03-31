@@ -34,10 +34,14 @@ License: You must have a valid license purchased only from themeforest to legall
     {{-- select 2 --}}
     <link href="{{ asset('assets/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css">
 
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" target="_blank"
+        rel="nofollow" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('assets/dist/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/vendors/datatables.net-dt/css/jquery.dataTables.min.css') }}" rel="stylesheet"
         type="text/css" />
+
     {{-- <link href="{{ asset('assets/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}" --}}
     {{-- rel="stylesheet" type="text/css" /> --}}
     {{-- <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
@@ -70,6 +74,7 @@ License: You must have a valid license purchased only from themeforest to legall
 
                 <!-- Row -->
                 <main>
+
                     @yield('content')
                     @yield('layouts.navigation')
 
@@ -137,7 +142,7 @@ License: You must have a valid license purchased only from themeforest to legall
 
     <!-- Init JavaScript -->
     <script src="{{ asset('assets/dist/js/init.js') }}"></script>
-    {{-- <script src="{{asset('assets/dist/js/dashboard-data.js')}}"></script> --}}
+    {{-- <script src="{{ asset('assets/dist/js/dataTables-data.js') }}"></script> --}}
 
     <script src="{{ asset('assets/vendors/editable-table/mindmup-editabletable.js') }}"></script>
     <script src="{{ asset('assets/vendors/editable-table/numeric-input-example.js') }}"></script>
@@ -163,6 +168,12 @@ License: You must have a valid license purchased only from themeforest to legall
     {{-- select 2 --}}
     <script src="{{ asset('assets/vendors/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/select2-data.js') }}"></script>
+
+    <script src="{{ asset('assets/vendors/tablesaw/dist/tablesaw.jquery.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/tablesaw-data.js') }}"></script>
+
+    {{-- <script src="{{ asset('assets/vendors/jquery-toggles/toggles.min.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/toggle-data.js') }}"></script> --}}
 </body>
 
 </body>

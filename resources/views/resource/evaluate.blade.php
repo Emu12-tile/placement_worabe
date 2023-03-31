@@ -346,7 +346,8 @@
 
                                                         <th>ሙሉ ስም</th>
                                                         <th>የሚወዳደሩበት የስራ መደብ</th>
-                                                        <th>አሁን ያሉበት የትምህርት ደረጃ</th>
+                                                        <th>አሁን ያሉበት የትምህርት ደረጃና የትምህርት ዝግጅት</th>
+                                                        {{-- <th>ያለዎት የትምህርት ዝግጅት</th> --}}
 
                                                         <th> የስራ ልምድዎ </th>
                                                         <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.1) </th>
@@ -364,7 +365,15 @@
                                                         <td>{{ $form->full_name }}
                                                         </td>
                                                         <td>{{ $form->position->position }}</td>
-                                                        <td>{{ $form->edu_level->education_level }}</td>
+
+                                                        <td>
+                                                            @foreach ($edu as $type)
+                                                                ({{ $type->edu_level->education_level }},
+                                                                {{ $type->education_type->education_type }})
+                                                                ,
+                                                            @endforeach
+                                                        </td>
+
 
 
 
@@ -437,8 +446,9 @@
                                     <div class="col-md-6 form-group">
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
                                         <input class="form-control @error('resultbased') is-invalid @enderror"
-                                            id="resultbased" placeholder="ለውጤት ተኮር" value="{{ old('resultbased') }}"
-                                            type="float" name="resultbased" min="1" max="10" required>
+                                            id="resultbased" placeholder="ለውጤት ተኮር"
+                                            value="{{ round($form->resultOfrecentPerform * 0.1, 2) }}" type="float"
+                                            name="resultbased" min="1" max="10" required>
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -467,7 +477,8 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" id="add_btn">አስረክብ</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white"
+                                        id="add_btn">Save</button>
                                 </div>
                             </div>
 

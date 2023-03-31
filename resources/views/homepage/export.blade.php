@@ -72,8 +72,15 @@
         <p>3/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
             ደረጃ፦{{ $form->level->level }} &emsp; ደምወዝ:-{{ $form->fee }}
         </p>
-        <p>4/ የተማሩት የት/ት አይነት:-{{ $form->edu_level->education_level }}</p>
-        <p>5/ በዩኒቨርስቲዉ የቅጥር ዘመን:-{{ Carbon::parse($form->UniversityHiringEra)->day }}/{{ Carbon::parse($form->UniversityHiringEra)->month }}/{{ Carbon::parse($form->UniversityHiringEra)->year }}</p>
+        <p>4/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:- @foreach ($edu as $i => $fo)
+                ({{ $fo->edu_level->education_level }}፣ {{ $fo->education_type->education_type }})
+            @endforeach
+        </p>
+        <p>5/ በዩኒቨርስቲዉ የቅጥር
+            ዘመን:-
+            {{ Carbon::parse($form->UniversityHiringEra)->day }}/{{ Carbon::parse($form->UniversityHiringEra)->month }}/{{ Carbon::parse($form->UniversityHiringEra)->year }}
+           {{-- {{ Carbon::parse($form->UniversityHiringEra)->format('d-m-Y')}} --}}
+        </p>
         <p>6/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
         <p>7/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
         <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
@@ -116,6 +123,8 @@
                             {{-- {{ Carbon::createFromFormat( $fo->startingDate)->format('d/m/y') }}-{{ $fo->endingDate }} --}}
                             {{-- {{   Carbon::createFromFormat('m/d/Y', $fo->startingDate)->format('d-m-Y')}} --}}
                             {{-- {{ Carbon::createFromFormat('d/m/Y', $fo->startingDate) }} --}}
+
+
                             ከ{{ Carbon::parse($fo->startingDate)->day }}/{{ Carbon::parse($fo->startingDate)->month }}/{{ Carbon::parse($fo->startingDate)->year }}
                             እስከ
                             {{ Carbon::parse($fo->endingDate)->day }}/{{ Carbon::parse($fo->endingDate)->month }}/{{ Carbon::parse($fo->endingDate)->year }}
@@ -132,7 +141,6 @@
                             $years = $tdate - $fdate;
 
                             echo abs($years);
-
                             ?>
                         </td>
                         <td>
@@ -145,7 +153,6 @@
                             $months = $tdate - $fdate;
 
                             echo abs($months);
-
                             ?>
                         </td>
                         <td>
@@ -158,7 +165,6 @@
                             $days = $tdate - $fdate;
 
                             echo abs($days);
-
                             ?>
                         </td>
                         <td></td>
@@ -175,7 +181,8 @@
         <p>ቅጹን የሞላው ሰራተኛ ስም
             &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
-        <p>ስለትክክለኛነቱ ያረጋገጠው የሰዉ ሀብት ባለሙያ  ፊርማ&mdash;&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+        <p>ስለትክክለኛነቱ ያረጋገጠው የሰዉ ሀብት ባለሙያ ፊርማ&mdash;&mdash;&mdash;&mdash;&mdash;
+            ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
         </p>
 
     </div>

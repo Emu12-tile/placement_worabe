@@ -12,11 +12,12 @@ use App\Models\choice2;
 use App\Models\jobcat2;
 use App\Models\EduLevel;
 use App\Models\Position;
+use App\Models\Education;
 use App\Models\experience;
 use App\Models\JobCategory;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Models\EducationType;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -130,51 +131,41 @@ class MultiformController extends Controller
     public function postCreateStepTwo(Request $request)
     {
         // dd($request);
-        if ($request->edu_level_id == 6) {
-            $validatedData = $request->validate(
-                [
-                    'firstdergee' => 'required',
-                    'fee' => 'required',
-                    'position_id' => 'required',
-                    'job_category_id' => 'required',
-                    'jobcat2_id' => 'required',
-                    'level_id' => 'required',
-                    'edu_level_id' => 'required',
-                    'education_type_id' => 'required',
-                    'positionofnow' => 'required',
-                    'choice2_id' => 'required',
-                ]
-            );
-        } else {
-            $validatedData = $request->validate(
-                [
-                    'fee' => 'required',
-                    'position_id' => 'required',
-                    'job_category_id' => 'required',
-                    'jobcat2_id' => 'required',
-                    'level_id' => 'required',
-                    'edu_level_id' => 'required',
-                    'education_type_id' => 'required',
-                    'positionofnow' => 'required',
-                    'choice2_id' => 'required',
+
+        $validatedData = $request->validate(
+            [
+                // 'firstdergee' => 'required',
+                'fee' => 'required',
+                'position_id' => 'required',
+                'job_category_id' => 'required',
+                'jobcat2_id' => 'required',
+                'level_id' => 'required',
+                'addMoreFields.*.edu_level_id' => 'required',
+                'addMoreFields.*.education_type_id' => 'required',
+                // 'edu_level_id' => 'required',
+                // 'education_type_id' => 'required',
+                'positionofnow' => 'required',
+                'choice2_id' => 'required',
+            ]
+        );
 
 
-
-                ]
-            );
-        }
 
 
 
 
         if (empty($request->session()->get('form'))) {
             $form = new Form();
+
             $form->fill($validatedData);
+
             $request->session()->put('form', $form);
         } else {
             $form = $request->session()->get('form');
+
             $form->fill($validatedData);
-            $request->session()->put('form', $form);
+
+            $request->session()->put('form', $form, 'fo');
         }
 
         return redirect()->route('multiforms.create.step.three');
@@ -222,9 +213,9 @@ class MultiformController extends Controller
                 // slug
                 'tag_slug' => Str::slug($data->lastName, '-' . Str::random()),
 
-                'education_type_id' => $data->education_type_id,
+                // 'education_type_id' => $data->education_type_id,
                 'level_id' => $data->level_id,
-                'edu_level_id' => $data->edu_level_id,
+                // 'edu_level_id' => $data->edu_level_id,
                 'position_id' => $data->position_id,
                 'choice2_id' => $data->choice2_id,
                 'job_category_id' => $data->job_category_id,
@@ -245,6 +236,14 @@ class MultiformController extends Controller
         $request->session()->put('form', $form);
         $form->save();
 
+        foreach ($request->addMoreFields as $key => $val) {
+            Education::create([
+                "form_id" => $form->id,
+                "edu_level_id" => $val["edu_level_id"],
+                "education_type_id" => $val["education_type_id"],
+
+            ]);
+        }
 
 
 
@@ -282,17 +281,6 @@ class MultiformController extends Controller
         return redirect('/submitted/' . $form->id);
     }
 
-
-
-    public function show($id)
-    {
-        $form = Form::find($id);
-
-        $forms = Form::select("*", DB::raw("CONCAT(forms.firstName,' ',forms.middleName,' ',forms.lastName) as full_name"))
-            ->get();
-
-        return view('hr.show', ['form' => $form, 'forms' => $forms]);
-    }
     public function submit($id)
     {
         $form = Form::find($id);
@@ -303,10 +291,10 @@ class MultiformController extends Controller
     {
 
         $form = Form::find($id);
-
+        $edu = Education::where('form_id', $form->id)->get();
         $forms = experience::where('form_id', $form->id)->get();
         //  dd($forms);
-        return view('homepage.export', compact('form', 'forms'));
+        return view('homepage.export', compact('form', 'forms','edu'));
     }
     public function edit1($id)
     {

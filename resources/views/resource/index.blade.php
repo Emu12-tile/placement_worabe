@@ -7,26 +7,26 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class="container">
+    @role('hr')
+        <div class="container">
 
-        <section class="hk-sec-wrapper mt-100">
-            <div class="pull-right hk-sec-title">
+            <section class="hk-sec-wrapper mt-100">
+                <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('hr.index') }}" class=" btn btn-dark mr-25"> back </a>
-            </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+                    <a href="{{ url('pos') }}" class=" btn btn-dark mr-25"> back </a>
+                </div>
+                <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከ ቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="table-wrap ">
+                            <div class="table-responsive">
+                                <table id="datable_1" class="table table-hover table-bordered w-100  pb-30">
+                                    <thead>
+                                        <tr>
+                                            <th>ተ.ቁ</th>
 
-            <div class="row">
-                <div class="col-sm">
-                    <div class="table-wrap ">
-                        <div class="table-responsive">
-                            <table id="datable_1" class="table table-hover table-bordered w-100  pb-30">
-                                <thead>
-                                    <tr>
-                                        <th>ተ.ቁ</th>
+                                            <th>ሙሉ ስም</th>
 
-                                        <th>ሙሉ ስም</th>
-                                        @role('hr')
                                             <th>ውጤት ሰጪ</th>
 
                                             <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
@@ -35,93 +35,82 @@
 
                                             <th>ለፈተና ውጤት</th>
 
-                                        @endrole
 
 
-                                        {{-- <th>አጠቃላይ ውጤት(100%)</th> --}}
-                                        @role('president')
-                                            <th>የሚወዳደሩበት የስራ መደብ</th>
-                                            <th>የ ትምህርት ደረጃ</th>
-                                            <th>የ ትምህርት ዝግጅት</th>
-                                        @endrole
-                                        <th>አጠቃላይ ውጤት(65%)</th>
-                                        @role('president')
-                                            <th>presidential</th>
-                                        @endrole
+                                            {{-- <th>አጠቃላይ ውጤት(100%)</th> --}}
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $j = 0;
-                                    ?>
-                                    @foreach ($hrs as $i => $hr)
-                                        @if ($hr->form->position->position_type_id == 1)
-                                            {{-- @if ($hr->status_president == 0) --}}
+                                            <th>አጠቃላይ ውጤት(65%)</th>
+                                            <th colspan="2">Action</th>
 
-                                            <tr>
-                                                <td>{{ ++$j }}</td>
-                                                <td>{{ $hr->form->full_name }}
-                                                </td>
-                                                @role('hr')
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $j = 0;
+                                        ?>
+                                        @foreach ($hrs as $i => $hr)
+                                            @if ($hr->form->position->position_type_id == 1)
+                                                <tr>
+                                                    <td>{{ ++$j }}</td>
+                                                    <td>{{ $hr->form->full_name }}
+                                                    </td>
+
                                                     <td>{{ $hr->user->name }}</td>
                                                     <td>{{ $hr->performance }}</td>
                                                     <td>{{ $hr->experience }}</td>
                                                     <td>{{ $hr->resultbased }}</td>
                                                     <td>{{ $hr->exam }}</td>
 
-                                                @endrole
-                                                @role('president')
-                                                    <td>{{ $hr->form->position->position }}</td>
-                                                    <td>{{ $hr->form->edu_level->education_level }}</td>
-                                                    <td>{{ $hr->form->education_type->education_type }}</td>
-                                                @endrole
-
-                                                <td>
-                                                    {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
-
-                                                </td>
 
 
 
-
-
-                                                @role('president')
                                                     <td>
-                                                        @if ($hr->status_president == 0)
-                                                            <a class="btn btn-dark"
-                                                                href="{{ route('resource.edit', $hr->id) }}">
-                                                                evaluate
-                                                            </a>
-                                                        @endif
-                                                        @if ($hr->status_president == 1)
-                                                            <a class="btn btn-red"
-                                                                href="{{ route('resource.edit', $hr->id) }}">
-                                                                Edit
-                                                            </a>
-                                                        @endif
+                                                        {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
                                                     </td>
-                                                @endrole
 
-                                            </tr>
-                                        @endif
-                                        {{-- @endif --}}
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                                    <td> <a class="btn  btn-blue " type="submit" id="btn-evaluate"
+                                                            href="{{ route('resource.edit', $hr->id) }}">
+                                                            Edit</a>
+
+
+                                                    </td>
+                                                    <td>
+                                                        <form action="{{ url('update-resource/' . $hr->id) }}" method="POST"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+
+                                                            @method('PUT')
+                                                            <button class="btn  btn-green " value="{{ $hr->id }}"
+                                                                type="submit" id="btn_evaluate">
+                                                                Submit</button>
+                                                        </form>
+
+                                                    </td>
+
+
+
+
+
+
+
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
                         </div>
-                        {{-- {!! $hrs->links() !!} --}}
-
-
                     </div>
                 </div>
-            </div>
-        </section>
 
+            </section>
+        </div>
+    @endrole
 
-
-
-
-    </div>
 @endsection

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Level;
 use App\Models\choice2;
-use App\Models\EducationType;
+use App\Models\Edutype;
+use App\Models\Category;
 use App\Models\EduLevel;
 use App\Models\Position;
 use App\Models\JobCategory;
 use App\Models\PositionType;
 use Illuminate\Http\Request;
+use App\Models\EducationType;
 use Illuminate\Support\Facades\DB;
 
 class PositionController extends Controller
@@ -32,48 +34,105 @@ class PositionController extends Controller
         $eductype = DB::table('education_types')->get();
         $lev = DB::table('levels')->get();
         $job_category = JobCategory::all();
+        $category = Category::all();
 
 
 
-        return view('adminpage.position.create', compact('lev', 'position', 'edu_level', 'eductype', 'job_category', 'educ'));
+        return view('adminpage.position.create', compact('lev', 'position', 'edu_level', 'eductype', 'job_category', 'educ', 'category'));
     }
     public function store(Request $request)
     {
 
-        foreach ($request->addMoreInputFields as $key => $value) {
+        // foreach ($request->addMoreInputFields as $key => $value) {
 
-            Position::create(
-                [
-                    "position" => $value["position"],
-                    "job_category_id" => $value["job_category_id"],
-                    "position_type_id" => $value["position_type_id"],
-                    "experience" => $value["experience"],
+        //     Position::create(
+        //         [
+        //             "position" => $value["position"],
+        //             "job_category_id" => $value["job_category_id"],
+        //             "position_type_id" => $value["position_type_id"],
+        //             "experience" => $value["experience"],
 
-                    "edu_level" => $value["edu_level"],
-                    "education_type" => $value["education_type"],
+        //             "edu_level" => $value["edu_level"],
 
-                    "level" => $value["level"],
+        //             "education_type" => $value["education_type"],
 
-
-                ]
-            );
-
-            choice2::create(
-                [
-                    "position" => $value["position"],
-                    "jobcat2_id" => $value["job_category_id"],
-                    "position_type_id" => $value["position_type_id"],
-                    "experience" => $value["experience"],
-
-                    "edu_level" => $value["edu_level"],
-                    "education_type" => $value["education_type"],
-
-                    "level" => $value["level"],
+        //             "level" => $value["level"],
+        //             "category_id" => $value["category_id"]
 
 
-                ]
-            );
-        }
+        //         ]
+
+        //     );
+
+
+
+
+
+        //     choice2::create(
+        //         [
+        //             "position" => $value["position"],
+        //             "jobcat2_id" => $value["job_category_id"],
+        //             "position_type_id" => $value["position_type_id"],
+        //             "experience" => $value["experience"],
+
+        //             "edu_level" => $value["edu_level"],
+        //             "education_type" => $value["education_type"],
+
+        //             "level" => $value["level"],
+        //             "category_id" => $value["category_id"]
+
+
+        //         ]
+        //     );
+        // }
+        // return redirect()->route('position.index');
+
+        // $post = Position::Create(
+
+        //     [
+        //         'position' => $request->position,
+        //         'job_category_id' => $request->job_category_id,
+        //         'education_type' => $request->education_type,
+        //         'position_type_id' => $request->position_type_id,
+
+        //         'edu_level' => $request->edu_level,
+        //         'experience' => $request->experience,
+        //         'level' => $request->level,
+        //         'education_type' => $request->education_type[]
+        //     ]
+        // );
+
+
+        $input = $request->all();
+
+
+        $hobby = $input['education_type'];
+        $input['education_type'] = implode(',', $hobby);
+
+        Position::create($input);
+
+
+        // $input1 = $request->all();
+
+        // $input1 = $request->input('position', 'education_type', 'edu_level', 'experience', 'level', 'category_id', 'position_type_id');
+         $in = new choice2;
+        $in->jobcat2_id = $input = $request->input('job_category_id');
+        $in['education_type'] = implode(',',$input = $request->input('education_type'));
+        $in->edu_level = $input = $request->input('edu_level');
+        $in->experience = $input = $request->input('experience');
+        $in->level = $input = $request->input('level');
+        $in->category_id = $input = $request->input('category_id');
+        $in->position_type_id = $input = $request->input('position_type_id');
+        $in->position = $input = $request->input('position');
+
+
+       $in->save();
+
+
+
+
+
+
         return redirect()->route('position.index');
     }
     public function edit($id)
@@ -84,13 +143,21 @@ class PositionController extends Controller
         $pos = PositionType::all();
         $job_category = JobCategory::all();
         $level = Level::all();
+        $category = Category::all();
         $admin = Position::find($id);
-        return view('adminpage.position.edit', compact('admin', 'pos', 'level', 'edu_level', 'job_category', 'edutype'));
+        return view('adminpage.position.edit', compact('admin', 'pos', 'level', 'edu_level', 'job_category', 'edutype', 'category'));
     }
     public function update(Request $request, $id)
     {
 
+
         $admin = Position::find($id);
+        $input = $request->all();
+
+
+        $hobby = $input['education_type'];
+        $input['education_type'] = implode(',', $hobby);
+
         $admin->position = $request->Input('position');
         $admin->experience = $request->Input('experience');
         $admin->job_category_id = $request->job_category_id;
@@ -99,16 +166,21 @@ class PositionController extends Controller
         $admin->edu_level = $request->Input('edu_level');
         $admin->level = $request->Input('level');
 
-        $admin->education_type = $request->Input('education_type');
+        // $admin->education_type = $request->Input('education_type');
+        $admin['education_type'] = implode(',',  $input=$request->input('education_type'));
+        $admin->category_id = $request->category_id;
         $admin->update();
         $admin2 = choice2::find($id);
         $admin2->position = $request->Input('position');
         $admin2->experience = $request->Input('experience');
         $admin2->jobcat2_id = $request->job_category_id;
         $admin2->position_type_id = $request->position_type_id;
+        $admin2->category_id = $request->category_id;
         $admin2->edu_level = $request->Input('edu_level');
         $admin2->level = $request->Input('level');
-        $admin2->education_type = $request->Input('education_type');
+        // $admin2->education_type = $request->Input('education_type');
+        $admin2['education_type'] = implode(',',  $input=$request->input('education_type'));
+
 
         $admin2->update();
 

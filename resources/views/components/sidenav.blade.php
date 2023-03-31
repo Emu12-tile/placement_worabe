@@ -44,21 +44,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('hr.index') }}">
+                            <a class="nav-link" href="{{ url('pos') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     የተወዳዳሪዎች 1ኛ ምርጫ
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('secondchoice.secondchoice') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     የተወዳዳሪዎች 2ኛ ምርጫ
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
 
@@ -93,6 +93,15 @@
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     ደረጃ
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ url('category') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የሚወዳደሩበት የስራ መደብ ክፍል
                                 </span>
                             </a>
                         </li>
@@ -188,7 +197,7 @@
 
                             <span class="nav-link-text"> ምርጫ 1</span>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('hr.index') }}">
+                            <a class="nav-link" href="{{ url('pos') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     የተወዳዳሪዎች 1ኛ ምርጫ
@@ -204,6 +213,15 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ url('positionhigh') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ያወዳዳሪ ኮሚቴ ውጤት(65%)
+                                </span>
+                            </a>
+                        </li>
 
 
 
@@ -216,9 +234,19 @@
                                 </span>
                             </a>
                         </li>
-
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('positionresult') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ከ100% (ከ ቡድን መሪ
+                                    በታች)
+                                </span>
+                            </a>
                         </li>
+
+
+
+
 
 
 
@@ -231,7 +259,7 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('secondchoice.secondchoice') }}">
+                            <a class="nav-link" href="{{ route('pos2') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     የተወዳዳሪዎች 2ኛ ምርጫ
@@ -247,6 +275,15 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ url('choicesecond') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ያወዳዳሪ ኮሚቴ ውጤት(65%)
+                                </span>
+                            </a>
+                        </li>
 
 
 
@@ -255,6 +292,15 @@
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     ውጤት (ከ ቡድን መሪ
+                                    በታች)
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('choicelow') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ከ 100% (ከ ቡድን መሪ
                                     በታች)
                                 </span>
                             </a>
@@ -290,7 +336,7 @@
 
                             <span class="nav-link-text"> ምርጫ 1</span>
 
-                        <li class="nav-item">
+                            {{-- <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('resource.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -298,15 +344,36 @@
                                     የሰው ሀብት ውጤት
                                 </span>
                             </a>
+                        </li> --}}
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ url('result-choice1') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    ያወዳዳሪ ኮሚቴ ውጤት
+                                </span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('presidential.index') }}">
+                            <a class="nav-link" href="{{ route('evaluation.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     አጠቃላይ ውጤት
                                 </span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ url('positionpres') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    አጠቃላይ ውጤት(100%)
+                                </span>
+                            </a>
+                        </li>
+
+
 
 
                         </li>
@@ -315,18 +382,26 @@
                             <span class="nav-link-text"> ምርጫ 2</span>
                         <li class="nav-item">
 
-                            <a class="nav-link" href="{{ route('secondhr.index') }}">
+                            <a class="nav-link" href="{{ url('resulttwo') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    የሰው ሀብት ውጤት
+                                    የኮሚቴ ውጤት
                                 </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('presidential.choice2evaluation') }}">
+                            <a class="nav-link" href="{{ route('choice2evaluation.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     አጠቃላይ ውጤት
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('positionpres2') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    አጠቃላይ ውጤት(100%)
                                 </span>
                             </a>
                         </li>

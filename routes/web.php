@@ -20,7 +20,10 @@ use App\Http\Controllers\PresidentialController;
 use App\Http\Controllers\EducationTypeController;
 use App\Http\Controllers\EducationLevelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PrestwoController;
 use App\Http\Controllers\SecondhrController;
+use App\Models\Prestwo;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,34 +40,35 @@ use App\Http\Controllers\SecondhrController;
 //     return view('welcome');
 // });
 
-Route::get('/try', [FormController::class, 'create'])->name('try');
+Route::get('/', [FormController::class, 'create'])->name('try');
+Route::post('/', [FormController::class, 'store'])->name('add.form');
+Route::get('/try/job', [FormController::class, 'position']);
+Route::get('/try/categ2', [FormController::class, 'position2']);
+Route::get('/try/selection', [FormController::class, 'selection']);
+Route::get('/try/selection2', [FormController::class, 'selection2']);
 
-Route::get('/', [MultiformController::class, 'createStepOne'])->name('multiforms.create-step-one');
-Route::post('/', [MultiformController::class, 'postCreateStepOne'])->name('multiforms.create.step.one.post');
+// Route::get('/', [MultiformController::class, 'createStepOne'])->name('multiforms.create-step-one');
+// Route::post('/', [MultiformController::class, 'postCreateStepOne'])->name('multiforms.create.step.one.post');
 
-Route::get('/steptwo', [MultiformController::class, 'createStepTwo'])->name('multiforms.create.step.two');
-Route::get('/steptwo/job', [MultiformController::class, 'position']);
-Route::get('/steptwo/categ2', [MultiformController::class, 'position2']);
-Route::get('/steptwo/selection', [MultiformController::class, 'selection']);
-Route::get('/steptwo/selection2', [MultiformController::class, 'selection2']);
-Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->name('multiforms.create.step.two.post');
-Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
+// Route::get('/steptwo', [MultiformController::class, 'createStepTwo'])->name('multiforms.create.step.two');
+// Route::get('/steptwo/job', [MultiformController::class, 'position']);
+// Route::get('/steptwo/categ2', [MultiformController::class, 'position2']);
+// Route::get('/steptwo/selection', [MultiformController::class, 'selection']);
+// Route::get('/steptwo/selection2', [MultiformController::class, 'selection2']);
+// Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->name('multiforms.create.step.two.post');
+// Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
 
-Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
+// Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
 
-Route::get('edit-stepone/{id}', [MultiformController::class, 'edit1']);
-Route::put('update-stepone/{id}', [MultiformController::class, 'update1']);
+// Route::get('edit-stepone/{id}', [MultiformController::class, 'edit1']);
+// Route::put('update-stepone/{id}', [MultiformController::class, 'update1']);
 
-Route::get('edit-steptwo/{id}', [MultiformController::class, 'edit2']);
-Route::put('update-steptwoe/{id}', [MultiformController::class, 'update2']);
-
-// Route::get('edit-stepthree/{id}', [MultiformController::class, 'edit3']);
-// Route::put('update-stepthree/{id}', [MultiformController::class, 'update3']);
+// Route::get('edit-steptwo/{id}', [MultiformController::class, 'edit2']);
+// Route::put('update-steptwoe/{id}', [MultiformController::class, 'update2']);
 
 
 
-Route::get('/experience', [ExperienceController::class, 'create']);
-Route::post('/experience', [ExperienceController::class, 'store']);
+
 
 Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
@@ -80,16 +84,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('/user', [RegisteredUserController::class, 'index'])->name('index');
     Route::post('/user/change_status', [RegisteredUserController::class, 'changeStatus'])->name("change_status");
-    Route::get('/add-user', [RegisteredUserController::class, 'crt']);
+
     Route::post('/user', [RegisteredUserController::class, 'store']);
-    Route::get('edit-user/{id}', [RegisteredUserController::class, 'edit']);
-    Route::put('update-user/{id}', [RegisteredUserController::class, 'update']);
     Route::get('delete-user/{id}', [RegisteredUserController::class, 'destroy']);
-
-
-
-
-
 
 
     Route::resource('/educationlevel', EducationLevelController::class);
@@ -98,10 +95,20 @@ Route::middleware([
     Route::post('/level', [LevelController::class, 'store']);
 
     Route::resource('/educationtype', EducationTypeController::class);
+
+    Route::get('category', [CategoryController::class, 'index'])->name('category');
+    Route::get('category-add', [CategoryController::class, 'create']);
+    Route::post('store_category', [CategoryController::class, 'store']);
+
+    Route::get('edit_category/{id}', [CategoryController::class, 'edit']);
+    Route::put('update-category/{id}', [CategoryController::class, 'update']);
+    Route::get('delete-category/{id}', [CategoryController::class, 'destroy']);
+    Route::post('chan_status', [CategoryController::class, 'chanStatus'])->name("chan_status");
+
     Route::post('/educationtype', [EducationTypeController::class, 'store']);
     Route::resource('/position', PositionController::class);
     Route::resource('/choice2', Choice2Controller::class);
-    // Route::post('/position', [PositionController::class, 'store']);
+
     Route::resource('/jobcategory', JobCategoryController::class);
     Route::resource('/jobcat2', JobCat2Controller::class);
 });
@@ -113,7 +120,9 @@ Route::middleware([
 ])->group(
     function () {
         Route::resource('/hr', FormController::class);
-        Route::get('/secondchoice', [SecondhrController::class, 'secondchoice'])->name('secondchoice.secondchoice');
+        Route::get('/pos', [FormController::class, 'pos']);
+        Route::get('/posDetail/{id}', [FormController::class, 'posDetail'])->name('posDetail');
+
         Route::resource('/secondhr', SecondhrController::class);
     }
 );
@@ -125,16 +134,47 @@ Route::middleware([
 
 ])->group(
     function () {
-        // if (DB::table('positions')->where('position_type_id', 1)->first()) {
         Route::resource('/list', AdminController::class);
-        // Route::resource('/hr', FormController::class);
+        Route::get('get_ajax_data', [AdminController::class, 'get_ajax_data']);
+
+        Route::get('/pos2', [FormController::class, 'pos2'])->name('pos2');
+        Route::get('/posDetail2/{id}', [FormController::class, 'posDetail2'])->name('posDetail2');
+
+        Route::get('/choicesecond', [SecondhrController::class, 'postwo']);
+        Route::get('/posDetailtwo/{id}', [SecondhrController::class, 'posDetailtwo'])->name('posDetailtwo');
+        Route::get('/choicelow', [SecondhrController::class, 'choicelow']);
+        Route::get('/choiceDetaillow/{id}', [SecondhrController::class, 'choiceDetaillow'])->name('choiceDetaillow');
+
+
+
+
+
+
+
+
         Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
+        Route::get('/resource/edit/{id}', [ResourceController::class, 'edit']);
+        Route::put('update-resource/{id}', [ResourceController::class, 'update1']);
+        Route::put('update-lowresource/{id}', [ResourceController::class, 'update2']);
+
         Route::resource('/resource', ResourceController::class);
+        Route::get('/result-choice1', [ResourceController::class, 'index4']);
         Route::get('/lowresource', [ResourceController::class, 'index2'])->name('lowresource.lowresource');
 
+        Route::get('/positionresult', [ResourceController::class, 'poslow']);
+        Route::get('/positionDetail/{id}', [ResourceController::class, 'positionDetail'])->name('positionDetail');
+        Route::get('/positionhigh', [ResourceController::class, 'poshigh']);
+        Route::get('/positionDetailhigh/{id}', [ResourceController::class, 'posDetailhigh'])->name('posDetailhigh');
+
+        Route::get('/result', [ResourceController::class, 'index3'])->name('lowresource.index');
         Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
 
-        // Route::resource('/secondhr', SecondhrController::class);
+
+        Route::get('/resulttwo', [SecondhrController::class, 'index4']);
+        Route::get('/resultsecond', [SecondhrController::class, 'index3'])->name('secondchoicelow.index');
+        Route::get('/secondhr/edit/{id}', [SecondhrController::class, 'edit']);
+        Route::put('update-secondhr/{id}', [SecondhrController::class, 'update1']);
+        Route::put('update-lowsecondhr/{id}', [SecondhrController::class, 'update2']);
         Route::get('/secondhr/add/{id}', [SecondhrController::class, 'createhr1'])->name('addsecond');
         Route::post('/secondhr/add/{id}', [SecondhrController::class, 'storeRestore1'])->name('addHrPost1');
 
@@ -158,9 +198,25 @@ Route::middleware([
 
 ])->group(
     function () {
-        Route::get('/evaluation', [PresidentialController::class, 'index'])->name('presidential.index');
+        Route::get('/evaluation/add/{id}', [PresidentialController::class, 'createpresident'])->name('addpresident');
+        Route::get('/evaluation/add/{id}', [PresidentialController::class, 'createpresident'])->name('addpresident');
+        Route::post('/evaluation/add/{id}', [PresidentialController::class, 'storeRestore'])->name('addPresidentPost');
+
+        Route::get('/evaluationtwo/add/{id}', [PrestwoController::class, 'createpresident'])->name('addpresidenttwo');
+        Route::post('/evaluationtwo/add/{id}', [PrestwoController::class, 'storeRestore'])->name('addPresidentPosttwo');
+
+        Route::resource('/evaluation', PresidentialController::class);
+        // Route::get('/result1', [PresidentialController::class, 'index2']);
+        Route::get('/positionpres', [PresidentialController::class, 'pos'])->name('positionpres');
+        Route::get('/posDetailpres/{id}', [PresidentialController::class, 'posDetailpres'])->name('posDetailpres');
+
+        Route::put('update-evaluation/{id}', [PresidentialController::class, 'update1']);
+        Route::put('update-choice2evaluation/{id}', [PrestwoController::class, 'update1']);
+
         Route::get('/allresult', [PresidentialController::class, 'all'])->name('presidential.bothresult');
-        Route::get('/choice2evaluation', [PresidentialController::class, 'choice2'])->name('presidential.choice2evaluation');
+        Route::resource('/choice2evaluation', PrestwoController::class);
+        Route::get('/positionpres2', [PrestwoController::class, 'pos'])->name('positionpres2');
+        Route::get('/result2/{id}', [PrestwoController::class, 'posDetailpres'])->name('result2');
     }
 );
 

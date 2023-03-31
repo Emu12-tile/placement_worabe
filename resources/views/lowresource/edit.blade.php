@@ -4,9 +4,9 @@
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
                 <div class="pull-right">
-                    <a class="btn btn-dark" href="{{ route('secondchoice.secondchoice') }}"> Back</a>
+                    <a class="btn btn-dark" href="{{ route('lowresource.lowresource') }}"> Back</a>
                 </div>
-                <h5 class="hk-sec-title">የመመዘኛ መስፈርቶች ከቡድን መሪ በታች
+                <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች ከቡድን መሪ በታች
                 </h5>
                 {{-- <p class="mb-40">A tiny editable jQuery Bootstrap spreadsheet. Just start typing to edit, or move around
                     with arrow keys or mouse clicks!</p> --}}
@@ -41,7 +41,7 @@
                                                 <td> ለትምህርት ዝግጅት የሚሰጥ ነጥብ</td>
                                                 <td>
 
-                                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                                    <button class="btn bg-blue-dark-4 text-white" type="button" data-toggle="collapse"
                                                         data-target="#collapseExample" aria-expanded="false"
                                                         aria-controls="collapseExample">
                                                         40
@@ -52,7 +52,7 @@
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ </td>
-                                                <td><button class="btn btn-primary" type="button" data-toggle="collapse"
+                                                <td><button class="btn bg-blue-dark-4 text-white" type="button" data-toggle="collapse"
                                                         data-target="#collapse2" aria-expanded="false"
                                                         aria-controls="collapseExample">
                                                         30
@@ -248,96 +248,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="collapse" id="collapseExamplepres">
-                            <div class="card card-body">
 
-                                <div class="table-wrap mb-20 ">
-                                    <div class="table-responsive">
-                                        <table class="table table-active table-bordered mb-0">
-                                            <thead class="thead-active">
-                                                <tr>
-                                                    <th>ተ.ቁ</th>
 
-                                                    <th>የማወዳደሪያ መስፈርት</th>
-                                                    <th>ነጥብ
-                                                        ክብደት</th>
-
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-
-                                                    <td>የመንግስትን ሀብት በቁጠባ መጠቀም፣ ታማኝነትና ቅንነት
-
-                                                        መላበስ</td>
-                                                    <td>
-                                                        5
-                                                    </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>በወቅቱ ተገቢነት ያለው ውሳኔ መስጠት </td>
-                                                    <td>5</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>የሴክተሩን ፖሊሲ፣ ስትራቴጂና ፕሮግራሞችን ከተቋሙ ራእይና
-                                                        ተልእኮ ጋር በማቀናጀት ለስኬት የራሱን ድርሻ ለመወጣት በቂግንዛቤ የያዘና ሌላውን
-                                                        ለማስገንዘብ
-                                                        የሚተጋ </td>
-                                                    <td>5</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">4</th>
-                                                    <td>ተጨማሪ ተልእኮ ወስዶ የመፈፀምና በወቅቱ የማቅረብ ብቃት፣
-
-                                                        ቁርጠኝነትና ከፍተኛ የተነሳሽነት ስሜት መኖር
-
-                                                    </td>
-                                                    <td>5</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">5</th>
-                                                    <td>የአመራር ብቃት ፣ የተግባቦት ብቃት ፣ የዕቅድ ዝግጅት ጥራት
-                                                        ፣የሪፖርት ዝግጀት ጥራት፣፤ በውስጡ ያሉ ሰራተኞችን
-
-                                                        የመምራት ብቃት፣ ሁልጊዜ ከሰራተኞች ጋር አብሮ የመስራት</td>
-                                                    <td>5</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">6</th>
-                                                    <td> የኢንፎርሜሽን ኮሙኒኬሽን ቴከኖሎጂን በብቃት ለስራ ።
-
-                                                        መጠቀም </td>
-                                                    <td>5</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">7</th>
-                                                    <td> ለማህደር ጥራት የሚሰጥ ነጥብ</td>
-                                                    <td>5</td>
-
-                                                </tr>
-
-                                            </tbody>
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- </div> --}}
-                        {{-- </div> --}}
-
-                        <form action="{{ route('addHrPost1', $id) }}" method="POST" id="add_evaluation">
+                        <form action="{{ route('resource.update', $hr->id) }}" method="POST" id="add_evaluation">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 {{-- <div class="col-md-6"> --}}
 
@@ -350,13 +265,15 @@
                                                     <tr>
 
                                                         <th>ሙሉ ስም</th>
-                                                        <th>የሚወዳደሩበት የስራ መደብ</th>
-                                                        {{-- <th>የትምህርት ደረጃ</th> --}}
-                                                        <th>የትምህርት ደረጃዎ</th>
 
-                                                        <th>የስራ ልምድዎ </th>
+                                                        {{-- <th>የትምህርት ደረጃ</th> --}}
+                                                        <th>የትምህርት ደረጃና የትምህርት ዝግጅት</th>
+
+                                                        <th>የሚወዳደሩበት የስራ መደብ</th>
+                                                        <th> ያለዎት የስራ ልምድ </th>
+
                                                         <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
-                                                        {{-- <th>ተጨማሪ መረጃ</th> --}}
+
 
                                                     </tr>
                                                 </thead>
@@ -364,14 +281,18 @@
 
                                                     <tr>
 
-                                                        <td>{{ $form->full_name }}
+                                                        <td>{{ $hr->form->full_name }}
                                                         </td>
-                                                        <td>
-                                                            {{ $form->choice2->position }}
-                                                        </td>
+                                                        @foreach ($edu as $type)
+                                                            <td>
 
-                                                        <td>{{ $form->edu_level->education_level }}</td>
+                                                                ({{ $type->edu_level->education_level }},
+                                                                {{ $type->education_type->education_type }})
+                                                                ,
 
+                                                            </td>
+                                                        @endforeach
+                                                        <td>{{ $hr->form->position->position }}</td>
 
                                                         <td>
                                                             @foreach ($forms as $fo)
@@ -388,16 +309,10 @@
                                                                 ?>
                                                             @endforeach
                                                         </td>
-                                                        <td>{{ round($form->resultOfrecentPerform * 0.3, 2) }}</td>
-                                                        {{-- <td>
-                                                            <form action="" method="POST"><a
-                                                                    href="{{ route('hr.show', $form->id) }}" class="mr-25"
-                                                                    data-toggle="tooltip"
-                                                                    data-original-title="show">show</a>
-                                                        </td> --}}
 
-
-
+                                                        <td>
+                                                            {{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}
+                                                        </td>
 
 
 
@@ -418,7 +333,7 @@
                                 @role('hr')
                                     <div class="col-md-6 form-group">
                                         <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                        <input type="number" value="{{ old('performance') }}"
+                                        <input type="number" value="{{ $hr->performance }}"
                                             class="form-control @error('performance') is-invalid @enderror" id="performance"
                                             placeholder="" name="performance" min="1" max="40" required>
                                         @error('performance')
@@ -429,7 +344,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                        <input type="number" value="{{ old('experience') }}"
+                                        <input type="number" value="{{ $hr->experience }}"
                                             class="form-control @error('experience') is-invalid @enderror" id="experience"
                                             placeholder="ለስራ ልምድ" name="experience" min="1" max="30" required>
                                         @error('experience')
@@ -440,7 +355,7 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
-                                        <input type="float" value="{{ old('resultbased') }}"
+                                        <input type="float" value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
                                             class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
                                             placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
                                             required>
@@ -451,7 +366,7 @@
                                         @enderror
                                     </div>
                                 @endrole
-                                <input type="hidden" name="type" value="second">
+                                <input type="hidden" name="type" value="low">
 
 
 
@@ -460,7 +375,7 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" id="add_btn">አስረክብ</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn">save</button>
                                 </div>
                             </div>
 

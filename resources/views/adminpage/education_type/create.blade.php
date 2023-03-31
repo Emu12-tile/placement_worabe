@@ -35,7 +35,7 @@
 
                                             </div>
                                             <div>
-                                                <a href="javascript:void(0)" class="btn btn-primary  addRow mt-40 "
+                                                <a href="javascript:void(0)" class="btn bg-blue-dark-4 text-white  addRow mt-40 "
                                                     style=" border-radius:50%">+</a>
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group row mb-0 pull-right">
                                         <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary" id="add_btn" >Create</button>
+                                            <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn" >Create</button>
                                         </div>
                                     </div>
                             </form>
@@ -86,7 +86,7 @@
 
                                             </div>
                                             <div>
-                                                <a href="javascript:void(0)" class="btn btn-danger removeRow mt-15" style=" border-radius:50%" >-</a>
+                                                <a href="javascript:void(0)" class="btn bg-red-dark-4 text-white removeRow mt-15" style=" border-radius:50%" >-</a>
                                             </div>
                                         </div>
 

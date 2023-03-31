@@ -31,9 +31,9 @@
 
                                     <th>የሚወዳደሩበት የስራ መደብ</th>
 
-                                    <th>የ ትምህርት ደረጃ</th>
+                                    <th>የትምህርት ደረጃና የትምህርት ዝግጅት</th>
 
-                                    <th>የ ትምህርት አይነት</th>
+
                                     @role('hr')
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
@@ -62,8 +62,13 @@
                                         </form>
                                         {{-- <td>{{$form->h_r_id}}</td> --}}
                                         <td>{{ $form->choice2->position }}</td>
-                                        <td>{{ $form->edu_level->education_level }}</td>
-                                        <td>{{ $form->education_type->education_type }}</td>
+
+                                        <td>
+                                            @foreach ($form->education as $edu)
+                                                ({{ $edu->edu_level->education_level }},{{ $edu->education_type->education_type }})
+                                            @endforeach
+                                        </td>
+
 
                                         @role('admin')
                                             <td>
@@ -81,7 +86,7 @@
                                         @endrole
                                         @role('hr')
                                             <td><a class="btn  btn-dark " type="submit" id="btn-evaluate"
-                                                        href="{{ route('addsecond', $form->id) }}"> evaluate</a>
+                                                    href="{{ route('addsecond', $form->id) }}"> evaluate</a>
                                             </td>
                                         @endrole
 

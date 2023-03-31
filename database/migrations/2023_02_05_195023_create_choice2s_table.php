@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('edu_level')->nullable();
             $table->string('education_type')->nullable();
             $table->string('level')->nullable();
-
-            $table->foreignId('level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('edu_level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('category_id')->nullable()->references('id')->on('categories')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreignId('level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreignId('edu_level_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('jobcat2_id')->nullable();
             // $table->foreignId('jobcat2_id')->nullable()->references('id')->on('jobcat2s')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('position_type_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();

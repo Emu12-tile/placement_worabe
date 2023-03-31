@@ -31,14 +31,15 @@
 
                                     <th>የሚወዳደሩበት የስራ መደብ</th>
 
-                                    <th> አሁን ያሉበት የትምህርት ደረጃ</th>
 
-                                    <th>አሁን ያሉበት የትምህርት ዝግጅት</th>
+
+
                                     @role('hr')
+                                        <th> አሁን ያሉበት የትምህርት ደረጃና የትምህርት ዝግጅት</th>
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
                                     @role('admin')
-                                        <th>ድርጊት</th>
+                                        <th colspan="2">Action</th>
                                     @endrole
 
 
@@ -49,45 +50,89 @@
                             <tbody>
 
                                 @foreach ($forms as $i => $form)
-                                    {{-- @if ($form->h_r_id == null) --}}
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>
-                                            <form action="" method="POST"><a href="{{ route('hr.show', $form->id) }}"
-                                                    class="mr-25" data-toggle="tooltip"
-                                                    data-original-title="show">{{ $form->full_name }} </a>
-                                        </td>
-                                        </form>
-                                        {{-- <td>{{$form->h_r_id}}</td> --}}
-                                        <td>{{ $form->position->position }}</td>
-                                        <td>{{ $form->edu_level->education_level }}</td>
-                                        <td>{{ $form->education_type->education_type }}</td>
+                                    @role('admin')
+                                        @if ($form->isEditable == 0)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>
+                                                    <form action="" method="POST"><a
+                                                            href="{{ route('hr.show', $form->id) }}" class="mr-25"
+                                                            data-toggle="tooltip"
+                                                            data-original-title="show">{{ $form->full_name }} </a>
+                                                    </form>
+                                                </td>
 
-                                        @role('hr')
-                                            <td> <a class="btn  btn-dark "
-                                                        type="submit" id="btn-evaluate" href="{{ route('addHr', $form->id) }}">
-                                                        evaluate</a>
-                                            </td>
-                                        @endrole
-                                        @role('admin')
-                                            <td>
-                                                <form action="{{ route('hr.destroy', $form->id) }}" method="POST">
 
-                                                    @csrf
-                                                    @method('DELETE')
+                                                <td>{{ $form->position }}</td>
 
-                                                    <button type="submit" class="btn btn-danger pd-10">
-                                                        <a data-toggle="tooltip" data-original-title="delete"> <i
-                                                                class=" icon-trash txt-danger"></i> </a>
-                                                    </button>
+
+
+
+                                                <td>
+                                                    <form action="{{ route('hr.destroy', $form->id) }}" method="POST">
+
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-danger pd-10">
+                                                            <a data-toggle="tooltip" data-original-title="delete"> <i
+                                                                    class=" icon-trash txt-danger"></i> </a>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('hr.update', $form->id) }}" method="POST">
+
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <button type="submit" class="btn btn-blue pd-10">
+                                                            <a data-toggle="tooltip" data-original-title="approve"> <i
+                                                                    class=" glyphicon glyphicon-ok pd-25"></i> </a>
+                                                        </button>
+                                                    </form>
+                                                </td>
+
+
+
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endrole
+                                    @role('hr')
+                                        @if ($form->isEditable == 1)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>
+                                                    <form action="" method="POST"><a
+                                                            href="{{ route('hr.show', $form->id) }}" class="mr-25"
+                                                            data-toggle="tooltip"
+                                                            data-original-title="show">{{ $form->full_name }} </a>
+                                                </td>
                                                 </form>
-                                            </td>
+
+                                                <td>{{ $form->position }}</td>
+
+                                                <td>
+                                                    @foreach ($form->education as $edu)
+                                                        ({{ $edu->edu_level->education_level }},{{ $edu->education_type->education_type }})
+                                                        ,
+                                                    @endforeach
+                                                </td>
+
+
+
+                                                <td> <a class="btn  btn-dark " type="submit" id="btn-evaluate"
+                                                        href="{{ route('addHr', $form->id) }}">
+                                                        evaluate</a>
+                                                </td>
+
+
+
+
+                                            </tr>
                                         @endrole
-
-
-                                        </td>
-                                    </tr>
-                                    {{-- @endif --}}
+                                    @endif
                                 @endforeach
 
                             </tbody>
@@ -118,7 +163,7 @@
 
 
             $("#btn-evaluate").submit(function(e) {
-                console.log('hi');
+                // console.log('hi');
                 if ($(this).val() != '') {
 
                     $("#btn-submit").prop("disabled", );

@@ -34,14 +34,7 @@
 
                                                 </tr>
                                             </thead>
-                                            {{-- <div class="collapse" id="collapseExample"> --}}
-                                            {{-- <div class="card card-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid.
-                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                                nesciunt sapiente ea proident.
-                                            </div> --}}
-                                            {{-- </div> --}}
+
                                             <tbody>
                                                 @role('president')
                                                     <tr>
@@ -325,8 +318,10 @@
 
                                                         <th>ሙሉ ስም</th>
 
-                                                        <th>የትምህርት ደረጃ</th>
+                                                        <th> የተወዳዳሪዉ የትምህርት ደረጃና የትምህርት ዝግጅት</th>
                                                         <th>የሚወዳደሩበት የስራ መደብ</th>
+                                                        <th>ለስራ ልምድ </th>
+                                                        <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
 
 
 
@@ -338,8 +333,35 @@
 
                                                         <td>{{ $hr->form->full_name }}
                                                         </td>
-                                                        <td>{{ $hr->form->edu_level->education_level }}</td>
+
+                                                            <td>
+                                                                @foreach ($edu as $type)
+
+                                                                ({{ $type->edu_level->education_level }},{{ $type->education_type->education_type }}),
+                                                                 @endforeach
+                                                            </td>
+
                                                         <td>{{ $hr->form->position->position }}</td>
+                                                        <td>
+                                                            @foreach ($forms as $fo)
+                                                                <?php
+
+                                                                $fdate = Carbon::parse($fo->startingDate)->year;
+
+                                                                $tdate = Carbon::parse($fo->endingDate)->year;
+
+                                                                $years = $tdate - $fdate;
+
+                                                                echo $years, '(', $fo->positionyouworked, '), ';
+
+                                                                ?>
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            {{ round($hr->form->resultOfrecentPerform * 0.1, 2) }}
+                                                        </td>
+
+
 
 
 
@@ -359,9 +381,9 @@
                             <div class="row">
                                 @role('president')
                                     <div class="col-md-6 form-group">
-                                        <label for="firstName">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
+                                        <label for="presidentGrade">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                         <input class="form-control" @error('presidentGrade') is-invalid @enderror"
-                                            id="firstName" placeholder="ለትምህርት ዝግጅት የሚሰጥ ነጥብ ከ (35%)"
+                                            id="presidentGrade" placeholder="ለትምህርት ዝግጅት የሚሰጥ ነጥብ ከ (35%)"
                                             value="{{ $hr->presidentGrade }}" type="number" name="presidentGrade"
                                             min="1" max="35" required>
                                         @error('presidentGrade')
@@ -397,7 +419,7 @@
                                     <div class="col-md-6 form-group">
                                         <label for="lastName">ለውጤት ተኮር ምዘና </label>
                                         <input class="form-control" @error('resultbased') is-invalid @enderror"
-                                            id="resultbased" placeholder="" value="{{ $hr->resultbased }}" type="number"
+                                            id="resultbased" placeholder="" value="{{ $hr->resultbased }}" type="decimal"
                                             name="resultbased" min="1" max="25">
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
@@ -419,7 +441,7 @@
                                 @endrole
 
 
-
+                                <input type="hidden" name="type" value="high">
 
 
 

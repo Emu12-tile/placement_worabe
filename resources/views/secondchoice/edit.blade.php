@@ -51,7 +51,7 @@
                                                             {{-- <button class="btn btn-primary hide" onclick="tableToggle()">
                                                             25
                                                         </button> --}}
-                                                            <button class="btn btn-primary" type="button"
+                                                            <button class="btn bg-blue-dark-4 text-white" type="button"
                                                                 data-toggle="collapse" data-target="#collapseExamplepres"
                                                                 aria-expanded="false" aria-controls="collapseExample">
                                                                 35
@@ -68,7 +68,7 @@
                                                             {{-- <button class="btn btn-primary hide" onclick="tableToggle()">
                                                             25
                                                         </button> --}}
-                                                            <button class="btn btn-primary" type="button"
+                                                            <button class="btn bg-blue-dark-4 text-white" type="button"
                                                                 data-toggle="collapse" data-target="#collapseExample"
                                                                 aria-expanded="false" aria-controls="collapseExample">
                                                                 25
@@ -79,7 +79,7 @@
                                                     <tr>
                                                         <th scope="row">2</th>
                                                         <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</td>
-                                                        <td><button class="btn btn-primary" type="button"
+                                                        <td><button class="btn bg-blue-dark-4 text-white" type="button"
                                                                 data-toggle="collapse" data-target="#collapse2"
                                                                 aria-expanded="false" aria-controls="collapseExample">
                                                                 15
@@ -325,7 +325,7 @@
 
                                                         <th>ሙሉ ስም</th>
 
-                                                        <th> የ ተወዳዳሪዉ የትምህርት ደረጃ</th>
+                                                        <th> የተወዳዳሪዉ የትምህርት ደረጃና የትምህርት ዝግጅት</th>
                                                         <th>የሚወዳደሩበት የስራ መደብ</th>
                                                         <th>የቅርብ ጊዜ የስራ አፈጻፀም አማካይ ውጤት </th>
 
@@ -339,9 +339,15 @@
 
                                                         <td>{{ $hr->form->full_name }}
                                                         </td>
-                                                        <td>{{ $hr->form->edu_level->education_level }}</td>
+                                                        @foreach ($edu as $type)
+                                                            <td>
+
+                                                                ({{ $type->edu_level->education_level }},{{ $type->education_type->education_type }})
+                                                            </td>
+                                                        @endforeach
+
                                                         <td>{{ $hr->form->choice2->position }}</td>
-                                                        <td>{{ $hr->form->resultOfrecentPerform }}</td>
+                                                        <td> {{ round($hr->form->resultOfrecentPerform * 0.1, 2) }}</td>
 
 
 
@@ -400,7 +406,7 @@
                                         <label for="lastName">ለውጤት ተኮር ምዘና </label>
                                         <input class="form-control" @error('resultbased') is-invalid @enderror"
                                             id="resultbased" placeholder="" value="{{ $hr->resultbased }}" type="number"
-                                            name="resultbased" min="1" max="25">
+                                            name="resultbased">
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -421,14 +427,14 @@
                                 @endrole
 
 
-
+                                <input type="hidden" name="type" value="first">
 
 
 
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" id="add_btn">አስረክብ</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn">save</button>
                                 </div>
                             </div>
 

@@ -87,12 +87,14 @@
                                 <div class="form-group row">
                                     <label for="education_type" class="col-sm-2 col-form-label">የትምህርት ዝግጅት</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control custom-select  mt-15" name="education_type">
+                                        <select id="input_tags" class="form-control custom-select  mt-15" name="education_type[]" multiple="multiple">
 
                                             @foreach ($edutype as $col)
+
                                                 <option value="{{ $col->education_type }}"
-                                                    {{ $col->education_type == $admin->education_type ? 'selected' : '' }}>
+                                                    {{ $col->education_type == $admin->education_type? 'selected' : '' }}>
                                                     {{ $col->education_type }}</option>
+                                                    {{-- <option value="{{$col->id }}" {{is_array($admin->education_type) && in_array($col->id, $admin->education_type) ? 'selected' : '' }}> {{$col->education_type}}</option> --}}
                                             @endforeach
                                         </select>
                                     </div>
@@ -106,6 +108,19 @@
                                                 <option value="{{ $col->level }}"
                                                     {{ $col->level == $admin->level ? 'selected' : '' }}>
                                                     {{ $col->level }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="position_type_id" class="col-sm-2 col-form-label">የስራ መደብ ክፍል</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control custom-select  mt-15" name="category_id">
+
+                                            @foreach ($category as $col)
+                                                <option value="{{ $col->id }}"
+                                                    {{ $col->id == $admin->category_id ? 'selected' : '' }}>
+                                                    {{ $col->category }}</option>
                                             @endforeach
                                         </select>
                                     </div>

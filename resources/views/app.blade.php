@@ -32,7 +32,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <link href="{{ asset('assets/dist/css/lightgallery.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"> --}}
     <link href="{{ asset('assets/dist/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/src/scss/style.scss') }}" rel="stylesheet" type="text/scss">
 
@@ -95,12 +95,13 @@ License: You must have a valid license purchased only from themeforest to legall
             </div>
         </div>
         @yield('content')
-        @include('sweetalert::alert')
+
         <div class="hk-footer-wrap container">
             <footer class="footer">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
-                        <p>Developed by<a href="" class="text-dark" target="_blank">Yonas T. ,Eyob B. & Emebet T.</a> ©
+                        <p>Developed by<a href="" class="text-dark" target="_blank">Yonas T. ,Eyob B. & Emebet
+                                T.</a> ©
                             2023</p>
                     </div>
                     {{-- <div class="col-md-6 col-sm-12">
@@ -150,13 +151,13 @@ License: You must have a valid license purchased only from themeforest to legall
     <script src="{{ asset('assets/dist/js/lightgallery-all.js') }}"></script>
     <script src="{{ asset('assets/dist/js/landing-data.js') }}"></script>
     <script src="{{ asset('assets/dist/js/init.js') }}"></script>
-    <script src="{{ asset('vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+    <script src="{{ asset('assets/vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
         integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script> --}}
 
 
     <style>

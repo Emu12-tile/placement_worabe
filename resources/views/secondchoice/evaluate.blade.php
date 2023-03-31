@@ -64,7 +64,7 @@
                                                             {{-- <button class="btn btn-primary hide" onclick="tableToggle()">
                                                             25
                                                         </button> --}}
-                                                            <button class="btn btn-primary" type="button"
+                                                            <button class="btn bg-blue-dark-4 text=-white text-white" type="button"
                                                                 data-toggle="collapse" data-target="#collapseExample"
                                                                 aria-expanded="false" aria-controls="collapseExample">
                                                                 25
@@ -75,7 +75,7 @@
                                                     <tr>
                                                         <th scope="row">2</th>
                                                         <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</td>
-                                                        <td><button class="btn btn-primary" type="button"
+                                                        <td><button class="btn bg-blue-dark-4 text=-white text-white" type="button"
                                                                 data-toggle="collapse" data-target="#collapse2"
                                                                 aria-expanded="false" aria-controls="collapseExample">
                                                                 15
@@ -346,7 +346,7 @@
 
                                                         <th>ሙሉ ስም</th>
 
-                                                        <th>የትምህርት ደረጃ</th>
+                                                        <th>አሁን ያሉበት የትምህርት ደረጃና የትምህርት ዝግጅት</th>
                                                         <th>የሚወዳደሩበት የስራ መደብ</th>
                                                         <th>ለስራ ልምድ </th>
                                                         <th>ውጤት ተኮር(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.1) </th>
@@ -360,7 +360,14 @@
 
                                                         <td>{{ $form->full_name }}
                                                         </td>
-                                                        <td>{{ $form->edu_level->education_level }}</td>
+
+                                                        <td>
+                                                            @foreach ($edu as $ed)
+                                                                ({{ $ed->edu_level->education_level }},{{ $ed->education_type->education_type }})
+                                                            @endforeach
+                                                        </td>
+
+
                                                         <td>{{ $form->choice2->position }}</td>
 
 
@@ -433,8 +440,9 @@
                                     <div class="col-md-6 form-group">
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
                                         <input class="form-control @error('resultbased') is-invalid @enderror"
-                                            id="resultbased" placeholder="ለውጤት ተኮር" value="{{ old('resultbased') }}"
-                                            type="float" name="resultbased" min="1" max="10" required>
+                                            id="resultbased" placeholder="ለውጤት ተኮር"
+                                            value="{{ round($form->resultOfrecentPerform * 0.1, 2) }}" type="float"
+                                            name="resultbased" min="1" max="10" required>
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -463,7 +471,7 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" id="add_btn">አስረክብ</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn">save</button>
                                 </div>
                             </div>
 

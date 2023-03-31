@@ -17,7 +17,8 @@ class Position extends Model
         'experience',
         'edu_level',
         'education_type',
-        'level'
+        'level',
+        'category_id'
     ];
     public function position_type()
     {
@@ -35,4 +36,13 @@ class Position extends Model
     {
         return $this->hasOne(Level::class, 'id', 'level_id');
     }
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+    // public function edutype()
+    // {
+    //     return $this->hasMany(Edutype::class, 'position_id', 'id');
+    // }
+
 }

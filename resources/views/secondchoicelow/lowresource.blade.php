@@ -11,7 +11,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('secondchoice.secondchoice') }}" class="btn btn-dark mr-25"> back </a>
+                <a href="{{ route('pos2') }}" class="btn btn-dark mr-25"> back </a>
             </div>
             <h5 class="hk-sec-title">Evaluation </h5>
 
@@ -31,6 +31,7 @@
                                     <th>ለውጤት ተኮር ምዘና</th>
 
                                     <th>አጠቃላይ ውጤት(100%)</th>
+                                    <th colspan="2">Action</th>
 
                                 </tr>
                             </thead>
@@ -51,6 +52,23 @@
                                             <td>{{ $hr->resultbased }}</td>
 
                                             <td>{{ $hr->performance + $hr->experience + $hr->resultbased }}
+                                            </td>
+                                            <td> <a class="btn  btn-blue " type="submit" id="btn-evaluate"
+                                                    href="{{ route('secondhr.edit', $hr->id) }}">
+                                                    Edit</a>
+
+
+                                            </td>
+                                            <td>
+                                                <form action="{{ url('update-lowsecondhr/' . $hr->id) }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+
+                                                    @method('PUT')
+                                                    <button class="btn  btn-green " type="submit" id="btn-evaluate">
+                                                        Submit</button>
+                                                </form>
+
                                             </td>
 
 

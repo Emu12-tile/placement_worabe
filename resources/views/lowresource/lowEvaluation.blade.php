@@ -41,9 +41,9 @@
                                                 <td> ለትምህርት ዝግጅት የሚሰጥ ነጥብ</td>
                                                 <td>
 
-                                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
-                                                        data-target="#collapseExample" aria-expanded="false"
-                                                        aria-controls="collapseExample">
+                                                    <button class="btn bg-blue-dark-4 text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapseExample"
+                                                        aria-expanded="false" aria-controls="collapseExample">
                                                         40
                                                     </button>
                                                 </td>
@@ -52,8 +52,8 @@
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ </td>
-                                                <td><button class="btn btn-primary" type="button" data-toggle="collapse"
-                                                        data-target="#collapse2" aria-expanded="false"
+                                                <td><button class="btn bg-blue-dark-4 text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
                                                         aria-controls="collapseExample">
                                                         30
                                                     </button></td>
@@ -352,9 +352,10 @@
                                                         <th>ሙሉ ስም</th>
 
                                                         {{-- <th>የትምህርት ደረጃ</th> --}}
-                                                        <th>የትምህርት ደረጃ</th>
-                                                        <th>የ ስራ መደብ</th>
-                                                        <th>ለስራ ልምድ </th>
+                                                        <th>የትምህርት ደረጃና የትምህርት ዝግጅት</th>
+
+                                                        <th>የየሚወዳደሩበት ስራ መደብ</th>
+                                                        <th>ያለዎት የስራ ልምድ </th>
 
                                                         <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
 
@@ -367,24 +368,29 @@
 
                                                         <td>{{ $form->full_name }}
                                                         </td>
-                                                        <td>{{ $form->edu_level->education_level }}</td>
+                                                        @foreach ($edu as $type)
+                                                            <td>
+
+                                                                ({{ $type->edu_level->education_level }},{{ $type->education_type->education_type }})
+                                                            </td>
+                                                        @endforeach
 
                                                         <td>
-                                                            {{ $form->position->position }}
+                                                            {{ $form->choice2->position }}
                                                         </td>
 
                                                         <td>
                                                             @foreach ($forms as $fo)
                                                                 <?php
-
+                                                                
                                                                 $fdate = Carbon::parse($fo->startingDate)->year;
-
+                                                                
                                                                 $tdate = Carbon::parse($fo->endingDate)->year;
-
+                                                                
                                                                 $years = $tdate - $fdate;
-
+                                                                
                                                                 echo $years, '(', $fo->positionyouworked, '), ';
-
+                                                                
                                                                 ?>
                                                             @endforeach
                                                         </td>
@@ -434,10 +440,9 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
-                                        <input type="float" value="{{ old('resultbased') }}"
+                                        <input type="float" value="{{ round($form->resultOfrecentPerform * 0.3, 2) }}"
                                             class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
-                                            placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
-                                            required>
+                                            placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30">
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -454,7 +459,8 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" id="add_btn">አስረክብ</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn">save
+                                    </button>
                                 </div>
                             </div>
 

@@ -157,7 +157,7 @@ License: You must have a valid license purchased only from themeforest to legall
                                         @endif
                                     </p>
                                     <p class="text-center">ከዚህ በፊት አካዉንት የሎትም? <a
-                                            href="{{ route('register') }}">ይዝመገቡ</a></p>
+                                            href="{{ route('register') }}">ይመዝገቡ</a></p>
                                 </form>
                             </div>
                         </div>

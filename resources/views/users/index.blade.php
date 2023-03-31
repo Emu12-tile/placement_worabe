@@ -76,11 +76,10 @@
                                                     data-original-title="Edit"> <i class="icon-pencil"></i> </a>
                                             </td>
 
- <td>
+                                            <td>
                                                 <a href="{{ url('delete-user/' . $user->id) }}"> <button type="submit"
-                                                        class="btn btn-danger pd-10">
-                                                        <a data-toggle="tooltip" data-original-title="delete"> <i
-                                                                class=" icon-trash txt-danger"></i> </a>
+                                                        class="btn btn-danger pd-10" data-toggle="tooltip"
+                                                        data-original-title="delete"> <i class=" icon-trash txt-danger"></i>
                                                     </button>
                                                     </i>
                                                 </a>

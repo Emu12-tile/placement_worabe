@@ -12,7 +12,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('secondchoice.secondchoice') }}" class="btn btn-dark mr-25"> back </a>
+                <a href="{{ url('choicesecond') }}" class="btn btn-dark mr-25"> back </a>
             </div>
             <h5 class="hk-sec-title">Evaluation </h5>
 
@@ -26,27 +26,20 @@
                                         <th>ተ.ቁ</th>
 
                                         <th>ሙሉ ስም</th>
-                                        @role('hr')
-                                            <th>ውጤት ሰጪ</th>
 
-                                            <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
-                                            <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
-                                            <th>ለውጤት ተኮር ምዘና</th>
+                                        <th>ውጤት ሰጪ</th>
 
-                                            <th>ለፈተና ውጤት</th>
-                                        @endrole
+                                        <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
+                                        <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
+                                        <th>ለውጤት ተኮር ምዘና</th>
+
+                                        <th>ለፈተና ውጤት</th>
 
 
-                                        {{-- <th>አጠቃላይ ውጤት(100%)</th> --}}
-                                        @role('president')
-                                            <th>የሚወዳደሩበት የስራ መደብ</th>
-                                            <th>የ ትምህርት ደረጃ</th>
-                                            <th>የ ትምህርት አይነት</th>
-                                        @endrole
+
+
                                         <th>አጠቃላይ ውጤት(65%)</th>
-                                        @role('president')
-                                            <th>presidential</th>
-                                        @endrole
+                                        <th colspan="2">Action</th>
 
                                     </tr>
                                 </thead>
@@ -60,18 +53,14 @@
                                                 <td>{{ ++$j }}</td>
                                                 <td>{{ $hr->form->full_name }}
                                                 </td>
-                                                @role('hr')
-                                                    <td>{{ $hr->user->name }}</td>
-                                                    <td>{{ $hr->performance }}</td>
-                                                    <td>{{ $hr->experience }}</td>
-                                                    <td>{{ $hr->resultbased }}</td>
-                                                    <td>{{ $hr->exam }}</td>
-                                                @endrole
-                                                @role('president')
-                                                    <td>{{ $hr->form->choice2->position }}</td>
-                                                    <td>{{ $hr->form->edu_level->education_level }}</td>
-                                                    <td>{{ $hr->form->education_type->education_type }}</td>
-                                                @endrole
+
+                                                <td>{{ $hr->user->name }}</td>
+                                                <td>{{ $hr->performance }}</td>
+                                                <td>{{ $hr->experience }}</td>
+                                                <td>{{ $hr->resultbased }}</td>
+                                                <td>{{ $hr->exam }}</td>
+
+
 
                                                 <td>
                                                     {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
@@ -82,23 +71,24 @@
 
 
 
-                                                @role('president')
-                                                    <td>
-                                                        @if ($hr->status_president == 0)
-                                                            <a class="btn btn-dark"
-                                                                href="{{ route('secondhr.edit', $hr->id) }}">
-                                                                evaluate
-                                                            </a>
-                                                        @endif
-                                                        @if ($hr->status_president == 1)
-                                                            <a class="btn btn-red"
-                                                                href="{{ route('secondhr.edit', $hr->id) }}">
-                                                                Edit
-                                                            </a>
-                                                        @endif
+                                                <td> <a class="btn  bg-blue-dark-4 text-white " type="submit" id="btn-evaluate"
+                                                        href="{{ route('secondhr.edit', $hr->id) }}">
+                                                        Edit</a>
 
-                                                    </td>
-                                                @endrole
+
+                                                </td>
+                                                <td>
+                                                    <form action="{{ url('update-secondhr/' . $hr->id) }}"
+                                                        method="POST" enctype="multipart/form-data">
+                                                        @csrf
+
+                                                        @method('PUT')
+                                                        <button class="btn  bg-green-dark-4 text-white " value="{{ $hr->id }}"
+                                                            type="submit" id="btn_evaluate">
+                                                            Submit</button>
+                                                    </form>
+
+                                                </td>
 
                                             </tr>
                                         @endif

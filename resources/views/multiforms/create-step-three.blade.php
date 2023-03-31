@@ -13,9 +13,6 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                {{-- @if ($errors->any())
-    {!! implode('', $errors->all('<div>:message</div>')) !!}
-@endif --}}
 
                                 <form action="{{ route('multiforms.create.step.three.post') }}" id='add_form'
                                     method="POST">
@@ -135,7 +132,7 @@
                                     </div>
                                     <h3 class="text-gold text-center mt-3 mb-4  "
                                         style=" background-color:rgb(17,40,77); margin:center">የ ስራ ልምድ</h3>
-                                    {{-- <h5 class="text-secondary text-center mt-3 mb-4" id="dynamicAddRemove">የ ስራ ልምድ</h5> --}}
+
                                     <div class="row">
                                         <div class="col-sm">
 
@@ -155,6 +152,7 @@
                                                     @enderror
 
                                                 </div>
+                                                
                                                 <div class="col-md-3">
                                                     <label for="endingDate">ያበቃበት ቀን(ወር/ቀን/ዓመት) </label>
                                                     <input type="date" min="startingDate"
@@ -238,7 +236,7 @@
                                             <div class=" formgr row">
 
                                                 <div class="col-md-3">
-<label for="startingDate"></label>
+                                       <label for="startingDate"></label>
 
                                                     <input type="date" name="addMoreInputFields[${i}][startingDate]" value="{{ $form->startingDate ?? '' }}{{ old('startingDate') }}"
                                                         class="form-control  @error('startingDate') is-invalid @enderror"
@@ -251,7 +249,7 @@
 
                                                 </div>
                                                 <div class="col-md-3">
-  <label for="endingDate"></label>
+                                                  <label for="endingDate"></label>
                                                     <input type="date" name="addMoreInputFields[${i}][endingDate]" value="{{ $form->endingDate ?? '' }}{{ old('endingDate') }}}"
                                                         class="form-control  @error('endingDate') is-invalid @enderror"
                                                         id="endingDate" placeholder=" endingDate">

@@ -1,6 +1,6 @@
 /*DataTable Init*/
 
-"use strict"; 
+"use strict";
 
 $(document).ready(function() {
 	$('#datable_1').DataTable({
@@ -12,13 +12,14 @@ $(document).ready(function() {
 
 		}
 	});
-    $('#datable_2').DataTable({ 
+    
+    $('#datable_2').DataTable({
 		autoWidth: false,
 		lengthChange: false,
 		"bPaginate": false,
 		language: { search: "",searchPlaceholder: "Search" }
 	});
-	
+
 	/*Export DataTable*/
 	$('#datable_3').DataTable( {
 		dom: 'Bfrtip',
@@ -34,10 +35,10 @@ $(document).ready(function() {
 			$('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
 		}
 	} );
-	
+
 	var table = $('#datable_5').DataTable({
 		responsive: true,
-		language: { 
+		language: {
 		search: "" ,
 		sLengthMenu: "_MENU_Items",
 		},
@@ -54,7 +55,7 @@ $(document).ready(function() {
             $(this).addClass('selected');
         }
     } );
- 
+
     $('#button').click( function () {
         table.row('.selected').remove().draw( false );
     } );

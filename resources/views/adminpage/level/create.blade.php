@@ -23,8 +23,7 @@
                                             <div class="col-md-6">
 
                                                 <label for="education_level"> ደረጃ</label>
-                                                <input type="text" name="level"
-                                                    value="{{ old('level') }}"
+                                                <input type="text" name="level" value="{{ old('level') }}"
                                                     class="form-control  @error('level') is-invalid @enderror"
                                                     id="level" placeholder=" ደረጃ">
                                                 @error('level')
@@ -35,7 +34,8 @@
 
                                             </div>
                                             <div>
-                                                <a href="javascript:void(0)" class="btn btn-primary  addRow mt-40 "
+                                                <a href="javascript:void(0)"
+                                                    class="btn bg-blue-dark-4 text-white  addRow mt-40 "
                                                     style=" border-radius:50%">+</a>
                                             </div>
                                         </div>
@@ -44,10 +44,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 pull-right">
-                                        <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary" id="add_btn" >Create</button>
-                                        </div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn bg-blue-dark-4 text-white"
+                                            id="add_btn">Create</button>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -60,13 +61,13 @@
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
-        var i=0;
- $(document).ready(function() {
+        var i = 0;
+        $(document).ready(function() {
 
-        $(".addRow").click(function(e) {
-                 ++i;
-            e.preventDefault();
-            $("#add_form .pull-right").before(`
+            $(".addRow").click(function(e) {
+                ++i;
+                e.preventDefault();
+                $("#add_form .pull-right").before(`
 
                                 <div class="row">
                                     <div class="col-sm">
@@ -86,7 +87,7 @@
 
                                             </div>
                                             <div>
-                                                <a href="javascript:void(0)" class="btn btn-danger removeRow mt-15" style=" border-radius:50%" >-</a>
+                                                <a href="javascript:void(0)" class="btn bg-red-dark-4 text-white removeRow mt-15" style=" border-radius:50%" >-</a>
                                             </div>
                                         </div>
 
@@ -101,72 +102,68 @@
 
 
                     `);
-        });
-        $(document).on('click', '.removeRow', function(e) {
-            e.preventDefault();
-            let row_item = $(this).parents().eq(3);
-            $(row_item).remove();
-        });
-        $("#add_form").on("submit", function(e) {
+            });
+            $(document).on('click', '.removeRow', function(e) {
+                e.preventDefault();
+                let row_item = $(this).parents().eq(3);
+                $(row_item).remove();
+            });
+            $("#add_form").on("submit", function(e) {
 
-            e.preventDefault();
-            form_groups = $(this).find(".form-group");
-            var flag = true;
+                e.preventDefault();
+                form_groups = $(this).find(".form-group");
+                var flag = true;
 
-            var quantities = [];
+                var quantities = [];
 
-            $(form_groups).each((key, value)=>{
+                $(form_groups).each((key, value) => {
 
-                item = {
-                    "level": "",
+                    item = {
+                        "level": "",
 
-                }
-
-
-                var level = $(value).find("input[type='text']").val()
-
-                if(level == undefined || level == "")
-                {
-                    $(value).find("input[type='text']").addClass("is-invalid");
-                    $flag = false;
-                    return;
-                }
+                    }
 
 
-                if(level )
-                {
-                    $(value).find("input[type='text']").removeClass("is-invalid");
+                    var level = $(value).find("input[type='text']").val()
+
+                    if (level == undefined || level == "") {
+                        $(value).find("input[type='text']").addClass("is-invalid");
+                        $flag = false;
+                        return;
+                    }
 
 
-                    item.level = level
-
-                    quantities.push(item)
-                }
-            })
+                    if (level) {
+                        $(value).find("input[type='text']").removeClass("is-invalid");
 
 
-            if(quantities.length+1 == form_groups.length)
-            {
-                $.ajax({
-                    url: "/level",
-                    type: "post",
-                    data: {
-                        "data": quantities
-                    },
-                    headers: {
-                        "X-CSRF-TOKEN": "{{csrf_token()}}"
-                    },
-                    success: function(data){
-                        if(data.success)
-                        {
-                            location.href="/level"
-                        }
+                        item.level = level
+
+                        quantities.push(item)
                     }
                 })
-            }
+
+
+                if (quantities.length + 1 == form_groups.length) {
+                    $.ajax({
+                        url: "/level",
+                        type: "post",
+                        data: {
+                            "data": quantities
+                        },
+                        headers: {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                location.href = "/level"
+                            }
+                        }
+                    })
+                }
+
+            })
 
         })
-
-    })
     </script>
 @endsection

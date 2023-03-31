@@ -29,7 +29,7 @@
                             </div>
                             <div>
                                 <span class="text-success font-34 font-weight-500">
-                                    {{ \App\Models\Form::count() }}</span>
+                                    {{ \App\Models\Form::where('isEditable',1)->count() }}</span>
                             </div>
                         </div>
                         <div class="text-center">
@@ -51,7 +51,7 @@
                             </div>
                             <div>
                                 <span
-                                    class="text-success font-34 font-weight-500">{{ $hrs = DB::table('forms')->join('positions', 'positions.id', '=', 'forms.position_id')->where('positions.position_type_id', 2)->count() }}</span>
+                                    class="text-success font-34 font-weight-500">{{ $hrs = DB::table('forms')->where('isEditable',1)->join('positions', 'positions.id', '=', 'forms.position_id')->where('positions.position_type_id', 2)->count() }}</span>
                             </div>
                         </div>
                         <div class="text-center">
@@ -76,7 +76,7 @@
                                 <span class="text-success font-34 font-weight-600">
 
 
-                                    {{ $hrs = DB::table('forms')->join('positions', 'positions.id', '=', 'forms.position_id')->where('positions.position_type_id', 1)->count() }}</span>
+                                    {{ $hrs = DB::table('forms')->where('isEditable',1)->join('positions', 'positions.id', '=', 'forms.position_id')->where('positions.position_type_id', 1)->count() }}</span>
                             </div>
                         </div>
                         <div class="text-center">
@@ -124,7 +124,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-5">
                             <div>
-                                <span class="d-block font-20 text-dark font-weight-500">በሰው ኃብት የተሰጠ ውጤት</span>
+                                <span class="d-block font-20 text-dark font-weight-500">በኮሚቴ የተሰጠ ውጤት</span>
                             </div>
                             <div>
                                 <span

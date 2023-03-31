@@ -49,13 +49,7 @@ class RegisteredUserController extends Controller
         //  dd($roles);
         return view('users.index', compact('users', 'roles'));
     }
-    public function crt()
-    {
-
-        // $user = User::all();
-        // $user->assignRole('hr');
-        return view('users.create', compact('user'));
-    }
+    
     public function changeStatus(Request $request)
     {
         // $item = DB::tables('model_has_roles')->select('role_id', 'id')

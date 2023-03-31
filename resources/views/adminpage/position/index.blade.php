@@ -13,7 +13,7 @@
             <div class="pull-right hk-sec-title">
 
                 <a href="{{ route('position.create') }}" class="mr-25" data-toggle="tooltip" data-original-title="ይጨምሩ">
-                    <i class="icon-plus icon-4x"> </i> ይጨምሩ </a>
+                    <i class="icon-plus icon-4x"> </i> create </a>
             </div>
             <h5 class="hk-sec-title">በአስተዳዳሪው የተሞላ መረጃ </h5>
 
@@ -32,6 +32,7 @@
                                         <th> ደረጃ </th>
                                         <th> የስራ ልምድ </th>
                                         <th> የስራ መደብ ዓይነት</th>
+                                        <th> የስራ መደብ ክፍል</th>
                                         <th>ድርጊት</th>
 
 
@@ -59,6 +60,7 @@
 
                                             <td>{{ $admin->position_type->position_type }}
                                             </td>
+                                            <td>{{ $admin->category->category }}</td>
 
                                             <td>
                                                 <form action="{{ route('position.destroy', $admin->id) }}" method="POST">

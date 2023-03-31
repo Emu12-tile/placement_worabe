@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\choice2;
 use App\Models\Form;
 use App\Models\Secondhr;
+use App\Models\Education;
 use App\Models\experience;
 use Illuminate\Http\Request;
 
@@ -16,35 +18,105 @@ class SecondhrController extends Controller
     public function index()
     {
 
-        $hrs = Secondhr::all();
+        $hrs = Secondhr::where('status_hr', 0)->get();
 
-        // $hrs = Secondhr::join('forms', 'forms.id', '=', 'secondhrs.form_id')
-        // ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
-        // ->where('choice2s.position_type_id', 1)->get();
 
         return view('secondchoice.index', compact('hrs'));
     }
-    public function secondchoice()
+    public function index4()
+    {
+        $hrs = Secondhr::where('status_hr', 1)->get();
+        return view('secondchoice.resulttwo', compact('hrs'));
+    }
+    public function index3()
     {
 
-        // $forms = Form::all();
-        $forms = Form::where('secondhrs', null)->paginate(5);
+        $hrs = Secondhr::where('status_hr', 1)->latest()->paginate(8);
 
-
-        return view('secondchoice.secondchoice', compact('forms'));
+        return view('secondchoicelow.index', compact('hrs'));
     }
+
+    // public function secondchoice()
+    // {
+
+
+    //     $forms = Form::where('secondhrs', null)->paginate(5);
+
+
+    //     return view('secondchoice.secondchoice', compact('forms'));
+    // }
 
     public function index2()
     {
 
-        $hrs = Secondhr::latest()->paginate(10);
-        // $hrs = Secondhr::join('forms', 'forms.id', '=', 'h_r_s.form_id')
-        //     ->join('positions', 'positions.id', '=', 'forms.position_id')
-        //     ->where('positions.position_type_id', 2)->get();
-        // dd($hrs);
+        $hrs = Secondhr::where('status_hr', 0)->latest()->paginate(10);
 
-        return view('secondchoice.lowresource', compact('hrs'));
+
+        return view('secondchoicelow.lowresource', compact('hrs'));
     }
+
+    public function choicelow()
+    {
+        $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
+            ->join('categories', 'categories.id', '=', 'choice2s.category_id')
+            ->where('categories.catstatus', 'active')
+            ->distinct('choice2s.id')
+            ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
+
+
+        return view('secondchoicelow.pos', compact('forms'));
+    }
+    public function choiceDetaillow($id)
+    {
+
+
+        $pos_id = (int) $id;
+
+        $hrs = Secondhr::join('forms', 'forms.id', '=', 'secondhrs.form_id')
+            ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
+
+            ->where('status_hr', 1)
+            ->where('choice2s.id', $pos_id)
+            ->select('secondhrs.*')
+            ->get();
+            // dd($hrs);
+
+
+
+        return view('secondchoicelow.index', compact('hrs'));
+    }
+
+
+    public function postwo()
+    {
+
+        $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
+            ->join('categories', 'categories.id', '=', 'choice2s.category_id')
+            ->where('categories.catstatus', 'active')
+            ->distinct('choice2s.id')
+            ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
+
+        return view('secondchoice.postwo', compact('forms'));
+    }
+    public function posDetailtwo($id)
+    {
+
+
+        $pos_id = (int) $id;
+
+        $hrs = Secondhr::join('forms', 'forms.id', '=', 'secondhrs.form_id')
+            ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
+
+            ->where('status_hr', 1)
+            ->where('choice2s.id', $pos_id)
+            ->select('secondhrs.*')
+            ->get();
+
+
+
+        return view('secondchoice.resulttwo', compact('hrs'));
+    }
+
 
 
 
@@ -52,18 +124,18 @@ class SecondhrController extends Controller
     public function createhr1($prod1_id)
     {
         $form = Form::findOrFail($prod1_id);
-
+        $edu = Education::where('form_id', $form->id)->get();
         $forms = experience::where('form_id', $form->id)->get();
-        // return view('resource.evaluate', ['id' => $prod_id,'form'=>$form]);
+
 
         if ($form->choice2->position_type_id == 1) {
 
 
-            return view('secondchoice.evaluate', ['id' => $prod1_id, 'form' => $form, 'forms' => $forms]);
+            return view('secondchoice.evaluate', ['id' => $prod1_id, 'form' => $form, 'forms' => $forms, 'edu' => $edu]);
         } elseif ($form->choice2->position_type_id == 2) {
 
 
-            return view('secondchoice.lowevaluation', ['id' => $prod1_id, 'form' => $form, 'forms' => $forms]);
+            return view('secondchoicelow.lowevaluation', ['id' => $prod1_id, 'form' => $form, 'forms' => $forms, 'edu' => $edu]);
         } else {
             return back();
         }
@@ -84,7 +156,7 @@ class SecondhrController extends Controller
         $res->exam = $request->Input('exam');
         if (($res->save() == true)) {
             // $resource->status_hr ->fill(1) ;
-            $res->status_hr = 1;
+            // $res->status_hr = 1;
         }
         $res->save();
 
@@ -120,7 +192,7 @@ class SecondhrController extends Controller
         // dd($resource->save());
         if (($res->save() == true)) {
             // $resource->status_hr ->fill(1) ;
-            $res->status_hr = 1;
+            // $res->status_hr = 1;
             $prod1->secondhrs = 1;
         }
         $res->save();
@@ -138,8 +210,15 @@ class SecondhrController extends Controller
     {
 
         $hr = Secondhr::find($id);
+        $edu = Education::where('form_id', $hr->form->id)->get();
 
-        return view('secondchoice.edit', ['hr' => $hr]);
+        $forms = experience::where('form_id', $hr->form->id)->get();
+        if ($hr->form->choice2->position_type_id == 1) {
+            return view('secondchoice.edit', ['hr' => $hr, 'forms' => $forms, 'edu' => $edu]);
+        }
+        if ($hr->form->choice2->position_type_id == 2) {
+            return view('secondchoicelow.edit', ['hr' => $hr, 'forms' => $forms, 'edu' => $edu]);
+        }
     }
 
     public function update(Request $request, $id)
@@ -147,17 +226,44 @@ class SecondhrController extends Controller
         $hr = Secondhr::find($id);
 
 
-        // $hr->performance = $request->Input('performance');
-        // $hr->experience = $request->Input('experience');
-        // $hr->resultbased = $request->Input('resultbased');
-        // $hr->exam = $request->Input('exam');
-        $hr->presidentGrade = $request->Input('presidentGrade');
-        if ($hr->update()) {
-            $hr->status_president = 1;
-        };
+        $hr->performance = $request->Input('performance');
+        $hr->experience = $request->Input('experience');
+        $hr->resultbased = $request->Input('resultbased');
+        $hr->exam = $request->Input('exam');
+        $hr->user_id = auth()->user()->id;
+
+        $hr->update();
+        if ($request->type == 'first') {
+            return redirect('secondhr')->with('status', 'evaluation edited successfully');
+        } else if ($request->type == 'second') {
+            return redirect('secondlow')->with('status', 'evaluation edited successfully');;
+        }
+    }
+    public function update1(Request $request, $id)
+    {
+        $hr = Secondhr::find($id);
+
+
+        $hr->status_hr = 1;
+
+
         $hr->update();
 
-        return redirect('choice2evaluation')->with('status', 'stock updated successfully');
+
+        return redirect('secondhr')->with('status', ' updated successfully');
+    }
+    public function update2(Request $request, $id)
+    {
+        $hr = Secondhr::find($id);
+
+
+        $hr->status_hr = 1;
+
+
+        $hr->update();
+
+
+        return redirect('secondlow')->with('status', ' updated successfully');
     }
     public function destroy($id)
     {

@@ -33,8 +33,8 @@ class Form extends Model
         'DisciplineFlaw',
         'MoreRoles',
         'position_id',
-        'edu_level_id',
-        'education_type_id',
+        // 'edu_level_id',
+        // 'education_type_id',
         'job_category_id',
         'level_id',
         'h_r_id',
@@ -44,10 +44,12 @@ class Form extends Model
         'level',
         'tag_slug',
         'firstdergee'
-      
+
 
 
     ];
+
+    protected $with = ['education', 'experiences'];
     public function h_r_s()
     {
         return $this->belongsTo(HR::class, 'h_r_id', 'id');
@@ -61,18 +63,22 @@ class Form extends Model
     {
         return $this->hasMany(experience::class, 'form_id', 'id');
     }
+    public function education()
+    {
+        return $this->hasMany(Education::class, 'form_id', 'id');
+    }
     public function position()
     {
         return $this->hasOne(Position::class, 'id', 'position_id');
     }
-    public function edu_level()
-    {
-        return $this->hasOne(EduLevel::class, 'id', 'edu_level_id');
-    }
-    public function education_type()
-    {
-        return $this->hasOne(EducationType::class, 'id', 'education_type_id');
-    }
+    // public function edu_level()
+    // {
+    //     return $this->hasOne(EduLevel::class, 'id', 'edu_level_id');
+    // }
+    // public function education_type()
+    // {
+    //     return $this->hasOne(EducationType::class, 'id', 'education_type_id');
+    // }
     public function job_category()
     {
         return $this->hasOne(JobCategory::class, 'id', 'job_category_id');

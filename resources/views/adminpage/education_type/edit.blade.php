@@ -34,7 +34,7 @@
 
                                 <div class="form-group row mb-0 pull-right">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="submit" class="btn bg-blue-dark-4 text-white">Update</button>
                                     </div>
                                 </div>
                             </form>
