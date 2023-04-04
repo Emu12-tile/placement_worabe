@@ -10,18 +10,18 @@
     <div class="container">
 
         <section class="hk-sec-wrapper mt-100">
-            <div class="pull-right hk-sec-title">
+            {{-- <div class="pull-right hk-sec-title">
 
                 <a href="{{ url('choicesecond') }}" class="btn btn-dark mr-25"> back </a>
-            </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+            </div> --}}
+            <h5 class="hk-sec-title">የተወዳዳሪዎች 2ኛ ምርጫ ከቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
 
             <div class="row">
                 <div class="col-sm">
-                    <div class="table-wrap ">
+                    <div class="table-wrap">
                         <div class="table-responsive">
-                            <table id="datable_1" class="table table-hover table-bordered w-100  pb-30">
-                                <thead>
+                            <table id="datable_1" class="table table-hover table-bordered w-100 pb-30">
+                                <thead >
                                     <tr>
                                         <th>ተ.ቁ</th>
 
@@ -39,7 +39,8 @@
 
 
                                         <th>አጠቃላይ ውጤት(65%)</th>
-                                        <th colspan="2">Action</th>
+                                        <th >Action</th>
+                                        <th >Submission</th>
 
                                     </tr>
                                 </thead>
@@ -71,20 +72,20 @@
 
 
 
-                                                <td> <a class="btn  bg-blue-dark-4 text-white " type="submit" id="btn-evaluate"
-                                                        href="{{ route('secondhr.edit', $hr->id) }}">
+                                                <td> <a class="btn  bg-blue-dark-4 text-white " type="submit"
+                                                        id="btn-evaluate" href="{{ route('secondhr.edit', $hr->id) }}">
                                                         Edit</a>
 
 
                                                 </td>
                                                 <td>
-                                                    <form action="{{ url('update-secondhr/' . $hr->id) }}"
-                                                        method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ url('update-secondhr/' . $hr->id) }}" method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
 
                                                         @method('PUT')
-                                                        <button class="btn  bg-green-dark-4 text-white " value="{{ $hr->id }}"
-                                                            type="submit" id="btn_evaluate">
+                                                        <button class="btn  bg-green-dark-4 text-white "
+                                                            value="{{ $hr->id }}" type="submit" id="btn_evaluate">
                                                             Submit</button>
                                                     </form>
 

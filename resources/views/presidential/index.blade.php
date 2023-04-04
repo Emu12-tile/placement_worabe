@@ -11,9 +11,9 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ route('resource.index') }}" class=" btn btn-dark mr-25"> back </a>
+                <a href="{{ url('result-choice1') }}" class=" btn btn-dark mr-25"> back </a>
             </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+            <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከ ቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
 
             <div class="row">
                 <div class="col-sm">
@@ -32,7 +32,8 @@
                                         <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
                                         <th>አጠቃላይ ውጤት(100%)</th>
                                         <th>Action</th>
-                                        <th>Action</th>
+                                        <th>Submission</th>
+
 
 
                                     </tr>

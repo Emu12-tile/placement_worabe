@@ -13,7 +13,7 @@
 
                 <a href="{{ route('lowresource.lowresource') }}" class="btn btn-dark mr-25"> back </a>
             </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+            <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከቡድን መሪ በታች አጠቃላይ ውጤት </h5>
 
             <div class="row">
                 <div class="col-sm">

@@ -79,7 +79,20 @@
                                                             <strong>የአ.አ.ሳ.ቴን ኢሜይል ይጠቀሙ</strong>
                                                         </span>
                                                     @enderror
+                                                    {{-- @error('custom_email_error')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>user already registered</strong>
+                                                        </span>
+                                                    @enderror --}}
+
+
                                                 </div>
+                                                @if ($errors->any())
+                                                    <span class=" error" style="color:red">
+                                                        <strong>{{ $errors->getBag('default')->first('custom_email_error') }}</strong>
+                                                    </span>
+                                                    {{-- {{ dd($errors) }} --}}
+                                                @endif
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label class="control-label mb-10">ስልክ
@@ -141,7 +154,10 @@
                                                 @enderror
                                             </div>
                                         </div>
-
+                                        <h3 class="text-gold text-center mt-3 mb-4  "
+                                            style=" background-color:rgb(17,40,77); margin:center">
+                                            ያለዎትን የትምህርት ዝግጅትና የትምህርት ደረጃ ያስገቡ
+                                        </h3>
 
                                         <div class="row">
                                             <div class="col-sm">
@@ -382,7 +398,7 @@
                                                 <input class="form-control mt-25"
                                                     @error('resultOfrecentPerform') is-invalid @enderror"
                                                     id="resultOfrecentPerform" placeholder=" የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም"
-                                                    value="{{ old('resultOfrecentPerform') }}" type="text"
+                                                    value="{{ old('resultOfrecentPerform') }}" type="decimal"
                                                     name="resultOfrecentPerform">
                                                 @error('resultOfrecentPerform')
                                                     <span class=" error invalid-feedback">

@@ -12,7 +12,7 @@
             @role('hr')
                 <div class="pull-right hk-sec-title">
 
-                    <a href="{{ route('resource.index') }}" class=" btn btn-dark mr-25"> back </a>
+                    <a href="{{ url('positionhigh') }}" class=" btn btn-dark mr-25"> back </a>
                 </div>
             @endrole
             <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከ ቡድን መሪ በላይ አጠቃላይ ውጤት </h5>

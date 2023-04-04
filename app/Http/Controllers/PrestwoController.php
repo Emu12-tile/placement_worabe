@@ -36,6 +36,7 @@ class PrestwoController extends Controller
         $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
         ->join('categories', 'categories.id', '=', 'choice2s.category_id')
         ->where('categories.catstatus', 'active')
+            ->where('choice2s.position_type_id', 1)
         ->distinct('choice2s.id')
         ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
 

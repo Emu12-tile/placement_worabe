@@ -12,9 +12,9 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ url('evaluation') }}" class=" btn btn-dark mr-25"> back </a>
+                <a href="{{ url('positionpres') }}" class=" btn btn-dark mr-25"> back </a>
             </div>
-            <h5 class="hk-sec-title">በ ኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
+            <h5 class="hk-sec-title">በኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
 
             <div class="row">
                 <div class="col-sm">

@@ -34,10 +34,11 @@ class ResourceController extends Controller
     public function poshigh()
     {
         $forms = Position::join('forms', 'forms.position_id', '=', 'positions.id')
-        ->join('categories', 'categories.id', '=', 'positions.category_id')
-        ->where('categories.catstatus', 'active')
-        ->distinct('positions.id')
-        ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
+            ->join('categories', 'categories.id', '=', 'positions.category_id')
+            ->where('categories.catstatus', 'active')
+            ->where('positions.position_type_id', 1)
+            ->distinct('positions.id')
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
 
 
         return view('resource.pos', compact('forms'));
@@ -49,10 +50,10 @@ class ResourceController extends Controller
         $pos_id = (int) $id;
 
         $hrs = HR::join('forms', 'forms.id', '=', 'h_r_s.form_id')
-        ->join('positions', 'positions.id', '=', 'forms.position_id')
+            ->join('positions', 'positions.id', '=', 'forms.position_id')
 
-        ->where('status_hr', 1)
-        ->where('positions.id', $pos_id)
+            ->where('status_hr', 1)
+            ->where('positions.id', $pos_id)
             ->select('h_r_s.*')
             ->get();
 
@@ -66,10 +67,11 @@ class ResourceController extends Controller
     {
 
         $forms = Position::join('forms', 'forms.position_id', '=', 'positions.id')
-        ->join('categories', 'categories.id', '=', 'positions.category_id')
-        ->where('categories.catstatus', 'active')
-        ->distinct('positions.id')
-        ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
+            ->join('categories', 'categories.id', '=', 'positions.category_id')
+            ->where('categories.catstatus', 'active')
+            ->where('positions.position_type_id', 2)
+            ->distinct('positions.id')
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
 
         return view('lowresource.pos', compact('forms'));
     }
@@ -80,13 +82,13 @@ class ResourceController extends Controller
         $pos_id = (int) $id;
 
         $hrs = HR::join('forms', 'forms.id', '=', 'h_r_s.form_id')
-        ->join('positions', 'positions.id', '=', 'forms.position_id')
+            ->join('positions', 'positions.id', '=', 'forms.position_id')
 
             ->where('status_hr', 1)
             ->where('positions.id', $pos_id)
             ->select('h_r_s.*')
             ->get();
-            // dd($hrs);
+        // dd($hrs);
 
 
 

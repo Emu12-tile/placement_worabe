@@ -14,7 +14,7 @@
 
                 <a href="{{ route('positionpres2') }}" class=" btn btn-dark mr-25"> back </a>
             </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+            <h5 class="hk-sec-title">በኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
 
             <div class="row">
                 <div class="col-sm">

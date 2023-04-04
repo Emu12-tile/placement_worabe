@@ -49,7 +49,7 @@ class SecondhrController extends Controller
     public function index2()
     {
 
-        $hrs = Secondhr::where('status_hr', 0)->latest()->paginate(10);
+        $hrs = Secondhr::where('status_hr', 0)->get();
 
 
         return view('secondchoicelow.lowresource', compact('hrs'));
@@ -60,6 +60,7 @@ class SecondhrController extends Controller
         $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
             ->join('categories', 'categories.id', '=', 'choice2s.category_id')
             ->where('categories.catstatus', 'active')
+            ->where('choice2s.position_type_id', 2)
             ->distinct('choice2s.id')
             ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
 
@@ -79,7 +80,7 @@ class SecondhrController extends Controller
             ->where('choice2s.id', $pos_id)
             ->select('secondhrs.*')
             ->get();
-            // dd($hrs);
+        // dd($hrs);
 
 
 
@@ -93,6 +94,7 @@ class SecondhrController extends Controller
         $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
             ->join('categories', 'categories.id', '=', 'choice2s.category_id')
             ->where('categories.catstatus', 'active')
+            ->where('choice2s.position_type_id', 1)
             ->distinct('choice2s.id')
             ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
 

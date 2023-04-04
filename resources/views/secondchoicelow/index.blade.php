@@ -13,7 +13,7 @@
 
                 <a href="{{ url('choicelow') }}" class="btn btn-dark mr-25"> back </a>
             </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+            <h5 class="hk-sec-title">የተወዳዳሪዎች 2ኛ ምርጫ ከ ቡድን መሪ በታች አጠቃላይ ውጤት(100%) </h5>
 
             <div class="row">
                 <div class="col-sm">

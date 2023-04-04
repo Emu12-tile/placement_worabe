@@ -15,7 +15,7 @@
 
                     <a href="{{ url('pos') }}" class=" btn btn-dark mr-25"> back </a>
                 </div>
-                <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከ ቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
+                <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
                 <div class="row">
                     <div class="col-sm">
                         <div class="table-wrap ">
@@ -40,8 +40,9 @@
                                             {{-- <th>አጠቃላይ ውጤት(100%)</th> --}}
 
                                             <th>አጠቃላይ ውጤት(65%)</th>
-                                            <th colspan="2">Action</th>
+                                            <th>Action</th>
 
+                                            <th>Submission</th>
 
 
                                         </tr>
@@ -71,8 +72,8 @@
 
                                                     </td>
 
-                                                    <td> <a class="btn  btn-blue " type="submit" id="btn-evaluate"
-                                                            href="{{ route('resource.edit', $hr->id) }}">
+                                                    <td> <a class="btn  bg-blue-dark-4 text-white " type="submit"
+                                                            id="btn-evaluate" href="{{ route('resource.edit', $hr->id) }}">
                                                             Edit</a>
 
 
@@ -83,8 +84,8 @@
                                                             @csrf
 
                                                             @method('PUT')
-                                                            <button class="btn  btn-green " value="{{ $hr->id }}"
-                                                                type="submit" id="btn_evaluate">
+                                                            <button class="btn  bg-green-dark-4 text-white "
+                                                                value="{{ $hr->id }}" type="submit" id="btn_evaluate">
                                                                 Submit</button>
                                                         </form>
 

@@ -1,11 +1,12 @@
 @extends('layouts.admin')
 @section('content')
+ <div class="container">
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
-                <div class="pull-right">
+                {{-- <div class="pull-right">
                     <a class="btn btn-dark" href="{{ url('choicesecond') }}"> Back</a>
-                </div>
+                </div> --}}
                 <h5 class="hk-sec-title">የመመዘኛ መስፈርቶች ከቡድን መሪ በታች
                 </h5>
                 {{-- <p class="mb-40">A tiny editable jQuery Bootstrap spreadsheet. Just start typing to edit, or move around
@@ -41,9 +42,9 @@
                                                 <td> ለትምህርት ዝግጅት የሚሰጥ ነጥብ</td>
                                                 <td>
 
-                                                    <button class="btn btn-primary" type="button" data-toggle="collapse"
-                                                        data-target="#collapseExample" aria-expanded="false"
-                                                        aria-controls="collapseExample">
+                                                    <button class="btn bg-blue-dark-4 text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapseExample"
+                                                        aria-expanded="false" aria-controls="collapseExample">
                                                         40
                                                     </button>
                                                 </td>
@@ -52,8 +53,8 @@
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ </td>
-                                                <td><button class="btn btn-primary" type="button" data-toggle="collapse"
-                                                        data-target="#collapse2" aria-expanded="false"
+                                                <td><button class="btn bg-blue-dark-4 text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
                                                         aria-controls="collapseExample">
                                                         30
                                                     </button></td>
@@ -350,13 +351,16 @@
                                                     <tr>
 
                                                         <th>ሙሉ ስም</th>
+                                                        <th>ጾታ</th>
+
                                                         <th>የሚወዳደሩበት የስራ መደብ</th>
 
-                                                        <th>የትምህርት ደረጃዎ</th>
-                                                        <th>የትምህርት ዝግጅት</th>
+                                                        <th> የተወዳዳሪው የትምህርት ደረጃና የትምህርት ዝግጅት</th>
+
 
                                                         <th>የስራ ልምድዎ </th>
                                                         <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
+                                                        <th>ተጨማሪ ይመልከቱ</th>
 
 
                                                     </tr>
@@ -367,16 +371,22 @@
 
                                                         <td>{{ $form->full_name }}
                                                         </td>
+                                                        <td>{{ $form->sex }}</td>
                                                         <td>
                                                             {{ $form->choice2->position }}
                                                         </td>
 
 
 
-                                                        @foreach ($edu as $ed)
-                                                            <td>{{ $ed->edu_level->education_level }}</td>
-                                                            <td>{{ $ed->education_type->education_type }}</td>
-                                                        @endforeach
+
+                                                        <td>
+                                                            @foreach ($edu as $ed)
+                                                                ({{ $ed->edu_level->education_level }},{{ $ed->education_type->education_type }})
+                                                                ,
+                                                            @endforeach
+                                                        </td>
+
+
 
 
                                                         <td>
@@ -395,13 +405,12 @@
                                                             @endforeach
                                                         </td>
                                                         <td>{{ round($form->resultOfrecentPerform * 0.3, 2) }}</td>
-                                                        {{-- <td>
-                                                            <form action="" method="POST"><a
-                                                                    href="{{ route('hr.show', $form->id) }}" class="mr-25"
-                                                                    data-toggle="tooltip"
-                                                                    data-original-title="show">show</a>
-                                                        </td> --}}
+                                                        <td data-toggle="collapse" data-target="#more" aria-expanded="false"
+                                                            aria-controls="collapseExample">more <i
+                                                                class='ion ion-md-arrow-round-forward'></i>
 
+
+                                                        </td>
 
 
 
@@ -419,6 +428,59 @@
                                 </div>
                                 {{-- </div> --}}
                             </div>
+                            <div class="collapse" id="more">
+                                <div class="card card-body">
+
+                                    <div class="table-wrap mb-20 ">
+                                        <div class="table-responsive">
+                                            <table class="table table-active table-bordered mb-0">
+                                                <thead class="thead-active">
+                                                    <tr>
+
+
+                                                        <th>አሁን ያሉበት የስራ መደብ</th>
+                                                        <th>ደረጃ</th>
+                                                        <th>ደምወዝ</th>
+                                                        <th>በዩኒቨርስቲዉ የቅጥር ዘመን
+                                                            በኢትዮጵያ</th>
+                                                        <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
+                                                            (በዓመት,የስራ
+                                                            መደብ)</th>
+                                                        <th>በሌላ መስርያ ቤት አገልግሎት
+                                                            ዘመን(በዓመት,የስራ
+                                                            መደብ)</th>
+                                                        <th>አገልግሎት ከዲፕሎማ
+                                                            በፊት(በዓመት,የስራ መደብ)</th>
+                                                        <th>አገልግሎት ከዲፕሎማ/ዲግሪ
+                                                            በኋላ(በዓመት, የስራ መደብ)</th>
+                                                        <th>የዲስፕሊን ጉድለት</th>
+                                                        <th>ተጨማሪ የሥራ ድርሻ</th>
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+
+                                                        <td>{{ $form->positionofnow }}</td>
+                                                        <td>{{ $form->level->level }}</td>
+                                                        <td>{{ $form->fee }}</td>
+                                                        <td>{{ $form->UniversityHiringEra }}</td>
+                                                        <td>{{ $form->servicPeriodAtUniversity }}</td>
+                                                        <td>{{ $form->servicPeriodAtAnotherPlace }}</td>
+                                                        <td>{{ $form->serviceBeforeDiplo }}</td>
+                                                        <td>{{ $form->serviceAfterDiplo }}</td>
+                                                        <td>{{ $form->DisciplineFlaw }}</td>
+                                                        <td>{{ $form->MoreRoles }}</td>
+                                                    </tr>
+
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
 
                                 @role('hr')
@@ -426,7 +488,7 @@
                                         <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                         <input type="number" value="{{ old('performance') }}"
                                             class="form-control @error('performance') is-invalid @enderror" id="performance"
-                                            placeholder="" name="performance" min="1" max="40" required>
+                                            placeholder="ለትምህርት ዝግጅት" name="performance" min="1" max="40">
                                         @error('performance')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -437,7 +499,7 @@
                                         <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                         <input type="number" value="{{ old('experience') }}"
                                             class="form-control @error('experience') is-invalid @enderror" id="experience"
-                                            placeholder="ለስራ ልምድ" name="experience" min="1" max="30" required>
+                                            placeholder="ለስራ ልምድ" name="experience" min="1" max="30">
                                         @error('experience')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -448,8 +510,7 @@
                                         <label for="resultbased">ለውጤት ተኮር ምዘና </label>
                                         <input type="float" value="{{ round($form->resultOfrecentPerform * 0.3, 2) }}"
                                             class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
-                                            placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
-                                            required>
+                                            placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30">
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -466,7 +527,8 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" id="add_btn">አስረክብ</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white"
+                                        id="add_btn">save</button>
                                 </div>
                             </div>
 
@@ -484,4 +546,5 @@
             </section>
         </div>
     </div>
+ </div>
 @endsection

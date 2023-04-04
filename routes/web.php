@@ -126,6 +126,44 @@ Route::middleware([
         Route::resource('/secondhr', SecondhrController::class);
     }
 );
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'role:hr',
+])->group(function () {
+    Route::resource('/resource', ResourceController::class);
+    Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
+    Route::get('/resource/edit/{id}', [ResourceController::class, 'edit']);
+    Route::put('update-resource/{id}', [ResourceController::class, 'update1']);
+    Route::put('update-lowresource/{id}', [ResourceController::class, 'update2']);
+
+    Route::get('/choicesecond', [SecondhrController::class, 'postwo']);
+    Route::get('/posDetailtwo/{id}', [SecondhrController::class, 'posDetailtwo'])->name('posDetailtwo');
+    Route::get('/choicelow', [SecondhrController::class, 'choicelow']);
+    Route::get('/choiceDetaillow/{id}', [SecondhrController::class, 'choiceDetaillow'])->name('choiceDetaillow');
+    Route::get('/lowresource', [ResourceController::class, 'index2'])->name('lowresource.lowresource');
+
+    Route::get('/positionresult', [ResourceController::class, 'poslow']);
+    Route::get('/positionDetail/{id}', [ResourceController::class, 'positionDetail'])->name('positionDetail');
+    Route::get('/positionhigh', [ResourceController::class, 'poshigh']);
+    Route::get('/positionDetailhigh/{id}', [ResourceController::class, 'posDetailhigh'])->name('posDetailhigh');
+
+    Route::get('/result', [ResourceController::class, 'index3'])->name('lowresource.index');
+    Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
+
+    Route::get('/resultsecond', [SecondhrController::class, 'index3'])->name('secondchoicelow.index');
+    Route::get('/secondhr/edit/{id}', [SecondhrController::class, 'edit']);
+    Route::put('update-secondhr/{id}', [SecondhrController::class, 'update1']);
+    Route::put('update-lowsecondhr/{id}', [SecondhrController::class, 'update2']);
+    Route::get('/secondhr/add/{id}', [SecondhrController::class, 'createhr1'])->name('addsecond');
+    Route::post('/secondhr/add/{id}', [SecondhrController::class, 'storeRestore1'])->name('addHrPost1');
+
+    Route::get('/secondlow', [SecondhrController::class, 'index2'])->name('secondchoice.lowresource');
+});
+
+
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -140,10 +178,6 @@ Route::middleware([
         Route::get('/pos2', [FormController::class, 'pos2'])->name('pos2');
         Route::get('/posDetail2/{id}', [FormController::class, 'posDetail2'])->name('posDetail2');
 
-        Route::get('/choicesecond', [SecondhrController::class, 'postwo']);
-        Route::get('/posDetailtwo/{id}', [SecondhrController::class, 'posDetailtwo'])->name('posDetailtwo');
-        Route::get('/choicelow', [SecondhrController::class, 'choicelow']);
-        Route::get('/choiceDetaillow/{id}', [SecondhrController::class, 'choiceDetaillow'])->name('choiceDetaillow');
 
 
 
@@ -152,33 +186,10 @@ Route::middleware([
 
 
 
-        Route::get('/resource/add/{id}', [ResourceController::class, 'createhr'])->name('addHr');
-        Route::get('/resource/edit/{id}', [ResourceController::class, 'edit']);
-        Route::put('update-resource/{id}', [ResourceController::class, 'update1']);
-        Route::put('update-lowresource/{id}', [ResourceController::class, 'update2']);
-
-        Route::resource('/resource', ResourceController::class);
         Route::get('/result-choice1', [ResourceController::class, 'index4']);
-        Route::get('/lowresource', [ResourceController::class, 'index2'])->name('lowresource.lowresource');
-
-        Route::get('/positionresult', [ResourceController::class, 'poslow']);
-        Route::get('/positionDetail/{id}', [ResourceController::class, 'positionDetail'])->name('positionDetail');
-        Route::get('/positionhigh', [ResourceController::class, 'poshigh']);
-        Route::get('/positionDetailhigh/{id}', [ResourceController::class, 'posDetailhigh'])->name('posDetailhigh');
-
-        Route::get('/result', [ResourceController::class, 'index3'])->name('lowresource.index');
-        Route::post('/resource/add/{id}', [ResourceController::class, 'storeRestore'])->name('addHrPost');
 
 
         Route::get('/resulttwo', [SecondhrController::class, 'index4']);
-        Route::get('/resultsecond', [SecondhrController::class, 'index3'])->name('secondchoicelow.index');
-        Route::get('/secondhr/edit/{id}', [SecondhrController::class, 'edit']);
-        Route::put('update-secondhr/{id}', [SecondhrController::class, 'update1']);
-        Route::put('update-lowsecondhr/{id}', [SecondhrController::class, 'update2']);
-        Route::get('/secondhr/add/{id}', [SecondhrController::class, 'createhr1'])->name('addsecond');
-        Route::post('/secondhr/add/{id}', [SecondhrController::class, 'storeRestore1'])->name('addHrPost1');
-
-        Route::get('/secondlow', [SecondhrController::class, 'index2'])->name('secondchoice.lowresource');
     }
 
 );

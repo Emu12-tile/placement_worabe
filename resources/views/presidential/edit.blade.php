@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+ <div class="container">
     <div class="row">
         <div class="col-xl-12">
             <section class="hk-sec-wrapper">
@@ -173,9 +174,12 @@
                                                     <tr>
 
                                                         <th>ሙሉ ስም</th>
+                                                        <th>ጾታ</th>
 
-                                                          <th>አሁን ያሉበት የትምህርት ደረጃና ዝግጅት</th>
+                                                        <th>አሁን ያሉበት የትምህርት ደረጃና ዝግጅት</th>
                                                         <th>የሚወዳደሩበት የስራ መደብ</th>
+                                                        <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት) </th>
+                                                        <th>ተጨማሪ ይመልከቱ</th>
 
 
 
@@ -187,17 +191,23 @@
 
                                                         <td>{{ $pres->hr->form->full_name }}
                                                         </td>
+                                                        <td>{{ $pres->hr->form->sex }}</td>
 
                                                         <td>
                                                             @foreach ($edu as $type)
                                                                 ({{ $type->edu_level->education_level }},
-                                                                {{ $type->education_type->education_type }}),
+                                                                {{ $type->education_type->education_type }})
+                                                                ,
                                                             @endforeach
                                                         </td>
                                                         <td>{{ $pres->hr->form->position->position }}</td>
+                                                        <td>{{ round($pres->hr->form->resultOfrecentPerform * 0.1, 2) }}</td>
 
+                                                        <td data-toggle="collapse" data-target="#more" aria-expanded="false"
+                                                            aria-controls="collapseExample">more <i
+                                                                class='ion ion-md-arrow-round-forward'></i>
 
-
+                                                        </td>
 
 
                                                     </tr>
@@ -211,14 +221,68 @@
                                 </div>
 
                             </div>
+                            <div class="collapse" id="more">
+                                <div class="card card-body">
+
+                                    <div class="table-wrap mb-20 ">
+                                        <div class="table-responsive">
+                                            <table class="table table-active table-bordered mb-0">
+                                                <thead class="thead-active">
+                                                    <tr>
+
+
+                                                        <th>አሁን ያሉበት የስራ መደብ</th>
+                                                        <th>ደረጃ</th>
+                                                        <th>ደምወዝ</th>
+                                                        <th>በዩኒቨርስቲዉ የቅጥር ዘመን
+                                                            በኢትዮጵያ</th>
+                                                        <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
+                                                            (በዓመት,የስራ
+                                                            መደብ)</th>
+                                                        <th>በሌላ መስርያ ቤት አገልግሎት
+                                                            ዘመን(በዓመት,የስራ
+                                                            መደብ)</th>
+                                                        <th>አገልግሎት ከዲፕሎማ
+                                                            በፊት(በዓመት,የስራ መደብ)</th>
+                                                        <th>አገልግሎት ከዲፕሎማ/ዲግሪ
+                                                            በኋላ(በዓመት, የስራ መደብ)</th>
+                                                        <th>የዲስፕሊን ጉድለት</th>
+                                                        <th>ተጨማሪ የሥራ ድርሻ</th>
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+
+                                                        <td>{{ $pres->hr->form->positionofnow }}</td>
+                                                        <td>{{ $pres->hr->form->level->level }}</td>
+                                                        <td>{{ $pres->hr->form->fee }}</td>
+                                                        <td>{{ $pres->hr->form->UniversityHiringEra }}</td>
+                                                        <td>{{ $pres->hr->form->servicPeriodAtUniversity }}</td>
+                                                        <td>{{ $pres->hr->form->servicPeriodAtAnotherPlace }}</td>
+                                                        <td>{{ $pres->hr->form->serviceBeforeDiplo }}</td>
+                                                        <td>{{ $pres->hr->form->serviceAfterDiplo }}</td>
+                                                        <td>{{ $pres->hr->form->DisciplineFlaw }}</td>
+                                                        <td>{{ $pres->hr->form->MoreRoles }}</td>
+                                                    </tr>
+
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 @role('president')
                                     <div class="col-md-6 form-group">
-                                        <label for="firstName">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
+                                        <label for="firstName">በበላይ ሃላፊ ለአመራርነት ክህሎት የሚሰጥ ነጥብ ከ(35%)</label>
                                         <input class="form-control" @error('presidentGrade') is-invalid @enderror"
-                                            id="firstName" placeholder="ለትምህርት ዝግጅት የሚሰጥ ነጥብ ከ (35%)"
-                                            value="{{ $pres->presidentGrade }}" type="number" name="presidentGrade"
-                                            min="1" max="35" required>
+                                            id="firstName"
+                                            placeholder="ለአመራርነት ክህሎት  ከ(35%)"
+                                            value="{{ $pres->presidentGrade }}"
+                                            type="number" name="presidentGrade" min="1" max="35" >
                                         @error('presidentGrade')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -235,7 +299,8 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn">save</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white"
+                                        id="add_btn">save</button>
                                 </div>
                             </div>
 
@@ -251,4 +316,5 @@
             </section>
         </div>
     </div>
+ </div>
 @endsection

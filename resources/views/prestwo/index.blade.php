@@ -13,7 +13,7 @@
 
                 <a href="{{ url('resultwo') }}" class=" btn btn-dark mr-25"> back </a>
             </div>
-            <h5 class="hk-sec-title">Evaluation </h5>
+            <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከ ቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
 
             <div class="row">
                 <div class="col-sm">
@@ -32,7 +32,8 @@
                                         <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
                                         <th>አጠቃላይ ውጤት(100%)</th>
 
-                                        <th colspan="2">Action</th>
+                                        <th>Action</th>
+                                        <th>Submission</th>
 
 
                                     </tr>
@@ -45,8 +46,8 @@
                                                 <td>{{ ++$i }}</td>
                                                 <td>
                                                     <form action="" method="POST"><a
-                                                            href="{{ route('hr.show', $hr->secondhr->form->id) }}" class="mr-25"
-                                                            data-toggle="tooltip"
+                                                            href="{{ route('hr.show', $hr->secondhr->form->id) }}"
+                                                            class="mr-25" data-toggle="tooltip"
                                                             data-original-title="show">{{ $hr->secondhr->form->full_name }}</a>
                                                     </form>
                                                 </td>
@@ -71,7 +72,8 @@
                                                         @csrf
 
                                                         @method('PUT')
-                                                        <button class="btn   bg-green-dark-4  text-white " type="submit" id="btn-evaluate">
+                                                        <button class="btn   bg-green-dark-4  text-white " type="submit"
+                                                            id="btn-evaluate">
                                                             Submit</button>
                                                     </form>
 
@@ -97,5 +99,4 @@
 
 
     </div>
-
 @endsection

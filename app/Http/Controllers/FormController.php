@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\EducationType;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -54,8 +55,10 @@ class FormController extends Controller
             ->where('positions.id', $pos_id)
             ->select('forms.*', 'positions.position')
             ->get();
+        // dd($forms);
 
-
+        // $edu = Education::where('form_id', $forms->id)->get();
+        // $exper = experience::where('form_id', $forms->id)->get();
         return view('hr.index', compact('forms'));
     }
     public function pos()
@@ -172,7 +175,17 @@ class FormController extends Controller
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
-            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:' . Form::class],
+            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i'],
+            // 'email' => [
+            //     'required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:' . Form::join('positions', 'positions.id', '=', 'forms.position_id')
+            //         ->join('categories', 'categories.id', '=', 'positions.category_id')
+
+            //         // Rule::unique('forms')
+            //         ->where(function ($query) {
+            //             return $query->where('categories.id', 'positions.category_id');
+            //         })
+
+            // ],
             'phone' => 'required|numeric|digits:10',
             'fee' => 'required',
             'position_id' => 'required',
@@ -200,6 +213,18 @@ class FormController extends Controller
             'MoreRoles' => 'required',
 
         ]);
+
+        // $f = Form::join('positions', $request->position_id)
+
+
+
+        $f = Form::where('position_id', $request->position_id)
+            ->where('choice2_id', $request->choice2_id)
+            ->where('email', $request->email)->first();
+        if ($f) {
+            return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
+        }
+
 
         $form =
             Form::create(
@@ -343,7 +368,7 @@ class FormController extends Controller
         $hr->update();
         // dd($hr);
 
-        return redirect('pos')->with('status', 'approved  successfully');
+        return back()->with('status', 'approved  successfully');
     }
 
 
