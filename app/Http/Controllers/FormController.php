@@ -214,16 +214,34 @@ class FormController extends Controller
 
         ]);
 
-        // $f = Form::join('positions', $request->position_id)
+        $previousforms = Form::select('categories.id')
+            ->join('positions', 'positions.id', '=', 'forms.position_id')
+            ->join('categories', 'categories.id', '=', 'positions.category_id')
+            // ->where('categories.id','positions.category_id')
+            // ->where('positions.id', $request->position_id)
+            ->where('email', $request->email)
+
+            ->get();
 
 
+        $category=Position::select('categories.id')->join('categories','category_id','categories.id')->where('positions.id',$request->position_id)->first();
+        // dd($f);
+        foreach($previousforms as $form){
+            if($form->id==$category->id){
+                return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
 
-        $f = Form::where('position_id', $request->position_id)
-            ->where('choice2_id', $request->choice2_id)
-            ->where('email', $request->email)->first();
-        if ($f) {
-            return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
+            }
         }
+
+
+
+
+        // $f = Form::where('position_id', $request->position_id)
+        //     ->where('choice2_id', $request->choice2_id)
+        //     ->where('email', $request->email)->first();
+        // if ($f) {
+        //     return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
+        // }
 
 
         $form =
