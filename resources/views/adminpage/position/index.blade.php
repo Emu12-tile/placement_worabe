@@ -21,7 +21,7 @@
                 <div class="col-sm">
                     <div class="table-wrap">
                         <div class="table-responsive">
-                            <table class="table table-sm mb-0">
+                            <table class="table table-sm  pb-0">
                                 <thead>
                                     <tr>
                                         <th>ተ.ቁ</th>
@@ -51,7 +51,7 @@
                                             </td> --}}
                                             <td>{{ $admin->edu_level }}
                                             </td>
-                                            <td>{{ $admin->education_type }}
+                                            <td>{{ Illuminate\Support\Str::of($admin->education_type ) ->words(4) }}
                                             </td>
                                             <td>{{ $admin->level }}
                                             </td>

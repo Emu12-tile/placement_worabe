@@ -1,4 +1,4 @@
-{{-- @extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -63,14 +63,15 @@
 
                                                 <label for="education_level">የትምህርት ዝግጅት </label>
 
-                                                <select id="input_tags" class="form-control custom-select d-block w-100 "
-                                                    name="addMoreInputFields[0][education_type[]]" multiple="multiple">
-                                                    <option selected disabled>-- የት/ት ዝግጅት ይምረጡ --</option>
-                                                    @foreach ($eductype as $name)
-                                                        <option value="{{ $name->education_type }}">
-                                                            {{ $name->education_type }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input type="text" name="addMoreInputFields[0][education_type]"
+                                                    value="{{ old('education_type') }}"
+                                                    class="form-control  @error('education_type') is-invalid @enderror"
+                                                    id="education_type" placeholder=" የትምህርት ዝግጅት">
+                                                @error('education_type')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
 
                                             </div>
                                             <div class="col-md-5">
@@ -301,8 +302,9 @@
 
         })
     </script>
-@endsection --}}
-@extends('layouts.admin')
+@endsection
+
+{{-- @extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -448,4 +450,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
