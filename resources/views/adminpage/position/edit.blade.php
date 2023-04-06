@@ -84,19 +84,18 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="education_type" class="col-sm-2 col-form-label">የትምህርት ዝግጅት</label>
+                                
+                                 <div class="form-group row">
+                                    <label for="education_type" class="col-sm-2 col-form-label"> የትምህርት ዝግጅት </label>
                                     <div class="col-sm-10">
-                                        <select id="input_tags" class="form-control custom-select  mt-15" name="education_type[]" multiple="multiple">
-
-                                            @foreach ($edutype as $col)
-
-                                                <option value="{{ $col->education_type }}"
-                                                    {{ $col->education_type == $admin->education_type? 'selected' : '' }}>
-                                                    {{ $col->education_type }}</option>
-                                                    {{-- <option value="{{$col->id }}" {{is_array($admin->education_type) && in_array($col->id, $admin->education_type) ? 'selected' : '' }}> {{$col->education_type}}</option> --}}
-                                            @endforeach
-                                        </select>
+                                        <input type="text" value="{{ $admin->education_type }}"
+                                            name="education_type"class="form-control @error('education_type') is-invalid @enderror"
+                                            id="education_type" placeholder="የትምህርት ዝግጅት ">
+                                        @error('education_type')
+                                            <span class=" error invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">

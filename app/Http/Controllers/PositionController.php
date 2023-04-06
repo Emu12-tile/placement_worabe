@@ -140,8 +140,8 @@ class PositionController extends Controller
         $input = $request->all();
 
 
-        $hobby = $input['education_type'];
-        $input['education_type'] = implode(',', $hobby);
+        // $hobby = $input['education_type'];
+        // $input['education_type'] = implode(',', $hobby);
 
         $admin->position = $request->Input('position');
         $admin->experience = $request->Input('experience');

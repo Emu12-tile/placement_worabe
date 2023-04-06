@@ -59,8 +59,8 @@
                                                     class="mr-25" data-toggle="tooltip"
                                                     data-original-title="show">{{ $form->full_name }} </a>
                                             </form> --}}
-                                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#exampleModalLong2">
+                                             <button type="button" class="btn bg-blue-dark-4 text-white" data-toggle="modal"
+                                                        data-target="#id_{{$i}}">
                                                         {{ $form->full_name }}</button>
                                         </td>
 
@@ -95,7 +95,7 @@
                                         @endrole
 
                                         </td>
-                                        <div class="modal fade" id="exampleModalLong2" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="id_{{$i}}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">

@@ -19,7 +19,7 @@ License: You must have a valid license purchased only from themeforest to legall
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     {{-- select 2 --}}
-    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    {{-- <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" /> --}}
     <!-- vector map CSS -->
     <link href="{{ asset('assets/vendors/vectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" type="text/css" />
 
@@ -35,8 +35,10 @@ License: You must have a valid license purchased only from themeforest to legall
     <link href="{{ asset('assets/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css">
 
 
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" target="_blank"
-        rel="nofollow" rel="stylesheet">
+    {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" target="_blank"
+        rel="nofollow" rel="stylesheet"> --}}
+
+        
     <!-- Custom CSS -->
     <link href="{{ asset('assets/dist/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/vendors/datatables.net-dt/css/jquery.dataTables.min.css') }}" rel="stylesheet"

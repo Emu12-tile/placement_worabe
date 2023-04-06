@@ -51,7 +51,29 @@
                                             </td> --}}
                                             <td>{{ $admin->edu_level }}
                                             </td>
-                                            <td>{{ Illuminate\Support\Str::of($admin->education_type ) ->words(4) }}
+                                            <td>
+                                                <button data-toggle="modal" class="btn bg-blue-dark-4 text-white"
+                                                    data-target="#exampleModalLong">
+                                                    {{ Illuminate\Support\Str::of($admin->education_type)->words(4) }}</button>
+                                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">
+                                                                    የተወዳዳሪው ሙሉ መረጃ</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {{ $admin->education_type }}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>{{ $admin->level }}
                                             </td>
