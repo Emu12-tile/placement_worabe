@@ -19,7 +19,7 @@ class PositionController extends Controller
     public function index()
     {
 
-        $admins = Position::latest()->paginate(10);
+        $admins = Position::all();
 
 
         return view('adminpage.position.index', compact('admins'));

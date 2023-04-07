@@ -21,7 +21,7 @@
                 <div class="col-sm">
                     <div class="table-wrap">
                         <div class="table-responsive">
-                            <table class="table table-sm mb-0">
+                            <table id="datable_1" class="table table-hover  table-bordered w-100  pb-30">
                                 <thead>
                                     <tr>
                                         <th>ተ.ቁ</th>
@@ -68,7 +68,7 @@
 
                                 </tbody>
                             </table>
-                            {!! $admins->links() !!}
+                            {{-- {!! $admins->links() !!} --}}
 
                         </div>
                     </div>

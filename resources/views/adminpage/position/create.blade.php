@@ -49,14 +49,15 @@
                                             <div class="col-md-5">
 
                                                 <label for="edu_level">የትምህርት ደረጃ </label>
-                                                <select class="form-control custom-select d-block w-100 "
-                                                    name="addMoreInputFields[0][edu_level]">
-                                                    <option selected disabled>-- የት/ት ደረጃ ይምረጡ --</option>
-                                                    @foreach ($educ as $name)
-                                                        <option value="{{ $name->education_level }}">
-                                                            {{ $name->education_level }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input type="text" name="addMoreInputFields[0][edu_level]"
+                                                    value="{{ old('edu_level') }}"
+                                                    class="form-control  @error('edu_level') is-invalid @enderror"
+                                                    id="edu_level" placeholder=" የትምህርት ዝግጅት">
+                                                @error('edu_level')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
 
                                             </div>
                                             <div class="col-md-5">
@@ -201,27 +202,30 @@
                                                  <div class="col-md-5">
 
                                                 <label for="edu_level"> </label>
-                                                <select class="form-control custom-select d-block w-100 "
-                                                    name="addMoreInputFields[${i}][edu_level]">
-                                                    <option selected disabled>--  የት/ት ደረጃ ይምረጡ --</option>
-                                                    @foreach ($educ as $name)
-                                                        <option value="{{ $name->education_level }}">
-                                                            {{ $name->education_level }}</option>
-                                                    @endforeach
-                                                </select>
+                                                 <input type="text" name="addMoreInputFields[${i}][edu_level]"
+                                                    value="{{ old('edu_level') }}"
+                                                    class="form-control  @error('edu_level') is-invalid @enderror"
+                                                    id="edu_level" placeholder=" የትምህርት ዝግጅት">
+                                                @error('edu_level')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
 
                                             </div>
                                               <div class="col-md-5">
 
                                                 <label for="edu_level"> </label>
-                                                <select class="form-control custom-select d-block w-100 "
-                                                    name="addMoreInputFields[${i}][education_type]">
-                                                    <option selected disabled>--  የት/ት ዝግጅት ይምረጡ --</option>
-                                                    @foreach ($eductype as $name)
-                                                        <option value="{{ $name->education_type }}">
-                                                            {{ $name->education_type }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input type="text" name="addMoreInputFields[${i}][education_type]"
+                                                    value="{{ old('education_type') }}"
+                                                    class="form-control  @error('education_type') is-invalid @enderror"
+                                                    id="education_type" placeholder=" የትምህርት ዝግጅት">
+                                                @error('education_type')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+
 
                                             </div>
                                                 <div class="col-md-5">

@@ -46,14 +46,14 @@
                                 <div class="form-group row">
                                     <label for="edu_level" class="col-sm-2 col-form-label">የትምህርት ደረጃ</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control custom-select  mt-15" name="edu_level">
-
-                                            @foreach ($edu_level as $col)
-                                                <option value="{{ $col->education_level }}"
-                                                    {{ $col->education_level == $admin->edu_level ? 'selected' : '' }}>
-                                                    {{ $col->education_level }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" value="{{ $admin->edu_level }}"
+                                            name="edu_level"class="form-control @error('edu_level') is-invalid @enderror"
+                                            id="edu_level" placeholder="የትምህርት ደረጃ ">
+                                        @error('edu_level')
+                                            <span class=" error invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                  <div class="form-group row">
                                     <label for="education_type" class="col-sm-2 col-form-label"> የትምህርት ዝግጅት </label>
                                     <div class="col-sm-10">

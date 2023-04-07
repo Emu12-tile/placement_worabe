@@ -21,7 +21,7 @@
                 <div class="col-sm">
                     <div class="table-wrap">
                         <div class="table-responsive">
-                            <table class="table table-sm  pb-0">
+                             <table id="datable_1" class="table table-hover  table-bordered w-100  pb-30">
                                 <thead>
                                     <tr>
                                         <th>ተ.ቁ</th>
@@ -31,8 +31,8 @@
                                         <th>የትምህርት ዝግጅት </th>
                                         <th> ደረጃ </th>
                                         <th> የስራ ልምድ </th>
-                                        <th> የስራ መደብ ዓይነት</th>
-                                        <th> የስራ መደብ ክፍል</th>
+                                        {{-- <th> የስራ መደብ ዓይነት</th> --}}
+                                        {{-- <th> የስራ መደብ ክፍል</th> --}}
                                         <th>ድርጊት</th>
 
 
@@ -53,9 +53,9 @@
                                             </td>
                                             <td>
                                                 <button data-toggle="modal" class="btn bg-blue-dark-4 text-white"
-                                                    data-target="#exampleModalLong">
-                                                    {{ Illuminate\Support\Str::of($admin->education_type)->words(4) }}</button>
-                                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                                                    data-target="#id_{{$i}}">
+                                                    {{ Illuminate\Support\Str::of($admin->education_type)->words(3) }}</button>
+                                                <div class="modal fade" id="id_{{$i}}" tabindex="-1" role="dialog"
                                                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -80,9 +80,9 @@
                                             <td>{{ $admin->experience }}
                                             </td>
 
-                                            <td>{{ $admin->position_type->position_type }}
-                                            </td>
-                                            <td>{{ $admin->category->category }}</td>
+                                            {{-- <td>{{ $admin->position_type->position_type }}
+                                            </td> --}}
+                                            {{-- <td>{{ $admin->category->category }}</td> --}}
 
                                             <td>
                                                 <form action="{{ route('position.destroy', $admin->id) }}" method="POST">
@@ -111,7 +111,7 @@
 
                                 </tbody>
                             </table>
-                            {!! $admins->links() !!}
+                            {{-- {!! $admins->links() !!} --}}
 
                         </div>
                     </div>
