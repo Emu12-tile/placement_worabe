@@ -80,7 +80,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware([
     'auth:sanctum',
     'verified',
-    'role:admin',
+    'role:user',
 ])->group(function () {
     Route::get('/user', [RegisteredUserController::class, 'index'])->name('index');
     Route::post('/user/change_status', [RegisteredUserController::class, 'changeStatus'])->name("change_status");

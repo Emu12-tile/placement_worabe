@@ -19,7 +19,7 @@ class SecondhrController extends Controller
     {
 
         $hrs = Secondhr::where('status_hr', 0)->get();
-
+// dd($hrs);
 
         return view('secondchoice.index', compact('hrs'));
     }
@@ -31,7 +31,7 @@ class SecondhrController extends Controller
     public function index3()
     {
 
-        $hrs = Secondhr::where('status_hr', 1)->latest()->paginate(8);
+        $hrs = Secondhr::where('status_hr', 1)->get();
 
         return view('secondchoicelow.index', compact('hrs'));
     }
@@ -50,7 +50,7 @@ class SecondhrController extends Controller
     {
 
         $hrs = Secondhr::where('status_hr', 0)->get();
-
+// dd($hrs);
 
         return view('secondchoicelow.lowresource', compact('hrs'));
     }

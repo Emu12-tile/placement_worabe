@@ -14,16 +14,7 @@
                         </a>
 
 
-                        {{-- <ul id="dash_drp" class="nav flex-column collapse collapse-level-1"> --}}
-                        {{-- <li class="nav-item">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="">CRM</a>
-                                    </li>
 
-                                </ul>
-                            </li> --}}
-                        {{-- </ul> --}}
                     </li>
 
 
@@ -34,7 +25,7 @@
                         <span>GS</span>
                     </div>
                     {{-- <ul class="navbar-nav flex-column"> --}}
-                    @role('admin')
+                    @role('user')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('user') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -44,23 +35,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('pos') }}">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">
-                                    የተወዳዳሪዎች 1ኛ ምርጫ
-                                </span>
-                            </a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('secondchoice.secondchoice') }}">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">
-                                    የተወዳዳሪዎች 2ኛ ምርጫ
-                                </span>
-                            </a>
-                        </li> --}}
-
-                        <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationlevel.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -69,15 +43,7 @@
                                 </span>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
 
-                            <a class="nav-link" href="{{ route('educationlevel.index') }}">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">
-                                   የትምህርት ዓይነት
-                                </span>
-                            </a>
-                        </li> --}}
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationtype.index') }}">
@@ -123,63 +89,16 @@
                                 </span>
                             </a>
                         </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {{-- <li class="nav-item active">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#dash_drp">
-                                <i class="ion ion-ios-keypad"></i>
-                                <span class="nav-link-text"> Admin Page</span>
+                    @endrole
+                    @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('pos') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የተወዳዳሪዎች 1ኛ ምርጫ
+                                </span>
                             </a>
-
-
-                            <ul id="dash_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('educationlevel.index') }}">የትምህርት ደረጃ</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('level.index') }}">ደረጃ</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('educationtype.index') }}">የትምህርት ዓይነት</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('position.index') }}">የሚወዳደሩበት የስራ መደብ </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('jobcategory.index') }}">የስራ ክፍል</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> --}}
-                        {{-- </ul> --}}
-                        {{-- <li class="nav-item">
-
-                                <a class="nav-link" href="{{ route('admin.index') }}">
-                                    <i class="ion ion-ios-list-box"></i>
-                                    <span class="nav-link-text">
-                                        Admin Page
-                                    </span>
-                                </a>
-                            </li> --}}
+                        </li>
                     @endrole
                     @role('hr')
                         <li class="nav-item">
@@ -307,44 +226,13 @@
                         </li>
 
                         </li>
-
-
-
-
-
-                        {{-- <li class="nav-item">
-
-                            <a class="nav-link" href="{{ route('resource.index') }}">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">
-                                    የሰው ሀብት ውጤት
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-
-                            <a class="nav-link" href="{{ route('lowresource.lowresource') }}">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">
-                                    ውጤት (ከ ቡድን መሪ በታች)
-                                </span>
-                            </a>
-                        </li> --}}
                     @endrole
                     @role('president')
                         <li class="nav-item active">
 
                             <span class="nav-link-text"> ምርጫ 1</span>
 
-                            {{-- <li class="nav-item">
 
-                            <a class="nav-link" href="{{ route('resource.index') }}">
-                                <i class="ion ion-ios-list-box"></i>
-                                <span class="nav-link-text">
-                                    የሰው ሀብት ውጤት
-                                </span>
-                            </a>
-                        </li> --}}
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ url('result-choice1') }}">

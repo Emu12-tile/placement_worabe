@@ -342,7 +342,7 @@
                                                     መደብ)</label>
                                                 <input class="form-control"
                                                     @error('servicPeriodAtUniversity') is-invalid @enderror"
-                                                    id="servicPeriodAtUniversity" placeholder="servicPeriodAtUniversity"
+                                                    id="servicPeriodAtUniversity" placeholder="በዩኒቨርስቲዉ አገልግሎት ዘመን"
                                                     value="{{ old('servicPeriodAtUniversity') }}" type="text"
                                                     name="servicPeriodAtUniversity">
                                                 @error('servicPeriodAtUniversity')

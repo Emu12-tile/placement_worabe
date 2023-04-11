@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar" style=" background-color:rgb(17,40,77)">
     <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i
             class="ion ion-ios-menu"></i></a>
-    <a class="navbar-brand" href="{{ route('hr.index') }}">
+    <a class="navbar-brand" href="{{ route('home') }}">
         {{-- <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/aastuimage.jpg') }}"
             style="width:80px; height:80px" alt="brand" /> --}}
         <img class="brand-img d-inline-block " src="{{ asset('assets/dist/img/aastuimage.jpg') }}"
