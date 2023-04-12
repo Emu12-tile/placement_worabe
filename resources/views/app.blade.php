@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themeforest to legall
             <footer class="footer">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
-                        <p>Developed by<a href="" class="text-dark" target="_blank">Yonas T. ,Eyob B. & Emebet
+                        <p>Developed by<a href="" class="text-dark" target="_blank">Yonas T.(Tel:+251953464171) ,Eyob B. & Emebet
                                 T.</a> ©
                             2023</p>
                     </div>

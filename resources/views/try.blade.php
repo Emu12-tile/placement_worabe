@@ -324,7 +324,7 @@
                                     <div class="form-section">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
-                                                <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመንበኢትዮጵያ
+                                                <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
                                                     አቆጣጠር(ወር/ቀን/ዓመት)</label>
                                                 <input class="form-control"
                                                     @error('UniversityHiringEra') is-invalid @enderror"
@@ -434,7 +434,7 @@
 
                                         </div>
                                         <h3 class="text-gold text-center mt-3 mb-4   "
-                                            style=" background-color:rgb(17,40,77); margin:center nav">የስራ ልምድ</h3>
+                                            style=" background-color:rgb(17,40,77); margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር ብቻ)</h3>
                                         <div id="myform">
                                             <div class="row">
                                                 <div class="col-sm">
