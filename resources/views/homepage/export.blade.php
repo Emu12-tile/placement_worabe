@@ -151,7 +151,7 @@
                             // dd($years,$months,$days);
 
                             $time = $tdate->diff($fdate);
-                            echo $time->y;
+                            echo $time->y ;
                             //   {{$time->y}} year, {{$time->m}} months, {{$time->d}} days
                             // dd($time->y);
                             ?>
@@ -159,23 +159,24 @@
                         <td>
                             <?php
 
-                            $fdate = Carbon::parse($fo->startingDate)->month;
+                            $fdate = Carbon::parse($fo->startingDate);
 
-                            $tdate = Carbon::parse($fo->endingDate)->month;
+                            $tdate = Carbon::parse($fo->endingDate);
 
                             // $months = $tdate - $fdate;
 
                             //   echo abs($months);
+                            $time = $tdate->diff($fdate);
                             echo $time->m;
                             ?>
                         </td>
                         <td>
                             <?php
 
-                            $fdate = Carbon::parse($fo->startingDate)->day;
+                            // $fdate = Carbon::parse($fo->startingDate);
 
-                            $tdate = Carbon::parse($fo->endingDate)->day;
-
+                            // $tdate = Carbon::parse($fo->endingDate);
+                            $time = $tdate->diff($fdate);
                             // $days = $tdate - $fdate;
                             echo $time->d;
                             // echo abs($days);
@@ -187,7 +188,7 @@
                 @endforeach
             </tbody>
         </table>
-        <p>9/ አገልግሎት ከዲፕሎማ በፊት አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ:- {{ $form->serviceBeforeDiplo }} ከዲፕሎማ/ዲግሪ በኋላ
+        <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
             {{ $form->serviceAfterDiplo }}</p>
         <p>10/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
         <p>11/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>

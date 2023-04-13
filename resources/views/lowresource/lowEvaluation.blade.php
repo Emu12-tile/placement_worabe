@@ -387,15 +387,24 @@
                                                     <td>
                                                         @foreach ($forms as $fo)
                                                             <?php
-
-                                                            $fdate = Carbon::parse($fo->startingDate)->year;
-
-                                                            $tdate = Carbon::parse($fo->endingDate)->year;
-
-                                                            $years = $tdate - $fdate;
-
-                                                            echo $years, '(', $fo->positionyouworked, '), ';
-
+                                                            
+                                                            $fdate = Carbon::parse($fo->startingDate);
+                                                            
+                                                            $tdate = Carbon::parse($fo->endingDate);
+                                                            
+                                                            // $years = $tdate - $fdate;
+                                                            $days = $tdate->diffInDays($fdate);
+                                                            $months = $tdate->diffInMonths($fdate);
+                                                            
+                                                            $years = $tdate->diffInYears($fdate);
+                                                            // dd($fdate->diffForHumans($tdate));
+                                                            // dd($years,$months,$days);
+                                                            
+                                                            $time = $tdate->diff($fdate);
+                                                            // echo $time->y;
+                                                            
+                                                            echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
+                                                            
                                                             ?>
                                                         @endforeach
                                                     </td>

@@ -304,13 +304,22 @@
                                                                 @foreach ($forms as $fo)
                                                                     <?php
                                                                     
-                                                                    $fdate = Carbon::parse($fo->startingDate)->year;
+                                                                    $fdate = Carbon::parse($fo->startingDate);
                                                                     
-                                                                    $tdate = Carbon::parse($fo->endingDate)->year;
+                                                                    $tdate = Carbon::parse($fo->endingDate);
                                                                     
-                                                                    $years = $tdate - $fdate;
+                                                                    // $years = $tdate - $fdate;
+                                                                    $days = $tdate->diffInDays($fdate);
+                                                                    $months = $tdate->diffInMonths($fdate);
                                                                     
-                                                                    echo $years, '(', $fo->positionyouworked, '), ';
+                                                                    $years = $tdate->diffInYears($fdate);
+                                                                    // dd($fdate->diffForHumans($tdate));
+                                                                    // dd($years,$months,$days);
+                                                                    
+                                                                    $time = $tdate->diff($fdate);
+                                                                    // echo $time->y;
+                                                                    
+                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
                                                                     
                                                                     ?>
                                                                 @endforeach

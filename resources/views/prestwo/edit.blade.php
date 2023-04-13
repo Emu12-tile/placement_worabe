@@ -177,6 +177,7 @@
                                                             <th>ጾታ</th>
 
                                                             <th>አሁን ያሉበት የትምህርት ደረጃና ዝግጅት</th>
+                                                            <th> የስራ ልምድዎ </th>
                                                             <th>የሚወዳደሩበት የስራ መደብ</th>
                                                             <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት) </th>
                                                             <th>ተጨማሪ ይመልከቱ</th>
@@ -201,6 +202,28 @@
                                                                     ,
                                                                 @endforeach
 
+                                                            </td>
+                                                            <td>
+                                                                @foreach ($forms as $fo)
+                                                                    <?php
+                                                                    $fdate = Carbon::parse($fo->startingDate);
+                                                                    
+                                                                    $tdate = Carbon::parse($fo->endingDate);
+                                                                    
+                                                                    // $years = $tdate - $fdate;
+                                                                    $days = $tdate->diffInDays($fdate);
+                                                                    $months = $tdate->diffInMonths($fdate);
+                                                                    
+                                                                    $years = $tdate->diffInYears($fdate);
+                                                                    // dd($fdate->diffForHumans($tdate));
+                                                                    // dd($years,$months,$days);
+                                                                    
+                                                                    $time = $tdate->diff($fdate);
+                                                                    // echo $time->y;
+                                                                    
+                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
+                                                                    ?>
+                                                                @endforeach
                                                             </td>
                                                             <td>{{ $pres->secondhr->form->position->position }}</td>
 

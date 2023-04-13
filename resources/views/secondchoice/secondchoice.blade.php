@@ -227,7 +227,7 @@
                                                                 <label for="position" class="col-sm-2 col-form-label">የስራ
                                                                     መደብ</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" value="{{ $form->position }}"
+                                                                    <input type="text" value="{{ $form->position->position }}"
                                                                         name="position"class="form-control "
                                                                         id="position" readonly>
                                                                 </div>

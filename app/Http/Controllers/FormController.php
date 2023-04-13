@@ -224,12 +224,11 @@ class FormController extends Controller
             ->get();
 
 
-        $category=Position::select('categories.id')->join('categories','category_id','categories.id')->where('positions.id',$request->position_id)->first();
+        $category = Position::select('categories.id')->join('categories', 'category_id', 'categories.id')->where('positions.id', $request->position_id)->first();
         // dd($f);
-        foreach($previousforms as $form){
-            if($form->id==$category->id){
+        foreach ($previousforms as $form) {
+            if ($form->id == $category->id) {
                 return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
-
             }
         }
 
@@ -253,7 +252,7 @@ class FormController extends Controller
                     'email' => $request->email,
                     'phone' => $request->phone,
                     // slug
-                    'tag_slug' => Str::slug($request->email, '-' . Str::random()),
+                    'tag_slug' => Str::slug($request->email),
 
                     // 'education_type_id' => $request->education_type_id,
                     'level_id' => $request->level_id,

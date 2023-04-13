@@ -20,12 +20,37 @@
             </div>
         @endrole
         @role('hr|president')
+
+        <div class="col-lg-3 col-md-6 ">
+                <div class="card card-sm ">
+                    <div class="card-body ">
+
+                        <div class="d-flex justify-content-between mb-5 ">
+                            <div>
+                                <span class="d-block font-18 text-dark font-weight-500"> አጠቃላይ ያስረከቡ ተወዳዳሪዎች ብዛት </span>
+                            </div>
+                            <div>
+                                <span class="text-success font-34 font-weight-500">
+                                    {{ \App\Models\Form::where('isEditable',0)->count() }}</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <span class="d-block display-4 text-dark mb-5"><i
+                                    class='glyphicon glyphicon-user'style="font-size:48px;color:black">
+                                </i></span>
+                            <small class="d-block"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-3 col-md-6 ">
                 <div class="card card-sm ">
                     <div class="card-body ">
+
                         <div class="d-flex justify-content-between mb-5 ">
                             <div>
-                                <span class="d-block font-20 text-dark font-weight-500">ተወዳዳሪዎች ብዛት</span>
+                                <span class="d-block font-18 text-dark font-weight-500"> በሰው ኅብት Approve የተደረጉ ተወዳዳሪዎች ብዛት</span>
                             </div>
                             <div>
                                 <span class="text-success font-34 font-weight-500">
@@ -40,7 +65,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="card card-sm">

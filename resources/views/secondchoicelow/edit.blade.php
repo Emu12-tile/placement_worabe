@@ -41,9 +41,9 @@
                                                 <td> ለትምህርት ዝግጅት የሚሰጥ ነጥብ</td>
                                                 <td>
 
-                                                    <button class="btn bg-blue-dark-4 text-white" type="button" data-toggle="collapse"
-                                                        data-target="#collapseExample" aria-expanded="false"
-                                                        aria-controls="collapseExample">
+                                                    <button class="btn bg-blue-dark-4 text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapseExample"
+                                                        aria-expanded="false" aria-controls="collapseExample">
                                                         40
                                                     </button>
                                                 </td>
@@ -52,8 +52,8 @@
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ </td>
-                                                <td><button class="btn bg-blue-dark-4 text-white" type="button" data-toggle="collapse"
-                                                        data-target="#collapse2" aria-expanded="false"
+                                                <td><button class="btn bg-blue-dark-4 text-white" type="button"
+                                                        data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
                                                         aria-controls="collapseExample">
                                                         30
                                                     </button></td>
@@ -301,15 +301,24 @@
                                                         <td>
                                                             @foreach ($forms as $fo)
                                                                 <?php
-
-                                                                $fdate = Carbon::parse($fo->startingDate)->year;
-
-                                                                $tdate = Carbon::parse($fo->endingDate)->year;
-
-                                                                $years = $tdate - $fdate;
-
-                                                                echo $years, '(', $fo->positionyouworked, '), ';
-
+                                                                
+                                                                $fdate = Carbon::parse($fo->startingDate);
+                                                                
+                                                                $tdate = Carbon::parse($fo->endingDate);
+                                                                
+                                                                // $years = $tdate - $fdate;
+                                                                $days = $tdate->diffInDays($fdate);
+                                                                $months = $tdate->diffInMonths($fdate);
+                                                                
+                                                                $years = $tdate->diffInYears($fdate);
+                                                                // dd($fdate->diffForHumans($tdate));
+                                                                // dd($years,$months,$days);
+                                                                
+                                                                $time = $tdate->diff($fdate);
+                                                                // echo $time->y;
+                                                                
+                                                                echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
+                                                                
                                                                 ?>
                                                             @endforeach
                                                         </td>
@@ -441,7 +450,8 @@
                             </div>
                             <div class="form-group row mb-0 pull-right">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn bg-blue-dark-4 text-white" id="add_btn">save</button>
+                                    <button type="submit" class="btn bg-blue-dark-4 text-white"
+                                        id="add_btn">save</button>
                                 </div>
                             </div>
 
