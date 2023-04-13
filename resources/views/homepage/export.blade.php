@@ -68,22 +68,22 @@
         <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
         <h3 style="text-align:center">የአስተዳደር ሠራተኞች ፕሮፋይል</h3>
         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }} {{ $form->middleName }} {{ $form->lastName }} </p>
-        <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p>
-        <p>3/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
+        {{-- <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p> --}}
+        <p>2/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
             ደረጃ፦{{ $form->level->level }} &emsp; ደምወዝ:-{{ $form->fee }}
         </p>
-        <p>4/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:- @foreach ($edu as $i => $fo)
+        <p>3/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:- @foreach ($edu as $i => $fo)
                 ({{ $fo->edu_level->education_level }}፣ {{ $fo->education_type->education_type }})
             @endforeach
         </p>
-        <p>5/ በዩኒቨርስቲዉ የቅጥር
+        <p>4/ በዩኒቨርስቲዉ የቅጥር
             ዘመን:-
             {{ Carbon::parse($form->UniversityHiringEra)->day }}/{{ Carbon::parse($form->UniversityHiringEra)->month }}/{{ Carbon::parse($form->UniversityHiringEra)->year }}
-           {{-- {{ Carbon::parse($form->UniversityHiringEra)->format('d-m-Y')}} --}}
+            {{-- {{ Carbon::parse($form->UniversityHiringEra)->format('d-m-Y')}} --}}
         </p>
-        <p>6/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
-        <p>7/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
-        <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
+        <p>5/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
+        <p>6/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
+        <h5>7/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
         <p> ምርጫ 1</p>
 
         <p> የስራ ክፍል :-{{ $form->job_category->job_category }}</p>
@@ -92,7 +92,7 @@
             ምርጫ 2</p>
         <p> የስራ ክፍል:- {{ $form->jobcat2->job_category }} </p>
         <p> የስራ መደብ:- {{ $form->choice2->position }}</p>
-        <p>9/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
+        <p>8/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
 
         <table id="customers">
             <thead>
@@ -134,13 +134,26 @@
                         <td>
                             <?php
 
-                            $fdate = Carbon::parse($fo->startingDate)->year;
+                            $fdate = Carbon::parse($fo->startingDate);
 
-                            $tdate = Carbon::parse($fo->endingDate)->year;
+                            $tdate = Carbon::parse($fo->endingDate);
 
-                            $years = $tdate - $fdate;
+                            // $years = $tdate - $fdate;
 
-                            echo abs($years);
+                            // echo abs($years);
+                            //
+
+                            $days = $tdate->diffInDays($fdate);
+                            $months = $tdate->diffInMonths($fdate);
+
+                            $years = $tdate->diffInYears($fdate);
+                            // dd($fdate->diffForHumans($tdate));
+                            // dd($years,$months,$days);
+
+                            $time = $tdate->diff($fdate);
+                            echo $time->y;
+                            //   {{$time->y}} year, {{$time->m}} months, {{$time->d}} days
+                            // dd($time->y);
                             ?>
                         </td>
                         <td>
@@ -150,9 +163,10 @@
 
                             $tdate = Carbon::parse($fo->endingDate)->month;
 
-                            $months = $tdate - $fdate;
+                            // $months = $tdate - $fdate;
 
-                            echo abs($months);
+                            //   echo abs($months);
+                            echo $time->m;
                             ?>
                         </td>
                         <td>
@@ -162,9 +176,9 @@
 
                             $tdate = Carbon::parse($fo->endingDate)->day;
 
-                            $days = $tdate - $fdate;
-
-                            echo abs($days);
+                            // $days = $tdate - $fdate;
+                            echo $time->d;
+                            // echo abs($days);
                             ?>
                         </td>
                         <td></td>
@@ -173,11 +187,11 @@
                 @endforeach
             </tbody>
         </table>
-        <p>10/ አገልግሎት ከዲፕሎማ በፊት አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ:- {{ $form->serviceBeforeDiplo }} ከዲፕሎማ/ዲግሪ በኋላ
+        <p>9/ አገልግሎት ከዲፕሎማ በፊት አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ:- {{ $form->serviceBeforeDiplo }} ከዲፕሎማ/ዲግሪ በኋላ
             {{ $form->serviceAfterDiplo }}</p>
-        <p>11/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
-        <p>12/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
-        <p>13/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
+        <p>10/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
+        <p>11/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
+        <p>12/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
         <p>ቅጹን የሞላው ሰራተኛ ስም
             &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
