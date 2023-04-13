@@ -253,7 +253,7 @@ class FormController extends Controller
                     'email' => $request->email,
                     'phone' => $request->phone,
                     // slug
-                    'tag_slug' => Str::slug($request->firstName, '-' . Str::random()),
+                    'tag_slug' => Str::slug($request->email, '-' . Str::random()),
 
                     // 'education_type_id' => $request->education_type_id,
                     'level_id' => $request->level_id,
