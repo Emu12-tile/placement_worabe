@@ -30,13 +30,15 @@
 
                                     <div class="d-flex justify-content-between mb-5 ">
                                         <div>
-                                            <span class="d-block font-18 text-dark font-weight-500"> አጠቃላይ ያስረከቡ ተወዳዳሪዎች
+                                            <span class="d-block font-18 text-dark font-weight-500"> በሰው ኅብት Approve
+                                                ያልተደረጉ
+                                                ተወዳዳሪዎች
                                                 ብዛት
                                             </span>
                                         </div>
                                         <div>
                                             <span class="text-success font-34 font-weight-500">
-                                                {{ \App\Models\Form::count() }}</span>
+                                                {{ \App\Models\Form::where('isEditable', 0)->count() }}</span>
                                             {{-- {{ \App\Models\Form::where('isEditable', 0)->count() }} --}}
                                         </div>
                                     </div>
@@ -57,13 +59,13 @@
                                     <div class="d-flex justify-content-between mb-5 ">
                                         <div>
                                             <span class="d-block font-18 text-dark font-weight-500"> በሰው ኅብት Approve
-                                                ያልተደረጉ
+                                                የተደረጉ
                                                 ተወዳዳሪዎች
                                                 ብዛት</span>
                                         </div>
                                         <div>
                                             <span class="text-success font-34 font-weight-500">
-                                                {{ \App\Models\Form::where('isEditable', 0)->count() }}</span>
+                                                {{ \App\Models\Form::where('isEditable', 1)->count() }}</span>
                                         </div>
                                     </div>
                                     <div class="text-center">
