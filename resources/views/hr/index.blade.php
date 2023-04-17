@@ -741,6 +741,19 @@
                                                                         data-dismiss="modal">Close</button>
 
                                                                 </div>
+                                                                {{-- cancelled --}}
+
+                                                                <form action="{{ route('hr.destroy', $form->id) }}"
+                                                                    method="POST">
+
+                                                                    @csrf
+                                                                    @method('DELETE')
+
+                                                                    <button type="submit" class="btn btn-danger pd-10">Rejec
+                                                                        <a data-toggle="tooltip" data-original-title="delete">
+                                                                            <i class=" icon-trash txt-danger"></i> </a>
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
