@@ -211,7 +211,7 @@
 <script>
     var element = document.getElementById("element-to-print")
     html2pdf(element, {
-        margin: 15,
+        margin: 20,
         filename: 'Application form.pdf',
         image: {
             type: 'jpeg',
