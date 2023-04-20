@@ -55,7 +55,7 @@
                                                     class="form-control  requestStatus  " name="name">
 
 
-                                                    <option selected disabled>action</option>
+                                                    <option selected >action</option>
                                                     @foreach ($roles as $name)
                                                         @if ($user->roles->implode('name', ', ') == $name->name)
                                                             <option value="{{ $name->name }}" selected>
