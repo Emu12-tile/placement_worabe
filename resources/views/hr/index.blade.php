@@ -432,7 +432,7 @@
                                             </tr>
                                         @endif
                                     @endrole
-                                    @role('hr')
+                                    @role('hr|user')
                                         @if ($form->isEditable == 1)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
@@ -739,6 +739,21 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
+                                                                    @role('user')
+                                                                        <form action="{{ route('hr.destroy', $form->id) }}"
+                                                                            method="POST">
+
+                                                                            @csrf
+                                                                            @method('DELETE')
+
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger pd-10">Reject
+                                                                                <a data-toggle="tooltip"
+                                                                                    data-original-title="delete">
+                                                                                    <i class=" icon-trash txt-danger"></i> </a>
+                                                                            </button>
+                                                                        </form>
+                                                                    @endrole
 
                                                                 </div>
                                                                 {{-- cancelled --}}

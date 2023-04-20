@@ -115,7 +115,7 @@ Route::middleware([
 Route::middleware([
     'auth:sanctum',
     'verified',
-    'role:hr|admin|president',
+    'role:hr|admin|president|user',
 
 ])->group(
     function () {

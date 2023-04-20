@@ -35,6 +35,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ url('pos') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    የተወዳዳሪዎች 1ኛ ምርጫ
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('educationlevel.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
