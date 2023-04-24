@@ -33,6 +33,7 @@
                                     <th>አጠቃላይ ውጤት(100%)</th>
                                     <th>Action</th>
                                     <th>Submission</th>
+                                    <th>Download pdf</th>
 
                                 </tr>
                             </thead>
@@ -71,6 +72,7 @@
                                                 </form>
 
                                             </td>
+                                            <td><i class="ion ion-md-archive"><i></td>
 
 
 
@@ -80,7 +82,7 @@
                                 @endforeach
 
                         </table>
-                        {!! $hrs->links() !!}
+
                     </div>
                 </div>
             </div>

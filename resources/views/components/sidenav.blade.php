@@ -131,7 +131,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('resource.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -139,7 +139,7 @@
                                     ያወዳዳሪ ኮሚቴ ውጤት
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ url('positionhigh') }}">
@@ -152,7 +152,7 @@
 
 
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('lowresource.lowresource') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
@@ -160,7 +160,7 @@
                                     በታች)
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('positionresult') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -193,7 +193,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('secondhr.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -201,7 +201,7 @@
                                     ያወዳዳሪ ኮሚቴ ውጤት
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ url('choicesecond') }}">
@@ -214,7 +214,7 @@
 
 
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('secondchoice.lowresource') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
@@ -222,7 +222,7 @@
                                     በታች)
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('choicelow') }}">
                                 <i class="ion ion-ios-list-box"></i>
@@ -243,21 +243,21 @@
 
                         <li class="nav-item">
 
-                            <a class="nav-link" href="{{ url('result-choice1') }}">
+                            <a class="nav-link" href="{{ url('positionhigh') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     ያወዳዳሪ ኮሚቴ ውጤት
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('evaluation.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     አጠቃላይ ውጤት
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
 
@@ -278,21 +278,21 @@
                             <span class="nav-link-text"> ምርጫ 2</span>
                         <li class="nav-item">
 
-                            <a class="nav-link" href="{{ url('resulttwo') }}">
+                            <a class="nav-link" href="{{ url('choicesecond') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     የኮሚቴ ውጤት
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('choice2evaluation.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
                                     አጠቃላይ ውጤት
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('positionpres2') }}">
                                 <i class="ion ion-ios-list-box"></i>

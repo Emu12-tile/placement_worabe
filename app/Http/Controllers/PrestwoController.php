@@ -34,11 +34,11 @@ class PrestwoController extends Controller
     public function pos()
     {
         $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
-        ->join('categories', 'categories.id', '=', 'choice2s.category_id')
-        ->where('categories.catstatus', 'active')
+            ->join('categories', 'categories.id', '=', 'choice2s.category_id')
+            ->where('categories.catstatus', 'active')
             ->where('choice2s.position_type_id', 1)
-        ->distinct('choice2s.id')
-        ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
+            ->distinct('choice2s.id')
+            ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
 
         return view('prestwo.pos', compact('forms'));
     }
@@ -49,11 +49,11 @@ class PrestwoController extends Controller
         $pos_id = (int) $id;
 
         $pres = Prestwo::join('secondhrs', 'secondhrs.id', '=', 'prestwos.secondhr_id')
-        ->join('forms', 'forms.id', '=', 'secondhrs.form_id')
-        ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
+            ->join('forms', 'forms.id', '=', 'secondhrs.form_id')
+            ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
 
-        ->where('status', 1)
-        ->where('choice2s.id', $pos_id)
+            // ->where('status', 1)
+            ->where('choice2s.id', $pos_id)
             ->select('prestwos.*')
             ->get();
 
@@ -84,7 +84,7 @@ class PrestwoController extends Controller
 
 
         $resource->presidentGrade = $request->presidentGrade;
-
+        $resource->remark = $request->remark;
         $resource->secondhr_id = $prod->id;
 
 
@@ -97,7 +97,7 @@ class PrestwoController extends Controller
 
 
 
-        return redirect('choice2evaluation')->with('status', 'evaluation added successfully');
+        return redirect('posDetailtwo/' . $resource->secondhr->form->choice2_id)->with('status', 'evaluation added successfully');
     }
     public function edit($id)
     {
@@ -121,11 +121,12 @@ class PrestwoController extends Controller
 
 
         $hr->presidentGrade = $request->Input('presidentGrade');
+        $hr->remark=$request->Input('remark');
 
 
         $hr->update();
 
-        return redirect('choice2evaluation')->with('status', ' updated successfully');
+        return redirect('result2/' . $hr->secondhr->form->choice2_id)->with('status', ' updated successfully');
     }
     public function update1(Request $request, $id)
     {
@@ -140,6 +141,6 @@ class PrestwoController extends Controller
         $hr->update();
 
 
-        return redirect('choice2evaluation')->with('status', 'stock updated successfully');
+        return redirect()->back()->with('status', 'stock updated successfully');
     }
 }

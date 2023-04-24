@@ -323,7 +323,7 @@
                                                             <th> የተወዳዳሪዉ የትምህርት ደረጃና የትምህርት ዝግጅት</th>
                                                             <th>የሚወዳደሩበት የስራ መደብ</th>
                                                             <th>የስራ ልምድ </th>
-                                                            <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
+                                                            <th>የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት </th>
                                                             <th>ተጨማሪ ይመልከቱ</th>
 
 
@@ -350,29 +350,29 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-                                                                    
+
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                                    
+
                                                                     ?>
                                                                 @endforeach
                                                             </td>
                                                             <td>
-                                                                {{ round($hr->form->resultOfrecentPerform * 0.1, 2) }}
+                                                                {{$hr->form->resultOfrecentPerform  }}
                                                             </td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
@@ -508,6 +508,19 @@
                                                 placeholder="" value="{{ $hr->exam }}" type="number" name="exam"
                                                 min="1" max="28">
                                             @error('exam')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                         <div class="col-md-6 form-group">
+                                            <label for="resultbased">Remark </label>
+                                            <textarea type="text"
+
+                                                class="form-control @error('remark') is-invalid @enderror"
+                                                id="remark" placeholder="remark " name="remark"
+                                                >{{ $hr->remark  }}</textarea>
+                                            @error('remark')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

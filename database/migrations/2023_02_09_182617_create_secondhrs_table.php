@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('exam')->nullable();
             $table->integer('experience')->nullable();
             $table->float('resultbased')->nullable();
+            $table->text('remark')->nullable();
             $table->integer('presidentGrade')->nullable();
             $table->boolean('status_hr')->default(0);
             $table->boolean('status_president')->default(0);

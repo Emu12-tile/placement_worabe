@@ -197,7 +197,7 @@
                                                             <th>አሁን ያሉበት የትምህርት ደረጃና ዝግጅት</th>
 
                                                             <th> የስራ ልምድዎ </th>
-                                                            <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.1) </th>
+                                                            <th>የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት</th>
                                                         <th>ተጨማሪ ይመልከቱ</th>
 
 
@@ -250,7 +250,7 @@
                                                                     ?>
                                                                 @endforeach
                                                             </td>
-                                                            <td>{{ round($form->form->resultOfrecentPerform * 0.1, 2) }}
+                                                            <td>{{ $form->form->resultOfrecentPerform  }}
                                                             </td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
@@ -340,6 +340,16 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    <div class="col-md-6 form-group">
+                                    <label for="exam">Remark</label>
+                                    <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                        value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                    @error('remark')
+                                        <span class=" error invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
 
 

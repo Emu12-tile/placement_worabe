@@ -2,6 +2,12 @@
 
 @section('content')
     {{-- TODO change this to componnent --}}
+    {{-- <form action="" method="POST"><a
+                                                            href="{{ route('hr.show', $form->id) }}" class="mr-25"
+                                                            data-toggle="tooltip"
+                                                            data-original-title="show">{{ $form->full_name }} </a>
+
+                                                    </form> --}}
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -46,20 +52,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php
+                                $j = 0;
+                                ?>
                                 @foreach ($forms as $i => $form)
                                     @role('admin')
                                         @if ($form->isEditable == 0)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
                                                 <td>
-                                                    {{-- <form action="" method="POST"> --}}
-                                                    {{-- <a
-                                                            href="{{ route('hr.show', $form->id) }}" class="mr-25"
-                                                            data-toggle="tooltip"
-                                                            data-original-title="show">
 
-                                                        </a> --}}
                                                     <button data-target="#id_{{ $i }}" data-toggle="modal"
                                                         class="btn bg-blue-dark-4  text-white reqmodal">
                                                         {{ $form->full_name }}</button>
@@ -389,60 +391,28 @@
                                                     </div>
 
 
-                                                    {{-- </form> --}}
+
                                                 </td>
 
 
                                                 <td>{{ $form->position }}</td>
 
 
-                                                <!-- Modal -->
 
 
 
 
-                                                {{-- <td>
-                                                    <form action="{{ route('hr.destroy', $form->id) }}" method="POST">
-
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-danger pd-10">
-                                                            <a data-toggle="tooltip" data-original-title="delete"> <i
-                                                                    class=" icon-trash txt-danger"></i> </a>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form action="{{ route('hr.update', $form->id) }}" method="POST">
-
-                                                        @csrf
-                                                        @method('PUT')
-
-                                                        <button type="submit" class="btn btn-blue pd-10">
-                                                            <a data-toggle="tooltip" data-original-title="approve"> <i
-                                                                    class=" glyphicon glyphicon-ok pd-25"></i> </a>
-                                                        </button>
-                                                    </form>
-                                                </td> --}}
 
 
-
-                                                {{-- </td> --}}
                                             </tr>
                                         @endif
                                     @endrole
                                     @role('hr|user')
                                         @if ($form->isEditable == 1)
                                             <tr>
-                                                <td>{{ ++$i }}</td>
+                                                <td>{{ ++$j }}</td>
                                                 <td>
-                                                    {{-- <form action="" method="POST"><a
-                                                            href="{{ route('hr.show', $form->id) }}" class="mr-25"
-                                                            data-toggle="tooltip"
-                                                            data-original-title="show">{{ $form->full_name }} </a>
 
-                                                    </form> --}}
                                                     <button type="button" class="btn btn-primary " data-toggle="modal"
                                                         data-target="#id_{{ $i }}">
                                                         {{ $form->full_name }}</button>
@@ -756,7 +726,7 @@
                                                                     @endrole
 
                                                                 </div>
-                                                                {{-- cancelled --}}
+
 
 
                                                             </div>
@@ -791,7 +761,7 @@
 
                             </tbody>
                         </table>
-                        {{-- {!! $forms->links() !!} --}}
+
 
 
                     </div>
@@ -804,7 +774,9 @@
 
 
     </div>
+
 @endsection
+
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

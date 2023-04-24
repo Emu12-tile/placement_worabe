@@ -25,11 +25,11 @@ class ResourceController extends Controller
         $hrs = HR::where('status_hr', 0)->get();
         return view('resource.index', compact('hrs'));
     }
-    public function index4()
-    {
-        $hrs = HR::where('status_hr', 1)->get();
-        return view('resource.result', compact('hrs'));
-    }
+    // public function index4()
+    // {
+    //     $hrs = HR::where('status_hr', 1)->get();
+    //     return view('resource.result', compact('hrs'));
+    // }
 
     public function poshigh()
     {
@@ -52,7 +52,7 @@ class ResourceController extends Controller
         $hrs = HR::join('forms', 'forms.id', '=', 'h_r_s.form_id')
             ->join('positions', 'positions.id', '=', 'forms.position_id')
 
-            ->where('status_hr', 1)
+            // ->where('status_hr', 1)
             ->where('positions.id', $pos_id)
             ->select('h_r_s.*')
             ->get();
@@ -81,18 +81,22 @@ class ResourceController extends Controller
 
         $pos_id = (int) $id;
 
+
         $hrs = HR::join('forms', 'forms.id', '=', 'h_r_s.form_id')
             ->join('positions', 'positions.id', '=', 'forms.position_id')
 
-            ->where('status_hr', 1)
+            // ->where('status_hr', 1)
             ->where('positions.id', $pos_id)
             ->select('h_r_s.*')
             ->get();
-        // dd($hrs);
+
+        // $forms = experience::where('form_id', $hrs->form_id)->get();
+        // $edu = Education::where('form_id',$hrs->form_id)->get();
+    //  dd($hrs);
+    //  dd($hrs);
 
 
-
-        return view('lowresource.index', compact('hrs'));
+        return view('lowresource.index', ['hrs'=>$hrs]);
     }
 
 
@@ -102,7 +106,7 @@ class ResourceController extends Controller
     public function index2()
     {
 
-        $hrs = HR::where('status_hr', 0)->latest()->paginate(8);
+        $hrs = HR::where('status_hr', 0)->get();
 
 
 
@@ -188,8 +192,9 @@ class ResourceController extends Controller
         $resource->resultbased = $request->resultbased;
         $resource->user_id = auth()->user()->id;
         $resource->presidentGrade = $request->presidentGrade;
+        // $resource->remark=$request->remark;
         $resource->exam = $request->exam;
-        // $resource->status_hr = $request->status_hr;
+        $resource->remark = $request->remark;
         $resource->form_id = $prod->id;
         // dd($resource->save());
         if (($resource->save() == true)) {
@@ -203,9 +208,10 @@ class ResourceController extends Controller
 
 
         if ($request->type == 'high') {
-            return redirect('resource')->with('status', 'evaluation added successfully');
+            return redirect('posDetail/' . $resource->form->position_id)->with('status', 'evaluation added successfully');
         } else if ($request->type == 'low') {
-            return redirect('lowresource')->with('status', 'evaluation added successfully');;
+            // return redirect('lowresource')->with('status', 'evaluation added successfully');;
+            return redirect('posDetail/' . $resource->form->position_id)->with('status', 'evaluation added successfully');
         }
     }
     public function edit($id)
@@ -232,15 +238,17 @@ class ResourceController extends Controller
 
         $hr->performance = $request->Input('performance');
         $hr->experience = $request->Input('experience');
+        $hr->remark = $request->Input('remark');
         $hr->resultbased = $request->Input('resultbased');
         $hr->exam = $request->Input('exam');
         $hr->user_id = auth()->user()->id;
 
         $hr->update();
         if ($request->type == 'high') {
-            return redirect('resource')->with('status', 'evaluation edited successfully');
+            return redirect('positionDetailhigh/' . $hr->form->position_id)->with('status', 'evaluation edited successfully');
         } else if ($request->type == 'low') {
-            return redirect('lowresource')->with('status', 'evaluation edited successfully');;
+            // return redirect('lowresource')->with('status', 'evaluation edited successfully');;
+            return redirect('positionDetail/' . (int) $hr->form->position_id)->with('status', 'evaluation edited successfully');;
         }
     }
     public function update1(Request $request, $id)
@@ -254,7 +262,8 @@ class ResourceController extends Controller
         $hr->update();
 
 
-        return redirect('resource')->with('status', 'stock updated successfully');
+        // return redirect('resource')->with('status', 'stock updated successfully');
+        return redirect()->back()->with('status', 'stock updated successfully');
     }
     public function update2(Request $request, $id)
     {
@@ -267,6 +276,39 @@ class ResourceController extends Controller
         $hr->update();
 
 
-        return redirect('lowresource')->with('status', 'stock updated successfully');
+
+
+        return redirect()->back()->with('status', 'stock updated successfully');
+    }
+    // public function changeStatus(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $item = HR::find($request->hr);
+
+    //         if ($item) {
+    //             $item->status_hr = 1;
+    //             // $item->store_status = $request->status;
+    //             $item->update();
+
+    //             return response()->json(array("success" => true));
+    //         }
+    //     }
+    // }
+    public function pdf(Request $request)
+
+    {
+        // join('categories', 'categories.id', '=', 'positions.category_id') ->where('categories.catstatus', 'active')
+
+        // $position = Position::select('position', 'id')
+        //     ->join('categories', 'categories.id', '=', 'positions.category_id')
+        //     ->where('categories.catstatus', '=', 'active')
+        //     ->where('positions.job_category_id', $request->id)
+        //     ->take(100)->get();
+
+        $position = HR::find($request->id);
+
+
+
+        return response()->json($position);
     }
 }

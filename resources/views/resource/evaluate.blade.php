@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        
+
         <div class="row">
             <div class="col-xl-12">
                 <section class="hk-sec-wrapper">
@@ -353,7 +353,7 @@
                                                             {{-- <th>ያለዎት የትምህርት ዝግጅት</th> --}}
 
                                                             <th> የስራ ልምድዎ </th>
-                                                            <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.1) </th>
+                                                            <th>የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት</th>
                                                             <th>ተጨማሪ ይመልከቱ</th>
 
 
@@ -407,7 +407,7 @@
                                                                     ?>
                                                                 @endforeach
                                                             </td>
-                                                            <td>{{ round($form->resultOfrecentPerform * 0.1, 2) }}</td>
+                                                            <td>{{ $form->resultOfrecentPerform  }}</td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
                                                                 <i class='ion ion-md-arrow-round-forward'></i>
@@ -535,6 +535,17 @@
                                                 placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="number"
                                                 name="exam" min="1" max="15">
                                             @error('exam')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                         <div class="col-md-6 form-group">
+                                            <label for="exam">Remark</label>
+                                            <textarea class="form-control @error('remark') is-invalid @enderror" id="remark"
+                                                placeholder="remark" value="{{ old('remark') }}" type="text"
+                                                name="remark"></textarea>
+                                            @error('remark')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

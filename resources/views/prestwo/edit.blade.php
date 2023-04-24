@@ -207,27 +207,27 @@
                                                                 @foreach ($forms as $fo)
                                                                     <?php
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
                                                                     ?>
                                                                 @endforeach
                                                             </td>
                                                             <td>{{ $pres->secondhr->form->position->position }}</td>
 
-                                                            <td>{{ round($pres->secondhr->form->resultOfrecentPerform * 0.1, 2) }}
+                                                            <td>{{ $pres->secondhr->form->resultOfrecentPerform  }}
                                                             </td>
 
                                                             <td data-toggle="collapse" data-target="#more"
@@ -282,16 +282,16 @@
                                                     <tbody>
                                                         <tr>
 
-                                                            <td>{{ $pres->seondhr->form->positionofnow }}</td>
-                                                            <td>{{ $pres->seondhr->form->level->level }}</td>
-                                                            <td>{{ $pres->seondhr->form->fee }}</td>
-                                                            <td>{{ $pres->seondhr->form->UniversityHiringEra }}</td>
-                                                            <td>{{ $pres->seondhr->form->servicPeriodAtUniversity }}</td>
-                                                            <td>{{ $pres->seondhr->form->servicPeriodAtAnotherPlace }}</td>
-                                                            <td>{{ $pres->seondhr->form->serviceBeforeDiplo }}</td>
-                                                            <td>{{ $pres->seondhr->form->serviceAfterDiplo }}</td>
-                                                            <td>{{ $pres->seondhr->form->DisciplineFlaw }}</td>
-                                                            <td>{{ $pres->seondhr->form->MoreRoles }}</td>
+                                                            <td>{{ $pres->secondhr->form->positionofnow }}</td>
+                                                            <td>{{ $pres->secondhr->form->level->level }}</td>
+                                                            <td>{{ $pres->secondhr->form->fee }}</td>
+                                                            <td>{{ $pres->secondhr->form->UniversityHiringEra }}</td>
+                                                            <td>{{ $pres->secondhr->form->servicPeriodAtUniversity }}</td>
+                                                            <td>{{ $pres->secondhr->form->servicPeriodAtAnotherPlace }}</td>
+                                                            <td>{{ $pres->secondhr->form->serviceBeforeDiplo }}</td>
+                                                            <td>{{ $pres->secondhr->form->serviceAfterDiplo }}</td>
+                                                            <td>{{ $pres->secondhr->form->DisciplineFlaw }}</td>
+                                                            <td>{{ $pres->secondhr->form->MoreRoles }}</td>
                                                         </tr>
 
                                                     </tbody>
@@ -310,6 +310,19 @@
                                                 value="{{ $pres->presidentGrade }}" type="number" name="presidentGrade"
                                                 min="1" max="35">
                                             @error('presidentGrade')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                         <div class="col-md-6 form-group">
+                                            <label for="resultbased">Remark </label>
+                                            <textarea type="text"
+
+                                                class="form-control @error('remark') is-invalid @enderror"
+                                                id="remark" placeholder="remark " name="remark"
+                                                >{{ $pres->remark  }}</textarea>
+                                            @error('remark')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

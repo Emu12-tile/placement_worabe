@@ -410,7 +410,7 @@
                                                     </td>
 
                                                     <td>
-                                                        {{ round($form->resultOfrecentPerform * 0.3, 2) }}
+                                                        {{ $form->resultOfrecentPerform }}
                                                     </td>
                                                     <td data-toggle="collapse" data-target="#more" aria-expanded="false"
                                                         aria-controls="collapseExample">more <i
@@ -517,6 +517,16 @@
                                         class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
                                         placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30">
                                     @error('resultbased')
+                                        <span class=" error invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="exam">Remark</label>
+                                    <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                        value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                    @error('remark')
                                         <span class=" error invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                         </span>

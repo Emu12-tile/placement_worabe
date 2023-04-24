@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('presidentGrade');
             $table->string('status')->nullable();
+            $table->text('remark')->nullable();
             $table->foreignId('secondhr_id')->nullable()->references('id')->on('secondhrs')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();

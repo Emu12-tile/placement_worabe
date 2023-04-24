@@ -272,7 +272,7 @@
 
                                                         <th> ያለዎት የስራ ልምድ </th>
 
-                                                        <th>ውጤት ተኮር ምዘና(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.3) </th>
+                                                        <th>የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት </th>
                                                         <th>ተጨማሪ ይመልከቱ</th>
 
 
@@ -324,7 +324,7 @@
                                                         </td>
 
                                                         <td>
-                                                            {{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}
+                                                            {{ $hr->form->resultOfrecentPerform }}
                                                         </td>
                                                         <td data-toggle="collapse" data-target="#more" aria-expanded="false"
                                                             aria-controls="collapseExample">more <i
@@ -435,6 +435,16 @@
                                             placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
                                             required>
                                         @error('resultbased')
+                                            <span class=" error invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="resultbased">Remark </label>
+                                        <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
+                                            placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
+                                        @error('remark')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
                                             </span>

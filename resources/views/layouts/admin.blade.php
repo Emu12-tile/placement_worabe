@@ -45,11 +45,33 @@ License: You must have a valid license purchased only from themeforest to legall
         type="text/css" />
 
     <link href="{{ asset('assets/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}"
-    rel="stylesheet" type="text/css" />
+        rel="stylesheet" type="text/css" />
     {{-- <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
 
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <style>
+        .footerpdf {
+            /* position: fixed; */
+            text-align: center;
+            background: rgb(148, 141, 141);
+            color: white;
+            font-size: 1em;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            /* top:0 ; */
+            /* right: 0; */
+        }
+
+        .footerpdf>p {
+            margin-top: calc(20px - 0.5em);
+            /* margin-bottom: calc(20px-0.5em) */
+            height: auto;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -61,6 +83,7 @@ License: You must have a valid license purchased only from themeforest to legall
 
     <!-- HK Wrapper -->
     <div class="hk-wrapper hk-vertical-nav">
+
 
 
         <x-nav />

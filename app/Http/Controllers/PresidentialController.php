@@ -62,7 +62,7 @@ class PresidentialController extends Controller
             ->join('forms', 'forms.id', '=', 'h_r_s.form_id')
             ->join('positions', 'positions.id', '=', 'forms.position_id')
 
-            ->where('status', 1)
+            // ->where('status', 1)
             ->where('positions.id', $pos_id)
             ->select('presidents.*')
             ->get();
@@ -95,7 +95,7 @@ class PresidentialController extends Controller
 
         //  dd($resource);
         $resource->presidentGrade = $request->presidentGrade;
-
+        $resource->remark = $request->remark;
         $resource->h_r__id = $prod->id;
 
 
@@ -107,8 +107,8 @@ class PresidentialController extends Controller
         $prod->save();
 
 
-
-        return redirect('evaluation')->with('status', 'evaluation added successfully');
+        // dd($resource->hr);
+        return redirect('positionDetailhigh/' . $resource->hr->form->position_id)->with('status', 'evaluation added successfully');
     }
     public function edit($id)
     {
@@ -130,11 +130,12 @@ class PresidentialController extends Controller
 
 
         $hr->presidentGrade = $request->Input('presidentGrade');
+        $hr->remark = $request->Input('remark');
 
 
         $hr->update();
 
-        return redirect('evaluation')->with('status', ' updated successfully');
+        return redirect('posDetailpres/' . $hr->hr->form->position_id)->with('status', ' updated successfully');
     }
     public function update1(Request $request, $id)
     {
@@ -149,7 +150,7 @@ class PresidentialController extends Controller
         $hr->update();
 
 
-        return redirect('evaluation')->with('status', 'stock updated successfully');
+        return redirect()->back()->with('status', 'stock updated successfully');
     }
 
 

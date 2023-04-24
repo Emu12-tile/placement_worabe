@@ -7,11 +7,255 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+    @role('hr')
+        <div class="container">
+
+            <section class="hk-sec-wrapper mt-100">
+                <div class="pull-right hk-sec-title">
+
+                    {{-- <a href="{{ url('choicesecond') }}" class="btn btn-dark mr-25"> back </a> --}}
+                </div>
+                <h5 class="hk-sec-title">የተወዳዳሪዎች 2ኛ ምርጫ ከቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
+
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="table-wrap">
+                            <div class="table-responsive">
+                                <table id="datable_1" class="table table-hover table-bordered w-100 pb-30">
+                                    <thead>
+                                        <tr>
+                                            <th>ተ.ቁ</th>
+
+                                            <th>ሙሉ ስም</th>
+
+                                            {{-- <th>ውጤት ሰጪ</th> --}}
+
+                                            <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
+                                            <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
+                                            <th>ለውጤት ተኮር ምዘና</th>
+
+                                            <th>ለፈተና ውጤት</th>
+
+
+
+
+                                            <th>አጠቃላይ ውጤት(65%)</th>
+                                            <th>Edit</th>
+                                            <th>submit</th>
+                                            <th>pdf</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $j = 0;
+                                        ?>
+                                        @foreach ($hrs as $i => $hr)
+                                            @if ($hr->form->choice2->position_type_id == 1)
+                                                @if ($hr->status_hr == 0)
+                                                    <tr>
+                                                        <td>{{ ++$j }}</td>
+                                                        <td>{{ $hr->form->full_name }} <p>{{ $hr->form->email }}
+                                                            </p>
+                                                        </td>
+
+                                                        {{-- <td>{{ $hr->user->name }}</td> --}}
+                                                        <td>{{ $hr->performance }}</td>
+                                                        <td>{{ $hr->experience }}</td>
+                                                        <td>{{ $hr->resultbased }}</td>
+                                                        <td>{{ $hr->exam }}</td>
+
+
+
+                                                        <td>
+                                                            {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
+
+                                                        </td>
+
+
+
+
+
+                                                        <td> <a href="{{ route('secondhr.edit', $hr->id) }}"
+                                                                data-toggle="tooltip" data-original-title="Edit"> <i
+                                                                    class="icon-pencil"></i>
+
+                                                            </a>
+
+
+                                                        </td>
+                                                        <td>
+                                                            <form action="{{ url('update-secondhr/' . $hr->id) }}"
+                                                                method="POST" enctype="multipart/form-data">
+                                                                @csrf
+
+                                                                @method('PUT')
+                                                                <button class="btn  bg-green-dark-4 text-white btn-sm "
+                                                                    value="{{ $hr->id }}" type="submit"
+                                                                    id="btn_evaluate">
+                                                                    Submit</button>
+                                                            </form>
+
+                                                        </td>
+                                                        <td>
+
+
+                                                            <button type="button" class="btn btn-primary requestStat btn-sm "
+                                                                data-toggle="modal" data-target="#id_{{ $i }}"><i
+                                                                    class="ion ion-md-archive "></i>pdf
+                                                            </button>
+
+                                                            <div class="modal fade" id="id_{{ $i }}" tabindex="-1"
+                                                                role="dialog" aria-labelledby="exampleModalLongTitle"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <div id="element-to-print">
+                                                                                <div class="footerpdf">
+                                                                                    <p>This pdf generated by
+                                                                                        {{ Auth::user()->name }} ©
+
+
+                                                                                        <?php
+                                                                                        $mytime = Carbon\Carbon::now();
+                                                                                        echo $mytime->toDateTimeString();
+                                                                                        ?>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <h5 class="modal-title "
+                                                                                    id="exampleModalLongTitle">
+                                                                                    የተወዳዳሪው 2ኛ ምርጫ ከደረጃ በላይ አጠቃላይ ውጤት
+                                                                                </h5>
+                                                                                <div class="modal-body">
+                                                                                    <table
+                                                                                        class="table table-hover table-bordered w-100  pb-30">
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                                <th></th>
+                                                                                                <th></th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td>ሙሉ ስም</td>
+                                                                                                <td>{{ $hr->form->full_name }}
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>የትምህርት ደረጃና ዝግጅት</td>
+                                                                                                <td>
+                                                                                                    @foreach ($hr->form->education as $i => $fo)
+                                                                                                        ({{ $fo->edu_level->education_level }}፣
+                                                                                                        {{ $fo->education_type->education_type }})
+                                                                                                    @endforeach
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    ያለዎት የስራ ልምድ
+                                                                                                </td>
+
+                                                                                                <td>
+                                                                                                    @foreach ($hr->form->experiences as $i => $fo)
+                                                                                                        <p> ከ{{ Carbon::parse($fo->startingDate)->day }}/{{ Carbon::parse($fo->startingDate)->month }}/{{ Carbon::parse($fo->startingDate)->year }}
+                                                                                                            እስከ
+                                                                                                            {{ Carbon::parse($fo->endingDate)->day }}/{{ Carbon::parse($fo->endingDate)->month }}/{{ Carbon::parse($fo->endingDate)->year }}
+                                                                                                            በ
+                                                                                                            {{ $fo->positionyouworked }},
+                                                                                                        </p>
+
+                                                                                                        {{-- <td>{{ $fo->positionyouworked }} --}}
+                                                                                                    @endforeach
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>የሚወዳደሩበት የሥራ መደብ</td>
+                                                                                                <td>{{ $hr->form->choice2->position }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+
+                                                                                                <td>ለትምህርት ዝግጅት የሚሰጥ ነጥብ(25%)
+                                                                                                </td>
+                                                                                                <td>{{ $hr->performance }}</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ(15%)
+                                                                                                </td>
+                                                                                                <td> {{ $hr->experience }}</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>ለውጤት ተኮር ምዘና(10%)</td>
+                                                                                                <td>{{ $hr->resultbased }}</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>ለፈተና ውጤት(15%) </td>
+                                                                                                <td>{{ $hr->exam }}</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Remark</td>
+                                                                                                <td>{{ $hr->remark }}</td>
+                                                                                            </tr>
+
+                                                                                        </tbody>
+                                                                                        <tfoot style="font-size: 20px;">
+                                                                                            <tr>
+                                                                                                <td>አጠቃላይ ውጤት(65%)</td>
+                                                                                                <td>{{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tfoot>
+                                                                                    </table>
+                                                                                    <p>ከኮሚቴ ውጤት ሰጪ:{{ $hr->user->name }} </p>
+                                                                                </div>
+
+
+
+
+                                                                            </div>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+
+
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{-- {!! $hrs->links() !!} --}}
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+        </div>
+    @endrole
     <div class="container">
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                <a href="{{ url('choicesecond') }}" class=" btn btn-dark mr-25"> back </a>
+                {{-- <a href="{{ url('choicesecond') }}" class=" btn btn-dark mr-25"> back </a> --}}
             </div>
             <h5 class="hk-sec-title">የተወዳዳሪዎች 2ኛ ምርጫ ከ ቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
             <div class="row">
@@ -32,22 +276,23 @@
                                             @role('hr')
                                                 <th>ውጤት ሰጪ ከኮሚቴ</th>
 
-                                                <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
-                                                <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
-                                                <th>ለውጤት ተኮር ምዘና</th>
+                                                <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ(25%)</th>
+                                                <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ(15%)</th>
+                                                <th>ለውጤት ተኮር ምዘና(10%)</th>
 
-                                                <th>ለፈተና ውጤት</th>
+                                                <th>ለፈተና ውጤት(15%)</th>
+
                                                 <th>አጠቃላይ ውጤት(65%)</th>
+                                                <th>Remark</th>
                                             @endrole
 
 
                                             @role('president')
                                                 <th>ውጤት ሰጪ ከኮሚቴ</th>
-                                                <th>የሚወዳደሩበት የስራ መደብ</th>
 
-                                                <th>የሚወዳደሩበት የስራ ክፍል</th>
                                                 <th>አጠቃላይ ውጤት(65%)</th>
-                                                {{-- @role('president') --}}
+                                                {{-- <th>Remark</th> --}}
+
                                                 <th>presidential</th>
                                             @endrole
 
@@ -61,17 +306,16 @@
                                             ?>
                                             @foreach ($hrs as $i => $hr)
                                                 @if ($hr->form->choice2->position_type_id == 1)
-                                                    <tr>
-                                                        <td>{{ ++$j }}</td>
-                                                        <td>
-                                                            {{-- <form action="" method="POST"><a
-                                                                    href="{{ route('hr.show', $hr->form->id) }}" class="mr-25"
-                                                                    data-toggle="tooltip"
-                                                                    data-original-title="show">{{ $hr->form->full_name }} </a>
-                                                            </form> --}}
-                                                             <button type="button" class="btn btn-primary "
-                                                                    data-toggle="modal" data-target="#id_{{ $i }}">
-                                                                    {{ $hr->form->full_name }}</button>
+                                                    @if ($hr->status_hr == 1)
+                                                        <tr>
+                                                            <td>{{ ++$j }}</td>
+                                                            <td>
+
+                                                                {{-- <button type="button" class="btn btn-primary "
+                                                                    data-toggle="modal" data-target="#id_{{ $i }}"> --}}
+                                                                {{ $hr->form->full_name }} <p>{{ $hr->form->email }}
+                                                                </p>
+                                                                {{-- </button> --}}
                                                                 <div class="modal fade" id="id_{{ $i }}"
                                                                     tabindex="-1" role="dialog"
                                                                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -397,35 +641,39 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                        </td>
-                                                        {{-- @role('hr') --}}
-                                                        <td>{{ $hr->user->name }}</td>
-                                                        <td>{{ $hr->performance }}</td>
-                                                        <td>{{ $hr->experience }}</td>
-                                                        <td>{{ $hr->resultbased }}</td>
-                                                        <td>{{ $hr->exam }}</td>
-                                                        {{-- @endrole --}}
+                                                            </td>
+                                                            {{-- @role('hr') --}}
+                                                            <td>{{ $hr->user->name }}</td>
+                                                            <td>{{ $hr->performance }}</td>
+                                                            <td>{{ $hr->experience }}</td>
+                                                            <td>{{ $hr->resultbased }}</td>
+                                                            <td>{{ $hr->exam }}</td>
+
+                                                            {{-- @endrole --}}
 
 
-                                                        <td>
-                                                            {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
+                                                            <td>
+                                                                {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
-                                                        </td>
-
-
-
+                                                            </td>
+                                                            <td>{{ $hr->remark }}</td>
 
 
-                                                        @role('president')
-                                                            @if ($hr->status_hr == 1)
-                                                                <td> <a class="btn  btn-dark " type="submit" id="btn-evaluate"
-                                                                        href="{{ route('addpresident', $hr->id) }}">
-                                                                        evaluate</a>
-                                                                </td>
-                                                            @endif
-                                                        @endrole
 
-                                                    </tr>
+
+
+                                                            @role('president')
+                                                                @if ($hr->status_hr == 1)
+                                                                    <td> <a class="btn  btn-dark " type="submit"
+                                                                            id="btn-evaluate"
+                                                                            href="{{ route('addpresident', $hr->id) }}">
+                                                                            evaluate</a>
+                                                                    </td>
+                                                                @endif
+                                                            @endrole
+
+                                                        </tr>
+                                                    @endif
                                                 @endif
                                             @endforeach
                                         </tbody>
@@ -448,11 +696,13 @@
                                                                     </a>
                                                                 </form> --}}
                                                                 <button type="button" class="btn btn-primary "
-                                                                    data-toggle="modal" data-target="#id_{{ $i }}">
+                                                                    data-toggle="modal"
+                                                                    data-target="#id_{{ $i }}">
                                                                     {{ $hr->form->full_name }}</button>
                                                                 <div class="modal fade" id="id_{{ $i }}"
                                                                     tabindex="-1" role="dialog"
-                                                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                                    aria-labelledby="exampleModalLongTitle"
+                                                                    aria-hidden="true">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -778,9 +1028,9 @@
                                                             </td>
                                                             <td>{{ $hr->user->name }}</td>
 
-                                                            <td>{{ $hr->form->choice2->position }}</td>
+                                                            {{-- <td>{{ $hr->form->choice2->position }}</td> --}}
 
-                                                            <td>{{ $hr->form->jobcat2->job_category }}</td>
+                                                            {{-- <td>{{ $hr->form->jobcat2->job_category }}</td> --}}
 
 
                                                             {{-- <td>{{ $hr->performance }}</td>
@@ -791,6 +1041,7 @@
                                                                 {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
                                                             </td>
+                                                            {{-- <td>{{ $hr->remark }}</td> --}}
 
 
 
@@ -825,4 +1076,60 @@
 
 
     </div>
+@endsection
+@section('javascript')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"
+        integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(".requestStat").on("click", function() {
+            // var element = document.getElementById("element-to-print")
+            var element = $(this).closest("tr").find("#element-to-print")[0]
+            html2pdf(element, {
+                margin: 15,
+                filename: 'Application form.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 3,
+                    logging: true,
+                    dpi: 192,
+                    letterRendering: true
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait'
+                }
+            });
+        });
+
+
+        // $(".requestStat").on("click", function() {
+        //     var cat_id = $(this).val();
+
+
+        //     $.ajax({
+        //         url: "pdf",
+
+        //         method: 'GET',
+
+        //         data: {
+        //             "id": $(this).val(),
+        //             "hr": $(this).attr("data-target")
+        //         },
+        //         success: function(data) {
+        //             // console.log(data.hr);
+        //             if (response.id) {
+        //                 alert(" changed successfully");
+        //             }
+        //         },
+        //         error: function(response) {}
+        //     });
+
+        // });
+    </script>
 @endsection

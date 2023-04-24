@@ -19,7 +19,7 @@ class SecondhrController extends Controller
     {
 
         $hrs = Secondhr::where('status_hr', 0)->get();
-// dd($hrs);
+        // dd($hrs);
 
         return view('secondchoice.index', compact('hrs'));
     }
@@ -50,7 +50,7 @@ class SecondhrController extends Controller
     {
 
         $hrs = Secondhr::where('status_hr', 0)->get();
-// dd($hrs);
+        // dd($hrs);
 
         return view('secondchoicelow.lowresource', compact('hrs'));
     }
@@ -76,7 +76,7 @@ class SecondhrController extends Controller
         $hrs = Secondhr::join('forms', 'forms.id', '=', 'secondhrs.form_id')
             ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
 
-            ->where('status_hr', 1)
+            // ->where('status_hr', 1)
             ->where('choice2s.id', $pos_id)
             ->select('secondhrs.*')
             ->get();
@@ -109,7 +109,7 @@ class SecondhrController extends Controller
         $hrs = Secondhr::join('forms', 'forms.id', '=', 'secondhrs.form_id')
             ->join('choice2s', 'choice2s.id', '=', 'forms.choice2_id')
 
-            ->where('status_hr', 1)
+            // ->where('status_hr', 1)
             ->where('choice2s.id', $pos_id)
             ->select('secondhrs.*')
             ->get();
@@ -170,7 +170,7 @@ class SecondhrController extends Controller
         if ($request->type == 'first') {
             return redirect('secondhr')->with('status', 'evaluation added successfully');
         } else if ($request->type == 'second') {
-            return redirect('secondlow');
+            return redirect('choiceDetaillow/' . $res->form->choice2->position_id);
         }
     }
     public function storeRestore1(Request $request, $prod1_id)
@@ -189,6 +189,7 @@ class SecondhrController extends Controller
         $res->user_id = auth()->user()->id;
         $res->presidentGrade = $request->presidentGrade;
         $res->exam = $request->exam;
+        $res->remark = $request->remark;
         // $resource->status_hr = $request->status_hr;
         $res->form_id = $prod1->id;
         // dd($resource->save());
@@ -203,9 +204,9 @@ class SecondhrController extends Controller
 
         // }
         if ($request->type == 'first') {
-            return redirect('secondhr')->with('status', 'evaluation added successfully');
+            return redirect('posDetail2/' . $res->form->choice2_id)->with('status', 'evaluation added successfully');
         } else if ($request->type == 'second') {
-            return redirect('secondlow')->with('status', 'evaluation added successfully');;
+            return redirect('posDetail2/' . $res->form->choice2_id)->with('status', 'evaluation added successfully');;
         }
     }
     public function edit($id)
@@ -232,13 +233,14 @@ class SecondhrController extends Controller
         $hr->experience = $request->Input('experience');
         $hr->resultbased = $request->Input('resultbased');
         $hr->exam = $request->Input('exam');
+        $hr->remark = $request->Input('remark');
         $hr->user_id = auth()->user()->id;
 
         $hr->update();
         if ($request->type == 'first') {
-            return redirect('secondhr')->with('status', 'evaluation edited successfully');
+            return redirect('posDetailtwo/' . $hr->form->choice2_id)->with('status', 'evaluation edited successfully');
         } else if ($request->type == 'second') {
-            return redirect('secondlow')->with('status', 'evaluation edited successfully');;
+            return redirect('choiceDetaillow/' . $hr->form->choice2_id)->with('status', 'evaluation edited successfully');;
         }
     }
     public function update1(Request $request, $id)
@@ -252,7 +254,7 @@ class SecondhrController extends Controller
         $hr->update();
 
 
-        return redirect('secondhr')->with('status', ' updated successfully');
+        return redirect()->back()->with('status', ' updated successfully');
     }
     public function update2(Request $request, $id)
     {
@@ -265,7 +267,7 @@ class SecondhrController extends Controller
         $hr->update();
 
 
-        return redirect('secondlow')->with('status', ' updated successfully');
+        return redirect()->back()->with('status', ' updated successfully');
     }
     public function destroy($id)
     {

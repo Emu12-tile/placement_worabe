@@ -353,7 +353,7 @@
                                                             <th>አሁን ያሉበት የትምህርት ደረጃና የትምህርት ዝግጅት</th>
                                                             <th>የሚወዳደሩበት የስራ መደብ</th>
                                                             <th>ለስራ ልምድ </th>
-                                                            <th>ውጤት ተኮር(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት* 0.1) </th>
+                                                            <th>(የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት) </th>
                                                             <th>ተጨማሪ ይመልከቱ</th>
 
                                                         </tr>
@@ -401,7 +401,7 @@
                                                                     ?>
                                                                 @endforeach
                                                             </td>
-                                                            <td>{{ round($form->resultOfrecentPerform * 0.1, 2) }}</td>
+                                                            <td>{{ $form->resultOfrecentPerform }}</td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
                                                                 <i class='ion ion-md-arrow-round-forward'></i>
@@ -536,6 +536,16 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                        <div class="col-md-6 form-group">
+                                    <label for="exam">Remark</label>
+                                    <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                        value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                    @error('remark')
+                                        <span class=" error invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                                     @endrole
                                     <input type="hidden" name="type" value="first">
 
