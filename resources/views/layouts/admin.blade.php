@@ -51,17 +51,29 @@ License: You must have a valid license purchased only from themeforest to legall
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <style>
+        /* .bodypdf {
+            height: 100%;
+            padding: 0;
+            padding-bottom: 100px;
+        } */
+
         .footerpdf {
-            /* position: fixed; */
+            /* position: fixed;
+            bottom: 0;
+            height: 50px;
+            width: 100%;
+            background-color: #ddd;
+            text-align: center; */
+            position: fixed;
             text-align: center;
-            background: rgb(148, 141, 141);
-            color: white;
+            background-color: #ddd;
             font-size: 1em;
             width: 100%;
+            /* top:1100px; */
             height: 40px;
             overflow: hidden;
-            /* top:0 ; */
-            /* right: 0; */
+
+            bottom: 0;
         }
 
         .footerpdf>p {

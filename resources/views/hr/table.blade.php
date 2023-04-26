@@ -61,7 +61,7 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach ($forms as $form)
+                                        @foreach ($forms as $i => $form)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
                                                 <td>{{ $form->full_name }}</td>
@@ -84,7 +84,7 @@
 
                                 </table>
                                 {{-- {{ ($forms ->currentpage()-1) * $forms ->perpage() + $form->index + 1 }} --}}
-                                {!! $forms->links() !!}
+                                {{-- {!! $forms->links() !!} --}}
 
                             </div>
                         </div>
