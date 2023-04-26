@@ -59,9 +59,10 @@
                                                     class="mr-25" data-toggle="tooltip"
                                                     data-original-title="show">{{ $form->full_name }} </a>
                                             </form> --}}
-                                             <button type="button" class="btn bg-blue-dark-4 text-white" data-toggle="modal"
-                                                        data-target="#id_{{$i}}">
-                                                        {{ $form->full_name }}</button>
+                                            <button type="button" class="btn bg-blue-dark-4 text-white" data-toggle="modal"
+                                                data-target="#id_{{ $i }}">
+                                                Candidate - {{ $form->id }}</button>
+                                            {{-- {{ $form->full_name }}</button> --}}
                                         </td>
 
                                         {{-- <td>{{$form->h_r_id}}</td> --}}
@@ -95,7 +96,7 @@
                                         @endrole
 
                                         </td>
-                                        <div class="modal fade" id="id_{{$i}}" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="id_{{ $i }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -174,8 +175,7 @@
                                                                 <label for="inputname"
                                                                     class="col-sm-2 col-form-label">ደረጃ</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text"
-                                                                        value="{{ $form->level->level }}"
+                                                                    <input type="text" value="{{ $form->level->level }}"
                                                                         name="level"class="form-control "
                                                                         id="inputEmail3" readonly>
                                                                 </div>
@@ -227,7 +227,8 @@
                                                                 <label for="position" class="col-sm-2 col-form-label">የስራ
                                                                     መደብ</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" value="{{ $form->position->position }}"
+                                                                    <input type="text"
+                                                                        value="{{ $form->position->position }}"
                                                                         name="position"class="form-control "
                                                                         id="position" readonly>
                                                                 </div>

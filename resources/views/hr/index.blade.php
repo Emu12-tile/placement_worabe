@@ -415,7 +415,7 @@
 
                                                     <button type="button" class="btn btn-primary " data-toggle="modal"
                                                         data-target="#id_{{ $i }}">
-                                                        {{ $form->full_name }}</button>
+                                                        Candidate - {{ $form->id }}</button>
                                                     <div class="modal fade" id="id_{{ $i }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLongTitle"
                                                         aria-hidden="true">

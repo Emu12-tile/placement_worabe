@@ -81,7 +81,8 @@ class FormController extends Controller
             ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
 
 
-
+//   $forms->count();
+//   dd($forms);
 
 
         return view('hr.pos', compact('forms'));
