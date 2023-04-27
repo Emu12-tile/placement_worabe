@@ -61,7 +61,7 @@
                                             </form> --}}
                                             <button type="button" class="btn bg-blue-dark-4 text-white" data-toggle="modal"
                                                 data-target="#id_{{ $i }}">
-                                                Candidate - {{ $form->id }}</button>
+                                                {{ $form->full_name }}</button>
                                             {{-- {{ $form->full_name }}</button> --}}
                                         </td>
 

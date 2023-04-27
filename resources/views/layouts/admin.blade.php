@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest to legall
             width: 100%;
             background-color: #ddd;
             text-align: center; */
-            position: fixed;
+            /* position: fixed; */
             text-align: center;
             background-color: #ddd;
             font-size: 1em;

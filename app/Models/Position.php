@@ -45,4 +45,8 @@ class Position extends Model
     //     return $this->hasMany(Edutype::class, 'position_id', 'id');
     // }
 
+    public function forms()
+    {
+        return $this->hasMany(Form::class, 'position_id', 'id');
+    }
 }

@@ -201,6 +201,34 @@
                             </div>
 
                         </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-18 text-dark font-weight-500">ያልተሞሉ የስራ መደቦች</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-34 font-weight-500">
+                                                {{-- {{ App\Models\Position::join('forms', 'forms.position_id', '=', 'positions.id')->get('positions.id')->count()}} --}}
+          {{App\Models\Position::with('forms')->count()}}
+
+
+
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="d-block display-4 text-dark mb-5"><i
+                                                class='glyphicon glyphicon-th-list 'style="font-size:48px;color:black">
+                                            </i></span>
+                                        <small class="d-block"></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 @endrole
 
