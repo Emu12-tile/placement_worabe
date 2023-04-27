@@ -201,7 +201,7 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        {{-- <div class="col-lg-3 col-md-6">
                             <div class="card card-sm">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between mb-5">
@@ -210,8 +210,8 @@
                                         </div>
                                         <div>
                                             <span class="text-success font-34 font-weight-500">
-                                                {{-- {{ App\Models\Position::join('forms', 'forms.position_id', '=', 'positions.id')->get('positions.id')->count()}} --}}
-          {{App\Models\Position::with('forms')->count()}}
+
+                                   {{App\Models\Position::with('forms')->count()}}
 
 
 
@@ -228,7 +228,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> --}}
                     </div>
                 @endrole
 
