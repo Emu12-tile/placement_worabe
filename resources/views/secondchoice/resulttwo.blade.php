@@ -192,7 +192,7 @@
                                                                                         </tbody>
                                                                                         <tfoot style="font-size: 20px;">
                                                                                             <tr>
-                                                                                                <td>አጠቃላይ ውጤት(65%)</td>
+                                                                                                <td>አጠቃላይ ውጤት(50%)</td>
                                                                                                 <td>{{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
                                                                                                 </td>
                                                                                             </tr>
