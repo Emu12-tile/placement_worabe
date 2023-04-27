@@ -387,24 +387,24 @@
                                                     <td>
                                                         @foreach ($forms as $fo)
                                                             <?php
-                                                            
+
                                                             $fdate = Carbon::parse($fo->startingDate);
-                                                            
+
                                                             $tdate = Carbon::parse($fo->endingDate);
-                                                            
+
                                                             // $years = $tdate - $fdate;
                                                             $days = $tdate->diffInDays($fdate);
                                                             $months = $tdate->diffInMonths($fdate);
-                                                            
+
                                                             $years = $tdate->diffInYears($fdate);
                                                             // dd($fdate->diffForHumans($tdate));
                                                             // dd($years,$months,$days);
-                                                            
+
                                                             $time = $tdate->diff($fdate);
                                                             // echo $time->y;
-                                                            
+
                                                             echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                            
+
                                                             ?>
                                                         @endforeach
                                                     </td>
@@ -502,7 +502,7 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                    <input type="number" value="{{ old('experience') }}"
+                                    <input type="float" value="{{ old('experience') }}"
                                         class="form-control @error('experience') is-invalid @enderror" id="experience"
                                         placeholder="ለስራ ልምድ" name="experience" min="1" max="30">
                                     @error('experience')

@@ -350,29 +350,29 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-
+                                                                    
                                                                     $fdate = Carbon::parse($fo->startingDate);
-
+                                                                    
                                                                     $tdate = Carbon::parse($fo->endingDate);
-
+                                                                    
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-
+                                                                    
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-
+                                                                    
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-
+                                                                    
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-
+                                                                    
                                                                     ?>
                                                                 @endforeach
                                                             </td>
                                                             <td>
-                                                                {{$hr->form->resultOfrecentPerform  }}
+                                                                {{ $hr->form->resultOfrecentPerform }}
                                                             </td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
@@ -483,7 +483,7 @@
                                         <div class="col-md-6 form-group">
                                             <label for="middleName">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                             <input class="form-control" @error('experience') is-invalid @enderror"
-                                                id="middleName" placeholder="" value="{{ $hr->experience }}" type="number"
+                                                id="middleName" placeholder="" value="{{ $hr->experience }}" type="float"
                                                 name="experience" min="1" max="25">
                                             @error('experience')
                                                 <span class=" error invalid-feedback">
@@ -513,13 +513,10 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                         <div class="col-md-6 form-group">
+                                        <div class="col-md-6 form-group">
                                             <label for="resultbased">Remark </label>
-                                            <textarea type="text"
-
-                                                class="form-control @error('remark') is-invalid @enderror"
-                                                id="remark" placeholder="remark " name="remark"
-                                                >{{ $hr->remark  }}</textarea>
+                                            <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
+                                                placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
                                             @error('remark')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>

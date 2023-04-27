@@ -510,7 +510,7 @@
                                             <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                             <input class="form-control @error('experience') is-invalid @enderror"
                                                 id="experience" placeholder="ለስራ ልምድ" value="{{ old('experience') }}"
-                                                type="number" name="experience" min="1" max="15">
+                                                type="float" name="experience" min="1" max="15">
                                             @error('experience')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>

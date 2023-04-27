@@ -380,24 +380,24 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-
-                                                                     $fdate = Carbon::parse($fo->startingDate);
-
+                                                                    
+                                                                    $fdate = Carbon::parse($fo->startingDate);
+                                                                    
                                                                     $tdate = Carbon::parse($fo->endingDate);
-
+                                                                    
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-
+                                                                    
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-
+                                                                    
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-
-                                                                    echo $time->y, 'ዓመት','ከ' ,$time->m,' ወር በ(', $fo->positionyouworked, '), ';
-
+                                                                    
+                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
+                                                                    
                                                                     ?>
                                                                 @endforeach
                                                             </td>
@@ -506,7 +506,7 @@
                                             <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                             <input class="form-control @error('experience') is-invalid @enderror"
                                                 id="experience" placeholder="ለስራ ልምድ" value="{{ old('experience') }}"
-                                                type="number" name="experience" min="1" max="15">
+                                                type="float" name="experience" min="1" max="15">
                                             @error('experience')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -537,15 +537,15 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-6 form-group">
-                                    <label for="exam">Remark</label>
-                                    <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
-                                        value="{{ old('remark') }}" type="text" name="remark"></textarea>
-                                    @error('remark')
-                                        <span class=" error invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                                            <label for="exam">Remark</label>
+                                            <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                                value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                            @error('remark')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     @endrole
                                     <input type="hidden" name="type" value="first">
 
