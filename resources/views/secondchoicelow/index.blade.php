@@ -99,6 +99,11 @@
                                                                                 $mytime = Carbon\Carbon::now();
                                                                                 echo $mytime->toDateTimeString();
                                                                                 ?>
+                                                                            <p class="mt-5 text-center">@copyright <a
+                                                                                    href="#" class="text-dark"
+                                                                                    target="_blank">Yonas
+                                                                                    T.,Eyob B. &
+                                                                                    Emebet T. </a> © 2023</p>
                                                                             </p>
                                                                         </div>
                                                                         <h5 class="modal-title " id="exampleModalLongTitle">
