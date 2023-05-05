@@ -62,7 +62,7 @@
 
                                                 </td>
                                                 <td>
-                                                    <form action="{{ url('update-lowresource/' . $hr->id) }}" method="POST"
+                                                    {{-- <form action="{{ url('update-lowresource/' . $hr->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
 
@@ -70,7 +70,56 @@
                                                         <button class="btn  bg-green-dark-4 text-white  btn-sm"
                                                             type="submit" id="btn-evaluate">
                                                             Submit</button>
-                                                    </form>
+                                                    </form> --}}
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button"
+                                                                class="btn bg-green-dark-4 text-white btn-sm"
+                                                                data-toggle="modal" data-target="#id1_{{ $i }}">
+                                                                Submit
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="id1_{{ $i }}"
+                                                                tabindex="-1" role="dialog"
+                                                                aria-labelledby="exampleModalCenter" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered"
+                                                                    role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Submission</h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Are you sure do you want to submit
+                                                                                {{ $hr->form->full_name }}?
+
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                            <form
+                                                                                action="{{ url('update-lowresource/' . $hr->id) }}"
+                                                                                method="POST"
+                                                                                enctype="multipart/form-data">
+                                                                                @csrf
+
+                                                                                @method('PUT')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-green">
+                                                                                    Yes</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </td>
                                                 <td>
@@ -183,13 +232,14 @@
                                                                                 $mytime = Carbon\Carbon::now()->tz('EAT');
                                                                                 echo $mytime->toDateTimeString();
                                                                                 ?>
-                                                                                 <p class="mt-5 text-center">@copyright <a href="#"
-                                                                                            class="text-dark"
-                                                                                            target="_blank">Yonas
-                                                                                            T.,Eyob B. &
-                                                                                            Emebet T. </a> © 2023</p>
-                                                                            </p>
+
                                                                         </div>
+                                                                        <p class="mt-5 text-center">@copyright <a
+                                                                                href="#" class="text-dark"
+                                                                                target="_blank">Yonas
+                                                                                T.,Eyob B. &
+                                                                                Emebet T. </a> © 2023</p>
+                                                                        </p>
                                                                     </div>
 
 
@@ -205,24 +255,16 @@
 
 
                                                     </div>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endif
+                                @endforeach
 
-                    </div>
-                </div>
+                        </table>
+                        {{-- {!! $hrs->links() !!} --}}
 
-            </div>
-            </td>
-
-            </tr>
-            @endif
-            @endif
-            @endforeach
-
-            </table>
-            {{-- {!! $hrs->links() !!} --}}
-    </div>
-    </div>
-    </div>
-    </section>
+        </section>
 
 
 
@@ -254,6 +296,7 @@
                                     <th>ለውጤት ተኮር ምዘና</th>
 
                                     <th>አጠቃላይ ውጤት(100%)</th>
+                                    <th>Submitted by</th>
                                     <th>Remark</th>
 
 
@@ -277,6 +320,7 @@
 
                                                 <td>{{ $hr->performance + $hr->experience + $hr->resultbased }}
                                                 </td>
+                                                <td>{{ Auth::user()->name }}</td>
                                                 <td>{{ $hr->remark }}</td>
 
 

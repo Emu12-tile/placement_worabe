@@ -21,7 +21,7 @@
                     <div class="table-wrap">
                         <div class="table-responsive">
                             <table id="datable_1" class="table table-hover table-bordered w-100 pb-30">
-                                <thead >
+                                <thead>
                                     <tr>
                                         <th>ተ.ቁ</th>
 
@@ -39,8 +39,8 @@
 
 
                                         <th>አጠቃላይ ውጤት(65%)</th>
-                                        <th >Action</th>
-                                        <th >Submission</th>
+                                        <th>Action</th>
+                                        <th>Submission</th>
 
                                     </tr>
                                 </thead>
@@ -79,7 +79,7 @@
 
                                                 </td>
                                                 <td>
-                                                    <form action="{{ url('update-secondhr/' . $hr->id) }}" method="POST"
+                                                    {{-- <form action="{{ url('update-secondhr/' . $hr->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
 
@@ -87,7 +87,57 @@
                                                         <button class="btn  bg-green-dark-4 text-white "
                                                             value="{{ $hr->id }}" type="submit" id="btn_evaluate">
                                                             Submit</button>
-                                                    </form>
+                                                    </form> --}}
+
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button"
+                                                                class="btn bg-green-dark-4 text-white btn-sm"
+                                                                data-toggle="modal" data-target="#id1_{{ $i }}">
+                                                                Submit
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="id1_{{ $i }}"
+                                                                tabindex="-1" role="dialog"
+                                                                aria-labelledby="exampleModalCenter" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered"
+                                                                    role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Submission</h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Are you sure do you want to submit
+                                                                                {{ $hr->form->full_name }}?
+
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                            <form
+                                                                                action="{{ url('update-secondhr/' . $hr->id) }}"
+                                                                                method="POST"
+                                                                                enctype="multipart/form-data">
+                                                                                @csrf
+
+                                                                                @method('PUT')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-green">
+                                                                                    Yes</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </td>
 

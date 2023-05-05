@@ -83,16 +83,64 @@
 
                                                         </td>
                                                         <td>
-                                                            <form action="{{ url('update-resource/' . $hr->id) }}"
-                                                                method="POST" enctype="multipart/form-data">
-                                                                @csrf
 
-                                                                @method('PUT')
-                                                                <button class="btn  bg-green-dark-4 text-white btn-sm "
+                                                            {{-- <button class="btn  bg-green-dark-4 text-white btn-sm "
                                                                     value="{{ $hr->id }}" type="submit"
                                                                     id="btn_evaluate">
-                                                                    Submit</button>
-                                                            </form>
+                                                                    Submit</button> --}}
+
+                                                            <div class="row">
+                                                                <div class="col-sm">
+                                                                    <!-- Button trigger modal -->
+                                                                    <button type="button"
+                                                                        class="btn bg-green-dark-4 text-white btn-sm"
+                                                                        data-toggle="modal"
+                                                                        data-target="#id1_{{ $i }}">
+                                                                        Submit
+                                                                    </button>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="id1_{{ $i }}"
+                                                                        tabindex="-1" role="dialog"
+                                                                        aria-labelledby="exampleModalCenter" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered"
+                                                                            role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title">Submission</h5>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <p>Are you sure do you want to submit
+                                                                                        {{ $hr->form->full_name }}?
+
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-dismiss="modal">Close</button>
+                                                                                    <form
+                                                                                        action="{{ url('update-resource/' . $hr->id) }}"
+                                                                                        method="POST"
+                                                                                        enctype="multipart/form-data">
+                                                                                        @csrf
+
+                                                                                        @method('PUT')
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-green">
+                                                                                            Yes</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
 
                                                         </td>
                                                         <td> <button type="button" class="btn btn-primary requestStat btn-sm "
@@ -224,8 +272,8 @@
 
 
                                                                                     </div>
-                                                                                    <p class="mt-5 text-center">@copyright <a href="#"
-                                                                                            class="text-dark"
+                                                                                    <p class="mt-5 text-center">@copyright <a
+                                                                                            href="#" class="text-dark"
                                                                                             target="_blank">Yonas
                                                                                             T.,Eyob B. &
                                                                                             Emebet T. </a> © 2023</p>
@@ -304,6 +352,7 @@
                                                 <th>ለፈተና ውጤት</th>
 
                                                 <th>አጠቃላይ ውጤት(65%)</th>
+                                                <th>Submitted by</th>
                                                 <th>Remark</th>
                                             @endrole
 
@@ -348,6 +397,7 @@
                                                                 {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
                                                             </td>
+                                                            <td>{{ Auth::user()->name }}</td>
                                                             <td>{{ $hr->remark }}</td>
 
 
@@ -385,7 +435,8 @@
                                                                     {{ $hr->form->full_name }}</button>
                                                                 <div class="modal fade" id="id_{{ $i }}"
                                                                     tabindex="-1" role="dialog"
-                                                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                                    aria-labelledby="exampleModalLongTitle"
+                                                                    aria-hidden="true">
                                                                     <div class="modal-dialog" role="document">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">

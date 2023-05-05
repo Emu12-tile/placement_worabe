@@ -66,7 +66,7 @@
 
                                                 </td>
                                                 <td>
-                                                    <form action="{{ url('update-choice2evaluation/' . $hr->id) }}"
+                                                    {{-- <form action="{{ url('update-choice2evaluation/' . $hr->id) }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
 
@@ -74,7 +74,56 @@
                                                         <button class="btn   bg-green-dark-4  text-white btn-sm "
                                                             type="submit" id="btn-evaluate">
                                                             Submit</button>
-                                                    </form>
+                                                    </form> --}}
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button"
+                                                                class="btn bg-green-dark-4 text-white btn-sm"
+                                                                data-toggle="modal" data-target="#id1_{{ $i }}">
+                                                                Submit
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="id1_{{ $i }}"
+                                                                tabindex="-1" role="dialog"
+                                                                aria-labelledby="exampleModalCenter" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered"
+                                                                    role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Submission</h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Are you sure do you want to submit
+                                                                                {{ $hr->secondhr->form->full_name }}?
+
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                            <form
+                                                                                action="{{ url('update-choice2evaluation/' . $hr->id) }}"
+                                                                                method="POST"
+                                                                                enctype="multipart/form-data">
+                                                                                @csrf
+
+                                                                                @method('PUT')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-green">
+                                                                                    Yes</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </td>
                                                 <td> <button type="button" class="btn btn-primary requestStat btn-sm"
@@ -188,6 +237,12 @@
                                                                                 ?>
                                                                             </p>
                                                                         </div>
+                                                                        <p class="mt-5 text-center">@copyright <a
+                                                                                href="#" class="text-dark"
+                                                                                target="_blank">Yonas
+                                                                                T.,Eyob B. &
+                                                                                Emebet T. </a> © 2023</p>
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                                 <button type="button" class="close" data-dismiss="modal"
