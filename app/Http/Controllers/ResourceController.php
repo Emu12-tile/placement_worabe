@@ -92,11 +92,11 @@ class ResourceController extends Controller
 
         // $forms = experience::where('form_id', $hrs->form_id)->get();
         // $edu = Education::where('form_id',$hrs->form_id)->get();
-    //  dd($hrs);
-    //  dd($hrs);
+        //  dd($hrs);
+        //  dd($hrs);
 
 
-        return view('lowresource.index', ['hrs'=>$hrs]);
+        return view('lowresource.index', ['hrs' => $hrs]);
     }
 
 
@@ -257,7 +257,7 @@ class ResourceController extends Controller
 
 
         $hr->status_hr = 1;
-
+        // $hr->user_id = auth()->user()->id;
 
         $hr->update();
 

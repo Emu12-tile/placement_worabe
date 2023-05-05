@@ -43,7 +43,7 @@
                                             <th>Action</th>
 
                                             <th>Submit</th>
-                                            <th>Show</th>
+                                            <th>pdf</th>
 
 
                                         </tr>
@@ -93,8 +93,8 @@
                                                                 <div class="col-sm">
                                                                     <!-- Button trigger modal -->
                                                                     <button type="button"
-                                                                        class="btn bg-green-dark-4 text-white btn-sm"
-                                                                        data-toggle="modal"
+                                                                        class="btn bg-green-dark-4 text-white btn-sm "
+                                                                        id="userdisplay" data-toggle="modal"
                                                                         data-target="#id1_{{ $i }}">
                                                                         Submit
                                                                     </button>
@@ -345,20 +345,21 @@
                                             @role('hr')
                                                 <th>ውጤት ሰጪ ከኮሚቴ</th>
 
-                                                <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ</th>
-                                                <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</th>
-                                                <th>ለውጤት ተኮር ምዘና</th>
+                                                <th>ለትምህርት ዝግጅት የሚሰጥ ነጥብ(25%)</th>
+                                                <th>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ(15%)</th>
+                                                <th>ለውጤት ተኮር ምዘና(10%)</th>
 
-                                                <th>ለፈተና ውጤት</th>
+                                                <th>ለፈተና ውጤት(15%)</th>
 
                                                 <th>አጠቃላይ ውጤት(65%)</th>
-                                                <th>Submitted by</th>
+                                                <th>Submittedby</th>
                                                 <th>Remark</th>
                                             @endrole
 
 
                                             @role('president')
                                                 <th>ውጤት ሰጪ ከኮሚቴ</th>
+                                                {{-- <th>Submitted by</th> --}}
                                                 {{-- <th>የሚወዳደሩበት የስራ መደብ</th>
                                                 <th>የሚወዳደሩበት የስራ ክፍል</th> --}}
                                                 {{-- <th>የ ትምህርት ደረጃ</th>
@@ -397,7 +398,8 @@
                                                                 {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
                                                             </td>
-                                                            <td>{{ Auth::user()->name }}</td>
+                                                            <td id="current">
+                                                            </td>
                                                             <td>{{ $hr->remark }}</td>
 
 
@@ -760,7 +762,7 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <td>{{ $hr->user->name }}</td>
+                                                            <td></td>
 
                                                             {{-- <td>{{ $hr->form->position->position }}</td>
 
@@ -816,6 +818,7 @@
         integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
     <script>
         $(".requestStat").on("click", function() {
             // var element = document.getElementById("element-to-print")
@@ -842,28 +845,15 @@
         });
 
 
-        // $(".requestStat").on("click", function() {
-        //     var cat_id = $(this).val();
 
-
-        //     $.ajax({
-        //         url: "pdf",
-
-        //         method: 'GET',
-
-        //         data: {
-        //             "id": $(this).val(),
-        //             "hr": $(this).attr("data-target")
-        //         },
-        //         success: function(data) {
-        //             // console.log(data.hr);
-        //             if (response.id) {
-        //                 alert(" changed successfully");
-        //             }
-        //         },
-        //         error: function(response) {}
-        //     });
-
+        // ('#userdisplay').on('click', function() {
+        //     // var td1 = document.getElementById('current');
+        //     const tdElement = document.querySelector('#current');
+        //     // event.preventDefault(); //prevent form submission
+        //     //    var td=" ";
+        //     var currentUser = "{{ auth()->user()->name }}"; //get the current authenticated user
+        //     tdElement.innerText = currentUser;
+        //     console.log(currentUser);
         // });
     </script>
 @endsection

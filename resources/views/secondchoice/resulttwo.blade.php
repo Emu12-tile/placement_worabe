@@ -262,12 +262,13 @@
                                                                                         echo $mytime->toDateTimeString();
                                                                                         ?>
                                                                                     </p>
-                                                                                    <p class="mt-5 text-center">@copyright <a
-                                                                                            href="#" class="text-dark"
-                                                                                            target="_blank">Yonas
-                                                                                            T.,Eyob B. &
-                                                                                            Emebet T. </a> © 2023</p>
+
                                                                                 </div>
+                                                                                <p class="mt-5 text-center">@copyright <a
+                                                                                        href="#" class="text-dark"
+                                                                                        target="_blank">Yonas
+                                                                                        T.,Eyob B. &
+                                                                                        Emebet T. </a> © 2023</p>
 
 
                                                                             </div>
@@ -388,7 +389,7 @@
                                                                 {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
                                                             </td>
-                                                            <td>{{ Auth::user()->name }}</td>
+                                                            <td></td>
                                                             <td>{{ $hr->remark }}</td>
 
 

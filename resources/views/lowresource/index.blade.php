@@ -320,7 +320,7 @@
 
                                                 <td>{{ $hr->performance + $hr->experience + $hr->resultbased }}
                                                 </td>
-                                                <td>{{ Auth::user()->name }}</td>
+                                                <td></td>
                                                 <td>{{ $hr->remark }}</td>
 
 
@@ -385,28 +385,6 @@
         });
 
 
-        // $(".requestStat").on("click", function() {
-        //     var cat_id = $(this).val();
-
-
-        //     $.ajax({
-        //         url: "pdf",
-
-        //         method: 'GET',
-
-        //         data: {
-        //             "id": $(this).val(),
-        //             "hr": $(this).attr("data-target")
-        //         },
-        //         success: function(data) {
-        //             // console.log(data.hr);
-        //             if (response.id) {
-        //                 alert(" changed successfully");
-        //             }
-        //         },
-        //         error: function(response) {}
-        //     });
-
-        // });
+       
     </script>
 @endsection
