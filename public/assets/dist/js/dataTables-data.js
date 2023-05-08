@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 		}
 	});
-    
+
     $('#datable_2').DataTable({
 		autoWidth: false,
 		lengthChange: false,
@@ -31,6 +31,41 @@ $(document).ready(function() {
 		buttons: [
 			'copy', 'csv', 'excel', 'pdf', 'print'
 		],
+		"drawCallback": function () {
+			$('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
+		}
+	} );
+$('#datable_6').DataTable( {
+		dom: 'Bfrtip',
+		responsive: true,
+		language: { search: "",searchPlaceholder: "Search" },
+		"bPaginate": false,
+		"info":     false,
+		"bFilter":     false,
+		buttons: [{
+			//       extend:['copy', 'csv', 'excel', 'pdf', 'print'],
+            // exportOptions: {
+            //     columns: ':visible:not(.exclude)' // exclude columns with the class 'exclude'
+            // }
+
+            extend: 'print',
+            exportOptions: {
+                columns: ':visible:not(:contains("Action")):not(:contains("pdf")):not(:contains("Submit"))'
+            }
+        },
+        {
+            extend: 'excel',
+            exportOptions: {
+                columns: ':visible:not(:contains("Action")):not(:contains("pdf")):not(:contains("Submit"))'
+            }
+        },
+        {
+            extend: 'copy',
+            exportOptions: {
+                columns: ':visible:not(:contains("Action")):not(:contains("pdf")):not(:contains("Submit"))'
+            }
+        }
+        ],
 		"drawCallback": function () {
 			$('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
 		}

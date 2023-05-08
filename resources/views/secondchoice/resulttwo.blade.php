@@ -21,7 +21,7 @@
                     <div class="col-sm">
                         <div class="table-wrap">
                             <div class="table-responsive">
-                                <table id="datable_1" class="table table-hover table-bordered w-100 pb-30">
+                                <table id="datable_6" class="table table-hover table-bordered w-100 pb-30">
                                     <thead>
                                         <tr>
                                             <th>ተ.ቁ</th>
@@ -40,7 +40,7 @@
 
 
                                             <th>አጠቃላይ ውጤት(65%)</th>
-                                            <th>Edit</th>
+                                            <th>Action</th>
                                             <th>submit</th>
                                             <th>pdf</th>
 
@@ -85,16 +85,7 @@
 
                                                         </td>
                                                         <td>
-                                                            {{-- <form action="{{ url('update-secondhr/' . $hr->id) }}"
-                                                                method="POST" enctype="multipart/form-data">
-                                                                @csrf
 
-                                                                @method('PUT')
-                                                                <button class="btn  bg-green-dark-4 text-white btn-sm "
-                                                                    value="{{ $hr->id }}" type="submit"
-                                                                    id="btn_evaluate">
-                                                                    Submit</button>
-                                                            </form> --}}
                                                             <div class="row">
                                                                 <div class="col-sm">
                                                                     <!-- Button trigger modal -->

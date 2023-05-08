@@ -13,14 +13,16 @@
             <section class="hk-sec-wrapper mt-100">
                 <div class="pull-right hk-sec-title">
 
-                    {{-- <a href="{{ url('positionhigh') }}" class=" btn btn-dark mr-25"> back </a> --}}
+
                 </div>
                 <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከቡድን መሪ በላይ አጠቃላይ ውጤት </h5>
                 <div class="row">
                     <div class="col-sm">
                         <div class="table-wrap ">
                             <div class="table-responsive">
-                                <table id="datable_1" class="table table-hover table-bordered w-100  pb-30">
+
+                                <table id="datable_6" class="table table-hover table-bordered w-100  pb-30">
+
                                     <thead>
                                         <tr>
                                             <th>ተ.ቁ</th>
@@ -84,10 +86,7 @@
                                                         </td>
                                                         <td>
 
-                                                            {{-- <button class="btn  bg-green-dark-4 text-white btn-sm "
-                                                                    value="{{ $hr->id }}" type="submit"
-                                                                    id="btn_evaluate">
-                                                                    Submit</button> --}}
+
 
                                                             <div class="row">
                                                                 <div class="col-sm">
@@ -318,6 +317,9 @@
             </section>
         </div>
     @endrole
+
+
+
     <div class="container">
         <section class="hk-sec-wrapper mt-100">
             @role('hr')
@@ -359,14 +361,9 @@
 
                                             @role('president')
                                                 <th>ውጤት ሰጪ ከኮሚቴ</th>
-                                                {{-- <th>Submitted by</th> --}}
-                                                {{-- <th>የሚወዳደሩበት የስራ መደብ</th>
-                                                <th>የሚወዳደሩበት የስራ ክፍል</th> --}}
-                                                {{-- <th>የ ትምህርት ደረጃ</th>
-                                            <th>የ ትምህርት ዝግጅት</th> --}}
-                                                {{-- <th>Remark</th> --}}
+
                                                 <th>አጠቃላይ ውጤት(65%)</th>
-                                                {{-- @role('president') --}}
+
                                                 <th>presidential</th>
                                             @endrole
 
@@ -764,16 +761,7 @@
                                                             </td>
                                                             <td></td>
 
-                                                            {{-- <td>{{ $hr->form->position->position }}</td>
 
-                                                            <td>{{ $hr->form->job_category->job_category }}</td> --}}
-                                                            {{-- <td>{{ $edu->education_type->education_type }}</td> --}}
-
-                                                            {{-- <td>{{ $hr->performance }}</td>
-                                                            <td>{{ $hr->experience }}</td>
-                                                            <td>{{ $hr->resultbased }}</td>
-                                                            <td>{{ $hr->exam }}</td> --}}
-                                                            {{-- <td>{{ $hr->remark }}</td> --}}
                                                             <td>
                                                                 {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 

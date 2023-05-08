@@ -19,7 +19,7 @@
                 <div class="col-sm">
                     <div class="table-wrap">
 
-                        <table id="datable_1" class="table table-hover table-bordered w-100  pb-30">
+                        <table id="datable_6" class="table table-hover table-bordered w-100  pb-30">
                             <thead>
                                 <tr>
                                     <th>ተ.ቁ</th>
@@ -31,7 +31,7 @@
                                     <th>ለውጤት ተኮር ምዘና</th>
 
                                     <th>አጠቃላይ ውጤት(100%)</th>
-                                    <th>Edit</th>
+                                    <th>Action</th>
                                     <th>Submit</th>
                                     <th> pdf</th>
 
@@ -62,15 +62,7 @@
 
                                                 </td>
                                                 <td>
-                                                    {{-- <form action="{{ url('update-lowresource/' . $hr->id) }}" method="POST"
-                                                        enctype="multipart/form-data">
-                                                        @csrf
 
-                                                        @method('PUT')
-                                                        <button class="btn  bg-green-dark-4 text-white  btn-sm"
-                                                            type="submit" id="btn-evaluate">
-                                                            Submit</button>
-                                                    </form> --}}
                                                     <div class="row">
                                                         <div class="col-sm">
                                                             <!-- Button trigger modal -->
@@ -276,7 +268,7 @@
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
 
-                {{-- <a href="{{ route('lowresource.lowresource') }}" class="btn btn-dark mr-25"> back </a> --}}
+
             </div>
             <h5 class="hk-sec-title">የተወዳዳሪዎች 1ኛ ምርጫ ከቡድን መሪ በታች አጠቃላይ ውጤት </h5>
 
@@ -383,8 +375,5 @@
                 // }
             });
         });
-
-
-
     </script>
 @endsection
