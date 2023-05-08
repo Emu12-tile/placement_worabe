@@ -398,7 +398,7 @@
                                                                 {{ $hr->performance + $hr->experience + $hr->resultbased + $hr->exam }}
 
                                                             </td>
-                                                            <td id="current">
+                                                            <td id="current">{{ $hr->submit }}
                                                             </td>
                                                             <td>{{ $hr->remark }}</td>
 

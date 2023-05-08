@@ -257,7 +257,7 @@ class ResourceController extends Controller
 
 
         $hr->status_hr = 1;
-        // $hr->user_id = auth()->user()->id;
+        $hr->submit = auth()->user()->name;
 
         $hr->update();
 
@@ -271,7 +271,7 @@ class ResourceController extends Controller
 
 
         $hr->status_hr = 1;
-
+        $hr->submit = auth()->user()->name;
 
         $hr->update();
 

@@ -250,7 +250,7 @@ class SecondhrController extends Controller
 
         $hr->status_hr = 1;
 
-
+        $hr->submit = auth()->user()->name;
         $hr->update();
 
 
@@ -262,7 +262,7 @@ class SecondhrController extends Controller
 
 
         $hr->status_hr = 1;
-
+        $hr->submit = auth()->user()->name;
 
         $hr->update();
 
