@@ -92,7 +92,7 @@ class PresidentialController extends Controller
 
         $resource = new President;
 
-
+        $resource->submit = auth()->user()->name;
         //  dd($resource);
         $resource->presidentGrade = $request->presidentGrade;
         $resource->remark = $request->remark;
@@ -128,6 +128,7 @@ class PresidentialController extends Controller
 
 
 
+        $hr->submit = auth()->user()->name;
 
         $hr->presidentGrade = $request->Input('presidentGrade');
         $hr->remark = $request->Input('remark');

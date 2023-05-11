@@ -24,6 +24,10 @@
                                 <table id="datable_6" class="table table-hover table-bordered w-100  pb-30">
 
                                     <thead>
+                                        {{-- <tr>
+                                            <th></th>
+                                            <th colspan="9"></th>
+                                        </tr> --}}
                                         <tr>
                                             <th>ተ.ቁ</th>
 
@@ -54,6 +58,7 @@
                                         <?php
                                         $j = 0;
                                         ?>
+
                                         @foreach ($hrs as $i => $hr)
                                             @if ($hr->form->position->position_type_id == 1)
                                                 @if ($hr->status_hr == 0)
@@ -273,9 +278,8 @@
                                                                                     </div>
                                                                                     <p class="mt-5 text-center">@copyright <a
                                                                                             href="#" class="text-dark"
-                                                                                            target="_blank">Yonas
-                                                                                            T.,Eyob B. &
-                                                                                            Emebet T. </a> © 2023</p>
+                                                                                            target="_blank">AASTU(YEE
+                                                                                            ) </a> © 2023</p>
                                                                                 </div>
 
                                                                             </div>
@@ -759,7 +763,7 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <td></td>
+                                                            <td>{{ $hr->user->name }}</td>
 
 
                                                             <td>

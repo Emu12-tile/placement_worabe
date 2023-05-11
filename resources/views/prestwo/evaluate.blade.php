@@ -6,7 +6,7 @@
                 <section class="hk-sec-wrapper">
 
                     <div class="pull-right">
-                        <a class="btn btn-dark" href="{{ url('resulttwo') }}"> Back</a>
+                        <a class="btn btn-dark" href="{{ url('choicesecond') }}"> Back</a>
                     </div>
 
 
@@ -245,12 +245,12 @@
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
 
-                                                                    echo $time->y, 'ዓመት','ከ' ,$time->m,' ወር በ(', $fo->positionyouworked, '), ';
+                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
 
                                                                     ?>
                                                                 @endforeach
                                                             </td>
-                                                            <td>{{ $form->form->resultOfrecentPerform  }}
+                                                            <td>{{ $form->form->resultOfrecentPerform }}
                                                             </td>
 
                                                             <td data-toggle="collapse" data-target="#more"
@@ -339,15 +339,15 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-6 form-group">
-                                    <label for="exam">Remark</label>
-                                    <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
-                                        value="{{ old('remark') }}" type="text" name="remark"></textarea>
-                                    @error('remark')
-                                        <span class=" error invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                                        <label for="exam">Remark</label>
+                                        <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                            value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                        @error('remark')
+                                            <span class=" error invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
 
 

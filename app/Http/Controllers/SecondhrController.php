@@ -96,7 +96,7 @@ class SecondhrController extends Controller
             ->where('categories.catstatus', 'active')
             ->where('choice2s.position_type_id', 1)
             ->distinct('choice2s.id')
-            ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
+            ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id', 'categories.category']);
 
         return view('secondchoice.postwo', compact('forms'));
     }

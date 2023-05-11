@@ -82,7 +82,7 @@ class PrestwoController extends Controller
         $resource = new Prestwo;
 
 
-
+        $resource->submit = auth()->user()->name;
         $resource->presidentGrade = $request->presidentGrade;
         $resource->remark = $request->remark;
         $resource->secondhr_id = $prod->id;
@@ -116,12 +116,12 @@ class PrestwoController extends Controller
     {
         $hr = Prestwo::find($id);
 
-
+        $hr->submit = auth()->user()->name;
 
 
 
         $hr->presidentGrade = $request->Input('presidentGrade');
-        $hr->remark=$request->Input('remark');
+        $hr->remark = $request->Input('remark');
 
 
         $hr->update();

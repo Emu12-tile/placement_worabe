@@ -21,7 +21,7 @@
                 <div class="col-sm">
                     <div class="table-wrap">
 
-                        <table id="datable_1" class="table table-hover  table-bordered w-100  pb-30">
+                        <table id="datable_3" class="table table-hover  table-bordered w-100  pb-30">
                             <thead>
                                 <tr>
                                     <th>ተቁ</th>
@@ -41,7 +41,9 @@
                             </thead>
                             <tbody>
 
+
                                 @foreach ($forms as $i => $form)
+                                    {{-- @if ($form->category != 'Executive') --}}
                                     <tr>
                                         <td>{{ ++$i }}</td>
                                         <td>
@@ -56,6 +58,7 @@
 
 
                                     </tr>
+                                    {{-- @endif --}}
                                 @endforeach
 
                             </tbody>

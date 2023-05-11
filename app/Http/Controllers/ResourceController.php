@@ -33,14 +33,17 @@ class ResourceController extends Controller
 
     public function poshigh()
     {
-        $forms = Position::join('forms', 'forms.position_id', '=', 'positions.id')
+        $forms = Position::
+            // where('position_type_id',1)->get();
+            join('forms', 'forms.position_id', '=', 'positions.id')
             ->join('categories', 'categories.id', '=', 'positions.category_id')
             ->where('categories.catstatus', 'active')
             ->where('positions.position_type_id', 1)
             ->distinct('positions.id')
-            ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
 
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id','categories.category']);
 
+//  dd($forms);
         return view('resource.pos', compact('forms'));
     }
     public function posDetailhigh($id)

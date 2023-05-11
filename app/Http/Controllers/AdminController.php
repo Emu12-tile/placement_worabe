@@ -17,11 +17,5 @@ class AdminController extends Controller
         // return view('hr.table', compact('forms'))->with('i', (request()->input('page', 1) - 1) * 10);
         return view('hr.table', compact('forms'));
     }
-    // function get_ajax_data(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $forms = Form::paginate(5);
-    //         return view('hr.table', compact('forms'))->render();
-    //     }
-    // }
+  
 }

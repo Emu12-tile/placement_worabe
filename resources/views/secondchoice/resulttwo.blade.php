@@ -257,9 +257,8 @@
                                                                                 </div>
                                                                                 <p class="mt-5 text-center">@copyright <a
                                                                                         href="#" class="text-dark"
-                                                                                        target="_blank">Yonas
-                                                                                        T.,Eyob B. &
-                                                                                        Emebet T. </a> © 2023</p>
+                                                                                        target="_blank">AASTU(YEE
+                                                                                        ) </a> © 2023</p>
 
 
                                                                             </div>

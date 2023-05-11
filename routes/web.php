@@ -111,6 +111,17 @@ Route::middleware([
 
     Route::resource('/jobcategory', JobCategoryController::class);
     Route::resource('/jobcat2', JobCat2Controller::class);
+
+
+
+    // to be deletable
+
+    Route::get('/user_form', [FormController::class, 'create_1'])->name('try2');
+    Route::post('/user_form', [FormController::class, 'store'])->name('add.form');
+    Route::get('/try/job', [FormController::class, 'position']);
+    Route::get('/try/categ2', [FormController::class, 'position2']);
+    Route::get('/try/selection', [FormController::class, 'selection']);
+    Route::get('/try/selection2', [FormController::class, 'selection2']);
 });
 Route::middleware([
     'auth:sanctum',
@@ -137,7 +148,7 @@ Route::middleware([
     Route::put('update-resource/{id}', [ResourceController::class, 'update1']);
     Route::put('update-lowresource/{id}', [ResourceController::class, 'update2']);
     // Route::post('update-lowresource', [ResourceController::class, 'changeStatus'])->name("change_status");
-    Route::get('pdf/', [ResourceController::class,'pdf']);
+    Route::get('pdf/', [ResourceController::class, 'pdf']);
 
 
     Route::get('/choicelow', [SecondhrController::class, 'choicelow']);

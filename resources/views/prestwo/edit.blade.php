@@ -5,7 +5,7 @@
             <div class="col-xl-12">
                 <section class="hk-sec-wrapper">
                     <div class="pull-right">
-                        <a class="btn btn-dark" href="{{ url('choice2evaluation') }}"> Back</a>
+                        {{-- <a class="btn btn-dark" href="{{ url('choice2evaluation') }}"> Back</a> --}}
                     </div>
                     <h5 class="hk-sec-title"> የመመዘኛ መስፈርቶች
                     </h5>
@@ -207,20 +207,20 @@
                                                                 @foreach ($forms as $fo)
                                                                     <?php
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
                                                                     ?>
                                                                 @endforeach

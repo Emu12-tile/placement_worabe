@@ -81,8 +81,8 @@ class FormController extends Controller
             ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
 
 
-//   $forms->count();
-//   dd($forms);
+        //   $forms->count();
+        //   dd($forms);
 
 
         return view('hr.pos', compact('forms'));
@@ -149,21 +149,45 @@ class FormController extends Controller
 
         $edu_level = EduLevel::all();
         $job_category = JobCategory::all();
-        // $position = Position::where('category_id');
-        // $position = Position::
+
         $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
             ->where('categories.catstatus', 'active')->get();
 
-        // $position = Position::orderBy('category_id', 'ASC')->pluck('category_id', 'id');
-        // dd($position);
+
         $jobcat2 = jobcat2::all();
         $edutype = EducationType::all();
 
-        // $position2 = Position::all();
+
 
 
 
         return view('try', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
+    }
+
+
+
+    // to be deletable
+    public function create_1()
+    {
+
+        $level = Level::all();
+        $form = Form::all();
+
+        $edu_level = EduLevel::all();
+        $job_category = JobCategory::all();
+
+        $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
+            ->where('categories.catstatus', 'active')->get();
+
+
+        $jobcat2 = jobcat2::all();
+        $edutype = EducationType::all();
+
+
+
+
+
+        return view('try2', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
     }
     public function store(Request $request)
     {
