@@ -48,7 +48,7 @@ class PresidentialController extends Controller
             ->where('categories.catstatus', 'active')
             ->where('positions.position_type_id', 1)
             ->distinct('positions.id')
-            ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id','categories.category']);
 
         return view('presidential.pos', compact('forms'));
     }

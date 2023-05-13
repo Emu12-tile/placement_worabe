@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HR;
 use App\Models\Form;
 use App\Models\Admin;
+use App\Models\choice2;
 use App\Models\Position;
 use App\Models\Education;
 use App\Models\experience;
@@ -41,9 +42,14 @@ class ResourceController extends Controller
             ->where('positions.position_type_id', 1)
             ->distinct('positions.id')
 
-            ->get(['positions.id', 'positions.position', 'positions.job_category_id','categories.category']);
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id', 'categories.category']);
+        // $forms2 = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
+        // ->join('categories', 'categories.id', '=', 'choice2s.category_id')
+        // ->where('categories.catstatus', 'active')
+        //     ->where('choice2s.position_type_id', 1)
+        //     ->distinct('choice2s.id')
+        //     ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id', 'categories.category']);
 
-//  dd($forms);
         return view('resource.pos', compact('forms'));
     }
     public function posDetailhigh($id)
@@ -283,20 +289,7 @@ class ResourceController extends Controller
 
         return redirect()->back()->with('status', 'stock updated successfully');
     }
-    // public function changeStatus(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $item = HR::find($request->hr);
 
-    //         if ($item) {
-    //             $item->status_hr = 1;
-    //             // $item->store_status = $request->status;
-    //             $item->update();
-
-    //             return response()->json(array("success" => true));
-    //         }
-    //     }
-    // }
     public function pdf(Request $request)
 
     {

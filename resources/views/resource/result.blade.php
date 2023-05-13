@@ -159,6 +159,7 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <div id="element-to-print">
+
                                                                                 <div class="bodypdf">
 
 
@@ -832,20 +833,20 @@
                     unit: 'mm',
                     format: 'a4',
                     orientation: 'portrait'
-                }
+                },
+
             });
+            // html2pdf().from(element).set(opt).toPdf().get('pdf').then(function(pdf) {
+            //     var totalPages = pdf.internal.getNumberOfPages();
+
+            //     for (i = 1; i <= totalPages; i++) {
+            //         pdf.setPage(i);
+            //         pdf.setFontSize(10);
+            //         pdf.setTextColor(150);
+            //         pdf.text('Page ' + i + ' of ' + totalPages, pdf.internal.pageSize.getWidth() - 100, pdf
+            //             .internal.pageSize.getHeight() - 30);
+            //     }
+            // }).save();
         });
-
-
-
-        // ('#userdisplay').on('click', function() {
-        //     // var td1 = document.getElementById('current');
-        //     const tdElement = document.querySelector('#current');
-        //     // event.preventDefault(); //prevent form submission
-        //     //    var td=" ";
-        //     var currentUser = "{{ auth()->user()->name }}"; //get the current authenticated user
-        //     tdElement.innerText = currentUser;
-        //     console.log(currentUser);
-        // });
     </script>
 @endsection

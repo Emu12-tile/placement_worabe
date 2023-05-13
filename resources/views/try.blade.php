@@ -6,7 +6,6 @@
                 <div class="col-xl-12">
 
                     <section class="hk-sec-wrapper mt-100">
-                        {{-- <section class="hk-sec-wrapper mt-100"> --}}
 
                         <h3 class="hk-sec-title text-gold text-center color-wrap  "
                             style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
@@ -23,6 +22,8 @@
 
                             </div>
                         </div>
+
+
 
                         {{-- <h3 class="hk-sec-title text-gold text-center color-wrap  "
                             style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
