@@ -402,12 +402,12 @@
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
 
-                                                                    echo $time->y, 'ዓመት','ከ' ,$time->m,' ወር በ(', $fo->positionyouworked, '), ';
+                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
 
                                                                     ?>
                                                                 @endforeach
                                                             </td>
-                                                            <td>{{ $form->resultOfrecentPerform  }}</td>
+                                                            <td>{{ $form->resultOfrecentPerform }}</td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
                                                                 <i class='ion ion-md-arrow-round-forward'></i>
@@ -532,7 +532,7 @@
                                         <div class="col-md-6 form-group">
                                             <label for="exam">ለፈተና ውጤት</label>
                                             <input class="form-control @error('exam') is-invalid @enderror" id="exam"
-                                                placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="number"
+                                                placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="float"
                                                 name="exam" min="1" max="15">
                                             @error('exam')
                                                 <span class=" error invalid-feedback">
@@ -540,11 +540,10 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                         <div class="col-md-6 form-group">
+                                        <div class="col-md-6 form-group">
                                             <label for="exam">Remark</label>
-                                            <textarea class="form-control @error('remark') is-invalid @enderror" id="remark"
-                                                placeholder="remark" value="{{ old('remark') }}" type="text"
-                                                name="remark"></textarea>
+                                            <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                                value="{{ old('remark') }}" type="text" name="remark"></textarea>
                                             @error('remark')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>

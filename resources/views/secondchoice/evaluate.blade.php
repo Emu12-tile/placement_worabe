@@ -380,24 +380,24 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-                                                                    
+
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                                    
+
                                                                     ?>
                                                                 @endforeach
                                                             </td>
@@ -528,7 +528,7 @@
                                         <div class="col-md-6 form-group">
                                             <label for="exam">ለፈተና ውጤት</label>
                                             <input class="form-control @error('exam') is-invalid @enderror" id="exam"
-                                                placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="number"
+                                                placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="float"
                                                 name="exam" min="1" max="15">
                                             @error('exam')
                                                 <span class=" error invalid-feedback">

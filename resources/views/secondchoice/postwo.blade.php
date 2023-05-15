@@ -14,7 +14,7 @@
 
 
             </div>
-            <h5 class="hk-sec-title">የአመልካቾች ዝርዝር</h5>
+            <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ በስራ አስፈጻሚ የስራ መደብ ስር</h5>
 
 
             <div class="row" id="search_list">
@@ -85,7 +85,7 @@
 
 
             </div>
-            <h5 class="hk-sec-title">የአመልካቾች ዝርዝር</h5>
+            <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ በቡድን መሪ የስራ መደብ ስር</h5>
 
 
             <div class="row" id="search_list">
