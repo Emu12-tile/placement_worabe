@@ -7,58 +7,31 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class="container">
+    @role('hr')
+        <div class="container">
 
-        <section class="hk-sec-wrapper mt-100">
-            <div class="pull-right hk-sec-title">
-
-
-            </div>
-            <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 1ኛ ምርጫ በስራ አስፈጻሚ የስራ መደብ ስር</h5>
+            <section class="hk-sec-wrapper mt-100">
+                <div class="pull-right hk-sec-title">
 
 
-            <div class="row" id="search_list">
-                <div class="col-sm">
-                    <div class="table-wrap">
-
-                        <table id="datable_3" class="table table-hover  table-bordered w-100  pb-30">
-
-                            <thead>
-                                <tr>
-                                    <th>ተቁ</th>
+                </div>
+                <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 1ኛ ምርጫ </h5>
 
 
+                <div class="row" id="search_list">
+                    <div class="col-sm">
+                        <div class="table-wrap">
 
+                            <table id="datable_3" class="table table-hover  table-bordered w-100  pb-30">
 
-                                    <th>የሚወዳደሩበት የስራ መደብ</th>
+                                <thead>
+                                    <tr>
+                                        <th>ተቁ</th>
 
 
 
 
-
-
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $j = 0;
-                                ?>
-                                @foreach ($forms as $i => $form)
-                                    @if ($form->category == 'Executive')
-                                        <tr>
-                                            <td>{{ ++$j }}</td>
-                                            <td>
-
-
-                                                <form action="" method="POST"><a
-                                                        href="{{ route('posDetailhigh', $form->id) }}" class="mr-25"
-                                                        data-toggle="tooltip"
-                                                        data-original-title="show">{{ $form->job_category->job_category }}\{{ $form->position }}
-                                                    </a>
-                                                </form>
-
-                                            </td>
+                                        <th>የሚወዳደሩበት የስራ መደብ</th>
 
 
 
@@ -66,82 +39,82 @@
 
 
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $j = 0;
+                                    ?>
+                                    @foreach ($forms as $i => $form)
+
+                                            <tr>
+                                                <td>{{ ++$j }}</td>
+                                                <td>
 
 
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
+                                                    <form action="" method="POST"><a
+                                                            href="{{ route('posDetailhigh', $form->id) }}" class="mr-25"
+                                                            data-toggle="tooltip"
+                                                            data-original-title="show">{{ $form->job_category->job_category }}\{{ $form->position }}
+                                                        </a>
+                                                    </form>
 
-                            </tbody>
-                        </table>
+                                                </td>
 
 
 
+
+
+
+
+
+
+                                                </td>
+                                            </tr>
+
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
 
 
 
 
-    </div>
+        </div>
+    @endrole
+    @role('president')
+        <div class="container">
 
-    <div class="container">
-
-        <section class="hk-sec-wrapper mt-100">
-            <div class="pull-right hk-sec-title">
-
-
-            </div>
-            <h5 class="hk-sec-title"> ከቡድን መሪ በላይ ተወዳዳሪዎች 1ኛ ምርጫ በቡድን መሪ የስራ መደብ ስር </h5>
+            <section class="hk-sec-wrapper mt-100">
+                <div class="pull-right hk-sec-title">
 
 
-            <div class="row" id="search_list">
-                <div class="col-sm">
-                    <div class="table-wrap">
-
-                        <table id="datable_6" class="table table-hover  table-bordered w-100  pb-30">
-
-                            <thead>
-                                <tr>
-                                    <th>ተቁ</th>
+                </div>
+                <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 1ኛ ምርጫ በስራ አስፈጻሚ የስራ መደብ ስር</h5>
 
 
+                <div class="row" id="search_list">
+                    <div class="col-sm">
+                        <div class="table-wrap">
 
+                            <table id="datable_3" class="table table-hover  table-bordered w-100  pb-30">
 
-                                    <th>የሚወዳደሩበት የስራ መደብ</th>
+                                <thead>
+                                    <tr>
+                                        <th>ተቁ</th>
 
 
 
 
-
-
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $j = 0;
-                                ?>
-
-                                @foreach ($forms as $i => $form)
-                                    @if ($form->category != 'Executive')
-                                        <tr>
-                                            <td>{{ ++$j }}</td>
-                                            <td>
-
-
-                                                <form action="" method="POST"><a
-                                                        href="{{ route('posDetailhigh', $form->id) }}" class="mr-25"
-                                                        data-toggle="tooltip"
-                                                        data-original-title="show">{{ $form->job_category->job_category }}\{{ $form->position }}
-                                                    </a>
-                                                </form>
-
-                                            </td>
+                                        <th>የሚወዳደሩበት የስራ መደብ</th>
 
 
 
@@ -149,26 +122,138 @@
 
 
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $j = 0;
+                                    ?>
+                                    @foreach ($forms as $i => $form)
+                                        @if ($form->category == 'Executive')
+                                            <tr>
+                                                <td>{{ ++$j }}</td>
+                                                <td>
 
 
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
+                                                    <form action="" method="POST"><a
+                                                            href="{{ route('posDetailhigh', $form->id) }}" class="mr-25"
+                                                            data-toggle="tooltip"
+                                                            data-original-title="show">{{ $form->job_category->job_category }}\{{ $form->position }}
+                                                        </a>
+                                                    </form>
 
-                            </tbody>
-                        </table>
+                                                </td>
 
 
 
+
+
+
+
+
+
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
 
 
 
 
-    </div>
+        </div>
+
+        <div class="container">
+
+            <section class="hk-sec-wrapper mt-100">
+                <div class="pull-right hk-sec-title">
+
+
+                </div>
+                <h5 class="hk-sec-title"> ከቡድን መሪ በላይ ተወዳዳሪዎች 1ኛ ምርጫ በቡድን መሪ የስራ መደብ ስር </h5>
+
+
+                <div class="row" id="search_list">
+                    <div class="col-sm">
+                        <div class="table-wrap">
+
+                            <table id="datable_6" class="table table-hover  table-bordered w-100  pb-30">
+
+                                <thead>
+                                    <tr>
+                                        <th>ተቁ</th>
+
+
+
+
+                                        <th>የሚወዳደሩበት የስራ መደብ</th>
+
+
+
+
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $j = 0;
+                                    ?>
+
+                                    @foreach ($forms as $i => $form)
+                                        @if ($form->category != 'Executive')
+                                            <tr>
+                                                <td>{{ ++$j }}</td>
+                                                <td>
+
+
+                                                    <form action="" method="POST"><a
+                                                            href="{{ route('posDetailhigh', $form->id) }}" class="mr-25"
+                                                            data-toggle="tooltip"
+                                                            data-original-title="show">{{ $form->job_category->job_category }}\{{ $form->position }}
+                                                        </a>
+                                                    </form>
+
+                                                </td>
+
+
+
+
+
+
+
+
+
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+        </div>
+    @endrole
 @endsection
