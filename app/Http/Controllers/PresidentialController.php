@@ -145,7 +145,7 @@ class PresidentialController extends Controller
 
 
 
-
+        $hr->submittedBy = auth()->user()->name;
         $hr->status = 1;
 
         $hr->update();

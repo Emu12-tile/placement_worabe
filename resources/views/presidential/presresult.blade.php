@@ -63,7 +63,7 @@
 
                                                 </td>
                                                 <td>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-sm">
                                                             <!-- Button trigger modal -->
@@ -294,6 +294,7 @@
 
                                         <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
                                         <th>አጠቃላይ ውጤት(100%)</th>
+                                        <th>Submitted by</th>
                                         <th>Remark</th>
 
                                     </tr>
@@ -314,6 +315,7 @@
                                                 <td>{{ $hr->presidentGrade }}</td>
                                                 <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam + $hr->presidentGrade }}
                                                 </td>
+                                                <td>{{ $hr->submittedBy }}</td>
                                                 <td>{{ $hr->remark }}</td>
 
                                             </tr>

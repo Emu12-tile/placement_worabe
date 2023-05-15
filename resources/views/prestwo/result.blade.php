@@ -297,6 +297,7 @@
 
                                         <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
                                         <th>አጠቃላይ ውጤት(100%)</th>
+                                        <th>submitted by</th>
                                         <th>Remark</th>
 
                                     </tr>
@@ -318,6 +319,7 @@
                                                 <td>{{ $hr->presidentGrade }}</td>
                                                 <td>{{ $hr->secondhr->performance + $hr->secondhr->experience + $hr->secondhr->resultbased + $hr->secondhr->exam + $hr->presidentGrade }}
                                                 </td>
+                                                <td>{{ $hr->submittedBy }}</td>
                                                 <td>{{ $hr->remark }}</td>
 
                                             </tr>
