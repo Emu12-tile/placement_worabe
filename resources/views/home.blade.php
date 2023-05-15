@@ -163,7 +163,7 @@
                                         <div>
                                             <span class="text-success font-34 font-weight-500">
 
-                                                {{ \App\Models\HR::where('status_president', '!=', '0')->count() }}
+                                                {{ \App\Models\President::where('status', '!=', '0')->count() }}
 
 
                                             </span>

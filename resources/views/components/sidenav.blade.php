@@ -118,6 +118,15 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ route('posall') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    አጠቃላይ ውጤት(100%)
+                                </span>
+                            </a>
+                        </li>
 
 
                         <li class="nav-item active">
@@ -236,6 +245,15 @@
                         </li>
                     @endrole
                     @role('president')
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ route('posall') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    አጠቃላይ ውጤት(100%)
+                                </span>
+                            </a>
+                        </li>
                         <li class="nav-item active">
 
                             <span class="nav-link-text"> ምርጫ 1</span>

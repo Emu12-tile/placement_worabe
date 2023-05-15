@@ -284,7 +284,11 @@
                         <div class="table-responsive">
                             <table id="datable_3" class="table table-hover table-bordered w-100  pb-30">
                                 <thead>
+
+                                    {{-- <th colspan="7">በኮሚቴና በበላይ አመራር የተሰጠ</th> --}}
+
                                     <tr>
+
                                         <th>ተ.ቁ</th>
                                         <th> ስም</th>
 
