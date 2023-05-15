@@ -15,7 +15,7 @@
 
 
                 </div>
-                <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ በስራ አስፈጻሚ የስራ መደብ ስር</h5>
+                <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ </h5>
 
 
                 <div class="row" id="search_list">
