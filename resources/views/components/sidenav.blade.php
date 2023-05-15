@@ -123,7 +123,7 @@
                             <a class="nav-link" href="{{ route('posall') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    አጠቃላይ ውጤት(100%)
+                                    ከደረጃ በላይ አጠቃላይ ውጤት ከ(100%)
                                 </span>
                             </a>
                         </li>
