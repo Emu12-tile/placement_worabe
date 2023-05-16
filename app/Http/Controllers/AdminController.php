@@ -32,7 +32,8 @@ class AdminController extends Controller
             ->where('categories.catstatus', 'active')
             ->where('positions.position_type_id', 1)
             ->distinct('positions.id')
-            ->get();
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id', 'categories.category']);
+        // dd($forms);
         return view('homepage.allresult', compact('forms'));
     }
     public function posall2()
@@ -140,7 +141,6 @@ class AdminController extends Controller
 
         // dd($hrs, $secondhrs);
 
-        return view('homepage.detailall', compact('hrs','secondhrs'));
-
+        return view('homepage.detailall', compact('hrs', 'secondhrs'));
     }
 }
