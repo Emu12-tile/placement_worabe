@@ -306,8 +306,8 @@
                                             <label for="firstName">በበላይ ሃላፊ ለአመራርነት ክህሎት የሚሰጥ ነጥብ ከ(35%)</label>
                                             <input class="form-control" @error('presidentGrade') is-invalid @enderror"
                                                 id="firstName" placeholder="ለአመራርነት ክህሎት  ከ(35%)"
-                                                value="{{ $pres->presidentGrade }}" type="number" name="presidentGrade"
-                                                min="1" max="35">
+                                                value="{{ $pres->presidentGrade }}" type="float" name="presidentGrade"
+                                                min="0" max="35">
                                             @error('presidentGrade')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
