@@ -40,11 +40,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php
+                                $j = 0;
+                                ?>
                                 @foreach ($forms as $i => $form)
                                     @if ($form->category == 'Executive')
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ ++$j }}</td>
                                             <td>
                                                 <form action="" method="POST"><a
                                                         href="{{ route('detailall', $form->id) }}" class="mr-25"
@@ -108,11 +110,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <?php
+                                $j = 0;
+                                ?>
                                 @foreach ($forms as $i => $form)
                                     @if ($form->category != 'Executive')
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{++$j }}</td>
                                             <td>
                                                 <form action="" method="POST"><a
                                                         href="{{ route('detailall', $form->id) }}" class="mr-25"
