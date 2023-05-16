@@ -34,9 +34,9 @@
 
                                         <th>Action</th>
                                         <th>Submit</th>
-                                        <th>pdf</th>
+                                        {{-- <th>pdf</th> --}}
 
-
+ 
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,6 +118,208 @@
                                                     </div>
 
                                                 </td>
+                                                {{-- <td> <button type="button" class="btn btn-primary requestStat btn-sm"
+                                                        data-toggle="modal" data-target="#id_{{ $i }}"><i
+                                                            class="ion ion-md-archive "></i>pdf
+                                                    </button>
+
+                                                    <div class="modal fade" id="id_{{ $i }}" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLongTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <div id="element-to-print">
+
+                                                                        <h5 class="modal-title " id="exampleModalLongTitle">
+                                                                            የተወዳዳሪው 2ኛ ምርጫ ከ ደረጃ በላይ አጠቃላይ ውጤት
+                                                                        </h5>
+
+
+                                                                        <table
+                                                                            class="table table-hover table-bordered w-100  pb-30">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th></th>
+                                                                                    <th></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>ሙሉ ስም</td>
+                                                                                    <td>{{ $hr->secondhr->form->full_name }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                <tr>
+                                                                                    <td>የትምህርት ደረጃና ዝግጅት</td>
+                                                                                    <td>
+                                                                                        @foreach ($hr->secondhr->form->education as $i => $fo)
+                                                                                            ({{ $fo->edu_level->education_level }}፣
+                                                                                            {{ $fo->education_type->education_type }})
+                                                                                        @endforeach
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        ያለዎት የስራ ልምድ
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        @foreach ($hr->secondhr->form->experiences as $i => $fo)
+                                                                                            <p> ከ{{ Carbon::parse($fo->startingDate)->day }}/{{ Carbon::parse($fo->startingDate)->month }}/{{ Carbon::parse($fo->startingDate)->year }}
+                                                                                                እስከ
+                                                                                                {{ Carbon::parse($fo->endingDate)->day }}/{{ Carbon::parse($fo->endingDate)->month }}/{{ Carbon::parse($fo->endingDate)->year }}
+                                                                                                በ
+                                                                                                {{ $fo->positionyouworked }},
+                                                                                            </p>
+
+                                                                                        @endforeach
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>የሚወዳደሩበት የሥራ መደብ</td>
+                                                                                    <td>{{ $hr->secondhr->form->choice2->position }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>ለትምህርት ዝግጅት የሚሰጥ ነጥብ(25%)</td>
+                                                                                    <td>{{ $hr->secondhr->performance }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ(15%)</td>
+                                                                                    <td> {{ $hr->secondhr->experience }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>ለውጤት ተኮር ምዘና(10%)</td>
+                                                                                    <td>{{ $hr->secondhr->resultbased }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>ለፈተና ውጤት (የጽሁፍ፡ የቃል)(15%)</td>
+                                                                                    <td>{{ $hr->secondhr->exam }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ
+                                                                                        ነጥብ(35%)</td>
+                                                                                    <td>{{ $hr->presidentGrade }}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                            <tfoot style="font-size: 20px;">
+                                                                                <tr>
+                                                                                    <td>አጠቃላይ ውጤት(100%)</td>
+                                                                                    <td>{{ $hr->secondhr->performance + $hr->secondhr->experience + $hr->secondhr->resultbased + $hr->secondhr->exam + $hr->presidentGrade }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tfoot>
+                                                                        </table>
+                                                                        <p>ከኮሚቴ ውጤት ሰጪ {{ $hr->secondhr->user->name }}</p>
+                                                                        <p>ከበላይ አመራር ውጤት ሰጪ {{ $hr->submit }}</p>
+
+
+                                                                        <div class="footerpdf">
+                                                                            <p>This pdf generated by
+                                                                                {{ Auth::user()->name }} ©
+
+
+                                                                                <?php
+                                                                                $mytime = Carbon\Carbon::now()->tz('EAT');
+                                                                                echo $mytime->toDateTimeString();
+                                                                                ?>
+                                                                            </p>
+                                                                        </div>
+                                                                        <p class="mt-5 text-center">@copyright <a
+                                                                                href="#" class="text-dark"
+                                                                                target="_blank">AASTU(YEE) </a> © 2023</p>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+
+
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </td> --}}
+
+
+                                            </tr>
+                                        @endif
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    </div>
+    <div class="container">
+
+        <section class="hk-sec-wrapper mt-100">
+            <div class="pull-right hk-sec-title">
+
+                {{-- <a href="{{ route('positionpres2') }}" class=" btn btn-dark mr-25"> back </a> --}}
+            </div>
+            <h5 class="hk-sec-title">በኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                        <div class="table-responsive">
+                            <table id="datable_3" class="table table-hover table-bordered w-100  pb-30">
+                                <thead>
+                                    <tr>
+                                        <th>ተ.ቁ</th>
+                                        <th> ስም</th>
+
+
+
+                                        <th> በሰው ኃብት ውጤት (65%)</th>
+
+                                        <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
+                                        <th>አጠቃላይ ውጤት(100%)</th>
+                                        <th>submitted by</th>
+                                        <th>pdf</th>
+                                        <th>Remark</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($pres as $i => $hr)
+                                        @if ($hr->status == 1)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>{{ $hr->secondhr->form->full_name }} <p>
+                                                        {{ $hr->secondhr->form->email }}</p>
+                                                </td>
+
+
+
+                                                <td>{{ $hr->secondhr->performance + $hr->secondhr->experience + $hr->secondhr->resultbased + $hr->secondhr->exam }}
+                                                </td>
+                                                <td>{{ $hr->presidentGrade }}</td>
+                                                <td>{{ $hr->secondhr->performance + $hr->secondhr->experience + $hr->secondhr->resultbased + $hr->secondhr->exam + $hr->presidentGrade }}
+                                                </td>
+                                                <td>{{ $hr->submittedBy }}</td>
                                                 <td> <button type="button" class="btn btn-primary requestStat btn-sm"
                                                         data-toggle="modal" data-target="#id_{{ $i }}"><i
                                                             class="ion ion-md-archive "></i>pdf
@@ -180,7 +382,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td>የሚወዳደሩበት የሥራ መደብ</td>
-                                                                                    <td>{{ $hr->secondhr->form->position->position }}
+                                                                                    <td>{{ $hr->secondhr->form->choice2->position }}
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -252,74 +454,6 @@
 
                                                 </td>
 
-
-                                            </tr>
-                                        @endif
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                            {{-- {!! $pres->links() !!} --}}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-    </div>
-    <div class="container">
-
-        <section class="hk-sec-wrapper mt-100">
-            <div class="pull-right hk-sec-title">
-
-                {{-- <a href="{{ route('positionpres2') }}" class=" btn btn-dark mr-25"> back </a> --}}
-            </div>
-            <h5 class="hk-sec-title">በኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
-
-            <div class="row">
-                <div class="col-sm">
-                    <div class="table-wrap">
-                        <div class="table-responsive">
-                            <table id="datable_3" class="table table-hover table-bordered w-100  pb-30">
-                                <thead>
-                                    <tr>
-                                        <th>ተ.ቁ</th>
-                                        <th> ስም</th>
-
-
-
-                                        <th> በሰው ኃብት ውጤት (65%)</th>
-
-                                        <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
-                                        <th>አጠቃላይ ውጤት(100%)</th>
-                                        <th>submitted by</th>
-                                        <th>Remark</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach ($pres as $i => $hr)
-                                        @if ($hr->status == 1)
-                                            <tr>
-                                                <td>{{ ++$i }}</td>
-                                                <td>{{ $hr->secondhr->form->full_name }} <p>
-                                                        {{ $hr->secondhr->form->email }}</p>
-                                                </td>
-
-
-
-                                                <td>{{ $hr->secondhr->performance + $hr->secondhr->experience + $hr->secondhr->resultbased + $hr->secondhr->exam }}
-                                                </td>
-                                                <td>{{ $hr->presidentGrade }}</td>
-                                                <td>{{ $hr->secondhr->performance + $hr->secondhr->experience + $hr->secondhr->resultbased + $hr->secondhr->exam + $hr->presidentGrade }}
-                                                </td>
-                                                <td>{{ $hr->submittedBy }}</td>
                                                 <td>{{ $hr->remark }}</td>
 
                                             </tr>
