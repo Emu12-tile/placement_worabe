@@ -75,10 +75,6 @@
                                 </div>
                             </div>
 
-                            {{-- </div> --}}
-
-
-                            {{-- <div class="col-md-6 "> --}}
                             <div class="collapse" id="collapseExample">
                                 <div class="card card-body">
 
@@ -493,49 +489,127 @@
                                 <div class="row">
 
                                     @role('hr')
-                                        <div class="col-md-6 form-group">
-                                            <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                            <input type="number" value="{{ old('performance') }}"
-                                                class="form-control @error('performance') is-invalid @enderror" id="performance"
-                                                placeholder="ለትምህርት ዝግጅት" name="performance" min="1" max="40">
-                                            @error('performance')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="col-md-6">
+                                            <div class="row form-group">
+                                                <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
+                                                <input type="number" value="{{ old('performance') }}"
+                                                    class="form-control @error('performance') is-invalid @enderror"
+                                                    id="performance" placeholder="ለትምህርት ዝግጅት" name="performance"
+                                                    min="1" max="40">
+                                                @error('performance')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
+                                                <input type="float" value="{{ old('experience') }}"
+                                                    class="form-control @error('experience') is-invalid @enderror"
+                                                    id="experience" placeholder="ለስራ ልምድ" name="experience" min="1"
+                                                    max="30">
+                                                @error('experience')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="resultbased">ለውጤት ተኮር ምዘና </label>
+                                                <input type="float"
+                                                    value="{{ round($form->resultOfrecentPerform * 0.3, 2) }}"
+                                                    class="form-control @error('resultbased') is-invalid @enderror"
+                                                    id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
+                                                    min="1" max="30">
+                                                @error('resultbased')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="exam">Remark</label>
+                                                <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                                    value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                                @error('remark')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                            <input type="float" value="{{ old('experience') }}"
-                                                class="form-control @error('experience') is-invalid @enderror" id="experience"
-                                                placeholder="ለስራ ልምድ" name="experience" min="1" max="30">
-                                            @error('experience')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="resultbased">ለውጤት ተኮር ምዘና </label>
-                                            <input type="float" value="{{ round($form->resultOfrecentPerform * 0.3, 2) }}"
-                                                class="form-control @error('resultbased') is-invalid @enderror"
-                                                id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
-                                                min="1" max="30">
-                                            @error('resultbased')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="exam">Remark</label>
-                                            <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
-                                                value="{{ old('remark') }}" type="text" name="remark"></textarea>
-                                            @error('remark')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="col-md-6">
+                                            <div class="table-wrap mb-20 ">
+                                                <div class="table-responsive" id="table-container">
+                                                    <table class="table table-active table-bordered mb-0 addclass">
+                                                        <thead class="thead-active">
+                                                            <tr>
+                                                                <th>ዓመት-ወር-ቀን</th>
+
+
+                                                                <th>ብዜት</th>
+                                                                <th>ዓመት-ወር-ቀን</th>
+
+
+                                                            </tr>
+                                                            <tr></tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            @foreach ($forms as $fo)
+                                                                <tr data-id="{{ $fo->id }}">
+                                                                    <td>
+
+
+
+                                                                        <?php
+
+                                                                        $fdate = Carbon::parse($fo->startingDate);
+
+                                                                        $tdate = Carbon::parse($fo->endingDate);
+
+                                                                        $days = $tdate->diffInDays($fdate);
+                                                                        $months = $tdate->diffInMonths($fdate);
+
+                                                                        $years = $tdate->diffInYears($fdate);
+
+                                                                        $time = $tdate->diff($fdate);
+
+                                                                        echo $time->y, '-', $time->m, '-', $time->d;
+
+                                                                        ?>
+
+
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <div class="col-md-8">
+
+                                                                            <select
+                                                                                class="form-control custom-select select  mt-15">
+                                                                                <option selected>Select</option>
+                                                                                <option value="0">0</option>
+                                                                                <option value="0.5">1/2</option>
+                                                                                <option value="1">1</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td id="add">
+
+                                                                    </td>
+
+                                                                </tr>
+                                                            @endforeach
+                                                            <tr>
+                                                                <td colspan="2" class="text-center">ድምር</td>
+                                                                {{-- <td></td> --}}
+                                                                <td id="total-year"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     @endrole
                                     <input type="hidden" name="type" value="second">
@@ -557,8 +631,7 @@
 
 
                             </form>
-                            {{-- @endif --}}
-                            {{-- @endforeach --}}
+
 
                         </div>
 
@@ -567,4 +640,67 @@
             </div>
         </div>
     </div>
+@endsection
+@section('javascript')
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> --}}
+    <script>
+        $(document).ready(function() {
+            var totalYear = 0;
+            var totalMonth = 0;
+            var totalDay = 0;
+
+            $('.select').on('change', function() {
+                // Reset the totals when a new value is selected
+                totalYear = 0;
+                totalMonth = 0;
+                totalDay = 0;
+
+                // Iterate over each select element and calculate the sum
+                $('.select').each(function() {
+                    var selectedValue = parseFloat($(this).val());
+
+                    var data = $(this).closest('tr').data('id');
+                    var myData = {!! json_encode($forms) !!};
+
+                    var row = myData.find(function(obj) {
+                        return obj.id === data;
+                    });
+
+                    var startdate = new Date(row.startingDate);
+                    var enddate = new Date(row.endingDate);
+                    var evaluate = enddate - startdate;
+                    var diffInDays = Math.floor(evaluate / (1000 * 60 * 60 * 24));
+                    var multiply = diffInDays * selectedValue;
+
+                    var year = parseInt(multiply / 365)
+                    var diff = multiply % 365;
+
+                    var month = parseInt(diff / 30)
+                    var diffday = parseInt(diff - (month * 30))
+
+                    var all = year + '-' + month + '-' + diffday;
+
+                    totalYear += year;
+                    totalMonth += month;
+                    totalDay += diffday;
+
+                    if (totalDay > 30) {
+                        totalMonth = totalMonth + 1;
+                        totalDay = totalDay - 30;
+                    }
+                    if (totalMonth > 12) {
+                        totalYear = totalYear + 1;
+                        totalMonth = totalMonth - 12;
+                    }
+
+                    // Update the sum for the current row
+                    $(this).closest('tr').find('#add').text(all);
+                });
+
+                // Update the total sum
+                var total = totalYear + '-' + totalMonth + '-' + totalDay;
+                $('#total-year').text(total);
+            });
+        });
+    </script>
 @endsection
