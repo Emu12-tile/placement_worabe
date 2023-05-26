@@ -576,7 +576,6 @@
                                                                         $time = $tdate->diff($fdate);
 
                                                                         echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
-
                                                                         ?>
 
 
