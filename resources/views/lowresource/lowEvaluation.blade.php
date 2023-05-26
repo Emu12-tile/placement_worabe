@@ -482,7 +482,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class=" col-md-6">
+                            <div class=" col-md-4">
 
                                 @role('hr')
                                     <div class="row form-group">
@@ -536,7 +536,7 @@
 
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="table-wrap mb-20 ">
                                     <div class="table-responsive">
                                         <table class="table table-active table-bordered mb-0">
@@ -564,7 +564,7 @@
                                                             <?php
 
                                                             $fdate = Carbon::parse($fo->startingDate);
-
+                                                            $experience = $fo->positionyouworked;
                                                             $tdate = Carbon::parse($fo->endingDate);
 
                                                             $days = $tdate->diffInDays($fdate);
@@ -574,36 +574,18 @@
 
                                                             $time = $tdate->diff($fdate);
 
-                                                            echo $time->y, '-', $time->m, '-', $time->d;
+                                                            echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
 
                                                             ?>
 
 
                                                         </td>
-                                                        {{-- <td>
-                                                    <?php
 
-                                                    $fdate = Carbon::parse($fo->startingDate);
-
-                                                    $tdate = Carbon::parse($fo->endingDate);
-
-                                                    $time = $tdate->diff($fdate);
-                                                    echo $time->m;
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-
-                                                    $time = $tdate->diff($fdate);
-
-                                                    echo $time->d;
-
-                                                    ?>
-                                                </td> --}}
                                                         <td>
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-10">
 
-                                                                <select class="  form-control custom-select select  mt-15">
+                                                                <select
+                                                                    class="  form-control custom-select select pd-15 mt-15">
                                                                     <option selected>Select</option>
                                                                     <option value="0">0</option>
                                                                     <option value="0.5">1/2</option>
@@ -679,14 +661,33 @@
 
                     var startdate = new Date(row.startingDate);
                     var enddate = new Date(row.endingDate);
+                    // var experience = row.positionyouworked;
+                    // console.log(experience);
                     var evaluate = enddate - startdate;
+                    // var diffInDays = evaluate / (1000 * 60 * 60 * 24);
+                    //
+
+
+
+
                     var diffInDays = Math.floor(evaluate / (1000 * 60 * 60 * 24));
+                    console.log(diffInDays);
                     var multiply = diffInDays * selectedValue;
 
+
+                    // var diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+                    // calculate the difference in years, months, and days
+                    var years = Math.floor(multiply / 365);
+                    var months = Math.floor((multiply % 365) / 30);
+                    var days = (multiply % 365) % 30;
+
                     var year = parseInt(multiply / 365)
+
                     var diff = multiply % 365;
 
                     var month = parseInt(diff / 30)
+
                     var diffday = parseInt(diff - (month * 30))
 
                     var all = year + '-' + month + '-' + diffday;

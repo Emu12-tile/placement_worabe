@@ -489,7 +489,7 @@
                                 <div class="row">
 
                                     @role('hr')
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="row form-group">
                                                 <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                                 <input type="number" value="{{ old('performance') }}"
@@ -538,7 +538,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-8">
                                             <div class="table-wrap mb-20 ">
                                                 <div class="table-responsive" id="table-container">
                                                     <table class="table table-active table-bordered mb-0 addclass">
@@ -567,7 +567,7 @@
                                                                         $fdate = Carbon::parse($fo->startingDate);
 
                                                                         $tdate = Carbon::parse($fo->endingDate);
-
+                                                                        $experience = $fo->positionyouworked;
                                                                         $days = $tdate->diffInDays($fdate);
                                                                         $months = $tdate->diffInMonths($fdate);
 
@@ -575,7 +575,7 @@
 
                                                                         $time = $tdate->diff($fdate);
 
-                                                                        echo $time->y, '-', $time->m, '-', $time->d;
+                                                                        echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
 
                                                                         ?>
 
