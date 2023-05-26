@@ -7,9 +7,9 @@
         <img class="brand-img d-inline-block " src="{{ asset('assets/dist/img/adama2.jpg') }}"
             style="width:80px; height:80px" alt="brand" />
         {{-- <nav class="navbar navbar-expand-xl navbar-light  hk-navbar hk-navbar-alt shadow-none"
-                    style=" background-color:rgb(17,40,77)"> --}}
+                    style=" background-color:#08488C"> --}}
 
-        <h5 class="text-gold font-24 font-weight-600 ml-50 "> አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h5>
+        <h5 class="text-gold font-24 font-weight-600 ml-50 "> አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h5>
         {{--  ለአመልካቾች ግምገማ --}}
     </a>
     <ul class="navbar-nav hk-navbar-content">

@@ -51,7 +51,7 @@ License: You must have a valid license purchased only from themeforest to legall
 
     <div class="hk-wrapper hk-alt-nav hk-landing">
         {{-- bg-white --}}
-        {{-- rgb(17,40,77) --}}
+        {{-- #08488C --}}
         <div class="fixed-top  shadow-sm " style=" background-color:#08488C">
             <div class="container px-0">
                 {{-- navbar-light --}}
@@ -62,11 +62,10 @@ License: You must have a valid license purchased only from themeforest to legall
                         aria-expanded="false" aria-label="Toggle navigation"><span class="feather-icon"><i
                                 data-feather="menu"></i></span></a>
                     <a class="navbar-brand" href="">
-                        <img class="brand-img d-inline-block align-top "
-                            src="{{ asset('assets/dist/img/adama2.jpg') }}" style="width:80px; height:80px"
-                            alt="brand" />
+                        <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/adama2.jpg') }}"
+                            style="width:80px; height:80px" alt="brand" />
                     </a>
-                    <h1 class="text-gold font-24 font-weight-600 ml-50 " style="">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h1>
+                    <h1 class="text-gold font-24 font-weight-600 ml-50 " style="">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h1>
 
                     <div class="collapse navbar-collapse ml-auto" id="navbarCollapseAlt">
                         <ul class="navbar-nav ml-auto">
@@ -101,7 +100,8 @@ License: You must have a valid license purchased only from themeforest to legall
             <footer class="footer">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
-                        <p>Developed by<a href="" class="text-dark" target="_blank">Yonas T.(Tel:+251953464171) ,Eyob B. & Emebet
+                        <p>Developed by<a href="" class="text-dark" target="_blank">Yonas T.(Tel:+251953464171)
+                                ,Eyob B. & Emebet
                                 T.</a> ©
                             2023</p>
                     </div>

@@ -8,7 +8,7 @@
                     <section class="hk-sec-wrapper mt-100">
                         {{--
                         <h3 class="hk-sec-title text-gold text-center color-wrap  "
-                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            style=" background-color:#08488C; padding:10px;">አዳማ  ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
 
@@ -26,7 +26,7 @@
 
 
                         <h3 class="hk-sec-title text-gold text-center color-wrap  "
-                            style=" background-color:08488C; padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
+                            style=" background-color:#08488C; padding:10px;">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <div class="row">
                             <div class="col-sm">
@@ -168,7 +168,7 @@
                                             </div>
                                         </div>
                                         <h3 class="text-gold text-center mt-3 mb-4  "
-                                            style=" background-color:rgb(17,40,77); margin:center">
+                                            style=" background-color:#08488C; margin:center">
                                             ያለዎትን የትምህርት ዝግጅትና የትምህርት ደረጃ ያስገቡ
                                         </h3>
 
@@ -215,12 +215,12 @@
 
 
                                         <h3 class="text-gold text-center mt-3 mb-4 navigation "
-                                            style=" background-color:rgb(17,40,77); margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                            style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                             የስራ
                                             መደብ
                                         </h3>
                                         <button class="text-gold text-left mt-3 mb-4 mr-150"
-                                            style=" background-color:rgb(17,40,77)">
+                                            style=" background-color:#08488C">
                                             ምርጫ 1</button>
 
                                         <div class="row">
@@ -274,8 +274,7 @@
 
 
                                         </div>
-                                        <button class="text-gold text-left mt-3 mb-4"
-                                            style=" background-color:rgb(17,40,77)">
+                                        <button class="text-gold text-left mt-3 mb-4" style=" background-color:#08488C">
                                             ምርጫ 2</button>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
@@ -446,7 +445,7 @@
 
                                         </div>
                                         <h3 class="text-gold text-center mt-3 mb-4   "
-                                            style=" background-color:rgb(17,40,77); margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                            style=" background-color:#08488C; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                             ብቻ)</h3>
                                         <div id="myform">
                                             <div class="row">
