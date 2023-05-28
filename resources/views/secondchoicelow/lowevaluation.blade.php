@@ -667,21 +667,103 @@
 
                     var startdate = new Date(row.startingDate);
                     var enddate = new Date(row.endingDate);
-                    var evaluate = enddate - startdate;
-                    var diffInDays = Math.floor(evaluate / (1000 * 60 * 60 * 24));
-                    var multiply = diffInDays * selectedValue;
+                    var date = new Date(row.startingDate);
+                    // console.log(startdate);
+                    // var unix = Math.floor(date.getTime() / 1000);
+                    const years = startdate.getFullYear();
+                    const months = startdate.getMonth() + 1;
+                    const days = startdate.getDate();
+                    const years2 = enddate.getFullYear();
+                    const months2 = enddate.getMonth() + 1;
+                    const days2 = enddate.getDate();
+                    let dayDifferenceb = (days2 - days);
+                    let monthDifferenceb = (months2 - months);
+                    let yearDifferenceb = (years2 - years);
 
-                    var year = parseInt(multiply / 365)
-                    var diff = multiply % 365;
 
-                    var month = parseInt(diff / 30)
-                    var diffday = parseInt(diff - (month * 30))
+                    let dayDifference = (days2 - days) * selectedValue;
+                    let monthDifference = (months2 - months) * selectedValue;
+                    let yearDifference = (years2 - years) * selectedValue;
 
-                    var all = year + '-' + month + '-' + diffday;
+                    if (selectedValue == 0.5) {
+                        if (yearDifferenceb % 2 != 0) {
+                            yearDifference = parseInt(yearDifference);
+                            console.log(yearDifference);
+                            // monthDifference+=6
+                            monthDifference = 6 + (monthDifference);
+                            //    console.log(monthDifference);
+                            if (monthDifference >= 12) {
+                                monthDifference = 0;
+                                yearDifference = yearDifference + 1
 
-                    totalYear += year;
-                    totalMonth += month;
-                    totalDay += diffday;
+                            }
+
+
+                        } else {
+                            yearDifference = parseInt(yearDifference);
+                            monthDifference = monthDifference;
+
+                        }
+                        if (monthDifferenceb % 2 != 0) {
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference + 15
+
+                        } else {
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference
+                        }
+                        if (dayDifferenceb % 2 != 0) {
+                            dayDifference = parseInt(dayDifference);
+                        }
+
+
+                    }
+                    console.log(yearDifference);
+                    console.log(monthDifference);
+                    console.log(dayDifference);
+
+
+
+
+
+
+                    if (dayDifference < 0) {
+                        dayDifference += 30;
+                        monthDifference -= 1;
+                    }
+
+                    if (monthDifference < 0) {
+                        monthDifference += 12;
+                        yearDifference -= 1;
+                    }
+                    // console.log(dayDifference);
+                    // console.log(monthDifference);
+                    // console.log(yearDifference);
+                    var all = yearDifference + '-' + monthDifference + '-' + dayDifference;
+
+
+
+
+
+
+
+
+                    // var evaluate = enddate - startdate;
+
+                    // var diffInDays = Math.floor(evaluate / (1000 * 60 * 60 * 24));
+                    // var multiply = diffInDays * selectedValue;
+
+                    // var year = parseInt(multiply / 365)
+                    // var diff = multiply % 365;
+
+                    // var month = parseInt(diff / 30)
+                    // var diffday = parseInt(diff - (month * 30))
+
+                    // var all = year + '-' + month + '-' + diffday;
+
+                    totalYear += yearDifference;
+                    totalMonth += monthDifference;
+                    totalDay += dayDifference;
 
                     if (totalDay > 30) {
                         totalMonth = totalMonth + 1;
@@ -692,11 +774,10 @@
                         totalMonth = totalMonth - 12;
                     }
 
-                    // Update the sum for the current row
+
                     $(this).closest('tr').find('#add').text(all);
                 });
 
-                // Update the total sum
                 var total = totalYear + '-' + totalMonth + '-' + totalDay;
                 $('#total-year').text(total);
             });
