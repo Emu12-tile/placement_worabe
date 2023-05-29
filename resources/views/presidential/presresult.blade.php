@@ -33,7 +33,7 @@
                                         <th>አጠቃላይ ውጤት(100%)</th>
                                         <th>Action</th>
                                         <th>Submit</th>
-                                        {{-- <th>pdf</th> --}}
+                                        <th>pdf</th>
 
 
                                     </tr>
@@ -115,80 +115,6 @@
                                                     </div>
 
                                                 </td>
-
-
-                                            </tr>
-                                        @endif
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                            {{-- {!! $pres->links() !!} --}}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-    </div>
-
-    <div class="container">
-
-        <section class="hk-sec-wrapper mt-100">
-            <div class="pull-right hk-sec-title">
-
-                {{-- <a href="{{ url('positionpres') }}" class=" btn btn-dark mr-25"> back </a> --}}
-            </div>
-            <h5 class="hk-sec-title">በኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
-
-            <div class="row">
-                <div class="col-sm">
-                    <div class="table-wrap">
-                        <div class="table-responsive">
-                            <table id="datable_3" class="table table-hover table-bordered w-100  pb-30">
-                                <thead>
-
-                                    {{-- <th colspan="7">በኮሚቴና በበላይ አመራር የተሰጠ</th> --}}
-
-                                    <tr>
-
-                                        <th>ተ.ቁ</th>
-                                        <th> ስም</th>
-
-
-
-                                        <th> በሰው ኃብት ውጤት (65%)</th>
-
-                                        <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
-                                        <th>አጠቃላይ ውጤት(100%)</th>
-                                        <th>Submitted by</th>
-                                        <th>pdf</th>
-                                        <th>Remark</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach ($pres as $i => $hr)
-                                        @if ($hr->status == 1)
-                                            <tr>
-                                                <td>{{ ++$i }}</td>
-                                                <td>{{ $hr->hr->form->full_name }} <p>{{ $hr->hr->form->email }}</p>
-                                                </td>
-
-
-
-                                                <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam }}
-                                                </td>
-                                                <td>{{ $hr->presidentGrade }}</td>
-                                                <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam + $hr->presidentGrade }}
-                                                </td>
-                                                <td>{{ $hr->submittedBy }}</td>
                                                 <td> <button type="button" class="btn btn-primary requestStat btn-sm"
                                                         data-toggle="modal" data-target="#id_{{ $i }}"><i
                                                             class="ion ion-md-archive "></i>pdf
@@ -322,6 +248,81 @@
 
                                                     </div>
                                                 </td>
+
+
+                                            </tr>
+                                        @endif
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                            {{-- {!! $pres->links() !!} --}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    </div>
+
+    <div class="container">
+
+        <section class="hk-sec-wrapper mt-100">
+            <div class="pull-right hk-sec-title">
+
+                {{-- <a href="{{ url('positionpres') }}" class=" btn btn-dark mr-25"> back </a> --}}
+            </div>
+            <h5 class="hk-sec-title">በኮሚቴና በበላይ አመራር የተሰጠ አጠቃላይ ውጤት(ከ100%) </h5>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                        <div class="table-responsive">
+                            <table id="datable_3" class="table table-hover table-bordered w-100  pb-30">
+                                <thead>
+
+                                    {{-- <th colspan="7">በኮሚቴና በበላይ አመራር የተሰጠ</th> --}}
+
+                                    <tr>
+
+                                        <th>ተ.ቁ</th>
+                                        <th> ስም</th>
+
+
+
+                                        <th> በሰው ኃብት ውጤት (65%)</th>
+
+                                        <th> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ ነጥብ(35%)</th>
+                                        <th>አጠቃላይ ውጤት(100%)</th>
+                                        <th>Submitted by</th>
+                                        {{-- <th>pdf</th> --}}
+                                        <th>Remark</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($pres as $i => $hr)
+                                        @if ($hr->status == 1)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>{{ $hr->hr->form->full_name }} <p>{{ $hr->hr->form->email }}</p>
+                                                </td>
+
+
+
+                                                <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam }}
+                                                </td>
+                                                <td>{{ $hr->presidentGrade }}</td>
+                                                <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam + $hr->presidentGrade }}
+                                                </td>
+                                                <td>{{ $hr->submittedBy }}</td>
+
 
                                                 <td>{{ $hr->remark }}</td>
 
