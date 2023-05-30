@@ -53,7 +53,13 @@
 
                                                 <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam }}
                                                 </td>
-                                                <td>{{ $hr->presidentGrade }}</td>
+                                                <td>
+                                                    @if ($hr->presidentGrade == null)
+                                                        N/A
+                                                    @else
+                                                        {{ $hr->presidentGrade }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam + $hr->presidentGrade }}
                                                 </td>
                                                 <td> <a href="{{ route('evaluation.edit', $hr->id) }}"data-toggle="tooltip"
@@ -196,7 +202,13 @@
                                                                                 <tr>
                                                                                     <td> በበላይ አመራር ለአመራርነት ክህሎት የሚሠጥ
                                                                                         ነጥብ(35%)</td>
-                                                                                    <td>{{ $hr->presidentGrade }}</td>
+                                                                                    <td>
+                                                                                        @if ($hr->presidentGrade == null)
+                                                                                            N/A
+                                                                                        @else
+                                                                                            {{ $hr->presidentGrade }}
+                                                                                        @endif
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td> Remark</td>
@@ -318,11 +330,16 @@
 
                                                 <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam }}
                                                 </td>
-                                                <td>{{ $hr->presidentGrade }}</td>
+                                                <td>
+                                                    @if ($hr->presidentGrade == null)
+                                                        N/A
+                                                    @else
+                                                        {{ $hr->presidentGrade }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $hr->hr->performance + $hr->hr->experience + $hr->hr->resultbased + $hr->hr->exam + $hr->presidentGrade }}
                                                 </td>
                                                 <td>{{ $hr->submittedBy }}</td>
-
 
                                                 <td>{{ $hr->remark }}</td>
 
