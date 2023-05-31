@@ -667,31 +667,39 @@
 
                     var startdate = new Date(row.startingDate);
                     var enddate = new Date(row.endingDate);
-                    var date = new Date(row.startingDate);
+                    // var date = new Date(row.startingDate);
                     // console.log(startdate);
                     // var unix = Math.floor(date.getTime() / 1000);
-                    let years = startdate.getFullYear();
-                    let months = startdate.getMonth() + 1;
-                    let days = startdate.getDate();
-                    let years2 = enddate.getFullYear();
-                    let months2 = enddate.getMonth() + 1;
-                    let days2 = enddate.getDate();
+                    const years = startdate.getFullYear();
+                    const months = startdate.getMonth() + 1;
+                    const days = startdate.getDate();
+                    const years2 = enddate.getFullYear();
+                    const months2 = enddate.getMonth() + 1;
+                    const days2 = enddate.getDate();
                     let dayDifferenceb = (days2 - days);
-
                     let monthDifferenceb = (months2 - months);
-
                     let yearDifferenceb = (years2 - years);
-                    console.log(monthDifferenceb);
+                    if (dayDifferenceb < 0) {
+                        dayDifferenceb += 30;
+                        monthDifferenceb -= 1;
 
+                    } else {
+                        dayDifferenceb = (days2 - days);
+                        monthDifferenceb=monthDifferenceb;
 
-                    let dayDifference = (days2 - days) * selectedValue;
-                    let monthDifference = (months2 - months) * selectedValue;
+                    }
+                    if (monthDifferenceb < 0) {
+                        monthDifferenceb += 12;
+                        yearDifferenceb -= 1;
+                    } else {
+                        monthDifferenceb = (months2 - months);
+                        yearDifferenceb=yearDifferenceb;
+                    }
 
-                    console.log(monthDifference);
-                    let yearDifference = (years2 - years) * selectedValue;
+                    let dayDifference = dayDifferenceb * selectedValue;
+                    let monthDifference = monthDifferenceb * selectedValue;
+                    let yearDifference = yearDifferenceb * selectedValue;
 
-
-                  
                     if (selectedValue == 0.5) {
                         if (yearDifferenceb % 2 != 0) {
                             yearDifference = parseInt(yearDifference);
@@ -712,12 +720,12 @@
 
                         }
                         if (monthDifferenceb % 2 != 0) {
-                            monthDifference = parseInt(monthDifference);
-                            dayDifference = dayDifference + 15;
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference + 15
 
                         } else {
-                            monthDifference = monthDifference;
-                            dayDifference = dayDifference;
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference
                         }
                         if (dayDifferenceb % 2 != 0) {
                             dayDifference = parseInt(dayDifference);
@@ -725,9 +733,9 @@
 
 
                     }
-                    // console.log(yearDifference);
-                    // console.log(monthDifference);
-                    // console.log(dayDifference);
+                    console.log(yearDifference);
+                    console.log(monthDifference);
+                    console.log(dayDifference);
 
 
 
@@ -744,7 +752,7 @@
                         yearDifference -= 1;
                     }
                     // console.log(dayDifference);
-                    console.log(monthDifference);
+                    // console.log(monthDifference);
                     // console.log(yearDifference);
                     var all = yearDifference + '-' + monthDifference + '-' + dayDifference;
 
