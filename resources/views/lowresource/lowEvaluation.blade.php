@@ -486,7 +486,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-40">
 
                                     @role('hr')
                                         <div class="col-md-4">
@@ -568,10 +568,10 @@
 
                                                                         $tdate = Carbon::parse($fo->endingDate);
                                                                         $experience = $fo->positionyouworked;
-                                                                        $days = $tdate->diffInDays($fdate);
-                                                                        $months = $tdate->diffInMonths($fdate);
+                                                                        // $days = $tdate->diffInDays($fdate);
+                                                                        // $months = $tdate->diffInMonths($fdate);
 
-                                                                        $years = $tdate->diffInYears($fdate);
+                                                                        // $years = $tdate->diffInYears($fdate);
 
                                                                         $time = $tdate->diff($fdate);
 
@@ -641,7 +641,7 @@
     </div>
 @endsection
 @section('javascript')
-    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> --}}
+
     <script>
         $(document).ready(function() {
             var totalYear = 0;
@@ -691,7 +691,7 @@
                             console.log(yearDifference);
                             // monthDifference+=6
                             monthDifference = 6 + (monthDifference);
-                            //    console.log(monthDifference);
+                               console.log(monthDifference);
                             if (monthDifference >= 12) {
                                 monthDifference = 0;
                                 yearDifference = yearDifference + 1
@@ -718,9 +718,9 @@
 
 
                     }
-                    console.log(yearDifference);
-                    console.log(monthDifference);
-                    console.log(dayDifference);
+                    // console.log(yearDifference);
+                    // console.log(monthDifference);
+                    // console.log(dayDifference);
 
 
 

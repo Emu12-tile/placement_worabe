@@ -388,24 +388,24 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-                                                                    
+
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                                    
+
                                                                     ?>
                                                                 @endforeach
                                                             </td>
@@ -563,18 +563,18 @@
 
 
                                                                         <?php
-                                                                        
+
                                                                         $fdate = Carbon::parse($fo->startingDate);
-                                                                        
+
                                                                         $tdate = Carbon::parse($fo->endingDate);
                                                                         $experience = $fo->positionyouworked;
                                                                         $days = $tdate->diffInDays($fdate);
                                                                         $months = $tdate->diffInMonths($fdate);
-                                                                        
+
                                                                         $years = $tdate->diffInYears($fdate);
-                                                                        
+
                                                                         $time = $tdate->diff($fdate);
-                                                                        
+
                                                                         echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
                                                                         ?>
 
@@ -670,21 +670,28 @@
                     var date = new Date(row.startingDate);
                     // console.log(startdate);
                     // var unix = Math.floor(date.getTime() / 1000);
-                    const years = startdate.getFullYear();
-                    const months = startdate.getMonth() + 1;
-                    const days = startdate.getDate();
-                    const years2 = enddate.getFullYear();
-                    const months2 = enddate.getMonth() + 1;
-                    const days2 = enddate.getDate();
+                    let years = startdate.getFullYear();
+                    let months = startdate.getMonth() + 1;
+                    let days = startdate.getDate();
+                    let years2 = enddate.getFullYear();
+                    let months2 = enddate.getMonth() + 1;
+                    let days2 = enddate.getDate();
                     let dayDifferenceb = (days2 - days);
+
                     let monthDifferenceb = (months2 - months);
+
                     let yearDifferenceb = (years2 - years);
+                    console.log(monthDifferenceb);
 
 
                     let dayDifference = (days2 - days) * selectedValue;
                     let monthDifference = (months2 - months) * selectedValue;
+
+                    console.log(monthDifference);
                     let yearDifference = (years2 - years) * selectedValue;
 
+
+                  
                     if (selectedValue == 0.5) {
                         if (yearDifferenceb % 2 != 0) {
                             yearDifference = parseInt(yearDifference);
@@ -705,12 +712,12 @@
 
                         }
                         if (monthDifferenceb % 2 != 0) {
-                            monthDifference = parseInt(monthDifference)
-                            dayDifference = dayDifference + 15
+                            monthDifference = parseInt(monthDifference);
+                            dayDifference = dayDifference + 15;
 
                         } else {
-                            monthDifference = parseInt(monthDifference)
-                            dayDifference = dayDifference
+                            monthDifference = monthDifference;
+                            dayDifference = dayDifference;
                         }
                         if (dayDifferenceb % 2 != 0) {
                             dayDifference = parseInt(dayDifference);
@@ -718,9 +725,9 @@
 
 
                     }
-                    console.log(yearDifference);
-                    console.log(monthDifference);
-                    console.log(dayDifference);
+                    // console.log(yearDifference);
+                    // console.log(monthDifference);
+                    // console.log(dayDifference);
 
 
 
@@ -737,7 +744,7 @@
                         yearDifference -= 1;
                     }
                     // console.log(dayDifference);
-                    // console.log(monthDifference);
+                    console.log(monthDifference);
                     // console.log(yearDifference);
                     var all = yearDifference + '-' + monthDifference + '-' + dayDifference;
 

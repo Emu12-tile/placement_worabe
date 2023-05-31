@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <label for="level_id">ደረጃ </label>
-                                        <input type="text" value="{{ $form->level->level }}"
+                                        <input type="text" value="{{ $form->level->level ?? '' }}"
                                             name="level"class="form-control " id="inputEmail3" readonly>
                                     </div>
                                     <div class="col-md-4 form-group">
@@ -244,35 +244,35 @@
                                                 <td>{{ $fo->positionyouworked }}</td>
                                                 <td>
                                                     <?php
-
+                                                    
                                                     $fdate = Carbon::parse($fo->startingDate);
-
+                                                    
                                                     $tdate = Carbon::parse($fo->endingDate);
-
+                                                    
                                                     // $years = $tdate - $fdate;
-
+                                                    
                                                     // echo abs($years);
                                                     //
-
+                                                    
                                                     $days = $tdate->diffInDays($fdate);
                                                     $months = $tdate->diffInMonths($fdate);
-
+                                                    
                                                     $years = $tdate->diffInYears($fdate);
-
+                                                    
                                                     $time = $tdate->diff($fdate);
                                                     echo $time->y;
-
+                                                    
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-
+                                                    
                                                     $fdate = Carbon::parse($fo->startingDate);
-
+                                                    
                                                     $tdate = Carbon::parse($fo->endingDate);
-
+                                                    
                                                     // $months = $tdate - $fdate;
-
+                                                    
                                                     //   echo abs($months);
                                                     $time = $tdate->diff($fdate);
                                                     echo $time->m;
@@ -280,9 +280,9 @@
                                                 </td>
                                                 <td>
                                                     <?php
-
+                                                    
                                                     // $fdate = Carbon::parse($fo->startingDate);
-
+                                                    
                                                     // $tdate = Carbon::parse($fo->endingDate);
                                                     $time = $tdate->diff($fdate);
                                                     // $days = $tdate - $fdate;
@@ -327,13 +327,13 @@
                                         <label for="position_id"> የስራ መደብ</label>
                                         <select class="form-control custom-select d-block w-100  positionofone"
                                             id="position_id" name="position_id">
-                                            {{-- <option value="0" disabled="true" selected="true"> position
-                                            </option> --}}
-                                            @foreach ($position as $col)
+                                            <option value="0" disabled="true" selected="true"> position
+                                            </option>
+                                            {{-- @foreach ($position as $col)
                                                 <option value="{{ $col->id }}"
                                                     {{ $form->position_id == $col->id ? 'selected' : '' }}>
                                                     {{ $col->position }}</option>
-                                            @endforeach
+                                            @endforeach --}}
 
 
                                         </select>
@@ -382,13 +382,13 @@
                                         <label for="choice2_id"> የስራ መደብ</label>
                                         <select class="form-control custom-select d-block w-100  positionofone"
                                             id="choice2_id" name="choice2_id">
-                                            {{-- <option value="0" disabled="true" selected="true"> position
-                                            </option> --}}
-                                            @foreach ($choice2 as $col)
+                                            <option value="0" disabled="true" selected="true"> position
+                                            </option>
+                                            {{-- @foreach ($choice2 as $col)
                                                 <option value="{{ $col->id }}"
                                                     {{ $form->choice2_id == $col->id ? 'selected' : '' }}>
                                                     {{ $col->position }}</option>
-                                            @endforeach
+                                            @endforeach --}}
 
                                         </select>
                                         <div id="detaild" class=" font-20 "></div>

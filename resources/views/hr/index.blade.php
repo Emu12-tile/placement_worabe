@@ -26,6 +26,9 @@
                                     <th>ተቁ</th>
                                     <th>ሙሉ ስም</th>
                                     @role('admin')
+                                        <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
+                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th>
+
                                         <th> action</th>
                                         <th>Submit</th>
                                         <th>pdf</th>
@@ -56,13 +59,18 @@
                                     @role('admin')
                                         @if ($form->isEditable == 0)
                                             <tr>
-                                                <td>{{ ++$i }}</td>
+                                                <td>{{ ++$j }}</td>
                                                 <td>
 
                                                     {{ $form->full_name }}
 
 
 
+                                                </td>
+                                                <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
+                                                    {{ $form->position->position ?? 'to be selected' }}</td>
+                                                <td>{{ $form->jobcat2->job_category ?? 'to be selected' }}\
+                                                    {{ $form->choice2->position ?? 'to be selected' }}
                                                 </td>
                                                 <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a></td>
@@ -131,7 +139,7 @@
                                                                         {{-- <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p> --}}
                                                                         <p>2/ አሁን ያሉበት የስራ መደብ
                                                                             መጠርያ:-{{ $form->positionofnow }} &emsp;
-                                                                            ደረጃ፦{{ $form->level->level }} &emsp;
+                                                                            ደረጃ፦{{ $form->level->level ?? '' }} &emsp;
                                                                             ደምወዝ:-{{ $form->fee }}
                                                                         </p>
                                                                         <p>3/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:- @foreach ($form->education as $i => $fo)
@@ -154,15 +162,15 @@
                                                                         <p> ምርጫ 1</p>
 
                                                                         <p> የስራ ክፍል
-                                                                            :-{{ $form->job_category->job_category }}
+                                                                            :-{{ $form->job_category->job_category ?? '' }}
                                                                         </p>
-                                                                        <p> የስራ መደብ፣ {{ $form->position->position }}
+                                                                        <p> የስራ መደብ፣ {{ $form->position->position ?? '' }}
                                                                         </p>
                                                                         <p>
                                                                             ምርጫ 2</p>
                                                                         <p> የስራ ክፍል:-
-                                                                            {{ $form->jobcat2->job_category }} </p>
-                                                                        <p> የስራ መደብ:- {{ $form->choice2->position }}
+                                                                            {{ $form->jobcat2->job_category ?? '' }} </p>
+                                                                        <p> የስራ መደብ:- {{ $form->choice2->position ?? '' }}
                                                                         </p>
                                                                         <div class="html2pdf__page-break"></div>
                                                                         <p>8/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
@@ -700,14 +708,9 @@
                 jsPDF: {
                     unit: 'mm',
                     format: 'a4',
-                    font: 'Arial, Helvetica, sans-serif',
-                    orientation: 'portrait'
-                },
-                css: `
+                    orientation: 'portrait',
+                }
 
-      font-family:  font-family: Arial, Helvetica, sans-serif;
-
-  `
 
             });
         });
