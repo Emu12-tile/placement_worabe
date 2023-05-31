@@ -213,9 +213,6 @@ class ResourceController extends Controller
         }
         $resource->save();
         $prod->save();
-
-
-
         if ($request->type == 'high') {
             return redirect('posDetail/' . $resource->form->position_id)->with('status', 'evaluation added successfully');
         } else if ($request->type == 'low') {

@@ -1,312 +1,618 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
 
                 <section class="hk-sec-wrapper mt-100">
-                    @role('president')
-                        <div class="pull-right">
-                            <a class="btn btn-dark" href="{{ url('evaluation') }}"> Back</a>
+                    {{--
+                        <h3 class="hk-sec-title text-gold text-center color-wrap  "
+                            style=" background-color:#08488C; padding:10px;">አዳማ  ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            ድልድል ማወዳደርያ ቅፅ</h3>
+                        <p class="mb-25"> </p>
 
-                        </div>
-                    @endrole
-                    @role('hr')
-                        <div class="pull-right ">
-                            <a class="btn btn-dark" href="{{ url('pos') }}"> Back</a>
-
-                        </div>
-                    @endrole
-                    <h3 class="hk-sec-title text-center  text-gold mt-50 mb-50" style=" background-color:rgb(17,40,77)">
-                        የተወዳዳሪዉ ዝርዝር
-                        መረጃ </h3>
+                        <div class="row">
+                            <div class="col-sm">
+                                <h1 class="text-center text-wrap font-30 font-weight-600">ይቅርታ!!!</h1>
+                                <h1 class="text-center text-wrap font-24 font-weight-600">የመወዳደርያ ቅፅ ለመሙላት የተሰጠዎት ጊዜ አልቋል ።
+                                </h1>
 
 
+
+                            </div>
+                        </div> --}}
+
+
+
+                    <h3 class="hk-sec-title text-gold text-center color-wrap  "
+                        style=" background-color:#08488C; padding:10px;">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
-                            <form action=""method="POST">
+                            <form action="{{ route('addposition', $form->id) }}"method="POST">
 
                                 @csrf
                                 @method('PUT')
 
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">ሙሉ ስም</label>
 
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="firstName"> ስም *</label>
+                                        <input class="form-control" id="firstName" placeholder=" ስም"
+                                            value="{{ $form->full_name }}" type="text" name="firstName" readonly>
 
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->full_name }}"
-                                            name="full_name"class="form-control" id="inputname" placeholder=" firstName"
-                                            readonly>
                                     </div>
 
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputname" class="col-sm-2 col-form-label">ጾታ</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="sex">ጾታ *</label>
                                         <input type="text" value="{{ $form->sex }}"
                                             name="sex"class="form-control " id="inputEmail3" readonly>
                                     </div>
-                                </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="control-label mb-10" for="email">ኢሜይል (የ አ.ሳ.ቴን ኢሜይል ብቻ
+                                            ይጠቀሙ) *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-envelope-open"></i></span>
+                                            </div>
+                                            <input type="email" value="{{ $form->email }}"
+                                                name="email"class="form-control" id="inputname" placeholder="email"
+                                                readonly>
 
 
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">ኢሜይል</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" value="{{ $form->email }}" name="email"class="form-control"
-                                            id="inputname" placeholder="email" readonly>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="control-label mb-10">ስልክ
+                                            ቁጥር(09...) *</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                            </div>
+                                            <input type="text" value="{{ $form->phone }}"
+                                                name="phone"class="form-control" id="inputname" placeholder="phone"
+                                                readonly>
+                                        </div>
+
+
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">ስልክ
-                                        ቁጥር</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->phone }}" name="phone"class="form-control"
-                                            id="inputname" placeholder="phone" readonly>
-                                    </div>
-                                </div>
 
 
-
-                                <div class="form-group row">
-                                    <label for="inputname" class="col-sm-2 col-form-label">አሁን ያሉበት የስራ መደብ</label>
-                                    <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-md-4 form-group">
+                                        <label for="positionofnow">አሁን ያሉበት የስራ መደብ</label>
                                         <input type="text" value="{{ $form->positionofnow }}"
                                             name="positionofnow"class="form-control " id="inputEmail3" readonly>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputname" class="col-sm-2 col-form-label">ደረጃ</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-4 form-group">
+                                        <label for="level_id">ደረጃ </label>
                                         <input type="text" value="{{ $form->level->level }}"
                                             name="level"class="form-control " id="inputEmail3" readonly>
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="fee" class="col-sm-2 col-form-label">ደምወዝ</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-4 form-group">
+                                        <label for="fee">ደምወዝ (ETB)</label>
                                         <input type="text" value="{{ $form->fee }}"
                                             name="fee"class="form-control " id="fee" readonly>
                                     </div>
                                 </div>
-                                <h4 class="text-gold text-center mt-50 mb-4" style=" background-color:rgb(17,40,77)"> የትምህርት
-                                    ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
-                                <div class="form-group row mb-100">
+                                <h3 class="text-gold text-center mt-3 mb-4  "
+                                    style=" background-color:#08488C; margin:center">
+                                    ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
+                                </h3>
+                                <table id="customers" class="mb-15">
+                                    <thead>
+                                        <tr>
+                                            <th>ተ.ቁ</th>
+                                            <th>የትምህርት ዝግጅት</th>
+                                            <th>የትምህርት ደረጃ</th>
 
-                                    <label for="inputname" class="col-sm-2 col-form-label"></label>
 
-                                    <div class="col-sm-10">
-                                        @foreach ($edu as $fo)
-                                            <input type="text"
-                                                value="{{ $fo->edu_level->education_level }} , {{ $fo->education_type->education_type }}"
-                                                name="education_level"class="form-control " id="inputEmail3" readonly>
+
+                                        </tr>
+
+
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($edu as $i => $fo)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+
+                                                <td>{{ $fo->edu_level->education_level }} </td>
+                                                <td> {{ $fo->education_type->education_type }}</td>
+                                            </tr>
                                         @endforeach
-                                    </div>
+                                    </tbody>
+                                </table>
 
-                                </div>
-                                <h4 class="text-gold  text-center mt-3 mb-4 " style=" background-color:rgb(17,40,77)"> የ
-                                    መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
-                                <button
-                                    class="text-gold text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
-                                    ምርጫ 1</button>
-                                <div class="form-group row">
-                                    <label for="inputname" class="col-sm-2 col-form-label">የስራ ክፍሉ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->job_category->job_category }}"
-                                            name="job_category"class="form-control " id="inputEmail3" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="position" class="col-sm-2 col-form-label">የስራ መደብ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->position->position }}"
-                                            name="position"class="form-control " id="position" readonly>
-                                    </div>
-                                </div>
-                                {{-- <div class="form-group row">
-                                    <label for="level" class="col-sm-2 col-form-label">ደረጃ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->position->level->level }}"
-                                            name="level"class="form-control font-weight-bold" id="level"
-                                            disabled>
-                                    </div>
-                                </div> --}}
-                                <button class="text-gold text-left mt-3 mb-4 mr-150 text-left"
-                                    style=" background-color:rgb(17,40,77)"> ምርጫ 2</button>
-                                <div class="form-group row">
-                                    <label for="inputname" class="col-sm-2 col-form-label">የስራ ክፍሉ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->jobcat2->job_category }}"
-                                            name="job_category"class="form-control " id="job_category" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-25">
-                                    <label for="position" class="col-sm-2 col-form-label">የስራ መደብ</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" value="{{ $form->choice2->position }}"
-                                            name="position"class="form-control " id="position" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row mt-100">
-                                    <label for="UniversityHiringEra" class="col-sm-2 col-form-label">በዩኒቨርስቲዉ የቅጥር ዘመን
-                                        በኢትዮጵያ
-                                    </label>
-                                    <div class="col-sm-10">
+
+
+
+
+
+
+
+
+
+
+                                <h3 class="text-gold text-center mt-3 mb-4  "
+                                    style=" background-color:#08488C; margin:center">
+                                    አገልግሎት
+                                </h3>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
+                                            አቆጣጠር(ወር/ቀን/ዓመት)</label>
                                         <input type="text" value="{{ $form->UniversityHiringEra }}"
                                             name="UniversityHiringEra"class="form-control " id="UniversityHiringEra"
                                             readonly>
+
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="UniversityHiringEra" class="col-sm-2 col-form-label">በዩኒቨርስቲዉ አገልግሎት ዘመን
-                                        (በዓመት,የስራ
-                                        መደብ)
-                                    </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="servicPeriodAtUniversity">በዩኒቨርስቲዉ አገልግሎት ዘመን (በዓመት,የስራ
+                                            መደብ)</label>
                                         <input type="text" value="{{ $form->servicPeriodAtUniversity }}"
                                             name="servicPeriodAtUniversity"class="form-control "
                                             id="servicPeriodAtUniversity" readonly>
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="UniversityHiringEra" class="col-sm-2 col-form-label">በሌላ መስርያ ቤት አገልግሎት
-                                        ዘመን(በዓመት,የስራ
-                                        መደብ)
-                                    </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="servicPeriodAtAnotherPlace">በሌላ መስርያ ቤት አገልግሎት ዘመን(በዓመት,የስራ
+                                            መደብ)</label>
                                         <input type="text" value="{{ $form->servicPeriodAtAnotherPlace }}"
                                             name="servicPeriodAtAnotherPlace"class="form-control "
                                             id="servicPeriodAtAnotherPlace" readonly>
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="servicPeriodAtAnotherPlace" class="col-sm-2 col-form-label">አገልግሎት ከዲፕሎማ
-                                        በፊት(በዓመት,የስራ መደብ)
-                                    </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት,የስራ መደብ)</label>
                                         <input type="text" value="{{ $form->serviceBeforeDiplo }}"
                                             name="serviceBeforeDiplo"class="form-control " id="serviceBeforeDiplo"
                                             readonly>
+
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="UniversityHiringEra" class="col-sm-2 col-form-label"> አገልግሎት ከዲፕሎማ/ዲግሪ
-                                        በኋላ(በዓመት, የስራ መደብ)
-                                    </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ መደብ)</label>
                                         <input type="text" value="{{ $form->serviceAfterDiplo }}"
                                             name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo"
                                             readonly>
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="resultOfrecentPerform" class="col-sm-2 col-form-label"> የሁለት ተከታታይ የቅርብ ጊዜ
-                                        የሥራ
-                                        አፈጻፀም አማካይ
-                                        ውጤት(ከ100 በቁጥር)
-                                    </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
+                                            አፈጻፀም አማካይ
+                                            ውጤት(ከ100 በቁጥር)</label>
                                         <input type="text" value="{{ $form->resultOfrecentPerform }}"
                                             name="resultOfrecentPerform"class="form-control " id="resultOfrecentPerform"
                                             readonly>
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="DisciplineFlaw" class="col-sm-2 col-form-label"> የዲስፕሊን ጉድለት
-                                    </label>
-                                    <div class="col-sm-10">
+
+                                    <div class="col-md-6 form-group">
+                                        <label for="DisciplineFlaw"> የዲስፕሊን ጉድለት</label>
                                         <input type="text" value="{{ $form->DisciplineFlaw }}"
                                             name="DisciplineFlaw"class="form-control " id="DisciplineFlaw" readonly>
                                     </div>
-                                </div>
-                                <div class="form-group row ">
-                                    <label for="MoreRoles" class="col-sm-2 col-form-label">ተጨማሪ የሥራ ድርሻ
-                                    </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-md-6 form-group">
+                                        <label for="MoreRoles"> ተጨማሪ የሥራ ድርሻ</label>
                                         <input type="text" value="{{ $form->MoreRoles }}"
                                             name="MoreRoles"class="form-control " id="MoreRoles" readonly>
                                     </div>
+
+
                                 </div>
+                                <h3 class="text-gold text-center mt-3 mb-4   "
+                                    style=" background-color:#08488C; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                    ብቻ)</h3>
+                                <table id="customers" class="mb-15">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">ተ.ቁ</th>
+                                            <th rowspan="2">የአገልግሎት ዘመን ከ---እስከ---ዓ.ም</th>
+                                            <th rowspan="2">የሥራ ዓይነት</th>
+
+                                            <th colspan="3"> የአገልግሎት ጊዜ</th>
+                                            <th rowspan="2">ምርመራ</th>
 
 
+                                        </tr>
+                                        <tr>
+
+                                            <th>ዓመት</td>
+                                            <th>ወር</td>
+                                            <th>ቀን</td>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($exper as $i => $fo)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                {{-- <td>{{ date('m/d/y', strtotime($form->startingDate)) }}-{{ date('m/d/y', strtotime($form->endingDate)) }} --}}
+                                                <td>
+                                                    {{-- {{ Carbon::createFromFormat( $fo->startingDate)->format('d/m/y') }}-{{ $fo->endingDate }} --}}
+                                                    {{-- {{   Carbon::createFromFormat('m/d/Y', $fo->startingDate)->format('d-m-Y')}} --}}
+                                                    {{-- {{ Carbon::createFromFormat('d/m/Y', $fo->startingDate) }} --}}
 
 
-                                <h4 class="text-gold text-center mt-50 mb-4" style=" background-color:rgb(17,40,77)">የስራ
-                                    ልምድ</h4>
+                                                    ከ{{ Carbon::parse($fo->startingDate)->day }}/{{ Carbon::parse($fo->startingDate)->month }}/{{ Carbon::parse($fo->startingDate)->year }}
+                                                    እስከ
+                                                    {{ Carbon::parse($fo->endingDate)->day }}/{{ Carbon::parse($fo->endingDate)->month }}/{{ Carbon::parse($fo->endingDate)->year }}
+                                                </td>
+                                                </td>
+                                                <td>{{ $fo->positionyouworked }}</td>
+                                                <td>
+                                                    <?php
 
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Experience</label>
+                                                    $fdate = Carbon::parse($fo->startingDate);
 
-                                    <div class="col-sm-10">
-                                        @foreach ($exper as $ex)
-                                            <input type="text"
-                                                value="{{ $ex->startingDate }} እስከ {{ $ex->endingDate }} በ {{ $ex->positionyouworked }} "
-                                                name="" class="form-control" id="inputname" placeholder=""
-                                                readonly>
+                                                    $tdate = Carbon::parse($fo->endingDate);
+
+                                                    // $years = $tdate - $fdate;
+
+                                                    // echo abs($years);
+                                                    //
+
+                                                    $days = $tdate->diffInDays($fdate);
+                                                    $months = $tdate->diffInMonths($fdate);
+
+                                                    $years = $tdate->diffInYears($fdate);
+
+                                                    $time = $tdate->diff($fdate);
+                                                    echo $time->y;
+
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+
+                                                    $fdate = Carbon::parse($fo->startingDate);
+
+                                                    $tdate = Carbon::parse($fo->endingDate);
+
+                                                    // $months = $tdate - $fdate;
+
+                                                    //   echo abs($months);
+                                                    $time = $tdate->diff($fdate);
+                                                    echo $time->m;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+
+                                                    // $fdate = Carbon::parse($fo->startingDate);
+
+                                                    // $tdate = Carbon::parse($fo->endingDate);
+                                                    $time = $tdate->diff($fdate);
+                                                    // $days = $tdate - $fdate;
+                                                    echo $time->d;
+                                                    // echo abs($days);
+                                                    ?>
+                                                </td>
+                                                <td></td>
+
+                                            </tr>
                                         @endforeach
+                                    </tbody>
+                                </table>
+
+
+                                <h3 class="text-gold text-center mt-3 mb-4 navigation "
+                                    style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                    የስራ
+                                    መደብ
+                                </h3>
+                                <button class="text-gold text-left mt-3 mb-4 mr-150" style=" background-color:#08488C">
+                                    ምርጫ 1</button>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for=""> የስራ ክፍሉ</label>
+
+
+                                        <select class="form-control custom-select d-block w-100 dynamic"
+                                            name="job_category_id" id="job_category_id">
+                                            <option value="">Choose</option>
+                                            @foreach ($job_category as $col)
+                                                <option value="{{ $col->id }}"
+                                                    {{ $form->job_category_id == $col->id ? 'selected' : '' }}>
+                                                    {{ $col->job_category }}</option>
+                                            @endforeach
+                                        </select>
 
                                     </div>
+                                    <div class="col-md-6 form-group">
+
+                                        <label for="position_id"> የስራ መደብ</label>
+                                        <select class="form-control custom-select d-block w-100  positionofone"
+                                            id="position_id" name="position_id">
+                                            {{-- <option value="0" disabled="true" selected="true"> position
+                                            </option> --}}
+                                            @foreach ($position as $col)
+                                                <option value="{{ $col->id }}"
+                                                    {{ $form->position_id == $col->id ? 'selected' : '' }}>
+                                                    {{ $col->position }}</option>
+                                            @endforeach
+
+
+                                        </select>
+                                        <div id="detailsd" class=" font-20 ">
+
+
+                                        </div>
+                                        <div id="details" class=" ml-25 ">
+
+
+                                        </div>
+                                        <div id="details2" class=" ml-25 ">
+
+
+                                        </div>
+                                        <div id="details4" class=" ml-25 "></div>
+
+                                        <div id="details3" class=" ml-25 ">
+
+
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
-                                @role('admin')
-                                    <div class="table-wrap">
+                                <button class="text-gold text-left mt-3 mb-4" style=" background-color:#08488C">
+                                    ምርጫ 2</button>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for=""> የስራ ክፍሉ</label>
 
-                                        <table id="datable_1" class="table table-hover  table-bordered w-50  pb-30">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="2" class="text-center text-blue-dark-4">Action</th>
-                                                </tr>
+                                        <select class="form-control custom-select d-block w-100  dynamic2"
+                                            name="jobcat2_id" id="jobcat2_id">
+                                            <option value="">Choose </option>
+                                            @foreach ($jobcat2 as $col)
+                                                <option value="{{ $col->id }}"
+                                                    {{ $form->jobcat2_id == $col->id ? 'selected' : '' }}>
+                                                    {{ $col->job_category }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                                            </thead>
-                                            <tbody>
-                                                <td class="text-center">Approve:
+                                    <div class="col-md-6 form-group">
 
-                                                    <form action="{{ route('hr.update', $form->id) }}" method="POST">
+                                        <label for="choice2_id"> የስራ መደብ</label>
+                                        <select class="form-control custom-select d-block w-100  positionofone"
+                                            id="choice2_id" name="choice2_id">
+                                            {{-- <option value="0" disabled="true" selected="true"> position
+                                            </option> --}}
+                                            @foreach ($choice2 as $col)
+                                                <option value="{{ $col->id }}"
+                                                    {{ $form->choice2_id == $col->id ? 'selected' : '' }}>
+                                                    {{ $col->position }}</option>
+                                            @endforeach
 
-                                                        @csrf
-                                                        @method('PUT')
+                                        </select>
+                                        <div id="detaild" class=" font-20 "></div>
+                                        <div id="detail" class=" ml-25 ">
 
-                                                        <button type="submit" class="btn bg-blue-dark-4 text-white pd-10">
-                                                            <a data-toggle="tooltip" data-original-title="approve"> <i
-                                                                    class=" glyphicon glyphicon-ok pd-25"></i> </a>
-                                                        </button>
-                                                    </form>
-                                                </td>
 
-                                                <td class="text-center w-50">Reject:
+                                        </div>
+                                        <div id="detail2" class=" ml-25 ">
 
-                                                    <form action="{{ route('hr.destroy', $form->id) }}" method="POST">
 
-                                                        @csrf
-                                                        @method('DELETE')
+                                        </div>
+                                        <div id="detail4" class=" ml-25 "></div>
 
-                                                        <button type="submit" class="btn bg-red-dark-4 text-white pd-10">
-                                                            <a data-toggle="tooltip" data-original-title="delete"> <i
-                                                                    class=" icon-trash txt-danger"></i> </a>
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                        <div id="detail3" class=" ml-25 ">
 
-                                            </tbody>
-                                        </table>
-                                    @endrole
+
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <button type="submit" class="btn bg-blue-dark-3 text-white float-right ">Save
+                                </button>
+
+
+
 
                             </form>
 
 
-
-
-
                         </div>
 
-
                     </div>
-                </section>
-
             </div>
+            </section>
         </div>
     </div>
+    </div>
+@endsection
+@section('javascript')
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+
+            $(document).on('change', '.dynamic', function() {
+
+                var cat_id = $(this).val();
+                console.log(cat_id);
+                var div = $(this).parent();
+
+
+                var op = " ";
+
+                $.ajax({
+                    type: "GET",
+                    url: "try/job",
+                    data: {
+                        "id": cat_id
+                    },
+                    success: function(data) {
+
+                        op += '<option value="0" selected disabled>select</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            op += '<option value="' + data[i].id + '">' + data[i].position +
+                                '</option>';
+                        }
+
+                        $('select[name="position_id"]').html(" ");
+                        $('select[name="position_id"]').append(op);
+                    },
+                    error: function() {
+
+                    }
+                });
+            });
+            $(document).on('change', '#position_id', function() {
+                var selected = $(this).val();
+                var a = $(this).parent();
+                var di = " ";
+                var div = " ";
+                div21 = " ";
+                var div2 = " ";
+                var div3 = " ";
+
+                $.ajax({
+                    url: "try/selection",
+                    type: "GET",
+                    data: {
+                        "id": selected
+                    },
+                    dataType: "json",
+
+                    success: function(data) {
+
+                        di += " <b>ስራዉ የሚፈልገው ዝቅተኛ መስፈርት </b>  "
+                        $('#detailsd').html(" ");
+                        $('#detailsd').append(di);
+
+                        div += " <b> የስራ ልምድ (በ አመት):</b> " + data.experience
+                        $('#details').html(" ");
+                        $('#details').append(div);
+
+                        div2 += "<b> የትምህርት ደረጃ:</b> " + data.edu_level
+
+                        $('#details2').html(" ");
+                        $('#details2').append(div2);
+                        div21 += "<b> የትምህርት ዝግጅት:</b> " + data.education_type
+
+                        $('#details4').html(" ");
+                        $('#details4').append(div21);
+                        div3 += "<b> ደረጃ:</b> " + data.level
+
+                        $('#details3').html(" ");
+                        $('#details3').append(div3);
+
+
+                    },
+                    error: function() {
+
+                    }
+
+                });
+
+
+
+
+            });
+            $(document).on('change', '.dynamic2', function() {
+
+
+                var categ_id = $(this).val();
+
+                console.log(categ_id);
+                var div = $(this).parent();
+
+
+                var op = " ";
+
+                $.ajax({
+                    type: "GET",
+                    url: "try/categ2",
+                    data: {
+                        "id": categ_id
+                    },
+                    success: function(data) {
+
+                        op += '<option value="0" selected disabled>select</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            op += '<option value="' + data[i].id + '">' + data[i].position +
+                                '</option>';
+                        }
+
+                        $('select[name="choice2_id"]').html(" ");
+                        $('select[name="choice2_id"]').append(op);
+                    },
+                    error: function() {
+
+                    }
+                });
+            });
+            $(document).on('change', '#choice2_id', function() {
+                var selected = $(this).val();
+                var a = $(this).parent();
+                var di = " ";
+                var div = " ";
+                var div21 = " ";
+                var div2 = " ";
+                var div3 = " ";
+
+                $.ajax({
+                    url: "try/selection2",
+                    type: "GET",
+                    data: {
+                        "id": selected
+                    },
+                    dataType: "json",
+
+                    success: function(data) {
+
+                        di += " <b>ስራዉ የሚፈልገው ዝቅተኛ መስፈርት </b>  "
+                        $('#detaild').html(" ");
+                        $('#detaild').append(di);
+
+                        div += "<b> የስራ ልምድ(በ አመት):</b> " + data.experience
+                        $('#detail').html(" ");
+                        $('#detail').append(div);
+
+                        div2 += "<b> የትምህርት ደረጃ:</b> " + data.edu_level
+
+                        $('#detail2').html(" ");
+                        $('#detail2').append(div2);
+                        div21 += "<b> የትምህርት ዝግጅት:</b> " + data.education_type
+
+                        $('#detail4').html(" ");
+                        $('#detail4').append(div21);
+                        div3 += "<b> ደረጃ:</b> " + data.level
+
+                        $('#detail3').html(" ");
+                        $('#detail3').append(div3);
+
+
+                    },
+                    error: function() {
+
+                    }
+
+                });
+
+
+
+
+            });
+
+
+
+
+
+        })
+    </script>
 @endsection

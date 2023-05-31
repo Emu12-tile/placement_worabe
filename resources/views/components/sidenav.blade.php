@@ -100,10 +100,10 @@
                     @endrole
                     @role('admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('pos') }}">
+                            <a class="nav-link" href="{{ route('hr.index') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    የተወዳዳሪዎች 1ኛ ምርጫ
+                                    የተወዳዳሪዎች ዝርዝር
                                 </span>
                             </a>
                         </li>

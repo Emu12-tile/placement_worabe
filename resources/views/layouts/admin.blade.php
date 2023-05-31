@@ -81,6 +81,55 @@ License: You must have a valid license purchased only from themeforest to legall
             /* margin-bottom: calc(20px-0.5em) */
             height: auto;
         }
+
+        /* @font-face {
+            font-family: 'noto sans ethiopic', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+
+            src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic&display=swap.ttf') format('truetype');
+        } */
+        /* @font-face {
+            font-family: 'Noto Sans Ethiopic';
+            font-style: normal;
+            font-weight: 400;
+            font-stretch: 100%;
+            src: url(https://fonts.gstatic.com/s/notosansethiopic/v42/7cHPv50vjIepfJVOZZgcpQ5B9FBTH9KGNfhSTgtoow1KVnIvyBoMSzUMacb-T35OK5D1yGbuaQ.woff2) format('woff2');
+            unicode-range: U+1200-1399, U+2D80-2DDE, U+AB01-AB2E;
+        } */
+
+      
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(2) {
+            /* background-color: #6d6a6a; */
+        }
+
+        /* #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        } */
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            /* background-color: #5f5656; */
+            color: rgb(29, 28, 28);
+        }
     </style>
 
 

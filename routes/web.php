@@ -42,29 +42,11 @@ use App\Models\Prestwo;
 
 Route::get('/', [FormController::class, 'create'])->name('try');
 Route::post('/', [FormController::class, 'store'])->name('add.form');
-Route::get('/try/job', [FormController::class, 'position']);
-Route::get('/try/categ2', [FormController::class, 'position2']);
-Route::get('/try/selection', [FormController::class, 'selection']);
-Route::get('/try/selection2', [FormController::class, 'selection2']);
+Route::get('/hr/try/job', [FormController::class, 'position']);
+Route::get('/hr/try/categ2', [FormController::class, 'position2']);
+Route::get('/hr/try/selection', [FormController::class, 'selection']);
+Route::get('/hr/try/selection2', [FormController::class, 'selection2']);
 
-// Route::get('/', [MultiformController::class, 'createStepOne'])->name('multiforms.create-step-one');
-// Route::post('/', [MultiformController::class, 'postCreateStepOne'])->name('multiforms.create.step.one.post');
-
-// Route::get('/steptwo', [MultiformController::class, 'createStepTwo'])->name('multiforms.create.step.two');
-// Route::get('/steptwo/job', [MultiformController::class, 'position']);
-// Route::get('/steptwo/categ2', [MultiformController::class, 'position2']);
-// Route::get('/steptwo/selection', [MultiformController::class, 'selection']);
-// Route::get('/steptwo/selection2', [MultiformController::class, 'selection2']);
-// Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->name('multiforms.create.step.two.post');
-// Route::get('/stepthree', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
-
-// Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
-
-// Route::get('edit-stepone/{id}', [MultiformController::class, 'edit1']);
-// Route::put('update-stepone/{id}', [MultiformController::class, 'update1']);
-
-// Route::get('edit-steptwo/{id}', [MultiformController::class, 'edit2']);
-// Route::put('update-steptwoe/{id}', [MultiformController::class, 'update2']);
 
 
 
@@ -111,17 +93,6 @@ Route::middleware([
 
     Route::resource('/jobcategory', JobCategoryController::class);
     Route::resource('/jobcat2', JobCat2Controller::class);
-
-
-
-    // to be deletable
-
-    // Route::get('/user_form', [FormController::class, 'create_1'])->name('try2');
-    // Route::post('/user_form', [FormController::class, 'store'])->name('add.form');
-    // Route::get('/try/job', [FormController::class, 'position']);
-    // Route::get('/try/categ2', [FormController::class, 'position2']);
-    // Route::get('/try/selection', [FormController::class, 'selection']);
-    // Route::get('/try/selection2', [FormController::class, 'selection2']);
 });
 Route::middleware([
     'auth:sanctum',
@@ -131,6 +102,7 @@ Route::middleware([
 ])->group(
     function () {
         Route::resource('/hr', FormController::class);
+        Route::put('/addposition/{id}', [FormController::class, 'updateform'])->name('addposition');
         Route::get('/pos', [FormController::class, 'pos']);
         Route::get('/posDetail/{id}', [FormController::class, 'posDetail'])->name('posDetail');
 
@@ -215,6 +187,7 @@ Route::middleware([
 // Route::get('/table', [FormController::class, 'table']);
 
 Route::get('/export_pdf/{id}', [MultiformController::class, 'export_pdf'])->name('export_pdf');
+// Route::get('/export_pdf/{id}', [FormController::class, 'generatePdf'])->name('export_pdf');
 Route::get('/submitted/{id}', [MultiformController::class, 'submit'])->name('submit');
 
 Route::middleware([

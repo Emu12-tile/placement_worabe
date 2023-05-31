@@ -8,9 +8,8 @@ use App\Models\Form;
 use App\Models\Admin;
 use App\Models\Level;
 
-
-
 use App\Models\choice2;
+
 use App\Models\jobcat2;
 use App\Models\EduLevel;
 use App\Models\Position;
@@ -19,28 +18,29 @@ use App\Models\experience;
 use App\Models\JobCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Spipu\Html2Pdf\Html2Pdf;
 use App\Models\EducationType;
+use Illuminate\Http\Response;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class FormController extends Controller
 {
 
 
-    // public function index()
-    // {
+    public function index()
+    {
+
+        $forms = Form::all()->where('hrs', null);
 
 
+        return view('hr.index', compact('forms'));
+    }
 
-    //     $forms = Form::all()->where('hrs', null);
-
-
-
-    //     return view('hr.index', compact('forms'));
-    // }
 
     public function posDetail($id)
     {
@@ -55,10 +55,7 @@ class FormController extends Controller
             ->where('positions.id', $pos_id)
             ->select('forms.*', 'positions.position')
             ->get();
-        // dd($forms);
 
-        // $edu = Education::where('form_id', $forms->id)->get();
-        // $exper = experience::where('form_id', $forms->id)->get();
         return view('hr.index', compact('forms'));
     }
     public function pos()
@@ -68,10 +65,6 @@ class FormController extends Controller
 
 
 
-        // $forms = Form::join('positions', 'positions.id', '=', 'forms.position_id')
-        //     ->join('categories', 'categories.id', '=', 'positions.category_id')
-        //     ->where('categories.catstatus', 'active')->distinct('positions.id')
-        //     ->get(['forms.id', 'positions.position', 'positions.job_category_id']);
 
 
         $forms = Position::join('forms', 'forms.position_id', '=', 'positions.id')
@@ -81,8 +74,6 @@ class FormController extends Controller
             ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
 
 
-        //   $forms->count();
-        //   dd($forms);
 
 
         return view('hr.pos', compact('forms'));
@@ -123,27 +114,12 @@ class FormController extends Controller
             ->where('categories.catstatus', 'active')
             ->distinct('choice2s.id')
             ->get(['choice2s.id', 'choice2s.position', 'choice2s.jobcat2_id']);
-
-
-
-        // $forms = Form::join('positions', 'positions.id', '=', 'forms.position_id')
-        //     ->join('categories', 'categories.id', '=', 'positions.category_id')
-        //     ->where('categories.catstatus', 'active')->distinct('positions.id')
-        //     ->get(['forms.id', 'positions.position', 'positions.job_category_id']);
-
-
-
-
-
-
-
         return view('secondchoice.pos', compact('forms'));
     }
 
 
     public function create()
     {
-
         $level = Level::all();
         $form = Form::all();
 
@@ -152,65 +128,24 @@ class FormController extends Controller
 
         $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
             ->where('categories.catstatus', 'active')->get();
-
-
         $jobcat2 = jobcat2::all();
         $edutype = EducationType::all();
-
-
-
-
-
         return view('try', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
     }
 
 
 
-    // to be deletable
-    public function create_1()
-    {
-
-        $level = Level::all();
-        $form = Form::all();
-
-        $edu_level = EduLevel::all();
-        $job_category = JobCategory::all();
-
-        $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
-            ->where('categories.catstatus', 'active')->get();
 
 
-        $jobcat2 = jobcat2::all();
-        $edutype = EducationType::all();
-
-
-
-
-
-        return view('try2', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
-    }
     public function store(Request $request)
     {
-
-
-
-
         $this->validate($request, [
             'firstName' => 'required',
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
             'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i'],
-            // 'email' => [
-            //     'required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:' . Form::join('positions', 'positions.id', '=', 'forms.position_id')
-            //         ->join('categories', 'categories.id', '=', 'positions.category_id')
 
-            //         // Rule::unique('forms')
-            //         ->where(function ($query) {
-            //             return $query->where('categories.id', 'positions.category_id');
-            //         })
-
-            // ],
             'phone' => 'required|numeric|digits:10',
             'fee' => 'required',
             'position_id' => 'required',
@@ -242,15 +177,14 @@ class FormController extends Controller
         $previousforms = Form::select('categories.id')
             ->join('positions', 'positions.id', '=', 'forms.position_id')
             ->join('categories', 'categories.id', '=', 'positions.category_id')
-            // ->where('categories.id','positions.category_id')
-            // ->where('positions.id', $request->position_id)
+
             ->where('email', $request->email)
 
             ->get();
 
 
         $category = Position::select('categories.id')->join('categories', 'category_id', 'categories.id')->where('positions.id', $request->position_id)->first();
-        // dd($f);
+
         foreach ($previousforms as $form) {
             if ($form->id == $category->id) {
                 return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
@@ -260,12 +194,6 @@ class FormController extends Controller
 
 
 
-        // $f = Form::where('position_id', $request->position_id)
-        //     ->where('choice2_id', $request->choice2_id)
-        //     ->where('email', $request->email)->first();
-        // if ($f) {
-        //     return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
-        // }
 
 
         $form =
@@ -279,9 +207,9 @@ class FormController extends Controller
                     // slug
                     'tag_slug' => Str::slug($request->email),
 
-                    // 'education_type_id' => $request->education_type_id,
+
                     'level_id' => $request->level_id,
-                    // 'edu_level_id' => $request->edu_level_id,
+
                     'position_id' => $request->position_id,
                     'choice2_id' => $request->choice2_id,
                     'job_category_id' => $request->job_category_id,
@@ -300,8 +228,7 @@ class FormController extends Controller
                     "MoreRoles" => $request->MoreRoles,
                 ]
             );
-        // $request->session()->get('form');
-        // $form->save();
+
 
         foreach ($request->addMoreFields as $key => $val) {
 
@@ -330,34 +257,48 @@ class FormController extends Controller
 
         $form = Form::find($id); //
         $fo = Form::all();
+
+
+        $job_category = JobCategory::all();
+
+        $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
+            ->where('categories.catstatus', 'active')->get();
+
+        $choice2 = choice2::join('categories', 'categories.id', '=', 'choice2s.jobcat2_id')
+            ->where('categories.catstatus', 'active')->get();
+        $jobcat2 = jobcat2::all();
         $edu = Education::where('form_id', $form->id)->get();
         $exper = experience::where('form_id', $form->id)->get();
         $forms = Form::select("*", DB::raw("CONCAT(forms.firstName,' ',forms.middleName,' ',forms.lastName) as full_name"))
             ->get();
+        if ($form->isEditable == 0) {
+            return view('hr.show', ['form' => $form, 'job_category' => $job_category, 'choice2' => $choice2, 'position' => $position, 'jobcat2' => $jobcat2, 'forms' => $forms, 'fo' => $fo, 'edu' => $edu, 'exper' => $exper]);
+        } else {
+            abort(404, 'Sorry, the page you are looking for could not be found.');
+            // return ('doesnot exist');
+        }
+    }
+    public function updateform(Request $request, $id)
+    {
+        $form = Form::find($id);
 
-        return view('hr.show', ['form' => $form, 'forms' => $forms, 'fo' => $fo, 'edu' => $edu, 'exper' => $exper]);
+
+
+
+
+        $form->job_category_id = $request->job_category_id;
+        $form->jobcat2_id = $request->jobcat2_id;
+        $form->position_id = $request->position_id;
+        $form->choice2_id = $request->choice2_id;
+
+        $form->update();
+        return redirect('hr');
     }
 
-
-    // public function table()
-    // {
-    //     $forms = Form::paginate(5);
-    //     $forms = Form::select("*", DB::raw("CONCAT(forms.firstName,' ',forms.middleName,' ',forms.lastName) as full_name"))
-    //         ->get();
-    //     // $formList = Form::all();
-    //     return view('hr.table', compact('forms'));
-    // }
 
 
     public function position(Request $request)
     {
-        // join('categories', 'categories.id', '=', 'positions.category_id') ->where('categories.catstatus', 'active')
-
-        // $position = Position::select('position', 'id')
-        //     ->join('categories', 'categories.id', '=', 'positions.category_id')
-        //     ->where('categories.catstatus', '=', 'active')
-        //     ->where('positions.job_category_id', $request->id)
-        //     ->take(100)->get();
 
         $position = Position::select('position', 'positions.id')
             ->join('categories', 'categories.id', '=', 'positions.category_id')

@@ -28,7 +28,7 @@
                         <h3 class="hk-sec-title text-gold text-center color-wrap  "
                             style=" background-color:#08488C; padding:10px;">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-sm">
                                 <form action="{{ route('add.form') }}" class="employee-form" id='add_form' method="POST">
                                     @csrf
@@ -522,16 +522,15 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                     </section>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@section('javascript')
-    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
+{{-- @section('javascript')
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
         integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
@@ -654,7 +653,7 @@
                                                 </div>
                           </div>
                      </div>
-</div>
+                  </div>
 
 
 
@@ -882,4 +881,4 @@
 
         })
     </script>
-@endsection
+@endsection --}}
