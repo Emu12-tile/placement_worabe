@@ -148,16 +148,16 @@ License: You must have a valid license purchased only from themeforest to legall
                                     </div>
                                     <button class="btn btn-pink btn-block" type="submit">ይግቡ</button>
 
-                                    <div class="option-sep">ወይም</div>
+                                    {{-- <div class="option-sep">ወይም</div>
                                     <p class="text-center">
                                         @if (Route::has('password.request'))
                                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                                 {{ __('የይለፍ ቃል ረስተዋል?') }}
                                             </a>
                                         @endif
-                                    </p>
-                                    <p class="text-center">ከዚህ በፊት አካዉንት የሎትም? <a
-                                            href="{{ route('register') }}">ይመዝገቡ</a></p>
+                                    </p> --}}
+                                    {{-- <p class="text-center">ከዚህ በፊት አካዉንት የሎትም? <a
+                                            href="{{ route('register') }}">ይመዝገቡ</a></p> --}}
                                 </form>
                             </div>
                         </div>

@@ -147,7 +147,7 @@
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
-                                            አቆጣጠር(ወር/ቀን/ዓመት)</label>
+                                            አቆጣጠር</label>
                                         <input type="text" value="{{ $form->UniversityHiringEra }}"
                                             name="UniversityHiringEra"class="form-control " id="UniversityHiringEra"
                                             readonly>
