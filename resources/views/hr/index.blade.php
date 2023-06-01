@@ -42,6 +42,9 @@
 
                                     @role('hr')
                                         {{-- <th> አሁን ያሉበት የትምህርት ደረጃና የትምህርት ዝግጅት</th> --}}
+                                        <th>Submittedby HR</th>
+
+
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
 
@@ -215,41 +218,41 @@
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php
-
+                                                                                            
                                                                                             $fdate = Carbon::parse($fo->startingDate);
-
+                                                                                            
                                                                                             $tdate = Carbon::parse($fo->endingDate);
-
+                                                                                            
                                                                                             //
-
+                                                                                            
                                                                                             $days = $tdate->diffInDays($fdate);
                                                                                             $months = $tdate->diffInMonths($fdate);
-
+                                                                                            
                                                                                             $years = $tdate->diffInYears($fdate);
-
+                                                                                            
                                                                                             $time = $tdate->diff($fdate);
                                                                                             echo $time->y;
-
+                                                                                            
                                                                                             ?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php
-
+                                                                                            
                                                                                             $fdate = Carbon::parse($fo->startingDate);
-
+                                                                                            
                                                                                             $tdate = Carbon::parse($fo->endingDate);
-
+                                                                                            
                                                                                             $time = $tdate->diff($fdate);
                                                                                             echo $time->m;
                                                                                             ?>
                                                                                         </td>
                                                                                         <td>
                                                                                             <?php
-
+                                                                                            
                                                                                             $time = $tdate->diff($fdate);
-
+                                                                                            
                                                                                             echo $time->d;
-
+                                                                                            
                                                                                             ?>
                                                                                         </td>
                                                                                         <td></td>
@@ -617,7 +620,7 @@
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
-                                                                    @role('user')
+                                                                    {{-- @role('user')
                                                                         <form action="{{ route('hr.destroy', $form->id) }}"
                                                                             method="POST">
 
@@ -631,7 +634,7 @@
                                                                                     <i class=" icon-trash txt-danger"></i> </a>
                                                                             </button>
                                                                         </form>
-                                                                    @endrole
+                                                                    @endrole --}}
 
                                                                 </div>
 
@@ -651,7 +654,7 @@
                                                     @endforeach
                                                 </td> --}}
 
-
+                                                <td>{{ $form->submit }}</td>
 
                                                 <td> <a class="btn  btn-dark " type="submit" id="btn-evaluate"
                                                         href="{{ route('addHr', $form->id) }}">

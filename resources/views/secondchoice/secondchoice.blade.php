@@ -29,12 +29,13 @@
 
 
 
-                                    <th>የሚወዳደሩበት የስራ መደብ</th>
+                                    {{-- <th>የሚወዳደሩበት የስራ መደብ</th>
 
-                                    <th>የትምህርት ደረጃና የትምህርት ዝግጅት</th>
+                                    <th>የትምህርት ደረጃና የትምህርት ዝግጅት</th> --}}
 
 
                                     @role('hr')
+                                    <th>SubmittedBy HR</th>
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
                                     @role('admin')
@@ -55,24 +56,20 @@
                                     <tr>
                                         <td>{{ ++$i }}</td>
                                         <td>
-                                            {{-- <form action="" method="POST"><a href="{{ route('hr.show', $form->id) }}"
-                                                    class="mr-25" data-toggle="tooltip"
-                                                    data-original-title="show">{{ $form->full_name }} </a>
-                                            </form> --}}
+                                            
                                             <button type="button" class="btn bg-blue-dark-4 text-white" data-toggle="modal"
                                                 data-target="#id_{{ $i }}">
                                                 {{ $form->full_name }}</button>
-                                            {{-- {{ $form->full_name }}</button> --}}
+                                         
                                         </td>
 
-                                        {{-- <td>{{$form->h_r_id}}</td> --}}
-                                        <td>{{ $form->choice2->position }}</td>
+                                        {{-- <td>{{ $form->choice2->position }}</td> --}}
 
-                                        <td>
+                                        {{-- <td>
                                             @foreach ($form->education as $edu)
                                                 ({{ $edu->edu_level->education_level }},{{ $edu->education_type->education_type }})
                                             @endforeach
-                                        </td>
+                                        </td> --}}
 
 
                                         @role('admin')
@@ -90,6 +87,7 @@
                                             </td>
                                         @endrole
                                         @role('hr')
+                                        <td>{{$form->submit}}</td>
                                             <td><a class="btn  btn-dark " type="submit" id="btn-evaluate"
                                                     href="{{ route('addsecond', $form->id) }}"> evaluate</a>
                                             </td>

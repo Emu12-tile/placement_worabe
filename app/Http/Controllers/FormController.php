@@ -346,7 +346,7 @@ class FormController extends Controller
 
 
         $hr->isEditable = 1;
-
+        $hr->submit = auth()->user()->name;
 
         $hr->update();
         // dd($hr);
