@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
         //  dd($roles);
         return view('users.index', compact('users', 'roles'));
     }
-    
+
     public function changeStatus(Request $request)
     {
         // $item = DB::tables('model_has_roles')->select('role_id', 'id')
@@ -85,7 +85,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'regex:/(.*)@aastu.edu.et/i', 'unique:' . User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'regex:/(.*)@astu.edu.et/i', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
