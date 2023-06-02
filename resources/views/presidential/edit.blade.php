@@ -196,9 +196,17 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                    ({{ $type->edu_level->education_level }},
-                                                                    {{ $type->education_type->education_type }})
+                                                                    ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
                                                                     ,
+                                                                    ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                    ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                    ({{ $type->msc }},
+                                                                    {{ $type->discipline4 }})
                                                                 @endforeach
                                                             </td>
                                                             <td>
@@ -226,7 +234,7 @@
                                                                 @endforeach
                                                             </td>
                                                             <td>{{ $pres->hr->form->position->position }}</td>
-                                                            <td>{{ $pres->hr->form->resultOfrecentPerform  }}
+                                                            <td>{{ $pres->hr->form->resultOfrecentPerform }}
                                                             </td>
 
                                                             <td data-toggle="collapse" data-target="#more"
@@ -282,7 +290,7 @@
                                                         <tr>
 
                                                             <td>{{ $pres->hr->form->positionofnow }}</td>
-                                                            <td>{{ $pres->hr->form->level->level }}</td>
+                                                            <td>{{ $pres->hr->form->level }}</td>
                                                             <td>{{ $pres->hr->form->fee }}</td>
                                                             <td>{{ $pres->hr->form->UniversityHiringEra }}</td>
                                                             <td>{{ $pres->hr->form->servicPeriodAtUniversity }}</td>
@@ -314,13 +322,10 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                         <div class="col-md-6 form-group">
+                                        <div class="col-md-6 form-group">
                                             <label for="resultbased">Remark </label>
-                                            <textarea type="text"
-
-                                                class="form-control @error('remark') is-invalid @enderror"
-                                                id="remark" placeholder="remark " name="remark"
-                                                >{{ $pres->remark  }}</textarea>
+                                            <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark "
+                                                name="remark">{{ $pres->remark }}</textarea>
                                             @error('remark')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>

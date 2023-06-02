@@ -374,8 +374,17 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                    ({{ $type->edu_level->education_level }},
-                                                                    {{ $type->education_type->education_type }})
+                                                                    ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
+                                                                    ,
+                                                                    ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                    ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                    ({{ $type->msc }},
+                                                                    {{ $type->discipline4 }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -386,24 +395,24 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-                                                                    
+
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                                    
+
                                                                     ?>
                                                                 @endforeach
                                                             </td>
@@ -461,7 +470,7 @@
                                                         <tr>
 
                                                             <td>{{ $form->positionofnow }}</td>
-                                                            <td>{{ $form->level->level }}</td>
+                                                            <td>{{ $form->level }}</td>
                                                             <td>{{ $form->fee }}</td>
                                                             <td>{{ $form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->servicPeriodAtUniversity }}</td>
@@ -500,8 +509,7 @@
                                                 <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                                 <input class="form-control @error('performance') is-invalid @enderror"
                                                     id="performance" placeholder="ለትምህርት ዝግጅት"
-                                                    value="{{ old('performance') }}" type="number" name="performance"
-                                                    min="1" max="25">
+                                                    value="{{ old('performance') }}" type="number" name="performance">
                                                 @error('performance')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -512,7 +520,7 @@
                                                 <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                                 <input class="form-control @error('experience') is-invalid @enderror"
                                                     id="experience" placeholder="ለስራ ልምድ" value="{{ old('experience') }}"
-                                                    type="float" name="experience" min="1" max="15">
+                                                    type="float" name="experience">
                                                 @error('experience')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -524,7 +532,7 @@
                                                 <input class="form-control @error('resultbased') is-invalid @enderror"
                                                     id="resultbased" placeholder="ለውጤት ተኮር"
                                                     value="{{ round($form->resultOfrecentPerform * 0.1, 2) }}" type="float"
-                                                    name="resultbased" min="1" max="10">
+                                                    name="resultbased">
                                                 @error('resultbased')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -535,7 +543,7 @@
                                                 <label for="exam">ለፈተና ውጤት</label>
                                                 <input class="form-control @error('exam') is-invalid @enderror" id="exam"
                                                     placeholder="ለፈተና ውጤት" value="{{ old('exam') }}" type="float"
-                                                    name="exam" min="1" max="15">
+                                                    name="exam">
                                                 @error('exam')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -576,18 +584,18 @@
                                                                     <td>
 
                                                                         <?php
-                                                                        
+
                                                                         $fdate = Carbon::parse($fo->startingDate);
-                                                                        
+
                                                                         $tdate = Carbon::parse($fo->endingDate);
                                                                         $experience = $fo->positionyouworked;
                                                                         $days = $tdate->diffInDays($fdate);
                                                                         $months = $tdate->diffInMonths($fdate);
-                                                                        
+
                                                                         $years = $tdate->diffInYears($fdate);
-                                                                        
+
                                                                         $time = $tdate->diff($fdate);
-                                                                        
+
                                                                         echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
                                                                         ?>
 

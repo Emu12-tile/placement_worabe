@@ -11,8 +11,16 @@ class Education extends Model
     protected $fillable = [
 
         'form_id',
-        'edu_level_id',
-        'education_type_id'
+        'certificate',
+        'discipline1',
+        'bsc',
+        'diploma',
+        'msc',
+        'discipline2',
+        'discipline4',
+        'discipline4'
+        // 'edu_level_id',
+        // 'education_type_id'
     ];
     public function form()
     {

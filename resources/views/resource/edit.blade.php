@@ -341,7 +341,17 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                    ({{ $type->edu_level->education_level }},{{ $type->education_type->education_type }})
+                                                                    ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
+                                                                    ,
+                                                                    ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                    ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                    ({{ $type->msc }},
+                                                                    {{ $type->discipline4 }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -434,7 +444,7 @@
                                                         <tr>
 
                                                             <td>{{ $hr->form->positionofnow }}</td>
-                                                            <td>{{ $hr->form->level->level }}</td>
+                                                            <td>{{ $hr->form->level }}</td>
                                                             <td>{{ $hr->form->fee }}</td>
                                                             <td>{{ $hr->form->UniversityHiringEra }}</td>
                                                             <td>{{ $hr->form->servicPeriodAtUniversity }}</td>

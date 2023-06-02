@@ -290,9 +290,19 @@
 
                                                         <td>
                                                             @foreach ($edu as $type)
-                                                                ({{ $type->edu_level->education_level }},
-                                                                {{ $type->education_type->education_type }})
-                                                                ,
+                                                                 ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
+                                                                    ,
+                                                                     ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                     ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                     ({{ $type->msc }},
+                                                                    {{ $type->discipline4}})
+                                                                    ,
+
                                                             @endforeach
                                                         </td>
 
@@ -384,7 +394,7 @@
                                                     <tr>
 
                                                         <td>{{ $hr->form->positionofnow }}</td>
-                                                        <td>{{ $hr->form->level->level }}</td>
+                                                        <td>{{ $hr->form->level }}</td>
                                                         <td>{{ $hr->form->fee }}</td>
                                                         <td>{{ $hr->form->UniversityHiringEra }}</td>
                                                         <td>{{ $hr->form->servicPeriodAtUniversity }}</td>
@@ -410,7 +420,7 @@
                                         <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                         <input type="number" value="{{ $hr->performance }}"
                                             class="form-control @error('performance') is-invalid @enderror" id="performance"
-                                            placeholder="" name="performance" min="1" max="40" required>
+                                            placeholder="" name="performance" min="1" max="40" >
                                         @error('performance')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -421,7 +431,7 @@
                                         <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                         <input type="float" value="{{ $hr->experience }}"
                                             class="form-control @error('experience') is-invalid @enderror" id="experience"
-                                            placeholder="ለስራ ልምድ" name="experience" min="1" max="30" required>
+                                            placeholder="ለስራ ልምድ" name="experience" min="1" max="30" >
                                         @error('experience')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -433,7 +443,7 @@
                                         <input type="float" value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
                                             class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
                                             placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
-                                            required>
+                                            >
                                         @error('resultbased')
                                             <span class=" error invalid-feedback">
                                                 <strong>{{ $message }}</strong>
