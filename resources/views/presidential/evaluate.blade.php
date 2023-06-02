@@ -198,7 +198,7 @@
 
                                                             <th> የስራ ልምድዎ </th>
                                                             <th>የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት</th>
-                                                        <th>ተጨማሪ ይመልከቱ</th>
+                                                            <th>ተጨማሪ ይመልከቱ</th>
 
 
 
@@ -216,9 +216,18 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                    ({{ $type->edu_level->education_level }},
-                                                                    {{ $type->education_type->education_type }})
+                                                                    ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
                                                                     ,
+                                                                    ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                    ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                    ({{ $type->msc }},
+                                                                    {{ $type->discipline4 }})
+
                                                                 @endforeach
 
                                                             </td>
@@ -230,7 +239,7 @@
                                                                 @foreach ($forms as $fo)
                                                                     <?php
 
-                                                                     $fdate = Carbon::parse($fo->startingDate);
+                                                                    $fdate = Carbon::parse($fo->startingDate);
 
                                                                     $tdate = Carbon::parse($fo->endingDate);
 
@@ -245,12 +254,12 @@
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
 
-                                                                    echo $time->y, 'ዓመት','ከ' ,$time->m,' ወር በ(', $fo->positionyouworked, '), ';
+                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
 
                                                                     ?>
                                                                 @endforeach
                                                             </td>
-                                                            <td>{{ $form->form->resultOfrecentPerform  }}
+                                                            <td>{{ $form->form->resultOfrecentPerform }}
                                                             </td>
                                                             <td data-toggle="collapse" data-target="#more"
                                                                 aria-expanded="false" aria-controls="collapseExample">more
@@ -308,7 +317,7 @@
                                                         <tr>
 
                                                             <td>{{ $form->form->positionofnow }}</td>
-                                                            <td>{{ $form->form->level->level }}</td>
+                                                            <td>{{ $form->form->level }}</td>
                                                             <td>{{ $form->form->fee }}</td>
                                                             <td>{{ $form->form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->form->servicPeriodAtUniversity }}</td>
@@ -341,15 +350,15 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-6 form-group">
-                                    <label for="exam">Remark</label>
-                                    <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
-                                        value="{{ old('remark') }}" type="text" name="remark"></textarea>
-                                    @error('remark')
-                                        <span class=" error invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                                        <label for="exam">Remark</label>
+                                        <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
+                                            value="{{ old('remark') }}" type="text" name="remark"></textarea>
+                                        @error('remark')
+                                            <span class=" error invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
 
 

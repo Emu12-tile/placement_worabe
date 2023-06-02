@@ -40,12 +40,13 @@ use App\Models\Prestwo;
 //     return view('welcome');
 // });
 
+
 Route::get('/', [FormController::class, 'create'])->name('try');
 Route::post('/', [FormController::class, 'store'])->name('add.form');
-Route::get('/hr/try/job', [FormController::class, 'position']);
-Route::get('/hr/try/categ2', [FormController::class, 'position2']);
-Route::get('/hr/try/selection', [FormController::class, 'selection']);
-Route::get('/hr/try/selection2', [FormController::class, 'selection2']);
+// Route::get('/hr/try/job', [FormController::class, 'position']);
+// Route::get('/hr/try/categ2', [FormController::class, 'position2']);
+// Route::get('/hr/try/selection', [FormController::class, 'selection']);
+// Route::get('/hr/try/selection2', [FormController::class, 'selection2']);
 
 
 
@@ -102,7 +103,16 @@ Route::middleware([
 ])->group(
     function () {
         Route::resource('/hr', FormController::class);
+
+        Route::get('/hr/try/job', [FormController::class, 'position']);
+        Route::get('/hr/try/categ2', [FormController::class, 'position2']);
+        Route::get('/hr/try/selection', [FormController::class, 'selection']);
+        Route::get('/hr/try/selection2', [FormController::class, 'selection2']);
+
         Route::put('/addposition/{id}', [FormController::class, 'updateform'])->name('addposition');
+        Route::get('/forms', [FormController::class, 'form'])->name('forms');
+        Route::get('/forms/edit/{id}', [FormController::class, 'formedit']);
+        Route::put('/update_education/{id}', [FormController::class, 'updateForms']);
         Route::get('/pos', [FormController::class, 'pos']);
         Route::get('/posDetail/{id}', [FormController::class, 'posDetail'])->name('posDetail');
 

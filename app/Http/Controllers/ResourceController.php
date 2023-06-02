@@ -207,12 +207,12 @@ class ResourceController extends Controller
         $resource->form_id = $prod->id;
         // dd($resource->save());
         if (($resource->save() == true)) {
-            // $resource->status_hr ->fill(1) ;
-            // $resource->status_hr = 1;
+
             $prod->hrs = 1;
         }
         $resource->save();
         $prod->save();
+
         if ($request->type == 'high') {
             return redirect('posDetail/' . $resource->form->position_id)->with('status', 'evaluation added successfully');
         } else if ($request->type == 'low') {

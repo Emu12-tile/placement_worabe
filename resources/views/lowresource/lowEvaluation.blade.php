@@ -333,7 +333,7 @@
                             {{-- </div> --}}
                             {{-- </div> --}}
 
-                            <form action="{{ route('addHrPost1', $id) }}" method="POST" id="add_evaluation">
+                            <form action="{{ route('addHrPost', $id) }}" method="POST" id="add_evaluation">
                                 @csrf
                                 <div class="row">
                                     {{-- <div class="col-md-6"> --}}
@@ -376,8 +376,20 @@
 
 
                                                             <td>
-                                                                @foreach ($edu as $ed)
-                                                                    ({{ $ed->edu_level->education_level }},{{ $ed->education_type->education_type }})
+
+
+                                                                 @foreach ($edu as $type)
+                                                                    ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
+                                                                    ,
+                                                                     ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                     ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                     ({{ $type->msc }},
+                                                                    {{ $type->discipline4}})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -468,7 +480,7 @@
                                                         <tr>
 
                                                             <td>{{ $form->positionofnow }}</td>
-                                                            <td>{{ $form->level->level }}</td>
+                                                            <td>{{ $form->level }}</td>
                                                             <td>{{ $form->fee }}</td>
                                                             <td>{{ $form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->servicPeriodAtUniversity }}</td>
@@ -611,7 +623,7 @@
                                             </div>
                                         </div>
                                     @endrole
-                                    <input type="hidden" name="type" value="second">
+                                    <input type="hidden" name="type" value="low">
 
 
 

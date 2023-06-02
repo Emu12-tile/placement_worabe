@@ -292,8 +292,18 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                    ({{ $type->edu_level->education_level }},
-                                                                    {{ $type->education_type->education_type }})
+
+                                                                    ({{ $type->certificate }},
+                                                                    {{ $type->discipline1 }})
+                                                                    ,
+                                                                    ({{ $type->diploma }},
+                                                                    {{ $type->discipline2 }})
+                                                                    ,
+                                                                    ({{ $type->bsc }},
+                                                                    {{ $type->discipline3 }})
+                                                                    ,
+                                                                    ({{ $type->msc }},
+                                                                    {{ $type->discipline4 }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -303,24 +313,24 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-                                                                    
+
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                                    
+
                                                                     ?>
                                                                 @endforeach
                                                             </td>
@@ -386,7 +396,7 @@
                                                         <tr>
 
                                                             <td>{{ $hr->form->positionofnow }}</td>
-                                                            <td>{{ $hr->form->level->level }}</td>
+                                                            <td>{{ $hr->form->level }}</td>
                                                             <td>{{ $hr->form->fee }}</td>
                                                             <td>{{ $hr->form->UniversityHiringEra }}</td>
                                                             <td>{{ $hr->form->servicPeriodAtUniversity }}</td>
@@ -413,7 +423,7 @@
                                             <input type="number" value="{{ $hr->performance }}"
                                                 class="form-control @error('performance') is-invalid @enderror" id="performance"
                                                 placeholder="ለትምህርት ዝግጅት" name="performance" min="1" max="40"
-                                                required>
+                                                >
                                             @error('performance')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -424,7 +434,7 @@
                                             <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                             <input type="float" value="{{ $hr->experience }}"
                                                 class="form-control @error('experience') is-invalid @enderror" id="experience"
-                                                placeholder="ለስራ ልምድ" name="experience" min="1" max="30" required>
+                                                placeholder="ለስራ ልምድ" name="experience" min="1" max="30" >
                                             @error('experience')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -437,7 +447,7 @@
                                                 value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
                                                 class="form-control @error('resultbased') is-invalid @enderror"
                                                 id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
-                                                min="1" max="30" required>
+                                                min="1" max="30" >
                                             @error('resultbased')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>

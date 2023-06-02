@@ -56,11 +56,11 @@
                                     <tr>
                                         <td>{{ ++$i }}</td>
                                         <td>
-                                            
+
                                             <button type="button" class="btn bg-blue-dark-4 text-white" data-toggle="modal"
                                                 data-target="#id_{{ $i }}">
                                                 {{ $form->full_name }}</button>
-                                         
+
                                         </td>
 
                                         {{-- <td>{{ $form->choice2->position }}</td> --}}
@@ -173,7 +173,7 @@
                                                                 <label for="inputname"
                                                                     class="col-sm-2 col-form-label">ደረጃ</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" value="{{ $form->level->level }}"
+                                                                    <input type="text" value="{{ $form->level }}"
                                                                         name="level"class="form-control "
                                                                         id="inputEmail3" readonly>
                                                                 </div>
@@ -197,10 +197,10 @@
 
 
                                                                 @foreach ($form->education as $fo)
-                                                                    <input type="text"
+                                                                    {{-- <input type="text"
                                                                         value="[{{ $fo->edu_level->education_level }} , {{ $fo->education_type->education_type }}],"
                                                                         name="education_level"class="form-control "
-                                                                        id="inputEmail3" readonly>
+                                                                        id="inputEmail3" readonly> --}}
                                                                 @endforeach
 
 

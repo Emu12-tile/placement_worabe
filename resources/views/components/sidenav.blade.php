@@ -26,7 +26,7 @@
                     </div>
                     {{-- <ul class="navbar-nav flex-column"> --}}
                     @role('user')
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('user') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
@@ -78,7 +78,7 @@
                                     የሚወዳደሩበት የስራ መደብ ክፍል
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('position.index') }}">

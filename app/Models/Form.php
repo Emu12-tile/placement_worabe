@@ -37,13 +37,13 @@ class Form extends Model
         // 'education_type_id',
         'job_category_id',
         'level_id',
-        'h_r_id',
+        // 'h_r_id',
         'choice2_id',
         'jobcat2_id',
-        'secondhr_id',
+        // 'secondhr_id',
         'level',
-        'tag_slug',
-        'firstdergee'
+        // 'tag_slug',
+        // 'firstdergee'
 
 
 
@@ -58,7 +58,7 @@ class Form extends Model
     {
         return $this->belongsTo(Secondhr::class, 'secondhr_id', 'id');
     }
-    
+
 
     public function experiences()
     {

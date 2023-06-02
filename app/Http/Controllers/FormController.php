@@ -41,6 +41,14 @@ class FormController extends Controller
         return view('hr.index', compact('forms'));
     }
 
+    public function form()
+    {
+
+        $forms = Form::all()->where('hrs', null);
+
+
+        return view('hr.form', compact('forms'));
+    }
 
     public function posDetail($id)
     {
@@ -205,7 +213,7 @@ class FormController extends Controller
                     'email' => $request->email,
                     'phone' => $request->phone,
                     // slug
-                    'tag_slug' => Str::slug($request->email),
+                    // 'tag_slug' => Str::slug($request->email),
 
 
                     'level_id' => $request->level_id,
@@ -252,11 +260,12 @@ class FormController extends Controller
 
         return redirect('/submitted/' . $form->id);
     }
+
     public function show($id)
     {
 
         $form = Form::find($id); //
-        $fo = Form::all();
+        // $fo = Form::all();
 
 
         $job_category = JobCategory::all();
@@ -272,28 +281,92 @@ class FormController extends Controller
         $forms = Form::select("*", DB::raw("CONCAT(forms.firstName,' ',forms.middleName,' ',forms.lastName) as full_name"))
             ->get();
         if ($form->isEditable == 0) {
-            return view('hr.show', ['form' => $form, 'job_category' => $job_category, 'choice2' => $choice2, 'position' => $position, 'jobcat2' => $jobcat2, 'forms' => $forms, 'fo' => $fo, 'edu' => $edu, 'exper' => $exper]);
+            return view('hr.show', ['form' => $form, 'job_category' => $job_category, 'choice2' => $choice2, 'position' => $position, 'jobcat2' => $jobcat2, 'forms' => $forms,  'edu' => $edu, 'exper' => $exper]);
         } else {
             abort(404, 'Sorry, the page you are looking for could not be found.');
             // return ('doesnot exist');
         }
     }
+    public function formedit($id)
+    {
+        $form = Form::find($id)->where('hrs', null);
+        return view('hr.editEducation', ['form' => $form]);
+    }
     public function updateform(Request $request, $id)
     {
         $form = Form::find($id);
 
-
-
-
-
+        $form->choice2_id = $request->choice2_id;
+        $form->position_id = $request->position_id;
         $form->job_category_id = $request->job_category_id;
         $form->jobcat2_id = $request->jobcat2_id;
-        $form->position_id = $request->position_id;
-        $form->choice2_id = $request->choice2_id;
+        $form->firstName = $request->Input('firstName');
+        $form->middleName = $request->Input('middleName');
+        $form->lastName = $request->Input('lastName');
+
+        $form->resultOfrecentPerform = $request->Input('resultOfrecentPerform');
+        $form->DisciplineFlaw = $request->Input('DisciplineFlaw');
+        $form->fee = $request->Input('fee');
+
+        $form->UniversityHiringEra = $request->Input('UniversityHiringEra');
+        $form->servicPeriodAtUniversity = $request->Input('servicPeriodAtUniversity');
+        $form->servicPeriodAtAnotherPlace = $request->Input('servicPeriodAtAnotherPlace');
+
+
+        $form->serviceBeforeDiplo = $request->Input('serviceBeforeDiplo');
+        $form->serviceAfterDiplo = $request->Input('serviceAfterDiplo');
+        $form->MoreRoles = $request->Input('MoreRoles');
+
+
+
+        $form->sex = $request->Input('sex');
+        $form->email = $request->Input('phone');
+        $form->positionofnow = $request->Input('positionofnow');
+
+
+
+        // $edu = Education::where('form_id', $form->id)->get();
+        foreach ($form->education as $education) {
+            $education->certificate = $request->input('certificate');
+            $education->discipline1 = $request->input('discipline1');
+            $education->diploma = $request->input('diploma');
+            $education->discipline2 = $request->input('discipline2');
+            $education->bsc = $request->input('bsc');
+            $education->discipline3 = $request->input('discipline3');
+            $education->msc = $request->input('msc');
+            $education->discipline4 = $request->input('discipline4');
+            $education->update();
+        }
+        foreach ($form->experiences as $experience) {
+            $experience->startingDate = $request->input('startingDate');
+            $experience->endingDate = $request->input('endingDate');
+            $experience->positionyouworked = $request->input('positionyouworked');
+            $experience->update();
+        }
 
         $form->update();
         return redirect('hr');
     }
+
+
+
+    public function updateForms(Request $request, $id)
+    {
+        $form = Form::find($id);
+        $form->firstName = $request->Input('firstName');
+        $form->middleName = $request->Input('middleName');
+
+        $form->choice2_id = $request->choice2_id;
+        $form->position_id = $request->position_id;
+        $form->job_category_id = $request->job_category_id;
+        $form->jobcat2_id = $request->jobcat2_id;
+
+        $form->update();
+        return redirect('forms');
+    }
+
+
+
 
 
 
@@ -353,6 +426,9 @@ class FormController extends Controller
 
         return back()->with('status', 'approved  successfully');
     }
+
+
+
 
 
 

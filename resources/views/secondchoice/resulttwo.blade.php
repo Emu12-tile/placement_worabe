@@ -178,9 +178,19 @@
                                                                                             <tr>
                                                                                                 <td>የትምህርት ደረጃና ዝግጅት</td>
                                                                                                 <td>
-                                                                                                    @foreach ($hr->form->education as $i => $fo)
-                                                                                                        ({{ $fo->edu_level->education_level }}፣
-                                                                                                        {{ $fo->education_type->education_type }})
+                                                                                                    @foreach ($hr->form->education as $i => $type)
+                                                                                                        ({{ $type->certificate }},
+                                                                                                            {{ $type->discipline1 }})
+                                                                                                            ,
+                                                                                                            ({{ $type->diploma }},
+                                                                                                            {{ $type->discipline2 }})
+                                                                                                            ,
+                                                                                                            ({{ $type->bsc }},
+                                                                                                            {{ $type->discipline3 }})
+                                                                                                            ,
+                                                                                                            ({{ $type->msc }},
+                                                                                                            {{ $type->discipline4 }})
+                                                                                                            ,
                                                                                                     @endforeach
                                                                                                 </td>
                                                                                             </tr>
@@ -515,7 +525,7 @@
                                                                                             class="col-sm-2 col-form-label">ደረጃ</label>
                                                                                         <div class="col-sm-10">
                                                                                             <input type="text"
-                                                                                                value="{{ $hr->form->level->level }}"
+                                                                                                value="{{ $hr->form->level }}"
                                                                                                 name="level"class="form-control "
                                                                                                 id="inputEmail3" readonly>
                                                                                         </div>
@@ -542,7 +552,19 @@
 
                                                                                         @foreach ($hr->form->education as $fo)
                                                                                             <input type="text"
-                                                                                                value="[{{ $fo->edu_level->education_level }} , {{ $fo->education_type->education_type }}],"
+                                                                                                value="[{{ $fo->certificate }} , {{ $fo->discipline1 }}]"
+                                                                                                name="education_level"class="form-control "
+                                                                                                id="inputEmail3" readonly>
+                                                                                            <input type="text"
+                                                                                                value="[{{ $fo->diploma }} , {{ $fo->discipline2 }}],"
+                                                                                                name="education_level"class="form-control "
+                                                                                                id="inputEmail3" readonly>
+                                                                                            <input type="text"
+                                                                                                value="[{{ $fo->bsc }} , {{ $fo->discipline3 }}],"
+                                                                                                name="education_level"class="form-control "
+                                                                                                id="inputEmail3" readonly>
+                                                                                            <input type="text"
+                                                                                                value="[{{ $fo->msc }} , {{ $fo->discipline2 }}],"
                                                                                                 name="education_level"class="form-control "
                                                                                                 id="inputEmail3" readonly>
                                                                                         @endforeach
