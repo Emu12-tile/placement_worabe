@@ -68,10 +68,9 @@
                                                 <td>
 
 
-                                                    <button type="button" class="btn btn-primary " data-toggle="modal"
-                                                        data-target="#id2_{{ $i }}">
-                                                        {{ $form->full_name }}</button>
-                                                    <div class="modal fade" id="id2_{{ $i }}" tabindex="-1"
+
+                                                        {{ $form->full_name }}
+                                                    {{-- <div class="modal fade" id="id2_{{ $i }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLongTitle"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -385,7 +384,7 @@
 
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
 
                                                 </td>
