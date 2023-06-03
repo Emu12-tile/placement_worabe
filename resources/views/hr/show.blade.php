@@ -798,37 +798,38 @@
 
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
+                                        <label for="UniversityHiringEra"> የቅጥር ዘመን በኢትዮጵያ
                                             አቆጣጠር</label>
                                         <input type="text" value="{{ $form->UniversityHiringEra }}"
                                             name="UniversityHiringEra"class="form-control " id="UniversityHiringEra">
 
                                     </div>
-                                    <div class="col-md-6 form-group">
+                                    {{-- <div class="col-md-6 form-group">
                                         <label for="servicPeriodAtUniversity">በዩኒቨርስቲዉ አገልግሎት ዘመን (በዓመት,የስራ
                                             መደብ)</label>
                                         <input type="text" value="{{ $form->servicPeriodAtUniversity }}"
                                             name="servicPeriodAtUniversity"class="form-control "
                                             id="servicPeriodAtUniversity">
-                                    </div>
-                                    <div class="col-md-6 form-group">
+                                    </div> --}}
+
+                                    {{-- <div class="col-md-6 form-group">
                                         <label for="servicPeriodAtAnotherPlace">በሌላ መስርያ ቤት አገልግሎት ዘመን(በዓመት,የስራ
                                             መደብ)</label>
                                         <input type="text" value="{{ $form->servicPeriodAtAnotherPlace }}"
                                             name="servicPeriodAtAnotherPlace"class="form-control "
                                             id="servicPeriodAtAnotherPlace">
-                                    </div>
-                                    <div class="col-md-6 form-group">
+                                    </div> --}}
+                                    {{-- <div class="col-md-6 form-group">
                                         <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት,የስራ መደብ)</label>
                                         <input type="text" value="{{ $form->serviceBeforeDiplo }}"
                                             name="serviceBeforeDiplo"class="form-control " id="serviceBeforeDiplo">
 
-                                    </div>
-                                    <div class="col-md-6 form-group">
+                                    </div> --}}
+                                    {{-- <div class="col-md-6 form-group">
                                         <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ መደብ)</label>
                                         <input type="text" value="{{ $form->serviceAfterDiplo }}"
                                             name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo">
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-6 form-group">
                                         <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
                                             አፈጻፀም አማካይ
@@ -838,15 +839,15 @@
                                     </div>
 
                                     <div class="col-md-6 form-group">
-                                        <label for="DisciplineFlaw"> የዲስፕሊን ጉድለት</label>
+                                        <label for="DisciplineFlaw">የፋይል ጥራት</label>
                                         <input type="text" value="{{ $form->DisciplineFlaw }}"
                                             name="DisciplineFlaw"class="form-control " id="DisciplineFlaw">
                                     </div>
-                                    <div class="col-md-6 form-group">
+                                    {{-- <div class="col-md-6 form-group">
                                         <label for="MoreRoles"> ተጨማሪ የሥራ ድርሻ</label>
                                         <input type="text" value="{{ $form->MoreRoles }}"
                                             name="MoreRoles"class="form-control " id="MoreRoles">
-                                    </div>
+                                    </div> --}}
 
 
                                 </div>
@@ -879,7 +880,7 @@
 
 
 
-                                <h3 class="text-gold text-center mt-3 mb-4 navigation "
+                                {{-- <h3 class="text-gold text-center mt-3 mb-4 navigation "
                                     style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
@@ -986,7 +987,7 @@
 
 
 
-                                </div>
+                                </div> --}}
 
 
 
@@ -1005,10 +1006,10 @@
                         </div>
 
                     </div>
+
+                </section>
             </div>
-            </section>
         </div>
-    </div>
     </div>
 @endsection
 @section('javascript')

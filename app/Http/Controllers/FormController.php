@@ -37,7 +37,8 @@ class FormController extends Controller
 
         $forms = Form::all()->where('hrs', null);
 
-
+        // $forms = Form::where('hrs', null)->paginate(10);
+        // dd($forms);
         return view('hr.index', compact('forms'));
     }
 

@@ -26,15 +26,14 @@
                                     <th>ተቁ</th>
                                     <th>ሙሉ ስም</th>
                                     @role('admin')
-
-                                        <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
-                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th>
+                                        {{-- <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
+                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th> --}}
 
                                         <th> action</th>
 
 
-                                        <th>Submit</th>
-                                        <th>pdf</th>
+                                        {{-- <th>Submit</th>
+                                        <th>pdf</th> --}}
                                     @endrole
 
 
@@ -68,7 +67,7 @@
                                                 <td>{{ ++$j }}</td>
                                                 <td>
 
-                                                    {{-- {{ $form->full_name }} --}}
+
                                                     <button type="button" class="btn btn-primary " data-toggle="modal"
                                                         data-target="#id2_{{ $i }}">
                                                         {{ $form->full_name }}</button>
@@ -393,14 +392,14 @@
 
 
 
-                                                <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
+                                                {{-- <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
                                                     {{ $form->position->position ?? 'to be selected' }}</td>
                                                 <td>{{ $form->jobcat2->job_category ?? 'to be selected' }}\
                                                     {{ $form->choice2->position ?? 'to be selected' }}
-                                                </td>
+                                                </td> --}}
 
 
-                                                
+
                                                 <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a>
                                                 </td>
@@ -409,7 +408,7 @@
 
 
 
-                                                <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
+                                                {{-- <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
                                                         data-toggle="modal" data-target="#id1_{{ $i }}">
                                                         Submit
                                                     </button>
@@ -448,10 +447,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
+                                                </td> --}}
 
 
-                                                <td> <button type="button" class="btn btn-primary requestStat btn-sm "
+                                                {{-- <td> <button type="button" class="btn btn-primary requestStat btn-sm "
                                                         data-toggle="modal" data-target="#id_{{ $i }}"><i
                                                             class="ion ion-md-archive "></i>pdf
                                                     </button>
@@ -465,7 +464,7 @@
                                                                     <div id="element-to-print">
 
 
-                                                                        {{-- @foreach ($formList as $i => $form) --}}
+
                                                                         <h1
                                                                             style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">
                                                                             አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
@@ -474,7 +473,7 @@
                                                                         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }}
                                                                             {{ $form->middleName }}
                                                                             {{ $form->lastName }} </p>
-                                                                        {{-- <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p> --}}
+
                                                                         <p>2/ አሁን ያሉበት የስራ መደብ
                                                                             መጠርያ:-{{ $form->positionofnow }} &emsp;
                                                                             ደረጃ፦{{ $form->level ?? '' }} &emsp;
@@ -484,7 +483,7 @@
                                                                         <table id="customers" class="mb-15">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    {{-- <th>ተ.ቁ</th> --}}
+
                                                                                     <th>የትምህርት ደረጃ</th>
                                                                                     <th>የትምህርት ዝግጅት</th>
 
@@ -525,8 +524,7 @@
 
                                                                         <p>4/ በዩኒቨርስቲዉ የቅጥር
                                                                             ዘመን:-{{ $form->UniversityHiringEra }}
-                                                                            {{-- {{ Carbon::parse($form->UniversityHiringEra)->day }}/{{ Carbon::parse($form->UniversityHiringEra)->month }}/{{ Carbon::parse($form->UniversityHiringEra)->year }} --}}
-                                                                            {{-- {{ Carbon::parse($form->UniversityHiringEra)->format('d-m-Y')}} --}}
+
                                                                         </p>
                                                                         <p>5/ በዩኒቨርስቲዉ አገልግሎት
                                                                             ዘመን:-{{ $form->servicPeriodAtUniversity }}
@@ -667,16 +665,16 @@
 
 
 
-                                                                {{-- </div> --}}
+
 
                                                             </div>
                                                         </div>
 
                                                     </div>
-                                                </td>
+                                                </td> --}}
 
 
-                                                {{-- <td>{{ $form->position }}</td> --}}
+
 
 
 
