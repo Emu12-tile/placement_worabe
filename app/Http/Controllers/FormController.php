@@ -34,12 +34,15 @@ class FormController extends Controller
 
     public function index()
     {
-
-        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName','id')->get();
+        // $forms = Form::all()->where('hrs', null);
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id')->get();
+        // dd($forms);
 
         // $forms = Form::where('hrs', null)->paginate(10);
         // dd($forms);
-        return view('hr.index', compact('forms'));
+        // $forms = Form::whereNotNull('hrs')->select('firstName', 'middleName', 'lastName', 'id')->get();
+
+        return view('hr.index', ['forms' => $forms]);
     }
 
     public function form()
@@ -296,6 +299,13 @@ class FormController extends Controller
     public function updateform(Request $request, $id)
     {
         $form = Form::find($id);
+        // $request->validate([
+
+        //     'addMoreInputFields.*.id' => 'nullable|exists:experiences,id',
+        //     'addMoreInputFields.*.positionyouworked' => 'required|string|max:255',
+        //     'addMoreInputFields.*.startingDate' => 'required|string|max:255',
+        //     'addMoreInputFields.*.endingDate' => 'required|string|max:255',
+        // ]);
 
         $form->choice2_id = $request->choice2_id;
         $form->position_id = $request->position_id;
@@ -338,12 +348,41 @@ class FormController extends Controller
             $education->discipline4 = $request->input('discipline4');
             $education->update();
         }
+
+
+        //     $inputFields = $request->input('addMoreInputFields') ?? [];
+
+        //    $exper=experience::findOrFail()
+
+        $inputFields = $request->input('addMoreInputFields');
+        // dd($inputFields);
         foreach ($form->experiences as $experience) {
-            $experience->startingDate = $request->input('startingDate');
-            $experience->endingDate = $request->input('endingDate');
-            $experience->positionyouworked = $request->input('positionyouworked');
-            $experience->update();
+
+
+
+            foreach ($inputFields as $key => $value) {
+                // dd($value);
+
+                if($value['id']==$experience->id) {
+                    $experience = Experience::findOrFail($experience->id);
+
+                    $experience->positionyouworked = $value['positionyouworked'];
+                    $experience->startingDate = $value['startingDate'];
+                    $experience->endingDate = $value['endingDate'];
+                    // dd($experience);
+                    $experience->update();
+                }
+            }
         }
+
+        // foreach ($request->input('addMoreInputFields') as $key => $value) {
+        //     $experience = Experience::findOrFail($value['id']);
+        //     $experience->positionyouworked = $value['positionyouworked'];
+        //     $experience->startingDate = $value['startingDate'];
+        //     $experience->endingDate = $value['endingDate'];
+        //     dd($experience);
+        //     $experience->update();
+        // }
 
         $form->update();
         return redirect('hr');

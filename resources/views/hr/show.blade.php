@@ -765,7 +765,7 @@
                                         <div class="col-md-6 form-group">
                                             <label for="discipline3">የትምህርት ዝግጅት</label>
                                             <input type="text" value="{{ $fo->discipline3 }}"
-                                                name="discipline4"class="form-control " id="inputEmail3">
+                                                name="discipline3"class="form-control " id="inputEmail3">
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="msc">Msc.</label>
@@ -775,7 +775,7 @@
                                         <div class="col-md-6 form-group">
                                             <label for="discipline4">የትምህርት ዝግጅት</label>
                                             <input type="text" value="{{ $fo->discipline4 }}"
-                                                name="discipline3"class="form-control " id="inputEmail3">
+                                                name="discipline4"class="form-control " id="inputEmail3">
                                         </div>
                                     </div>
                                 @endforeach
@@ -854,23 +854,29 @@
                                 <h3 class="text-gold text-center mt-3 mb-4   "
                                     style=" background-color:#08488C; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
-                                @foreach ($form->experiences as $i => $fo)
+                                @foreach ($form->experiences ?? [] as $i => $fo)
                                     <div class="row">
+                                        <input type="hidden" value="{{ $fo->id }} "
+                                            name="addMoreInputFields[{{ $i }}][id]"class="form-control "
+                                            id="inputEmail3">
                                         <div class="col-md-4 form-group">
                                             <label for="startingDate">የጀመሩበት ዓመት(ዓመት/ወር/ቀን)</label>
                                             <input type="text" value="{{ $fo->startingDate }} "
-                                                name="startingDate"class="form-control " id="inputEmail3">
+                                                name="addMoreInputFields[{{ $i }}][startingDate]"class="form-control "
+                                                id="inputEmail3">
                                         </div>
 
                                         <div class="col-md-4 form-group">
                                             <label for="endingDate">ያበቃበት ዓመት(ዓመት/ወር/ቀን)</label>
                                             <input type="text" value="{{ $fo->endingDate }}"
-                                                name="endingDate"class="form-control " id="inputEmail3">
+                                                name="addMoreInputFields[{{ $i }}][endingDate]"class="form-control "
+                                                id="inputEmail3">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label for="positionyouworked">የስራ መደብ</label>
                                             <input type="text" value="{{ $fo->positionyouworked }}"
-                                                name="positionyouworked"class="form-control " id="inputEmail3">
+                                                name="addMoreInputFields[{{ $i }}][positionyouworked]"class="form-control "
+                                                id="inputEmail3">
                                         </div>
 
                                     </div>

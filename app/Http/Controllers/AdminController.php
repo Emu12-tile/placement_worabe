@@ -20,10 +20,9 @@ class AdminController extends Controller
     public function index()
     {
 
-        $forms = Form::where('isEditable', 1)->get();
+        // $forms = Form::where('isEditable', 1)->get();
+        $forms = Form::where('isEditable', 1)->select('job_category_id', 'position_id', 'jobcat2_id', 'choice2_id', 'firstName', 'middleName', 'lastName', 'sex', 'positionofnow', 'level', 'fee')->get();
 
-        // ->with('i', (request()->input('page', 1) - 1) * 5)
-        // return view('hr.table', compact('forms'))->with('i', (request()->input('page', 1) - 1) * 10);
         return view('hr.table', compact('forms'));
     }
     public function posall()

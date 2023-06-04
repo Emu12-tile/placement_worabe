@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
             $item =
                 User::with('roles')->find($request->user);
 
-            // $users_without_any_roles = User::doesntHave('roles')->find($request->user);
+            // $item = User::doesntHave('roles')->find($request->user);
             if ($item) {
                 // $item->role->name = $request->name;
                 // $item->store_status = $request->status;

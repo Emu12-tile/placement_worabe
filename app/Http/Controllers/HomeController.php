@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index(){
-       $forms=HR::all();
+    //    $forms=HR::all();
+
+
     //    $form=Form::all();
     //    $form->form->position_id;
         // $hr = DB::table('h_r_s')->select('performance','exam')->get();
@@ -19,6 +21,7 @@ class HomeController extends Controller
     //     $hr = DB::table('h_r_s')->pluck('exam');
     //    dd(\App\Models\HR::query()->where('status_hr', '==', '0')->select('form_id')->distinct()->count());
 //  dd(HR::where('exam', '=', null)->count());
-        return view('home',compact('forms'));
+
+        return view('home');
     }
 }

@@ -67,14 +67,14 @@
                                                 <td>{{ $form->full_name }}</td>
                                                 <td>{{ $form->sex }}</td>
                                                 <td>{{ $form->positionofnow }}</td>
-                                                <td>{{ $form->level->level }}</td>
+                                                <td>{{ $form->level }}</td>
                                                 <td>{{ $form->fee }}</td>
-                                                <td>{{ $form->job_category->job_category }}</td>
-                                                <td>{{ $form->position->position }}</td>
-                                                <td>{{ $form->position->level }}</td>
-                                                <td>{{ $form->jobcat2->job_category }}</td>
-                                                <td>{{ $form->choice2->position }}</td>
-                                                <td>{{ $form->choice2->level }}</td>
+                                                <td>{{ $form->job_category->job_category ?? '' }}</td>
+                                                <td>{{ $form->position->position ?? '' }}</td>
+                                                <td>{{ $form->position->level ?? '' }}</td>
+                                                <td>{{ $form->jobcat2->job_category ?? '' }}</td>
+                                                <td>{{ $form->choice2->position ?? '' }}</td>
+                                                <td>{{ $form->choice2->level ?? '' }}</td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
