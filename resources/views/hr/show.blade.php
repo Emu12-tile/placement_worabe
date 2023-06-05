@@ -860,15 +860,19 @@
                                             name="addMoreInputFields[{{ $i }}][id]"class="form-control "
                                             id="inputEmail3">
                                         <div class="col-md-4 form-group">
-                                            <label for="startingDate">የጀመሩበት ዓመት(ዓመት/ወር/ቀን)</label>
-                                            <input type="text" value="{{ $fo->startingDate }} "
+                                            <label for="startingDate">የጀመሩበት ዓመት(ወር/ቀን/ዓመት)</label>
+                                            <input type="date" value="{{ $fo->startingDate }}"
                                                 name="addMoreInputFields[{{ $i }}][startingDate]"class="form-control "
                                                 id="inputEmail3">
+                                            @error('startingDate')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
                                         </div>
 
                                         <div class="col-md-4 form-group">
-                                            <label for="endingDate">ያበቃበት ዓመት(ዓመት/ወር/ቀን)</label>
-                                            <input type="text" value="{{ $fo->endingDate }}"
+                                            <label for="endingDate">ያበቃበት ዓመት(ወር/ቀን/ዓመት)</label>
+                                            <input type="date" value="{{ $fo->endingDate }}"
                                                 name="addMoreInputFields[{{ $i }}][endingDate]"class="form-control "
                                                 id="inputEmail3">
                                         </div>

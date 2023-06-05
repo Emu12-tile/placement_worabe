@@ -35,7 +35,7 @@ class FormController extends Controller
     public function index()
     {
         // $forms = Form::all()->where('hrs', null);
-        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id')->get();
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'isEditable')->get();
         // dd($forms);
 
         // $forms = Form::where('hrs', null)->paginate(10);
@@ -299,13 +299,12 @@ class FormController extends Controller
     public function updateform(Request $request, $id)
     {
         $form = Form::find($id);
-        // $request->validate([
+        $request->validate([
 
-        //     'addMoreInputFields.*.id' => 'nullable|exists:experiences,id',
-        //     'addMoreInputFields.*.positionyouworked' => 'required|string|max:255',
-        //     'addMoreInputFields.*.startingDate' => 'required|string|max:255',
-        //     'addMoreInputFields.*.endingDate' => 'required|string|max:255',
-        // ]);
+            'addMoreInputFields.*.startingDate' => 'date|nullable',
+            'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
+        ]);
+
 
         $form->choice2_id = $request->choice2_id;
         $form->position_id = $request->position_id;
@@ -356,18 +355,20 @@ class FormController extends Controller
 
         $inputFields = $request->input('addMoreInputFields');
         // dd($inputFields);
+
         foreach ($form->experiences as $experience) {
 
 
 
             foreach ($inputFields as $key => $value) {
-                // dd($value);
 
-                if($value['id']==$experience->id) {
+
+                if ($value['id'] == $experience->id) {
                     $experience = Experience::findOrFail($experience->id);
 
                     $experience->positionyouworked = $value['positionyouworked'];
                     $experience->startingDate = $value['startingDate'];
+
                     $experience->endingDate = $value['endingDate'];
                     // dd($experience);
                     $experience->update();
@@ -375,14 +376,7 @@ class FormController extends Controller
             }
         }
 
-        // foreach ($request->input('addMoreInputFields') as $key => $value) {
-        //     $experience = Experience::findOrFail($value['id']);
-        //     $experience->positionyouworked = $value['positionyouworked'];
-        //     $experience->startingDate = $value['startingDate'];
-        //     $experience->endingDate = $value['endingDate'];
-        //     dd($experience);
-        //     $experience->update();
-        // }
+
 
         $form->update();
         return redirect('hr');
