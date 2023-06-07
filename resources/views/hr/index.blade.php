@@ -26,14 +26,14 @@
                                     <th>ተቁ</th>
                                     <th>ሙሉ ስም</th>
                                     @role('admin')
-                                        {{-- <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
-                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th> --}}
+                                        <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
+                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th>
 
                                         <th> action</th>
 
 
-                                        {{-- <th>Submit</th>
-                                        <th>pdf</th> --}}
+                                        <th>Submit</th>
+                                        <th>pdf</th>
                                     @endrole
 
 
@@ -69,7 +69,7 @@
 
 
 
-                                                        {{ $form->full_name }}
+                                                    {{ $form->full_name }}
                                                     {{-- <div class="modal fade" id="id2_{{ $i }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLongTitle"
                                                         aria-hidden="true">
@@ -391,23 +391,18 @@
 
 
 
-                                                {{-- <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
+                                                <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
                                                     {{ $form->position->position ?? 'to be selected' }}</td>
                                                 <td>{{ $form->jobcat2->job_category ?? 'to be selected' }}\
                                                     {{ $form->choice2->position ?? 'to be selected' }}
-                                                </td> --}}
+                                                </td>
 
 
 
                                                 <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a>
                                                 </td>
-
-
-
-
-
-                                                {{-- <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
+                                                 <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
                                                         data-toggle="modal" data-target="#id1_{{ $i }}">
                                                         Submit
                                                     </button>
@@ -446,7 +441,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td> --}}
+                                                </td>
+                                                <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
+                                                        id="btn-evaluate" href="{{ route('export_pdf', $form->id) }}">pdf</a>
+                                                </td>
+
+
+
+
+
 
 
                                                 {{-- <td> <button type="button" class="btn btn-primary requestStat btn-sm "
@@ -702,8 +705,8 @@
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLongTitle">
                                                                         የተወዳዳሪው ሙሉ መረጃ</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
@@ -747,8 +750,7 @@
                                                                                 <input type="email"
                                                                                     value="{{ $form->email }}"
                                                                                     name="email"class="form-control"
-                                                                                    id="inputname" placeholder="email"
-                                                                                    readonly>
+                                                                                    id="inputname" placeholder="email" readonly>
                                                                             </div>
                                                                         </div>
 
@@ -760,8 +762,7 @@
                                                                                 <input type="text"
                                                                                     value="{{ $form->phone }}"
                                                                                     name="phone"class="form-control"
-                                                                                    id="inputname" placeholder="phone"
-                                                                                    readonly>
+                                                                                    id="inputname" placeholder="phone" readonly>
                                                                             </div>
                                                                         </div>
 

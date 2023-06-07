@@ -20,6 +20,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\EducationType;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -287,14 +288,24 @@ class MultiformController extends Controller
         // dd($form);
         return view('homepage.submit', ['form' => $form]);
     }
+    // public function export_pdf($id)
+    // {
+
+    //     $form = Form::find($id);
+    //     $edu = Education::where('form_id', $form->id)->get();
+    //     $forms = experience::where('form_id', $form->id)->get();
+
+    //     return view('homepage.export', compact('form', 'forms','edu'));
+    // }
     public function export_pdf($id)
     {
-
         $form = Form::find($id);
         $edu = Education::where('form_id', $form->id)->get();
         $forms = experience::where('form_id', $form->id)->get();
-        //  dd($forms);
-        return view('homepage.export', compact('form', 'forms','edu'));
+
+        return view('homepage.export', compact('form', 'forms', 'edu'))
+            ->with('success', 'Export completed successfully.')
+            ->with('redirect', Redirect::to('/hr'));
     }
     public function edit1($id)
     {

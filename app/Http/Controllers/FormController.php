@@ -35,7 +35,7 @@ class FormController extends Controller
     public function index()
     {
         // $forms = Form::all()->where('hrs', null);
-        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id')->get();
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id','job_category_id','jobcat2_id','position_id','choice2_id')->get();
         // dd($forms);
 
         // $forms = Form::where('hrs', null)->paginate(10);

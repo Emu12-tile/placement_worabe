@@ -12,11 +12,11 @@
 
 
                 @role('admin')
-                    <div class="col-lg-5 col-sm  ml-25">
+                    <div class="col-lg-8 col-sm  ml-25">
                         <div class=" card card-sm ">
                             <div class="card-body  ">
-                                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                                    {{ __('እንኳን ወደ አድሚን ዳሽቦርድ በደህና መጡ ') }}
+                                <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight">
+                                    {{ __('እንኳን ወደ የሰው ኃብት ዳሽቦርድ በደህና መጡ ') }}
                                 </h2>
                             </div>
                         </div>
