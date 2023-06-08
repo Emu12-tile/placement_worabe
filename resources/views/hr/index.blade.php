@@ -26,14 +26,14 @@
                                     <th>ተቁ</th>
                                     <th>ሙሉ ስም</th>
                                     @role('admin')
-                                        {{-- <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
-                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th> --}}
+                                        <th>የስራ ክፍል/የስራ መደብ(1ኛ ምርጫ)</th>
+                                        <th>የስራ ክፍል/የስራ መደብ(2ኛ ምርጫ)</th>
 
                                         <th> action</th>
 
 
-                                        {{-- <th>Submit</th> --}}
-                                        {{-- <th>pdf</th> --}}
+                                        <th>Submit</th>
+                                        <th>pdf</th>
                                     @endrole
 
 
@@ -77,19 +77,19 @@
 
 
 
-                                                {{-- <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
+                                                <td>{{ $form->job_category->job_category ?? 'to be selected' }}\
                                                     {{ $form->position->position ?? 'to be selected' }}</td>
                                                 <td>{{ $form->jobcat2->job_category ?? 'to be selected' }}\
                                                     {{ $form->choice2->position ?? 'to be selected' }}
-                                                </td> --}}
+                                                </td>
 
 
 
                                                 <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a>
                                                 </td>
-
-                                                {{-- <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
+                                                 
+                                                 <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
                                                         data-toggle="modal" data-target="#id1_{{ $i }}">
                                                         Submit
                                                     </button>
@@ -128,232 +128,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td> --}}
-
-
-
-                                                {{-- <td> <button type="button" class="btn btn-primary requestStat btn-sm "
-                                                        data-toggle="modal" data-target="#id_{{ $i }}"><i
-                                                            class="ion ion-md-archive "></i>pdf
-                                                    </button>
-
-                                                    <div class="modal fade" id="id_{{ $i }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLongTitle"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <div id="element-to-print">
-
-
-
-                                                                        <h1
-                                                                            style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">
-                                                                            አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
-                                                                        <h3 style="text-align:center">የአስተዳደር ሠራተኞች
-                                                                            ፕሮፋይል</h3>
-                                                                        <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }}
-                                                                            {{ $form->middleName }}
-                                                                            {{ $form->lastName }} </p>
-
-                                                                        <p>2/ አሁን ያሉበት የስራ መደብ
-                                                                            መጠርያ:-{{ $form->positionofnow }} &emsp;
-                                                                            ደረጃ፦{{ $form->level ?? '' }} &emsp;
-                                                                            ደምወዝ:-{{ $form->fee }}
-                                                                        </p>
-                                                                        <p>3/ የተማሩት የት/ት ደረጃና የት/ት ዝግጅት:-
-                                                                        <table id="customers" class="mb-15">
-                                                                            <thead>
-                                                                                <tr>
-
-                                                                                    <th>የትምህርት ደረጃ</th>
-                                                                                    <th>የትምህርት ዝግጅት</th>
-
-
-
-
-                                                                                </tr>
-
-
-
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                @foreach ($form->education as $i => $fo)
-                                                                                    <tr>
-
-                                                                                        <td> {{ $fo->certificate ?? '' }}</td>
-                                                                                        <td> {{ $fo->discipline1 ?? '' }}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>{{ $fo->diploma ?? '' }} </td>
-                                                                                        <td>{{ $fo->discipline2 ?? '' }} </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td> {{ $fo->bsc ?? '' }}</td>
-                                                                                        <td> {{ $fo->discipline3 ?? '' }}</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>{{ $fo->msc ?? '' }} </td>
-
-
-
-                                                                                        <td>{{ $fo->discipline4 ?? '' }} </td>
-
-                                                                                    </tr>
-                                                                                @endforeach
-                                                                            </tbody>
-                                                                        </table>
-
-                                                                        <p>4/ በዩኒቨርስቲዉ የቅጥር
-                                                                            ዘመን:-{{ $form->UniversityHiringEra }}
-
-                                                                        </p>
-                                                                        <p>5/ በዩኒቨርስቲዉ አገልግሎት
-                                                                            ዘመን:-{{ $form->servicPeriodAtUniversity }}
-                                                                        </p>
-                                                                        <p>6/ በሌላ መስርያ ቤት አገልግሎት
-                                                                            ዘመን:-{{ $form->servicPeriodAtAnotherPlace }}
-                                                                        </p>
-                                                                        <h5>7/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
-                                                                        <p> ምርጫ 1</p>
-
-                                                                        <p> የስራ ክፍል
-                                                                            :-{{ $form->job_category->job_category ?? '' }}
-                                                                        </p>
-                                                                        <p> የስራ መደብ፣ {{ $form->position->position ?? '' }}
-                                                                        </p>
-                                                                        <p>
-                                                                            ምርጫ 2</p>
-                                                                        <p> የስራ ክፍል:-
-                                                                            {{ $form->jobcat2->job_category ?? '' }} </p>
-                                                                        <p> የስራ መደብ:- {{ $form->choice2->position ?? '' }}
-                                                                        </p>
-                                                                        <div class="html2pdf__page-break"></div>
-                                                                        <p>8/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
-
-                                                                        <table id="customers">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th rowspan="2">ተ.ቁ</th>
-                                                                                    <th rowspan="2">የአገልግሎት ዘመን
-                                                                                        ከ---እስከ---ዓ.ም</th>
-                                                                                    <th rowspan="2">የሥራ ዓይነት</th>
-
-                                                                                    <th colspan="3"> የአገልግሎት ጊዜ</th>
-                                                                                    <th rowspan="2">ምርመራ</th>
-
-
-                                                                                </tr>
-                                                                                <tr>
-
-                                                                                    <th>ዓመት
-                                                                                    </th>
-                                                                                    <th>ወር
-                                                                                    </th>
-                                                                                    <th>ቀን</th>
-                                                                                </tr>
-
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                @foreach ($form->experiences as $i => $fo)
-                                                                                    <tr>
-                                                                                        <td>{{ ++$i }}</td>
-
-                                                                                        <td>
-
-                                                                                            ከ{{ Carbon::parse($fo->startingDate)->day }}/{{ Carbon::parse($fo->startingDate)->month }}/{{ Carbon::parse($fo->startingDate)->year }}
-                                                                                            እስከ
-                                                                                            {{ Carbon::parse($fo->endingDate)->day }}/{{ Carbon::parse($fo->endingDate)->month }}/{{ Carbon::parse($fo->endingDate)->year }}
-                                                                                        </td>
-
-
-                                                                                        <td>{{ $fo->positionyouworked }}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <?php
-
-                                                                                            $fdate = Carbon::parse($fo->startingDate);
-
-                                                                                            $tdate = Carbon::parse($fo->endingDate);
-
-                                                                                            //
-
-                                                                                            $days = $tdate->diffInDays($fdate);
-                                                                                            $months = $tdate->diffInMonths($fdate);
-
-                                                                                            $years = $tdate->diffInYears($fdate);
-
-                                                                                            $time = $tdate->diff($fdate);
-                                                                                            echo $time->y;
-
-                                                                                            ?>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <?php
-
-                                                                                            $fdate = Carbon::parse($fo->startingDate);
-
-                                                                                            $tdate = Carbon::parse($fo->endingDate);
-
-                                                                                            $time = $tdate->diff($fdate);
-                                                                                            echo $time->m;
-                                                                                            ?>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <?php
-
-                                                                                            $time = $tdate->diff($fdate);
-
-                                                                                            echo $time->d;
-
-                                                                                            ?>
-                                                                                        </td>
-                                                                                        <td></td>
-
-                                                                                    </tr>
-                                                                                @endforeach
-                                                                            </tbody>
-                                                                        </table>
-                                                                        <div class="html2pdf__page-break"></div>
-                                                                        <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:-
-                                                                            {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት
-                                                                            ከዲፕሎማ/ዲግሪ በኋላ
-                                                                            {{ $form->serviceAfterDiplo }}</p>
-                                                                        <p>10/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ
-                                                                            ውጤት:-{{ $form->resultOfrecentPerform }}</p>
-                                                                        <p>11/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}
-                                                                        </p>
-                                                                        <p>12/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
-                                                                        <p>ቅጹን የሞላው ሰራተኛ ስም
-                                                                            &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-                                                                            ፊርማ&mdash;&mdash;&mdash;&mdash;
-                                                                            ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-                                                                        </p>
-                                                                        <p>ስለትክክለኛነቱ ያረጋገጠው የሰዉ ሀብት ባለሙያ
-                                                                            ፊርማ&mdash;&mdash;&mdash;&mdash;&mdash;
-                                                                            ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-                                                                        </p>
-
-
-
-
-                                                                    </div>
-
-                                                                </div>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                </td>
+                                                <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
+                                                        id="btn-evaluate" href="{{ route('export_pdf', $form->id) }}">pdf</a>
+                                                </td>
 
 
 
 
 
-                                                            </div>
-                                                        </div>
 
-                                                    </div>
-                                                </td> --}}
+
+
 
 
                                             </tr>

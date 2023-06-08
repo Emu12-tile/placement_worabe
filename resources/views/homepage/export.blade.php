@@ -65,35 +65,74 @@
 
     <div id="element-to-print">
         {{-- @foreach ($formList as $i => $form) --}}
-        <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
+        <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
         <h3 style="text-align:center">የአስተዳደር ሠራተኞች ፕሮፋይል</h3>
         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }} {{ $form->middleName }} {{ $form->lastName }} </p>
         {{-- <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p> --}}
         <p>2/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
-            ደረጃ፦{{ $form->level->level }} &emsp; ደምወዝ:-{{ $form->fee }}
+            ደረጃ፦{{ $form->level }} &emsp; ደምወዝ:-{{ $form->fee }}
         </p>
-        <p>3/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:- @foreach ($edu as $i => $fo)
-                ({{ $fo->edu_level->education_level }}፣ {{ $fo->education_type->education_type }})
-            @endforeach
+        <p>3/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:-
         </p>
+        <table id="customers" class="mb-15">
+            <thead>
+                <tr>
+
+                    <th>የትምህርት ደረጃ</th>
+                    <th>የትምህርት ዝግጅት</th>
+
+
+
+
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                @foreach ($form->education as $i => $fo)
+                    <tr>
+
+                        <td> {{ $fo->certificate ?? '' }}</td>
+                        <td> {{ $fo->discipline1 ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ $fo->diploma ?? '' }} </td>
+                        <td>{{ $fo->discipline2 ?? '' }} </td>
+                    </tr>
+                    <tr>
+                        <td> {{ $fo->bsc ?? '' }}</td>
+                        <td> {{ $fo->discipline3 ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ $fo->msc ?? '' }} </td>
+
+
+
+                        <td>{{ $fo->discipline4 ?? '' }} </td>
+
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
         <p>4/ በዩኒቨርስቲዉ የቅጥር
             ዘመን:-
-            {{ Carbon::parse($form->UniversityHiringEra)->day }}/{{ Carbon::parse($form->UniversityHiringEra)->month }}/{{ Carbon::parse($form->UniversityHiringEra)->year }}
-            {{-- {{ Carbon::parse($form->UniversityHiringEra)->format('d-m-Y')}} --}}
+            {{ $form->UniversityHiringEra }}
+
         </p>
-        <p>5/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
-        <p>6/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
-        <h5>7/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
+        {{-- <p>5/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p> --}}
+        {{-- <p>6/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p> --}}
+        <h5>5/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
         <p> ምርጫ 1</p>
 
-        <p> የስራ ክፍል :-{{ $form->job_category->job_category }}</p>
-        <p> የስራ መደብ፣ {{ $form->position->position }}</p>
+        <p> የስራ ክፍል :-{{ $form->job_category->job_category ?? '' }}</p>
+        <p> የስራ መደብ፣ {{ $form->position->position ?? '' }}</p>
         <p>
             ምርጫ 2</p>
-        <p> የስራ ክፍል:- {{ $form->jobcat2->job_category }} </p>
-        <p> የስራ መደብ:- {{ $form->choice2->position }}</p>
+        <p> የስራ ክፍል:- {{ $form->jobcat2->job_category ?? '' }} </p>
+        <p> የስራ መደብ:- {{ $form->choice2->position ?? '' }}</p>
         <div class="html2pdf__page-break"></div>
-        <p>8/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
+        <p>6/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
 
         <table id="customers">
             <thead>
@@ -134,38 +173,38 @@
                         <td>{{ $fo->positionyouworked }}</td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate);
-
+                            
                             $tdate = Carbon::parse($fo->endingDate);
-
+                            
                             // $years = $tdate - $fdate;
-
+                            
                             // echo abs($years);
                             //
-
+                            
                             $days = $tdate->diffInDays($fdate);
                             $months = $tdate->diffInMonths($fdate);
-
+                            
                             $years = $tdate->diffInYears($fdate);
                             // dd($fdate->diffForHumans($tdate));
                             // dd($years,$months,$days);
-
+                            
                             $time = $tdate->diff($fdate);
-                            echo $time->y ;
+                            echo $time->y;
                             //   {{$time->y}} year, {{$time->m}} months, {{$time->d}} days
                             // dd($time->y);
                             ?>
                         </td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate);
-
+                            
                             $tdate = Carbon::parse($fo->endingDate);
-
+                            
                             // $months = $tdate - $fdate;
-
+                            
                             //   echo abs($months);
                             $time = $tdate->diff($fdate);
                             echo $time->m;
@@ -173,9 +212,9 @@
                         </td>
                         <td>
                             <?php
-
+                            
                             // $fdate = Carbon::parse($fo->startingDate);
-
+                            
                             // $tdate = Carbon::parse($fo->endingDate);
                             $time = $tdate->diff($fdate);
                             // $days = $tdate - $fdate;
@@ -190,11 +229,11 @@
             </tbody>
         </table>
         <div class="html2pdf__page-break"></div>
-        <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
-            {{ $form->serviceAfterDiplo }}</p>
-        <p>10/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
-        <p>11/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
-        <p>12/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
+        {{-- <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
+            {{ $form->serviceAfterDiplo }}</p> --}}
+        <p>7/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
+        <p>8/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
+        {{-- <p>9/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p> --}}
         <p>ቅጹን የሞላው ሰራተኛ ስም
             &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
@@ -212,6 +251,8 @@
 
 <script>
     var element = document.getElementById("element-to-print")
+
+
     html2pdf(element, {
         margin: 15,
         filename: 'Application form.pdf',
@@ -231,6 +272,9 @@
             orientation: 'portrait'
         }
     })
+    setTimeout(function() {
+        window.location.href = "{{ url('/hr') }}";
+    }, 5000);
 </script>
 
 </html>

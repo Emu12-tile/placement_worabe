@@ -890,7 +890,7 @@
 
 
 
-                                {{-- <h3 class="text-gold text-center mt-3 mb-4 navigation "
+                                <h3 class="text-gold text-center mt-3 mb-4 navigation "
                                     style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
@@ -997,7 +997,7 @@
 
 
 
-                                </div> --}}
+                                </div>
 
 
 
