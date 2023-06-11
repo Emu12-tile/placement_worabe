@@ -116,7 +116,7 @@
             </tbody>
         </table>
         <p>4/ በዩኒቨርስቲዉ የቅጥር
-            ዘመን:-
+            ዘመን በኢትዮጵያ አቆጣጠር:-
             {{ $form->UniversityHiringEra }}
 
         </p>
