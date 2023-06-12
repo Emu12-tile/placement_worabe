@@ -32,8 +32,8 @@
                                         <th> action</th>
 
 
-                                        <th>Submit</th>
-                                        <th>pdf</th>
+                                        {{-- <th>Submit</th>
+                                        <th>pdf</th> --}}
                                     @endrole
 
 
@@ -88,7 +88,7 @@
                                                 <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a>
                                                 </td>
-                                                 
+
                                                  <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
                                                         data-toggle="modal" data-target="#id1_{{ $i }}">
                                                         Submit
