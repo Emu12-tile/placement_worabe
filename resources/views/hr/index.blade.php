@@ -32,8 +32,8 @@
                                         <th> action</th>
 
 
-                                        {{-- <th>Submit</th>
-                                        <th>pdf</th> --}}
+                                         <th>Submit</th>
+                                        <th>pdf</th> 
                                     @endrole
 
 
