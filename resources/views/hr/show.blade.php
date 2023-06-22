@@ -619,9 +619,21 @@
 
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <label for="firstName"> ስም *</label>
+                                        <label for="firstName"> የመጀምርያ ስም *</label>
                                         <input class="form-control" id="firstName" placeholder=" ስም"
-                                            value="{{ $form->full_name }}" type="text" name="firstName">
+                                            value="{{ $form->firstName }}" type="text" name="firstName">
+
+                                    </div>
+                                     <div class="col-md-6 form-group">
+                                        <label for="firstName"> የአባት ስም*</label>
+                                        <input class="form-control" id="middleName" placeholder=" ስም"
+                                            value="{{ $form->middleName }}" type="text" name="firstName">
+
+                                    </div>
+                                     <div class="col-md-6 form-group">
+                                        <label for="firstName"> የአያት ስም *</label>
+                                        <input class="form-control" id="lastName" placeholder=" ስም"
+                                            value="{{ $form->lastName }}" type="text" name="lastName">
 
                                     </div>
 
@@ -890,7 +902,7 @@
 
 
 
-                                <h3 class="text-gold text-center mt-3 mb-4 navigation "
+                                {{-- <h3 class="text-gold text-center mt-3 mb-4 navigation "
                                     style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
@@ -997,7 +1009,7 @@
 
 
 
-                                </div>
+                                </div> --}}
 
 
 

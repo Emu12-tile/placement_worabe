@@ -89,7 +89,7 @@
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a>
                                                 </td>
 
-                                                 <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
+                                                 {{-- <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
                                                         data-toggle="modal" data-target="#id1_{{ $i }}">
                                                         Submit
                                                     </button>
@@ -131,7 +131,7 @@
                                                 </td>
                                                 <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('export_pdf', $form->id) }}">pdf</a>
-                                                </td>
+                                                </td> --}}
 
 
 
