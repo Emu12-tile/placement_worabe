@@ -8,8 +8,8 @@
 
 
 
-                    <h3 class="hk-sec-title text-gold text-center color-wrap  "
-                        style=" background-color:#08488C; padding:10px;">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
+                    <h3 class="hk-sec-title text-white text-center color-wrap  "
+                        style=" background-color:#088c13; padding:10px;">ዲላ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -84,8 +84,8 @@
                                             name="fee"class="form-control " id="fee" readonly>
                                     </div>
                                 </div>
-                                <h3 class="text-gold text-center mt-3 mb-4  "
-                                    style=" background-color:#08488C; margin:center">
+                                <h3 class="text-white text-center mt-3 mb-4  "
+                                    style=" background-color:#088c13; margin:center">
                                     ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
                                 </h3>
                                 <table id="customers" class="mb-15">
@@ -140,8 +140,8 @@
 
 
 
-                                <h3 class="text-gold text-center mt-3 mb-4  "
-                                    style=" background-color:#08488C; margin:center">
+                                <h3 class="text-white text-center mt-3 mb-4  "
+                                    style=" background-color:#088c13; margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -203,8 +203,8 @@
 
 
                                 </div>
-                                <h3 class="text-gold text-center mt-3 mb-4   "
-                                    style=" background-color:#08488C; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                <h3 class="text-white text-center mt-3 mb-4   "
+                                    style=" background-color:#088c13; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
                                 <table id="customers" class="mb-15">
                                     <thead>
@@ -243,39 +243,39 @@
                                                 <td>{{ $fo->positionyouworked }}</td>
                                                 <td>
                                                     <?php
-
+                                                    
                                                     $fdate = Carbon::parse($fo->startingDate);
-
+                                                    
                                                     $tdate = Carbon::parse($fo->endingDate);
-
+                                                    
                                                     $days = $tdate->diffInDays($fdate);
                                                     $months = $tdate->diffInMonths($fdate);
-
+                                                    
                                                     $years = $tdate->diffInYears($fdate);
-
+                                                    
                                                     $time = $tdate->diff($fdate);
                                                     echo $time->y;
-
+                                                    
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-
+                                                    
                                                     $fdate = Carbon::parse($fo->startingDate);
-
+                                                    
                                                     $tdate = Carbon::parse($fo->endingDate);
-
+                                                    
                                                     $time = $tdate->diff($fdate);
                                                     echo $time->m;
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-
+                                                    
                                                     $time = $tdate->diff($fdate);
-
+                                                    
                                                     echo $time->d;
-
+                                                    
                                                     ?>
                                                 </td>
                                                 <td></td>
@@ -286,12 +286,12 @@
                                 </table>
 
 
-                                <h3 class="text-gold text-center mt-3 mb-4 navigation "
-                                    style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                <h3 class="text-white text-center mt-3 mb-4 navigation "
+                                    style=" background-color:#088c13; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
                                 </h3>
-                                <button class="text-gold text-left mt-3 mb-4 mr-150" style=" background-color:#08488C">
+                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#088c13">
                                     ምርጫ 1</button>
 
                                 <div class="row">
@@ -344,7 +344,7 @@
 
 
                                 </div>
-                                <button class="text-gold text-left mt-3 mb-4" style=" background-color:#08488C">
+                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#088c13">
                                     ምርጫ 2</button>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
@@ -605,8 +605,8 @@
 
 
 
-                    <h3 class="hk-sec-title text-gold text-center color-wrap  "
-                        style=" background-color:#08488C; padding:10px;">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
+                    <h3 class="hk-sec-title text-white text-center color-wrap  "
+                        style=" background-color:#088c13; padding:10px;">ዲላ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -624,13 +624,13 @@
                                             value="{{ $form->firstName }}" type="text" name="firstName">
 
                                     </div>
-                                     <div class="col-md-6 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label for="firstName"> የአባት ስም*</label>
                                         <input class="form-control" id="middleName" placeholder=" ስም"
                                             value="{{ $form->middleName }}" type="text" name="firstName">
 
                                     </div>
-                                     <div class="col-md-6 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label for="firstName"> የአያት ስም *</label>
                                         <input class="form-control" id="lastName" placeholder=" ስም"
                                             value="{{ $form->lastName }}" type="text" name="lastName">
@@ -682,8 +682,8 @@
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <label for="level_id">ደረጃ </label>
-                                        <input type="text" value="{{ $form->level ?? '' }}"
-                                            name="level"class="form-control " id="inputEmail3">
+                                        <input type="text" value="{{ $form->level ?? '' }}" name="level"
+                                            class="form-control " id="inputEmail3">
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <label for="fee">ደምወዝ (ETB)</label>
@@ -691,8 +691,8 @@
                                             name="fee"class="form-control " id="fee">
                                     </div>
                                 </div>
-                                <h3 class="text-gold text-center mt-3 mb-4  "
-                                    style=" background-color:#08488C; margin:center">
+                                <h3 class="text-white text-center mt-3 mb-4  "
+                                    style=" background-color:#088c13; margin:center">
                                     ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
                                 </h3>
                                 {{-- <div class="row">
@@ -802,9 +802,9 @@
 
 
 
-                                <h3 class="text-gold text-center
+                                <h3 class="text-white text-center
                                         mt-3 mb-4 "
-                                    style=" background-color:#08488C; margin:center">
+                                    style=" background-color:#088c13; margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -863,8 +863,8 @@
 
 
                                 </div>
-                                <h3 class="text-gold text-center mt-3 mb-4   "
-                                    style=" background-color:#08488C; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                <h3 class="text-white text-center mt-3 mb-4   "
+                                    style=" background-color:#088c13; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
                                 @foreach ($form->experiences ?? [] as $i => $fo)
                                     <div class="row">
@@ -902,12 +902,12 @@
 
 
 
-                                {{-- <h3 class="text-gold text-center mt-3 mb-4 navigation "
-                                    style=" background-color:#08488C; margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                <h3 class="text-white text-center mt-3 mb-4 navigation "
+                                    style=" background-color:#088c13; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
                                 </h3>
-                                <button class="text-gold text-left mt-3 mb-4 mr-150" style=" background-color:#08488C">
+                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#088c13">
                                     ምርጫ 1</button>
 
                                 <div class="row">
@@ -961,7 +961,7 @@
 
 
                                 </div>
-                                <button class="text-gold text-left mt-3 mb-4" style=" background-color:#08488C">
+                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#088c13">
                                     ምርጫ 2</button>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
@@ -1009,7 +1009,7 @@
 
 
 
-                                </div> --}}
+                                </div>
 
 
 

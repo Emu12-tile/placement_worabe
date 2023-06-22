@@ -12,7 +12,7 @@
 
 
                 @role('admin')
-                    <div class="col-lg-8 col-sm  ml-25">
+                    <div class="col-lg-8 col-sm  ml-25 mt-100">
                         <div class=" card card-sm ">
                             <div class="card-body  ">
                                 <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight">

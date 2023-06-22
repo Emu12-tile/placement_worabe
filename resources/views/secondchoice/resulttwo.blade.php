@@ -180,17 +180,17 @@
                                                                                                 <td>
                                                                                                     @foreach ($hr->form->education as $i => $type)
                                                                                                         ({{ $type->certificate }},
-                                                                                                            {{ $type->discipline1 }})
-                                                                                                            ,
-                                                                                                            ({{ $type->diploma }},
-                                                                                                            {{ $type->discipline2 }})
-                                                                                                            ,
-                                                                                                            ({{ $type->bsc }},
-                                                                                                            {{ $type->discipline3 }})
-                                                                                                            ,
-                                                                                                            ({{ $type->msc }},
-                                                                                                            {{ $type->discipline4 }})
-                                                                                                            ,
+                                                                                                        {{ $type->discipline1 }})
+                                                                                                        ,
+                                                                                                        ({{ $type->diploma }},
+                                                                                                        {{ $type->discipline2 }})
+                                                                                                        ,
+                                                                                                        ({{ $type->bsc }},
+                                                                                                        {{ $type->discipline3 }})
+                                                                                                        ,
+                                                                                                        ({{ $type->msc }},
+                                                                                                        {{ $type->discipline4 }})
+                                                                                                        ,
                                                                                                     @endforeach
                                                                                                 </td>
                                                                                             </tr>
@@ -541,7 +541,7 @@
                                                                                                 id="fee" readonly>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <h4 class="text-gold text-center mt-50 mb-4"
+                                                                                    <h4 class="text-white text-center mt-50 mb-4"
                                                                                         style=" background-color:rgb(17,40,77)">
                                                                                         የትምህርት
                                                                                         ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
@@ -571,12 +571,12 @@
 
 
                                                                                     </div>
-                                                                                    <h4 class="text-gold  text-center mt-3 mb-4 "
+                                                                                    <h4 class="text-white  text-center mt-3 mb-4 "
                                                                                         style=" background-color:rgb(17,40,77)">
                                                                                         የ
                                                                                         መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
                                                                                     <button
-                                                                                        class="text-gold text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
+                                                                                        class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
                                                                                         ምርጫ 1</button>
                                                                                     <div class="form-group row">
                                                                                         <label for="inputname"
@@ -602,7 +602,7 @@
                                                                                     </div>
 
                                                                                     <button
-                                                                                        class="text-gold text-left mt-3 mb-4 mr-150 text-left"
+                                                                                        class="text-white text-left mt-3 mb-4 mr-150 text-left"
                                                                                         style=" background-color:rgb(17,40,77)">
                                                                                         ምርጫ
                                                                                         2</button>
@@ -737,7 +737,7 @@
 
 
 
-                                                                                    <h4 class="text-gold text-center mt-50 mb-4"
+                                                                                    <h4 class="text-white text-center mt-50 mb-4"
                                                                                         style=" background-color:rgb(17,40,77)">
                                                                                         የስራ
                                                                                         ልምድ</h4>

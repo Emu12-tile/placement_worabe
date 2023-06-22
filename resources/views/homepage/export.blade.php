@@ -65,7 +65,7 @@
 
     <div id="element-to-print">
         {{-- @foreach ($formList as $i => $form) --}}
-        <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ </h1>
+        <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">ዲላ ዩኒቨርሲቲ </h1>
         <h3 style="text-align:center">የአስተዳደር ሠራተኞች ፕሮፋይል</h3>
         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }} {{ $form->middleName }} {{ $form->lastName }} </p>
         {{-- <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p> --}}
@@ -173,23 +173,23 @@
                         <td>{{ $fo->positionyouworked }}</td>
                         <td>
                             <?php
-                            
+
                             $fdate = Carbon::parse($fo->startingDate);
-                            
+
                             $tdate = Carbon::parse($fo->endingDate);
-                            
+
                             // $years = $tdate - $fdate;
-                            
+
                             // echo abs($years);
                             //
-                            
+
                             $days = $tdate->diffInDays($fdate);
                             $months = $tdate->diffInMonths($fdate);
-                            
+
                             $years = $tdate->diffInYears($fdate);
                             // dd($fdate->diffForHumans($tdate));
                             // dd($years,$months,$days);
-                            
+
                             $time = $tdate->diff($fdate);
                             echo $time->y;
                             //   {{$time->y}} year, {{$time->m}} months, {{$time->d}} days
@@ -198,13 +198,13 @@
                         </td>
                         <td>
                             <?php
-                            
+
                             $fdate = Carbon::parse($fo->startingDate);
-                            
+
                             $tdate = Carbon::parse($fo->endingDate);
-                            
+
                             // $months = $tdate - $fdate;
-                            
+
                             //   echo abs($months);
                             $time = $tdate->diff($fdate);
                             echo $time->m;
@@ -212,9 +212,9 @@
                         </td>
                         <td>
                             <?php
-                            
+
                             // $fdate = Carbon::parse($fo->startingDate);
-                            
+
                             // $tdate = Carbon::parse($fo->endingDate);
                             $time = $tdate->diff($fdate);
                             // $days = $tdate - $fdate;

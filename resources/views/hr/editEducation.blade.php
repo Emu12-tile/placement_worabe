@@ -8,8 +8,8 @@
 
 
 
-                    <h3 class="hk-sec-title text-gold text-center color-wrap  "
-                        style=" background-color:#08488C; padding:10px;">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የስራ
+                    <h3 class="hk-sec-title text-white text-center color-wrap  "
+                        style=" background-color:#088c13; padding:10px;">ዲላ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -96,8 +96,8 @@
 
 
 
-                                <h3 class="text-gold text-center mt-3 mb-4  "
-                                    style=" background-color:#08488C; margin:center">
+                                <h3 class="text-white text-center mt-3 mb-4  "
+                                    style=" background-color:#088c13; margin:center">
                                     አገልግሎት
                                 </h3>
 

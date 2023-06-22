@@ -6,7 +6,7 @@
                 <div class="col-xl-12">
                     <section class="hk-sec-wrapper mt-100">
 
-                        <h3 class="hk-sec-title text-gold text-center color-wrap  "
+                        <h3 class="hk-sec-title text-white text-center color-wrap  "
                             style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
@@ -130,7 +130,7 @@
 
 
                                     </div>
-                                    <h3 class="text-gold text-center mt-3 mb-4  "
+                                    <h3 class="text-white text-center mt-3 mb-4  "
                                         style=" background-color:rgb(17,40,77); margin:center">የ ስራ ልምድ</h3>
 
                                     <div class="row">
@@ -152,7 +152,7 @@
                                                     @enderror
 
                                                 </div>
-                                                
+
                                                 <div class="col-md-3">
                                                     <label for="endingDate">ያበቃበት ቀን(ወር/ቀን/ዓመት) </label>
                                                     <input type="date" min="startingDate"

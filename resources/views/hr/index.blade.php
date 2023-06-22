@@ -32,8 +32,8 @@
                                         <th> action</th>
 
 
-                                         <th>Submit</th>
-                                        <th>pdf</th> 
+                                        <th>Submit</th>
+                                        <th>pdf</th>
                                     @endrole
 
 
@@ -89,21 +89,20 @@
                                                         id="btn-evaluate" href="{{ route('hr.show', $form->id) }}">Edit</a>
                                                 </td>
 
-                                                 {{-- <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
+                                                <td> <button type="button" class="btn bg-green-dark-4 text-white btn-sm"
                                                         data-toggle="modal" data-target="#id1_{{ $i }}">
                                                         Submit
                                                     </button>
 
 
                                                     <div class="modal fade" id="id1_{{ $i }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalCenter"
-                                                        aria-hidden="true">
+                                                        role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title">Submission</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
@@ -129,9 +128,9 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><a class="btn  bg-blue-dark-4 text-white btn-sm" type="submit"
+                                                <td><a class="btn  bg-red-dark-4 text-white btn-sm" type="submit"
                                                         id="btn-evaluate" href="{{ route('export_pdf', $form->id) }}">pdf</a>
-                                                </td> --}}
+                                                </td>
 
 
 
@@ -219,7 +218,8 @@
                                                                                 <input type="text"
                                                                                     value="{{ $form->phone }}"
                                                                                     name="phone"class="form-control"
-                                                                                    id="inputname" placeholder="phone" readonly>
+                                                                                    id="inputname" placeholder="phone"
+                                                                                    readonly>
                                                                             </div>
                                                                         </div>
 
@@ -257,7 +257,7 @@
                                                                                     id="fee" readonly>
                                                                             </div>
                                                                         </div>
-                                                                        <h4 class="text-gold text-center mt-50 mb-4"
+                                                                        <h4 class="text-white text-center mt-50 mb-4"
                                                                             style=" background-color:rgb(17,40,77)">
                                                                             የትምህርት
                                                                             ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
@@ -287,12 +287,12 @@
 
 
                                                                         </div>
-                                                                        <h4 class="text-gold  text-center mt-3 mb-4 "
+                                                                        <h4 class="text-white  text-center mt-3 mb-4 "
                                                                             style=" background-color:rgb(17,40,77)">
                                                                             የ
                                                                             መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
                                                                         <button
-                                                                            class="text-gold text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
+                                                                            class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
                                                                             ምርጫ 1</button>
                                                                         <div class="form-group row">
                                                                             <label for="inputname"
@@ -316,7 +316,7 @@
                                                                         </div>
 
                                                                         <button
-                                                                            class="text-gold text-left mt-3 mb-4 mr-150 text-left"
+                                                                            class="text-white text-left mt-3 mb-4 mr-150 text-left"
                                                                             style=" background-color:rgb(17,40,77)"> ምርጫ
                                                                             2</button>
                                                                         <div class="form-group row">
@@ -436,7 +436,7 @@
 
 
 
-                                                                        <h4 class="text-gold text-center mt-50 mb-4"
+                                                                        <h4 class="text-white text-center mt-50 mb-4"
                                                                             style=" background-color:rgb(17,40,77)">
                                                                             የስራ
                                                                             ልምድ</h4>

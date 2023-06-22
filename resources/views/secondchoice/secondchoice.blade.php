@@ -35,7 +35,7 @@
 
 
                                     @role('hr')
-                                    <th>SubmittedBy HR</th>
+                                        <th>SubmittedBy HR</th>
                                         <th>የሰው ኃይል ግምገማ</th>
                                     @endrole
                                     @role('admin')
@@ -87,7 +87,7 @@
                                             </td>
                                         @endrole
                                         @role('hr')
-                                        <td>{{$form->submit}}</td>
+                                            <td>{{ $form->submit }}</td>
                                             <td><a class="btn  btn-dark " type="submit" id="btn-evaluate"
                                                     href="{{ route('addsecond', $form->id) }}"> evaluate</a>
                                             </td>
@@ -188,7 +188,7 @@
                                                                         id="fee" readonly>
                                                                 </div>
                                                             </div>
-                                                            <h4 class="text-gold text-center mt-50 mb-4"
+                                                            <h4 class="text-white text-center mt-50 mb-4"
                                                                 style=" background-color:rgb(17,40,77)"> የትምህርት
                                                                 ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
                                                             <div class="form-group  mb-100">
@@ -205,11 +205,11 @@
 
 
                                                             </div>
-                                                            <h4 class="text-gold  text-center mt-3 mb-4 "
+                                                            <h4 class="text-white  text-center mt-3 mb-4 "
                                                                 style=" background-color:rgb(17,40,77)"> የ
                                                                 መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
                                                             <button
-                                                                class="text-gold text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
+                                                                class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
                                                                 ምርጫ 1</button>
                                                             <div class="form-group row">
                                                                 <label for="inputname" class="col-sm-2 col-form-label">የስራ
@@ -232,7 +232,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <button class="text-gold text-left mt-3 mb-4 mr-150 text-left"
+                                                            <button class="text-white text-left mt-3 mb-4 mr-150 text-left"
                                                                 style=" background-color:rgb(17,40,77)"> ምርጫ 2</button>
                                                             <div class="form-group row">
                                                                 <label for="inputname" class="col-sm-2 col-form-label">የስራ
@@ -346,7 +346,7 @@
 
 
 
-                                                            <h4 class="text-gold text-center mt-50 mb-4"
+                                                            <h4 class="text-white text-center mt-50 mb-4"
                                                                 style=" background-color:rgb(17,40,77)">የስራ
                                                                 ልምድ</h4>
 

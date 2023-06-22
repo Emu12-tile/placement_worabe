@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest to legall
     {{-- <meta charset="UTF-8" /> --}}
     {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> --}}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ASTU</title>
+    <title>DILA</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -51,27 +51,27 @@ License: You must have a valid license purchased only from themeforest to legall
 
     <div class="hk-wrapper hk-alt-nav hk-landing">
         {{-- bg-white --}}
-        {{-- #08488C --}}
-        <div class="fixed-top  shadow-sm " style=" background-color:#08488C">
+        {{-- #088c13 --}}
+        <div class="fixed-top  shadow-sm " style=" background-color:#088c13">
             <div class="container px-0">
                 {{-- navbar-light --}}
                 <nav class="navbar navbar-expand-xl navbar-light  hk-navbar hk-navbar-alt shadow-none"
-                    style=" background-color:#08488C">
+                    style=" background-color:#088c13">
                     <a class="navbar-toggle-btn nav-link-hover navbar-toggler" href="javascript:void(0);"
                         data-toggle="collapse" data-target="#navbarCollapseAlt" aria-controls="navbarCollapseAlt"
                         aria-expanded="false" aria-label="Toggle navigation"><span class="feather-icon"><i
                                 data-feather="menu"></i></span></a>
                     <a class="navbar-brand" href="">
-                        <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/adama2.jpg') }}"
-                            style="width:80px; height:80px" alt="brand" />
+                        <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/banner.jpg') }}"
+                            style="width:auto; height:100px" alt="brand" />
                     </a>
-                    <h1 class="text-gold font-24 font-weight-600 ml-50 " style="">አዳማ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ</h1>
+                    {{-- <h1 class="text-white font-24 font-weight-600 ml-50 " style="">ዲላ ዩኒቨርሲቲ</h1> --}}
 
                     <div class="collapse navbar-collapse ml-auto" id="navbarCollapseAlt">
                         <ul class="navbar-nav ml-auto">
 
                             <li class="nav-item">
-                                <a class="nav-link text-gold" data-scroll href="{{ route('login') }}">Login </a>
+                                <a class="nav-link text-white" data-scroll href="{{ route('login') }}">Login </a>
 
                                 {{-- <div class="btn-group">
                                     <button type="button" class="btn btn-light">Login as</button>
