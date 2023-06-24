@@ -292,18 +292,8 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-
-                                                                    ({{ $type->certificate }},
-                                                                    {{ $type->discipline1 }})
-                                                                    ,
-                                                                    ({{ $type->diploma }},
-                                                                    {{ $type->discipline2 }})
-                                                                    ,
-                                                                    ({{ $type->bsc }},
-                                                                    {{ $type->discipline3 }})
-                                                                    ,
-                                                                    ({{ $type->msc }},
-                                                                    {{ $type->discipline4 }})
+                                                                    ({{ $type->level }},
+                                                                    {{ $type->discipline }},{{ $type->completion_date }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -418,51 +408,126 @@
                                 <div class="row">
 
                                     @role('hr')
-                                        <div class="col-md-6 form-group">
-                                            <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                            <input type="number" value="{{ $hr->performance }}"
-                                                class="form-control @error('performance') is-invalid @enderror" id="performance"
-                                                placeholder="ለትምህርት ዝግጅት" name="performance" min="1" max="40"
-                                                >
-                                            @error('performance')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="col-md-4">
+                                            <div class="row form-group">
+                                                <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
+                                                <input type="number" value="{{ $hr->performance }}"
+                                                    class="form-control @error('performance') is-invalid @enderror"
+                                                    id="performance" placeholder="ለትምህርት ዝግጅት" name="performance" min="1"
+                                                    max="40">
+                                                @error('performance')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
+                                                <input type="float" value="{{ $hr->experience }}"
+                                                    class="form-control @error('experience') is-invalid @enderror"
+                                                    id="experience" placeholder="ለስራ ልምድ" name="experience" min="1"
+                                                    max="30">
+                                                @error('experience')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="resultbased">ለውጤት ተኮር ምዘና </label>
+                                                <input type="float"
+                                                    value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
+                                                    class="form-control @error('resultbased') is-invalid @enderror"
+                                                    id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
+                                                    min="1" max="30">
+                                                @error('resultbased')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="resultbased">Remark </label>
+                                                <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
+                                                    placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
+                                                @error('remark')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                            <input type="float" value="{{ $hr->experience }}"
-                                                class="form-control @error('experience') is-invalid @enderror" id="experience"
-                                                placeholder="ለስራ ልምድ" name="experience" min="1" max="30" >
-                                            @error('experience')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="resultbased">ለውጤት ተኮር ምዘና </label>
-                                            <input type="float"
-                                                value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
-                                                class="form-control @error('resultbased') is-invalid @enderror"
-                                                id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
-                                                min="1" max="30" >
-                                            @error('resultbased')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="resultbased">Remark </label>
-                                            <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
-                                                placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
-                                            @error('remark')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="col-md-8">
+                                            <div class="table-wrap mb-20 ">
+                                                <div class="table-responsive" id="table-container">
+                                                    <table class="table table-active table-bordered mb-0 addclass">
+                                                        <thead class="thead-active">
+                                                            <tr>
+                                                                <th>ዓመት-ወር-ቀን</th>
+
+
+                                                                <th>ብዜት</th>
+                                                                <th>ዓመት-ወር-ቀን</th>
+
+
+                                                            </tr>
+                                                            <tr></tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            @foreach ($forms as $fo)
+                                                                <tr data-id="{{ $fo->id }}">
+                                                                    <td>
+
+
+
+                                                                        <?php
+
+                                                                        $fdate = Carbon::parse($fo->startingDate);
+
+                                                                        $tdate = Carbon::parse($fo->endingDate);
+                                                                        $experience = $fo->positionyouworked;
+                                                                        // $days = $tdate->diffInDays($fdate);
+                                                                        // $months = $tdate->diffInMonths($fdate);
+
+                                                                        // $years = $tdate->diffInYears($fdate);
+
+                                                                        $time = $tdate->diff($fdate);
+
+                                                                        echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
+                                                                        ?>
+
+
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <div class="col-md-10">
+
+                                                                            <select
+                                                                                class="form-control custom-select select  mt-15">
+                                                                                <option selected>Select</option>
+                                                                                <option value="0">0</option>
+                                                                                <option value="0.5">1/2</option>
+                                                                                <option value="1">1</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td id="add">
+
+                                                                    </td>
+
+                                                                </tr>
+                                                            @endforeach
+                                                            <tr>
+                                                                <td colspan="2" class="text-center">ድምር</td>
+                                                                {{-- <td></td> --}}
+                                                                <td id="total-year"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     @endrole
                                     <input type="hidden" name="type" value="low">

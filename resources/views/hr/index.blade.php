@@ -268,19 +268,7 @@
 
                                                                             @foreach ($form->education as $fo)
                                                                                 <input type="text"
-                                                                                    value="[{{ $fo->certificate }} , {{ $fo->discipline1 }}]"
-                                                                                    name="education_level"class="form-control "
-                                                                                    id="inputEmail3" readonly>
-                                                                                <input type="text"
-                                                                                    value="[{{ $fo->diploma }} , {{ $fo->discipline2 }}],"
-                                                                                    name="education_level"class="form-control "
-                                                                                    id="inputEmail3" readonly>
-                                                                                <input type="text"
-                                                                                    value="[{{ $fo->bsc }} , {{ $fo->discipline3 }}],"
-                                                                                    name="education_level"class="form-control "
-                                                                                    id="inputEmail3" readonly>
-                                                                                <input type="text"
-                                                                                    value="[{{ $fo->msc }} , {{ $fo->discipline2 }}],"
+                                                                                    value="[{{ $fo->level }} , {{ $fo->discipline }}, {{ $fo->completion_date }}]"
                                                                                     name="education_level"class="form-control "
                                                                                     id="inputEmail3" readonly>
                                                                             @endforeach

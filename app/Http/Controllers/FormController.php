@@ -35,7 +35,7 @@ class FormController extends Controller
     public function index()
     {
         // $forms = Form::all()->where('hrs', null);
-        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id','job_category_id','jobcat2_id','position_id','choice2_id','isEditable')->get();
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id', 'isEditable')->get();
         // dd($forms);
 
         // $forms = Form::where('hrs', null)->paginate(10);
@@ -337,14 +337,14 @@ class FormController extends Controller
 
         // $edu = Education::where('form_id', $form->id)->get();
         foreach ($form->education as $education) {
-            $education->certificate = $request->input('certificate');
-            $education->discipline1 = $request->input('discipline1');
-            $education->diploma = $request->input('diploma');
-            $education->discipline2 = $request->input('discipline2');
-            $education->bsc = $request->input('bsc');
-            $education->discipline3 = $request->input('discipline3');
-            $education->msc = $request->input('msc');
-            $education->discipline4 = $request->input('discipline4');
+            $education->level = $request->input('level');
+            $education->discipline = $request->input('discipline');
+            $education->completion_date = $request->input('completion_date');
+            // $education->discipline2 = $request->input('discipline2');
+            // $education->bsc = $request->input('bsc');
+            // $education->discipline3 = $request->input('discipline3');
+            // $education->msc = $request->input('msc');
+            // $education->discipline4 = $request->input('discipline4');
             $education->update();
         }
 

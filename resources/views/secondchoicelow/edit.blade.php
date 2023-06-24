@@ -290,19 +290,9 @@
 
                                                         <td>
                                                             @foreach ($edu as $type)
-                                                                 ({{ $type->certificate }},
-                                                                    {{ $type->discipline1 }})
-                                                                    ,
-                                                                     ({{ $type->diploma }},
-                                                                    {{ $type->discipline2 }})
-                                                                    ,
-                                                                     ({{ $type->bsc }},
-                                                                    {{ $type->discipline3 }})
-                                                                    ,
-                                                                     ({{ $type->msc }},
-                                                                    {{ $type->discipline4}})
-                                                                    ,
-
+                                                                ({{ $type->level }},
+                                                                {{ $type->discipline }},{{ $type->completion_date }})
+                                                                ,
                                                             @endforeach
                                                         </td>
 
@@ -416,49 +406,124 @@
                             <div class="row">
 
                                 @role('hr')
-                                    <div class="col-md-6 form-group">
-                                        <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                        <input type="number" value="{{ $hr->performance }}"
-                                            class="form-control @error('performance') is-invalid @enderror" id="performance"
-                                            placeholder="" name="performance" min="1" max="40" >
-                                        @error('performance')
-                                            <span class=" error invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    <div class="col-md-4">
+                                        <div class="row form-group">
+                                            <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
+                                            <input type="number" value="{{ $hr->performance }}"
+                                                class="form-control @error('performance') is-invalid @enderror" id="performance"
+                                                placeholder="" name="performance" min="1" max="40">
+                                            @error('performance')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="row form-group">
+                                            <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
+                                            <input type="float" value="{{ $hr->experience }}"
+                                                class="form-control @error('experience') is-invalid @enderror" id="experience"
+                                                placeholder="ለስራ ልምድ" name="experience" min="1" max="30">
+                                            @error('experience')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="row form-group">
+                                            <label for="resultbased">ለውጤት ተኮር ምዘና </label>
+                                            <input type="float"
+                                                value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
+                                                class="form-control @error('resultbased') is-invalid @enderror"
+                                                id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
+                                                min="1" max="30">
+                                            @error('resultbased')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="row form-group">
+                                            <label for="resultbased">Remark </label>
+                                            <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
+                                                placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
+                                            @error('remark')
+                                                <span class=" error invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 form-group">
-                                        <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                        <input type="float" value="{{ $hr->experience }}"
-                                            class="form-control @error('experience') is-invalid @enderror" id="experience"
-                                            placeholder="ለስራ ልምድ" name="experience" min="1" max="30" >
-                                        @error('experience')
-                                            <span class=" error invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label for="resultbased">ለውጤት ተኮር ምዘና </label>
-                                        <input type="float" value="{{ round($hr->form->resultOfrecentPerform * 0.3, 2) }}"
-                                            class="form-control @error('resultbased') is-invalid @enderror" id="resultbased"
-                                            placeholder="ለውጤት ተኮር ምዘና " name="resultbased" min="1" max="30"
-                                            >
-                                        @error('resultbased')
-                                            <span class=" error invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label for="resultbased">Remark </label>
-                                        <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
-                                            placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
-                                        @error('remark')
-                                            <span class=" error invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    <div class="col-md-8">
+                                        <div class="table-wrap mb-20 ">
+                                            <div class="table-responsive" id="table-container">
+                                                <table class="table table-active table-bordered mb-0 addclass">
+                                                    <thead class="thead-active">
+                                                        <tr>
+                                                            <th>ዓመት-ወር-ቀን</th>
+
+
+                                                            <th>ብዜት</th>
+                                                            <th>ዓመት-ወር-ቀን</th>
+
+
+                                                        </tr>
+                                                        <tr></tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        @foreach ($forms as $fo)
+                                                            <tr data-id="{{ $fo->id }}">
+                                                                <td>
+
+
+
+                                                                    <?php
+
+                                                                    $fdate = Carbon::parse($fo->startingDate);
+
+                                                                    $tdate = Carbon::parse($fo->endingDate);
+                                                                    $experience = $fo->positionyouworked;
+                                                                    $days = $tdate->diffInDays($fdate);
+                                                                    $months = $tdate->diffInMonths($fdate);
+
+                                                                    $years = $tdate->diffInYears($fdate);
+
+                                                                    $time = $tdate->diff($fdate);
+
+                                                                    echo $time->y, '-', $time->m, '-', $time->d, ' (', $experience, ')';
+                                                                    ?>
+
+
+                                                                </td>
+
+                                                                <td>
+                                                                    <div class="col-md-10">
+
+                                                                        <select
+                                                                            class="form-control custom-select select  mt-15">
+                                                                            <option selected>Select</option>
+                                                                            <option value="0">0</option>
+                                                                            <option value="0.5">1/2</option>
+                                                                            <option value="1">1</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </td>
+                                                                <td id="add">
+
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                        <tr>
+                                                            <td colspan="2" class="text-center">ድምር</td>
+                                                            {{-- <td></td> --}}
+                                                            <td id="total-year"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 @endrole
                                 <input type="hidden" name="type" value="second">
@@ -489,4 +554,163 @@
             </section>
         </div>
     </div>
+@endsection
+@section('javascript')
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> --}}
+    <script>
+        $(document).ready(function() {
+            var totalYear = 0;
+            var totalMonth = 0;
+            var totalDay = 0;
+
+            $('.select').on('change', function() {
+                // Reset the totals when a new value is selected
+                totalYear = 0;
+                totalMonth = 0;
+                totalDay = 0;
+
+                // Iterate over each select element and calculate the sum
+                $('.select').each(function() {
+                    var selectedValue = parseFloat($(this).val());
+
+                    var data = $(this).closest('tr').data('id');
+                    var myData = {!! json_encode($forms) !!};
+
+                    var row = myData.find(function(obj) {
+                        return obj.id === data;
+                    });
+
+                    var startdate = new Date(row.startingDate);
+                    var enddate = new Date(row.endingDate);
+                    // var date = new Date(row.startingDate);
+                    // console.log(startdate);
+                    // var unix = Math.floor(date.getTime() / 1000);
+                    const years = startdate.getFullYear();
+                    const months = startdate.getMonth() + 1;
+                    const days = startdate.getDate();
+                    const years2 = enddate.getFullYear();
+                    const months2 = enddate.getMonth() + 1;
+                    const days2 = enddate.getDate();
+                    let dayDifferenceb = (days2 - days);
+                    let monthDifferenceb = (months2 - months);
+                    let yearDifferenceb = (years2 - years);
+                    if (dayDifferenceb < 0) {
+                        dayDifferenceb += 30;
+                        monthDifferenceb -= 1;
+
+                    } else {
+                        dayDifferenceb = (days2 - days);
+                        monthDifferenceb = monthDifferenceb;
+
+                    }
+                    if (monthDifferenceb < 0) {
+                        monthDifferenceb += 12;
+                        yearDifferenceb -= 1;
+                    } else {
+                        monthDifferenceb = (months2 - months);
+                        yearDifferenceb = yearDifferenceb;
+                    }
+
+                    let dayDifference = dayDifferenceb * selectedValue;
+                    let monthDifference = monthDifferenceb * selectedValue;
+                    let yearDifference = yearDifferenceb * selectedValue;
+
+                    if (selectedValue == 0.5) {
+                        if (yearDifferenceb % 2 != 0) {
+                            yearDifference = parseInt(yearDifference);
+                            console.log(yearDifference);
+                            // monthDifference+=6
+                            monthDifference = 6 + (monthDifference);
+                            //    console.log(monthDifference);
+                            if (monthDifference >= 12) {
+                                monthDifference = 0;
+                                yearDifference = yearDifference + 1
+
+                            }
+
+
+                        } else {
+                            yearDifference = parseInt(yearDifference);
+                            monthDifference = monthDifference;
+
+                        }
+                        if (monthDifferenceb % 2 != 0) {
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference + 15
+
+                        } else {
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference
+                        }
+                        if (dayDifferenceb % 2 != 0) {
+                            dayDifference = parseInt(dayDifference);
+                        }
+
+
+                    }
+                    console.log(yearDifference);
+                    console.log(monthDifference);
+                    console.log(dayDifference);
+
+
+
+
+
+
+                    if (dayDifference < 0) {
+                        dayDifference += 30;
+                        monthDifference -= 1;
+                    }
+
+                    if (monthDifference < 0) {
+                        monthDifference += 12;
+                        yearDifference -= 1;
+                    }
+                    // console.log(dayDifference);
+                    // console.log(monthDifference);
+                    // console.log(yearDifference);
+                    var all = yearDifference + '-' + monthDifference + '-' + dayDifference;
+
+
+
+
+
+
+
+
+                    // var evaluate = enddate - startdate;
+
+                    // var diffInDays = Math.floor(evaluate / (1000 * 60 * 60 * 24));
+                    // var multiply = diffInDays * selectedValue;
+
+                    // var year = parseInt(multiply / 365)
+                    // var diff = multiply % 365;
+
+                    // var month = parseInt(diff / 30)
+                    // var diffday = parseInt(diff - (month * 30))
+
+                    // var all = year + '-' + month + '-' + diffday;
+
+                    totalYear += yearDifference;
+                    totalMonth += monthDifference;
+                    totalDay += dayDifference;
+
+                    if (totalDay > 30) {
+                        totalMonth = totalMonth + 1;
+                        totalDay = totalDay - 30;
+                    }
+                    if (totalMonth > 12) {
+                        totalYear = totalYear + 1;
+                        totalMonth = totalMonth - 12;
+                    }
+
+
+                    $(this).closest('tr').find('#add').text(all);
+                });
+
+                var total = totalYear + '-' + totalMonth + '-' + totalDay;
+                $('#total-year').text(total);
+            });
+        });
+    </script>
 @endsection

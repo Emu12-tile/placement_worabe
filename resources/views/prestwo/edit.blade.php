@@ -197,17 +197,9 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
- ({{ $type->certificate }},
-                                                                    {{ $type->discipline1 }})
-                                                                    ,
-                                                                    ({{ $type->diploma }},
-                                                                    {{ $type->discipline2 }})
-                                                                    ,
-                                                                    ({{ $type->bsc }},
-                                                                    {{ $type->discipline3 }})
-                                                                    ,
-                                                                    ({{ $type->msc }},
-                                                                    {{ $type->discipline4 }})
+                                                                    (({{ $type->level }},{{ $type->discipline }},
+                                                                    {{ $type->completion_date }})
+                                                                    ,)
                                                                 @endforeach
 
                                                             </td>

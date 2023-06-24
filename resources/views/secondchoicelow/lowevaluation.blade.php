@@ -377,19 +377,9 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                     ({{ $type->certificate }},
-                                                                    {{ $type->discipline1 }})
+                                                                    ({{ $type->level }},
+                                                                    {{ $type->discipline }},{{ $type->completion_date }})
                                                                     ,
-                                                                     ({{ $type->diploma }},
-                                                                    {{ $type->discipline2 }})
-                                                                    ,
-                                                                     ({{ $type->bsc }},
-                                                                    {{ $type->discipline3 }})
-                                                                    ,
-                                                                     ({{ $type->msc }},
-                                                                    {{ $type->discipline4}})
-                                                                    ,
-
                                                                 @endforeach
                                                             </td>
 
@@ -593,7 +583,7 @@
                                                                     </td>
 
                                                                     <td>
-                                                                        <div class="col-md-8">
+                                                                        <div class="col-md-10">
 
                                                                             <select
                                                                                 class="form-control custom-select select  mt-15">
@@ -696,7 +686,7 @@
 
                     } else {
                         dayDifferenceb = (days2 - days);
-                        monthDifferenceb=monthDifferenceb;
+                        monthDifferenceb = monthDifferenceb;
 
                     }
                     if (monthDifferenceb < 0) {
@@ -704,7 +694,7 @@
                         yearDifferenceb -= 1;
                     } else {
                         monthDifferenceb = (months2 - months);
-                        yearDifferenceb=yearDifferenceb;
+                        yearDifferenceb = yearDifferenceb;
                     }
 
                     let dayDifference = dayDifferenceb * selectedValue;

@@ -80,6 +80,7 @@
 
                     <th>የትምህርት ደረጃ</th>
                     <th>የትምህርት ዝግጅት</th>
+                    <th>የጨረሱበት ዓመት</th>
 
 
 
@@ -93,11 +94,12 @@
                 @foreach ($form->education as $i => $fo)
                     <tr>
 
-                        <td> {{ $fo->certificate ?? '' }}</td>
-                        <td> {{ $fo->discipline1 ?? '' }}</td>
+                        <td> {{ $fo->level ?? '' }}</td>
+                        <td> {{ $fo->discipline ?? '' }}</td>
+                        <td>{{ $fo->completion_date ?? '' }} </td>
                     </tr>
-                    <tr>
-                        <td>{{ $fo->diploma ?? '' }} </td>
+                    {{-- <tr>
+                        
                         <td>{{ $fo->discipline2 ?? '' }} </td>
                     </tr>
                     <tr>
@@ -111,7 +113,7 @@
 
                         <td>{{ $fo->discipline4 ?? '' }} </td>
 
-                    </tr>
+                    </tr> --}}
                 @endforeach
             </tbody>
         </table>
@@ -173,23 +175,23 @@
                         <td>{{ $fo->positionyouworked }}</td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate);
-
+                            
                             $tdate = Carbon::parse($fo->endingDate);
-
+                            
                             // $years = $tdate - $fdate;
-
+                            
                             // echo abs($years);
                             //
-
+                            
                             $days = $tdate->diffInDays($fdate);
                             $months = $tdate->diffInMonths($fdate);
-
+                            
                             $years = $tdate->diffInYears($fdate);
                             // dd($fdate->diffForHumans($tdate));
                             // dd($years,$months,$days);
-
+                            
                             $time = $tdate->diff($fdate);
                             echo $time->y;
                             //   {{$time->y}} year, {{$time->m}} months, {{$time->d}} days
@@ -198,13 +200,13 @@
                         </td>
                         <td>
                             <?php
-
+                            
                             $fdate = Carbon::parse($fo->startingDate);
-
+                            
                             $tdate = Carbon::parse($fo->endingDate);
-
+                            
                             // $months = $tdate - $fdate;
-
+                            
                             //   echo abs($months);
                             $time = $tdate->diff($fdate);
                             echo $time->m;
@@ -212,9 +214,9 @@
                         </td>
                         <td>
                             <?php
-
+                            
                             // $fdate = Carbon::parse($fo->startingDate);
-
+                            
                             // $tdate = Carbon::parse($fo->endingDate);
                             $time = $tdate->diff($fdate);
                             // $days = $tdate - $fdate;
