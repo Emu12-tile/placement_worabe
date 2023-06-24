@@ -378,18 +378,9 @@
                                                             <td>
 
 
-                                                                 @foreach ($edu as $type)
-                                                                    ({{ $type->certificate }},
-                                                                    {{ $type->discipline1 }})
-                                                                    ,
-                                                                     ({{ $type->diploma }},
-                                                                    {{ $type->discipline2 }})
-                                                                    ,
-                                                                     ({{ $type->bsc }},
-                                                                    {{ $type->discipline3 }})
-                                                                    ,
-                                                                     ({{ $type->msc }},
-                                                                    {{ $type->discipline4}})
+                                                                @foreach ($edu as $type)
+                                                                    ({{ $type->level }},
+                                                                    {{ $type->discipline }},{{ $type->completion_date }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -653,7 +644,6 @@
     </div>
 @endsection
 @section('javascript')
-
     {{-- <script>
         $(document).ready(function() {
             var totalYear = 0;
@@ -795,7 +785,7 @@
             });
         });
     </script> --}}
-     <script>
+    <script>
         $(document).ready(function() {
             var totalYear = 0;
             var totalMonth = 0;
@@ -838,7 +828,7 @@
 
                     } else {
                         dayDifferenceb = (days2 - days);
-                        monthDifferenceb=monthDifferenceb;
+                        monthDifferenceb = monthDifferenceb;
 
                     }
                     if (monthDifferenceb < 0) {
@@ -846,7 +836,7 @@
                         yearDifferenceb -= 1;
                     } else {
                         monthDifferenceb = (months2 - months);
-                        yearDifferenceb=yearDifferenceb;
+                        yearDifferenceb = yearDifferenceb;
                     }
 
                     let dayDifference = dayDifferenceb * selectedValue;

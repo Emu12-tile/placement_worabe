@@ -243,39 +243,39 @@
                                                 <td>{{ $fo->positionyouworked }}</td>
                                                 <td>
                                                     <?php
-                                                    
+
                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                    
+
                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                    
+
                                                     $days = $tdate->diffInDays($fdate);
                                                     $months = $tdate->diffInMonths($fdate);
-                                                    
+
                                                     $years = $tdate->diffInYears($fdate);
-                                                    
+
                                                     $time = $tdate->diff($fdate);
                                                     echo $time->y;
-                                                    
+
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    
+
                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                    
+
                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                    
+
                                                     $time = $tdate->diff($fdate);
                                                     echo $time->m;
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    
+
                                                     $time = $tdate->diff($fdate);
-                                                    
+
                                                     echo $time->d;
-                                                    
+
                                                     ?>
                                                 </td>
                                                 <td></td>
@@ -625,13 +625,13 @@
 
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label for="firstName"> የአባት ስም*</label>
+                                        <label for="middleName"> የአባት ስም*</label>
                                         <input class="form-control" id="middleName" placeholder=" ስም"
-                                            value="{{ $form->middleName }}" type="text" name="firstName">
+                                            value="{{ $form->middleName }}" type="text" name="middleName">
 
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label for="firstName"> የአያት ስም *</label>
+                                        <label for="lastName"> የአያት ስም *</label>
                                         <input class="form-control" id="lastName" placeholder=" ስም"
                                             value="{{ $form->lastName }}" type="text" name="lastName">
 
@@ -748,47 +748,23 @@
                                 </div> --}}
                                 @foreach ($form->education as $i => $fo)
                                     <div class="row">
-                                        <div class="col-md-6 form-group">
-                                            <label for="certificate">certificate</label>
-                                            <input type="text" value="{{ $fo->certificate }} "
-                                                name="certificate"class="form-control " id="inputEmail3">
+                                        <div class="col-md-4 form-group">
+                                            <label for="level">Level</label>
+                                            <input type="text" value="{{ $fo->level }} "
+                                                name="level"class="form-control " id="inputEmail3">
                                         </div>
 
-                                        <div class="col-md-6 form-group">
-                                            <label for="discipline1">የትምህርት ዝግጅት</label>
-                                            <input type="text" value="{{ $fo->discipline1 }}"
-                                                name="discipline1"class="form-control " id="inputEmail3">
+                                        <div class="col-md-4 form-group">
+                                            <label for="discipline">የትምህርት ዝግጅት</label>
+                                            <input type="text" value="{{ $fo->discipline }}"
+                                                name="discipline"class="form-control " id="inputEmail3">
                                         </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="diploma">diploma</label>
-                                            <input type="text" value="{{ $fo->diploma }}"
-                                                name="diploma"class="form-control " id="inputEmail3">
+                                        <div class="col-md-4 form-group">
+                                            <label for="completion_date">completion_date</label>
+                                            <input type="text" value="{{ $fo->completion_date }}"
+                                                name="completion_date"class="form-control " id="inputEmail3">
                                         </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="discipline2">የትምህርት ዝግጅት</label>
-                                            <input type="text" value=" {{ $fo->discipline2 }}"
-                                                name="discipline2"class="form-control " id="inputEmail3">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="bsc">Bsc.</label>
-                                            <input type="text" value="{{ $fo->bsc }} "
-                                                name="bsc"class="form-control " id="inputEmail3">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="discipline3">የትምህርት ዝግጅት</label>
-                                            <input type="text" value="{{ $fo->discipline3 }}"
-                                                name="discipline3"class="form-control " id="inputEmail3">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="msc">Msc.</label>
-                                            <input type="text" value="{{ $fo->msc }} "
-                                                name="msc"class="form-control " id="inputEmail3">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="discipline4">የትምህርት ዝግጅት</label>
-                                            <input type="text" value="{{ $fo->discipline4 }}"
-                                                name="discipline4"class="form-control " id="inputEmail3">
-                                        </div>
+
                                     </div>
                                 @endforeach
 

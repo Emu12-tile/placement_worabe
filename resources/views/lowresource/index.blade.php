@@ -152,17 +152,8 @@
                                                                                         <td> ያለዎት የትምርት ዝግጅት</td>
                                                                                         <td>
                                                                                             @foreach ($hr->form->education as $i => $type)
-                                                                                                ({{ $type->certificate }},
-                                                                                                {{ $type->discipline1 }})
-                                                                                                ,
-                                                                                                ({{ $type->diploma }},
-                                                                                                {{ $type->discipline2 }})
-                                                                                                ,
-                                                                                                ({{ $type->bsc }},
-                                                                                                {{ $type->discipline3 }})
-                                                                                                ,
-                                                                                                ({{ $type->msc }},
-                                                                                                {{ $type->discipline4 }})
+                                                                                                ({{ $type->level }},
+                                                                                                {{ $type->discipline }},{{ completion_date }})
                                                                                                 ,
                                                                                             @endforeach
                                                                                         </td>
