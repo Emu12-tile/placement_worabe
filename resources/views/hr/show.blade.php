@@ -746,23 +746,29 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                @foreach ($form->education as $i => $fo)
+                                @foreach ($form->education ?? [] as $i => $fo)
                                     <div class="row">
+                                        <input type="hidden" value="{{ $fo->id }} "
+                                            name="addMoreFields[{{ $i }}][id]"class="form-control "
+                                            id="inputEmail3">
                                         <div class="col-md-4 form-group">
                                             <label for="level">Level</label>
                                             <input type="text" value="{{ $fo->level }} "
-                                                name="level"class="form-control " id="inputEmail3">
+                                                name="addMoreFields[{{ $i }}][level]"class="form-control "
+                                                id="inputEmail3">
                                         </div>
 
                                         <div class="col-md-4 form-group">
                                             <label for="discipline">የትምህርት ዝግጅት</label>
                                             <input type="text" value="{{ $fo->discipline }}"
-                                                name="discipline"class="form-control " id="inputEmail3">
+                                                name="addMoreFields[{{ $i }}][discipline]"class="form-control "
+                                                id="inputEmail3">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label for="completion_date">completion_date</label>
                                             <input type="text" value="{{ $fo->completion_date }}"
-                                                name="completion_date"class="form-control " id="inputEmail3">
+                                                name="addMoreFields[{{ $i }}][completion_date]"class="form-control "
+                                                id="inputEmail3">
                                         </div>
 
                                     </div>
