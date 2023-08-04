@@ -156,7 +156,7 @@ class FormController extends Controller
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
-            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@astu.edu.et/i'],
+            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@du.edu.et/i'],
 
             'phone' => 'required|numeric|digits:10',
             'fee' => 'required',
