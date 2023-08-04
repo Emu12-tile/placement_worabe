@@ -11,14 +11,9 @@ class Education extends Model
     protected $fillable = [
 
         'form_id',
-        'certificate',
-        'discipline1',
-        'bsc',
-        'diploma',
-        'msc',
-        'discipline2',
-        'discipline4',
-        'discipline4'
+        'level',
+        'discipline',
+        'completion_date'
         // 'edu_level_id',
         // 'education_type_id'
     ];
@@ -26,12 +21,12 @@ class Education extends Model
     {
         return $this->hasOne(Form::class, 'id', 'form_id');
     }
-    public function edu_level()
-    {
-        return $this->hasOne(EduLevel::class, 'id', 'edu_level_id');
-    }
-    public function education_type()
-    {
-        return $this->hasOne(EducationType::class, 'id', 'education_type_id');
-    }
+    // public function edu_level()
+    // {
+    //     return $this->hasOne(EduLevel::class, 'id', 'edu_level_id');
+    // }
+    // public function education_type()
+    // {
+    //     return $this->hasOne(EducationType::class, 'id', 'education_type_id');
+    // }
 }

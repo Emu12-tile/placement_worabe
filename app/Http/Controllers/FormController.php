@@ -156,7 +156,7 @@ class FormController extends Controller
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
-            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@astu.edu.et/i'],
+            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@du.edu.et/i'],
 
             'phone' => 'required|numeric|digits:10',
             'fee' => 'required',
@@ -169,8 +169,10 @@ class FormController extends Controller
 
             'positionofnow' => 'required',
             'choice2_id' => 'required',
-            'addMoreFields.*.edu_level_id' => 'required',
-            'addMoreFields.*.education_type_id' => 'required',
+            // 'addMoreFields.*.level' => 'required',
+            // 'addMoreFields.*.discpline' => 'required',
+            // 'addMoreFields.*.level' => 'required',
+            // 'addMoreFields.*.completion_date' => 'required',
 
             'addMoreInputFields.*.startingDate' => 'date|nullable',
             'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
@@ -247,8 +249,9 @@ class FormController extends Controller
             Education::create([
 
                 "form_id" => $form->id,
-                "edu_level_id" => $val["edu_level_id"],
-                "education_type_id" => $val["education_type_id"],
+                "discipline" => $val["discipline"],
+                "level" => $val["level"],
+                "completion_date" => $val["completion_date"],
 
             ]);
         }
@@ -306,6 +309,7 @@ class FormController extends Controller
         ]);
 
 
+
         $form->choice2_id = $request->choice2_id;
         $form->position_id = $request->position_id;
         $form->job_category_id = $request->job_category_id;
@@ -336,17 +340,32 @@ class FormController extends Controller
 
 
         // $edu = Education::where('form_id', $form->id)->get();
+
+        //   try
+
+
+        $field = $request->input('addMoreFields');
+        // dd($field);
         foreach ($form->education as $education) {
-            $education->level = $request->input('level');
-            $education->discipline = $request->input('discipline');
-            $education->completion_date = $request->input('completion_date');
-            // $education->discipline2 = $request->input('discipline2');
-            // $education->bsc = $request->input('bsc');
-            // $education->discipline3 = $request->input('discipline3');
-            // $education->msc = $request->input('msc');
-            // $education->discipline4 = $request->input('discipline4');
-            $education->update();
+
+
+
+            foreach ($field as $key => $value) {
+
+
+                if ($value['id'] == $education->id) {
+                    $education = Education::findOrFail($education->id);
+
+                    $education->level = $value['level'];
+                    $education->discipline = $value['discipline'];
+
+                    $education->completion_date = $value['completion_date'];
+                    // dd($experience);
+                    $education->update();
+                }
+            }
         }
+
 
 
         //     $inputFields = $request->input('addMoreInputFields') ?? [];
@@ -370,6 +389,7 @@ class FormController extends Controller
                     $experience->startingDate = $value['startingDate'];
 
                     $experience->endingDate = $value['endingDate'];
+                    // dd($experience);
                     // dd($experience);
                     $experience->update();
                 }
