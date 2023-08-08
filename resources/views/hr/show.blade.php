@@ -848,8 +848,9 @@
                                 <h3 class="text-white text-center mt-3 mb-4   "
                                     style=" background-color:#088c13; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
+
                                 @foreach ($form->experiences ?? [] as $i => $fo)
-                                    <div class="row">
+                                    <div class="row ">
                                         <input type="hidden" value="{{ $fo->id }} "
                                             name="addMoreInputFields[{{ $i }}][id]"class="form-control "
                                             id="inputEmail3">
@@ -876,9 +877,72 @@
                                                 name="addMoreInputFields[{{ $i }}][positionyouworked]"class="form-control "
                                                 id="inputEmail3">
                                         </div>
+                                        {{-- <div>
+                                                <a href="javascript:void(0)"
+                                                    class="btn color-wrap text-white bg-blue-dark-4  addRow mt-40 "
+                                                    style=" border-radius:50%">+</a>
+                                            </div> --}}
 
+                                        {{-- </div> --}}
                                     </div>
                                 @endforeach
+                                <div id="myform">
+                                    <div class="row">
+                                        <div class="col-sm">
+
+                                            <div class=" formgr row">
+
+                                                <div class="col-md-3">
+
+                                                    <label for="startingDate">የጀመሩበት ዓመት(ወር/ቀን/ዓመት)</label>
+                                                    <input type="date" name="addFields[0][startingDate]"
+                                                        value="{{ old('startingDate') }}"
+                                                        class="form-control  @error('startingDate') is-invalid @enderror"
+                                                        id="startingDate" placeholder=" ">
+                                                    @error('startingDate')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="endingDate">ያበቃበት ቀን(ወር/ቀን/ዓመት) </label>
+                                                    <input type="date" min="startingDate"
+                                                        name="addFields[0][endingDate]" value="{{ old('endingDate') }}"
+                                                        class="form-control  @error('endingDate') is-invalid @enderror"
+                                                        id="endingDate" placeholder=" endingDate">
+                                                    @error('endingDate')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label for="positionyouworked">የስራ መደብ </label>
+                                                    <input type="text" name="addFields[0][positionyouworked]"
+                                                        value="{{ old('positionyouworked') }}"
+                                                        class="form-control  @error('positionyouworked') is-invalid @enderror"
+                                                        id="positionyouworked" placeholder="የሰሩበት የስራ መደብ">
+                                                    @error('positionyouworked')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="btn color-wrap text-white bg-blue-dark-4  addRow mt-40 "
+                                                        style=" border-radius:50%">+</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
 
 
 
@@ -1022,7 +1086,77 @@
     <script>
         $(document).ready(function() {
 
+            var i = 0
+            $(".addRow").click(function(e) {
+                ++i;
+                e.preventDefault();
+                $("#myform").append(`
+                        <div class="row" >
+                                    <div class="col-sm">
 
+                                            <div class=" formgr row">
+
+                                                <div class="col-md-3">
+                                       <label for="startingDate"></label>
+
+                                                    <input type="date" name="addFields[${i}][startingDate]" value="{{ old('startingDate') }}"
+                                                        class="form-control  @error('startingDate') is-invalid @enderror"
+                                                        id="startingDate" placeholder=" ">
+                                                    @error('startingDate')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                  <label for="endingDate"></label>
+                                                    <input type="date" name="addFields[${i}][endingDate]" value="{{ old('endingDate') }}}"
+                                                        class="form-control  @error('endingDate') is-invalid @enderror"
+                                                        id="endingDate" placeholder=" endingDate">
+                                                    @error('endingDate')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="positionyouworked"></label>
+
+                                                    <input type="text" name="addFields[${i}][positionyouworked]" value="{{ old('positionyouworked') }}"
+                                                        class="form-control  @error('positionyouworked') is-invalid @enderror"
+                                                        id="positionyouworked" placeholder="የሰሩበት የስራ መደብ">
+                                                    @error('positionyouworked')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+
+                                                </div>
+                                                <div>
+
+                                                    <a href="javascript:void(0)" class="btn btn-danger  removeRow mt-20 "
+                                                        style=" border-radius:50%">-</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                </div>
+
+
+
+
+
+                    `);
+            });
+
+            $(document).on('click', '.removeRow', function(e) {
+
+                e.preventDefault();
+
+                let row_item = $(this).parents('.formgr');
+                $(row_item).remove();
+            });
             $(document).on('change', '.dynamic', function() {
 
                 var cat_id = $(this).val();
@@ -1191,6 +1325,7 @@
 
 
             });
+
 
 
 

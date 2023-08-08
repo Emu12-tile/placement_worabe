@@ -374,6 +374,21 @@ class FormController extends Controller
 
         $inputFields = $request->input('addMoreInputFields');
         // dd($inputFields);
+        foreach ($request->addFields as $key => $value) {
+            // Check if the required fields have values
+            if (
+                isset($value['positionyouworked']) &&
+                isset($value['startingDate']) &&
+                isset($value['endingDate'])
+            ) {
+                Experience::create([
+                    'form_id' => $form->id,
+                    'positionyouworked' => $value['positionyouworked'],
+                    'startingDate' => $value['startingDate'],
+                    'endingDate' => $value['endingDate'],
+                ]);
+            }
+        }
 
         foreach ($form->experiences as $experience) {
 
