@@ -14,9 +14,9 @@
 
 
             </div>
-            <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ በስራ አስፈጻሚ የስራ መደብ ስር</h5>
+            <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ</h5>
 
-
+            {{--  በስራ አስፈጻሚ የስራ መደብ ስር --}}
             <div class="row" id="search_list">
                 <div class="col-sm">
                     <div class="table-wrap">
@@ -44,17 +44,16 @@
                                 $j = 0;
                                 ?>
                                 @foreach ($forms as $i => $form)
-                                    @if ($form->category == 'Executive')
-                                        <tr>
-                                            <td>{{ ++$j }}</td>
-                                            <td>
-                                                <form action="" method="POST"><a
-                                                        href="{{ route('result2', $form->id) }}" class="mr-25"
-                                                        data-toggle="tooltip"
-                                                        data-original-title="show">{{ $form->jobcat2->job_category }}\{{ $form->position }}
-                                                    </a>
-                                                </form>
-                                            </td>
+                                    {{-- @if ($form->category == 'Executive') --}}
+                                    <tr>
+                                        <td>{{ ++$j }}</td>
+                                        <td>
+                                            <form action="" method="POST"><a href="{{ route('result2', $form->id) }}"
+                                                    class="mr-25" data-toggle="tooltip"
+                                                    data-original-title="show">{{ $form->jobcat2->job_category }}\{{ $form->position }}
+                                                </a>
+                                            </form>
+                                        </td>
 
 
 
@@ -64,9 +63,9 @@
 
 
 
-                                            </td>
-                                        </tr>
-                                    @endif
+                                        </td>
+                                    </tr>
+                                    {{-- @endif --}}
                                 @endforeach
 
                             </tbody>
@@ -84,7 +83,7 @@
 
 
     </div>
-    <div class="container">
+    {{-- <div class="container">
 
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
@@ -160,5 +159,5 @@
 
 
 
-    </div>
+    </div> --}}
 @endsection

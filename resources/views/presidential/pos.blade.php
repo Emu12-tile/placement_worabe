@@ -44,7 +44,7 @@
                                 $j = 0;
                                 ?>
                                 @foreach ($forms as $i => $form)
-                                    @if ($form->category == 'Executive')
+                                    {{-- @if ($form->category == 'Executive') --}}
                                         <tr>
                                             <td>{{ ++$j }}</td>
                                             <td>
@@ -66,7 +66,7 @@
 
                                             </td>
                                         </tr>
-                                    @endif
+                                    {{-- @endif --}}
                                 @endforeach
 
                             </tbody>
@@ -84,7 +84,7 @@
 
 
     </div>
-    <div class="container">
+    {{-- <div class="container">
 
         <section class="hk-sec-wrapper mt-100">
             <div class="pull-right hk-sec-title">
@@ -160,5 +160,5 @@
 
 
 
-    </div>
+    </div> --}}
 @endsection

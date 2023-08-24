@@ -9,7 +9,7 @@
 
 
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:#088c13; padding:10px;">ዲላ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:#088c13; margin:center">
+                                    style=" background-color:#456896; margin:center">
                                     ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
                                 </h3>
                                 <table id="customers" class="mb-15">
@@ -141,7 +141,7 @@
 
 
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:#088c13; margin:center">
+                                    style=" background-color:#456896; margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -204,7 +204,7 @@
 
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4   "
-                                    style=" background-color:#088c13; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                    style=" background-color:#456896; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
                                 <table id="customers" class="mb-15">
                                     <thead>
@@ -287,11 +287,11 @@
 
 
                                 <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                    style=" background-color:#088c13; margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                    style=" background-color:#456896; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
                                 </h3>
-                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#088c13">
+                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#456896">
                                     ምርጫ 1</button>
 
                                 <div class="row">
@@ -344,7 +344,7 @@
 
 
                                 </div>
-                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#088c13">
+                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#456896">
                                     ምርጫ 2</button>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
@@ -606,7 +606,7 @@
 
 
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:#088c13; padding:10px;">ዲላ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -692,7 +692,7 @@
                                     </div>
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:#088c13; margin:center">
+                                    style=" background-color:#456896; margin:center">
                                     ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
                                 </h3>
                                 {{-- <div class="row">
@@ -786,7 +786,7 @@
 
                                 <h3 class="text-white text-center
                                         mt-3 mb-4 "
-                                    style=" background-color:#088c13; margin:center">
+                                    style=" background-color:#456896; margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -846,7 +846,7 @@
 
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4   "
-                                    style=" background-color:#088c13; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                    style=" background-color:#456896; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
 
                                 @foreach ($form->experiences ?? [] as $i => $fo)
@@ -949,11 +949,11 @@
 
 
                                 <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                    style=" background-color:#088c13; margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                    style=" background-color:#456896; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
                                 </h3>
-                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#088c13">
+                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#456896">
                                     ምርጫ 1</button>
 
                                 <div class="row">
@@ -1007,7 +1007,7 @@
 
 
                                 </div>
-                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#088c13">
+                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#456896">
                                     ምርጫ 2</button>
                                 <div class="row">
                                     <div class="col-md-6 form-group">

@@ -9,7 +9,7 @@
 
 
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:#088c13; padding:10px;">ዲላ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -97,7 +97,7 @@
 
 
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:#088c13; margin:center">
+                                    style=" background-color:#456896; margin:center">
                                     አገልግሎት
                                 </h3>
 

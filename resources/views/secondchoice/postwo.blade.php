@@ -86,7 +86,7 @@
 
 
                 </div>
-                <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ በስራ አስፈጻሚ የስራ መደብ ስር</h5>
+                <h5 class="hk-sec-title">ከቡድን መሪ በላይ ተወዳዳሪዎች 2ኛ ምርጫ </h5>
 
 
                 <div class="row" id="search_list">
@@ -117,7 +117,7 @@
                                     ?>
 
                                     @foreach ($forms as $i => $form)
-                                        @if ($form->category == 'Executive')
+                                        {{-- @if ($form->category == 'Executive') --}}
                                             <tr>
                                                 <td>{{ ++$j }}</td>
                                                 <td>
@@ -132,7 +132,7 @@
 
 
                                             </tr>
-                                        @endif
+                                        {{-- @endif --}}
                                     @endforeach
 
                                 </tbody>
@@ -150,7 +150,7 @@
 
 
         </div>
-        <div class="container">
+        {{-- <div class="container">
 
             <section class="hk-sec-wrapper mt-100">
                 <div class="pull-right hk-sec-title">
@@ -220,6 +220,6 @@
 
 
 
-        </div>
+        </div> --}}
     @endrole
 @endsection
