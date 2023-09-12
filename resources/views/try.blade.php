@@ -529,7 +529,7 @@
         </div>
     </div>
 @endsection
-{{-- @section('javascript')
+@section('javascript')
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
@@ -881,4 +881,4 @@
 
         })
     </script>
-@endsection --}}
+@endsection

@@ -68,9 +68,9 @@
         <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">ወልቂጤ ዩኒቨርሲቲ </h1>
         <h3 style="text-align:center">የአስተዳደር ሠራተኞች ፕሮፋይል</h3>
         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }} {{ $form->middleName }} {{ $form->lastName }} </p>
-        {{-- <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->job_category->job_category }} </p> --}}
+        <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->jobcat }} </p>
         <p>2/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
-            ደረጃ፦{{ $form->level }} &emsp; ደምወዝ:-{{ $form->fee }}
+            ብሔር:-{{ $form->ethinicity }} &emsp; የትውልድ ዘመን:-{{ $form->birth_date }}
         </p>
         <p>3/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:-
         </p>
@@ -80,7 +80,7 @@
 
                     <th>የትምህርት ደረጃ</th>
                     <th>የትምህርት ዝግጅት</th>
-                    <th>የጨረሱበት ዓመት</th>
+                    {{-- <th>የጨረሱበት ዓመት</th> --}}
 
 
 
@@ -96,7 +96,7 @@
 
                         <td> {{ $fo->level ?? '' }}</td>
                         <td> {{ $fo->discipline ?? '' }}</td>
-                        <td>{{ $fo->completion_date ?? '' }} </td>
+                        {{-- <td>{{ $fo->completion_date ?? '' }} </td> --}}
                     </tr>
                     {{-- <tr>
 
@@ -122,8 +122,8 @@
             {{ $form->UniversityHiringEra }}
 
         </p>
-        {{-- <p>5/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p> --}}
-        {{-- <p>6/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p> --}}
+        <p>5/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
+        <p>6/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
         <h5>5/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
         <p> ምርጫ 1</p>
 
@@ -231,11 +231,11 @@
             </tbody>
         </table>
         <div class="html2pdf__page-break"></div>
-        {{-- <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
-            {{ $form->serviceAfterDiplo }}</p> --}}
+        <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
+            {{ $form->serviceAfterDiplo }}</p>
         <p>7/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
         <p>8/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
-        {{-- <p>9/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p> --}}
+        <p>9/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
         <p>ቅጹን የሞላው ሰራተኛ ስም
             &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>

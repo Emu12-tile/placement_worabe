@@ -45,6 +45,13 @@ class Form extends Model
         // 'tag_slug',
         // 'firstdergee'
 
+        'ethinicity',
+        'birth_date',
+        'jobcat',
+
+
+
+
 
 
     ];
