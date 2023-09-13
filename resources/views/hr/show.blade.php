@@ -162,14 +162,14 @@
                                         <input type="hidden" value="{{ $fo->id }} "
                                             name="addMoreFields[{{ $i }}][id]"class="form-control "
                                             id="inputEmail3">
-                                        <div class="col-md-4 form-group">
+                                        <div class="col-md-5 form-group">
                                             <label for="level">የትምህርት ደረጃ</label>
                                             <input type="text" value="{{ $fo->level }} "
                                                 name="addMoreFields[{{ $i }}][level]"class="form-control "
                                                 id="inputEmail3">
                                         </div>
 
-                                        <div class="col-md-4 form-group">
+                                        <div class="col-md-5 form-group">
                                             <label for="discipline">የትምህርት ዝግጅት</label>
                                             <input type="text" value="{{ $fo->discipline }}"
                                                 name="addMoreFields[{{ $i }}][discipline]"class="form-control "
@@ -184,6 +184,35 @@
 
                                     </div>
                                 @endforeach
+                                <div id="myformone">
+                                    <div class="row">
+                                        <div class="col-sm">
+
+                                            <div class=" educ row">
+
+                                                <div class="col-md-5 form-group">
+                                                    <label for="level">የትምህርት ደረጃ</label>
+                                                    <input type="text" value="{{ old('level') }} "
+                                                        name="MoreFields[0][level]"class="form-control " id="inputEmail3"
+                                                        placeholder="level">
+                                                </div>
+
+                                                <div class="col-md-5 form-group">
+                                                    <label for="discipline">የትምህርት ዝግጅት</label>
+                                                    <input type="text" value="{{ old('discipline') }}"
+                                                        name="MoreFields[0][discipline]"class="form-control "
+                                                        id="inputEmail3" placeholder="discipline">
+                                                </div>
+
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="btn color-wrap text-white bg-blue-dark-4  addrowone mt-40 "
+                                                        style=" border-radius:50%">+</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
@@ -195,7 +224,7 @@
 
 
 
-                                <h3 class="text-white text-center
+                                <h3 class="text-white text-center me
                                         mt-3 mb-4 "
                                     style=" background-color:#456896; margin:center">
                                     አገልግሎት
@@ -498,6 +527,7 @@
         $(document).ready(function() {
 
             var i = 0
+            var j=0
             $(".addRow").click(function(e) {
                 ++i;
                 e.preventDefault();
@@ -568,6 +598,50 @@
                 let row_item = $(this).parents('.formgr');
                 $(row_item).remove();
             });
+            $(".addrowone").click(function(e) {
+                ++j;
+                e.preventDefault();
+                $("#myformone").append(`
+                <div class="row">
+                    <div class="col-sm">
+                       <div class=" educ row">
+                            <div class="col-md-5 form-group">
+                                <label for="level">የትምህርት ደረጃ</label>
+                                <input type="text" value="{{ old('level') }} " placeholder="level"
+                                name="MoreFields[${j}][level]"class="form-control "
+                                id="inputEmail3" >
+                            </div>
+
+                            <div class="col-md-5 form-group">
+                                <label for="discipline">የትምህርት ዝግጅት</label>
+                                <input type="text" value="{{ old('discipline') }}"
+                                name="MoreFields[${j}][discipline]"class="form-control "
+                                id="inputEmail3" placeholder="discipline">
+                            </div>
+
+                            <div>
+
+                                <a href="javascript:void(0)" class="btn btn-danger  removerowone mt-20 "
+                                style=" border-radius:50%">-</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                    `);
+            });
+
+            $(document).on('click', '.removerowone', function(e) {
+                // console.log('hi')
+                e.preventDefault();
+                // $this.parents('')
+                let row_item = $(this).parents('.educ');
+                $(row_item).remove();
+            });
+
             $(document).on('change', '.dynamic', function() {
 
                 var cat_id = $(this).val();

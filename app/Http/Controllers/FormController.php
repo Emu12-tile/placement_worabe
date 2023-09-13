@@ -354,6 +354,22 @@ class FormController extends Controller
 
 
 
+        foreach ($request->MoreFields as $key => $value) {
+            // Check if the required fields have values
+            if (
+                isset($value['level']) &&
+                isset($value['discipline'])
+                // &&
+                // isset($value['completion_date'])
+            ) {
+                Education::create([
+                    'form_id' => $form->id,
+                    'level' => $value['level'],
+                    'discipline' => $value['discipline'],
+                    // 'completion_date' => $value['completion_date'],
+                ]);
+            }
+        }
 
 
         $field = $request->input('addMoreFields');
@@ -371,7 +387,7 @@ class FormController extends Controller
                     $education->level = $value['level'];
                     $education->discipline = $value['discipline'];
 
-                    $education->completion_date = $value['completion_date'];
+                    // $education->completion_date = $value['completion_date'];
                     // dd($experience);
                     $education->update();
                 }
