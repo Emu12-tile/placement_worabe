@@ -189,8 +189,7 @@
                                                                                                     <td>
                                                                                                         @foreach ($hr->form->education as $i => $type)
                                                                                                             ({{ $type->level }},
-                                                                                                            {{ $type->discipline }},
-                                                                                                            {{ $type->completion_date }})
+                                                                                                            {{ $type->discipline }})
                                                                                                             ,
                                                                                                         @endforeach
                                                                                                     </td>

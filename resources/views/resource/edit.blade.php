@@ -342,8 +342,7 @@
                                                             <td>
                                                                 @foreach ($edu as $type)
                                                                     ({{ $type->level }},
-                                                                    {{ $type->discipline }},
-                                                                    {{ $type->completion_date }})
+                                                                    {{ $type->discipline }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -352,24 +351,24 @@
                                                             <td>
                                                                 @foreach ($forms as $fo)
                                                                     <?php
-                                                                    
+
                                                                     $fdate = Carbon::parse($fo->startingDate);
-                                                                    
+
                                                                     $tdate = Carbon::parse($fo->endingDate);
-                                                                    
+
                                                                     // $years = $tdate - $fdate;
                                                                     $days = $tdate->diffInDays($fdate);
                                                                     $months = $tdate->diffInMonths($fdate);
-                                                                    
+
                                                                     $years = $tdate->diffInYears($fdate);
                                                                     // dd($fdate->diffForHumans($tdate));
                                                                     // dd($years,$months,$days);
-                                                                    
+
                                                                     $time = $tdate->diff($fdate);
                                                                     // echo $time->y;
-                                                                    
+
                                                                     echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-                                                                    
+
                                                                     ?>
                                                                 @endforeach
                                                             </td>
@@ -409,10 +408,10 @@
                                                     <thead class="thead-active">
                                                         <tr>
 
-
+                                                            <th>አሁን ያሉበት የስራ ክፍል</th>
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
-                                                            <th>ደረጃ</th>
-                                                            <th>ደምወዝ</th>
+                                                            <th>ብሔር</th>
+                                                            <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
                                                             <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
@@ -434,10 +433,10 @@
 
                                                     <tbody>
                                                         <tr>
-
+                                                            <td>{{ $hr->form->jobcat }}</td>
                                                             <td>{{ $hr->form->positionofnow }}</td>
-                                                            <td>{{ $hr->form->level }}</td>
-                                                            <td>{{ $hr->form->fee }}</td>
+                                                            <td>{{ $hr->form->ethinicity }}</td>
+                                                            <td>{{ $hr->form->birth_date }}</td>
                                                             <td>{{ $hr->form->UniversityHiringEra }}</td>
                                                             <td>{{ $hr->form->servicPeriodAtUniversity }}</td>
                                                             <td>{{ $hr->form->servicPeriodAtAnotherPlace }}</td>
@@ -461,8 +460,8 @@
                                             <label for="presidentGrade">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                             <input class="form-control" @error('presidentGrade') is-invalid @enderror"
                                                 id="presidentGrade" placeholder="ለትምህርት ዝግጅት የሚሰጥ ነጥብ ከ (35%)"
-                                                value="{{ $hr->presidentGrade }}" type="number" name="presidentGrade"
-                                                min="1" max="35" required>
+                                                value="{{ $hr->presidentGrade }}" type="float" name="presidentGrade"
+                                                min="0" max="35" required>
                                             @error('presidentGrade')
                                                 <span class=" error invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -471,62 +470,62 @@
                                         </div>
                                     @endrole
                                     @role('hr')
-                                    <div class="col-md-4 ">
-                                        <div class="row form-group">
-                                            <label for="firstName">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                            <input class="form-control" @error('performance') is-invalid @enderror"
-                                                id="firstName" placeholder="" value="{{ $hr->performance }}" type="number"
-                                                name="performance" min="1" max="25">
-                                            @error('performance')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="col-md-4 ">
+                                            <div class="row form-group">
+                                                <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
+                                                <input class="form-control" @error('performance') is-invalid @enderror"
+                                                    id="performance" placeholder="" value="{{ $hr->performance }}"
+                                                    type="float" name="performance" min="0" max="25">
+                                                @error('performance')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
+                                                <input class="form-control" @error('experience') is-invalid @enderror"
+                                                    id="experience" placeholder="" value="{{ $hr->experience }}"
+                                                    type="float" name="experience" min="0" max="15">
+                                                @error('experience')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="lastName">ለውጤት ተኮር ምዘና </label>
+                                                <input class="form-control" @error('resultbased') is-invalid @enderror"
+                                                    id="resultbased" placeholder="" value="{{ $hr->resultbased }}"
+                                                    type="float" name="resultbased" min="0" max="10">
+                                                @error('resultbased')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="exam">ለፈተና ውጤት</label>
+                                                <input class="form-control" @error('exam') is-invalid @enderror"
+                                                    id="exam" placeholder="" value="{{ $hr->exam }}"
+                                                    type="float" name="exam" min="0" max="15">
+                                                @error('exam')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="row form-group">
+                                                <label for="remark">Remark </label>
+                                                <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
+                                                    placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
+                                                @error('remark')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <label for="middleName">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
-                                            <input class="form-control" @error('experience') is-invalid @enderror"
-                                                id="middleName" placeholder="" value="{{ $hr->experience }}" type="float"
-                                                name="experience" min="1" max="15">
-                                            @error('experience')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="row form-group">
-                                            <label for="lastName">ለውጤት ተኮር ምዘና </label>
-                                            <input class="form-control" @error('resultbased') is-invalid @enderror"
-                                                id="resultbased" placeholder="" value="{{ $hr->resultbased }}"
-                                                type="decimal" name="resultbased" min="1" max="10">
-                                            @error('resultbased')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="row form-group">
-                                            <label for="exam">ለፈተና ውጤት</label>
-                                            <input class="form-control" @error('exam') is-invalid @enderror" id="exam"
-                                                placeholder="" value="{{ $hr->exam }}" type="float" name="exam"
-                                                min="1" max="15">
-                                            @error('exam')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="row form-group">
-                                            <label for="resultbased">Remark </label>
-                                            <textarea type="text" class="form-control @error('remark') is-invalid @enderror" id="remark"
-                                                placeholder="remark " name="remark">{{ $hr->remark }}</textarea>
-                                            @error('remark')
-                                                <span class=" error invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
                                         <div class="col-md-8">
                                             <div class="table-wrap mb-20 ">
                                                 <div class="table-responsive" id="table-container">
@@ -627,7 +626,6 @@
     </div>
 @endsection
 @section('javascript')
-    
     <script>
         $(document).ready(function() {
             var totalYear = 0;

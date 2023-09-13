@@ -444,9 +444,10 @@
                                                         <tr>
 
 
+                                                            <th>አሁን ያሉበት የስራ ክፍል</th>
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
-                                                            <th>ደረጃ</th>
-                                                            <th>ደምወዝ</th>
+                                                            <th>ብሔር</th>
+                                                            <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
                                                             <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
@@ -468,9 +469,10 @@
                                                     <tbody>
                                                         <tr>
 
+                                                            <td>{{ $form->jobcat }}</td>
                                                             <td>{{ $form->positionofnow }}</td>
-                                                            <td>{{ $form->level }}</td>
-                                                            <td>{{ $form->fee }}</td>
+                                                            <td>{{ $form->ethinicity }}</td>
+                                                            <td>{{ $form->birth_date }}</td>
                                                             <td>{{ $form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->servicPeriodAtUniversity }}</td>
                                                             <td>{{ $form->servicPeriodAtAnotherPlace }}</td>
@@ -493,10 +495,10 @@
                                         <div class="col-md-4">
                                             <div class="row form-group">
                                                 <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
-                                                <input type="number" value="{{ old('performance') }}"
+                                                <input type="float" value="{{ old('performance') }}"
                                                     class="form-control @error('performance') is-invalid @enderror"
                                                     id="performance" placeholder="ለትምህርት ዝግጅት" name="performance"
-                                                    min="1" max="40">
+                                                    min="0" max="40">
                                                 @error('performance')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -507,7 +509,7 @@
                                                 <label for="experience">ለስራ ልምድ አገልግሎት የሚሰጥ ነጥብ</label>
                                                 <input type="float" value="{{ old('experience') }}"
                                                     class="form-control @error('experience') is-invalid @enderror"
-                                                    id="experience" placeholder="ለስራ ልምድ" name="experience" min="1"
+                                                    id="experience" placeholder="ለስራ ልምድ" name="experience" min="0"
                                                     max="30">
                                                 @error('experience')
                                                     <span class=" error invalid-feedback">
@@ -521,7 +523,7 @@
                                                     value="{{ round($form->resultOfrecentPerform * 0.3, 2) }}"
                                                     class="form-control @error('resultbased') is-invalid @enderror"
                                                     id="resultbased" placeholder="ለውጤት ተኮር ምዘና " name="resultbased"
-                                                    min="1" max="30">
+                                                    min="0" max="30">
                                                 @error('resultbased')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -529,7 +531,7 @@
                                                 @enderror
                                             </div>
                                             <div class="row form-group">
-                                                <label for="exam">Remark</label>
+                                                <label for="remark">Remark</label>
                                                 <textarea class="form-control @error('remark') is-invalid @enderror" id="remark" placeholder="remark"
                                                     value="{{ old('remark') }}" type="text" name="remark"></textarea>
                                                 @error('remark')

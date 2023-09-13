@@ -217,7 +217,7 @@
                                                             <td>
                                                                 @foreach ($edu as $type)
                                                                     ({{ $type->level }},
-                                                                    {{ $type->discipline }},{{ $type->completion_date }})
+                                                                    {{ $type->discipline }})
                                                                     ,
                                                                 @endforeach
                                                             </td>
@@ -281,9 +281,11 @@
                                                         <tr>
 
 
+                                                            <th>አሁን ያሉበት የስራ ክፍል</th>
+
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
-                                                            <th>ደረጃ</th>
-                                                            <th>ደምወዝ</th>
+                                                            <th>ብሔር</th>
+                                                            <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
                                                             <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
@@ -304,10 +306,10 @@
 
                                                     <tbody>
                                                         <tr>
-
+                                                            <td>{{ $form->form->jobcat }}</td>
                                                             <td>{{ $form->form->positionofnow }}</td>
-                                                            <td>{{ $form->form->level }}</td>
-                                                            <td>{{ $form->form->fee }}</td>
+                                                            <td>{{ $form->form->ethinicity }}</td>
+                                                            <td>{{ $form->form->birth_date }}</td>
                                                             <td>{{ $form->form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->form->servicPeriodAtUniversity }}</td>
                                                             <td>{{ $form->form->servicPeriodAtAnotherPlace }}</td>
@@ -327,9 +329,9 @@
                                 <div class="row mt-40">
 
                                     <div class="col-md-6 form-group">
-                                        <label for="firstName"> በበላይ ሃላፊ ለአመራርነት ክህሎት የሚሰጥ ነጥብ ከ(35%) </label>
+                                        <label for="presidentGrade"> በበላይ ሃላፊ ለአመራርነት ክህሎት የሚሰጥ ነጥብ ከ(35%) </label>
                                         <input class="form-control @error('presidentGrade') is-invalid @enderror"
-                                            id="firstName" placeholder="ለአመራርነት ክህሎት  ከ(35%)"
+                                            id="presidentGrade" placeholder="ለአመራርነት ክህሎት  ከ(35%)"
                                             value="{{ old('presidentGrade') }}" type="float" name="presidentGrade"
                                             min="0" max="35">
                                         @error('presidentGrade')

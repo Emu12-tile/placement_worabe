@@ -375,10 +375,9 @@
                                                             <td>
                                                                 @foreach ($edu as $type)
                                                                     ({{ $type->level }},
-                                                                    {{ $type->discipline }},
-                                                                    {{$type->completion_date}})
+                                                                    {{ $type->discipline }})
+                                                                    {{-- {{$type->completion_date}}) --}}
                                                                     ,
-                                                                    
                                                                 @endforeach
                                                             </td>
 
@@ -436,11 +435,11 @@
                                                 <table class="table table-active table-bordered mb-0">
                                                     <thead class="thead-active">
                                                         <tr>
-
+                                                            <th>አሁን ያሉበት የስራ ክፍል</th>
 
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
-                                                            <th>ደረጃ</th>
-                                                            <th>ደምወዝ</th>
+                                                            <th>ብሔር</th>
+                                                            <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
                                                             <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
@@ -461,10 +460,10 @@
 
                                                     <tbody>
                                                         <tr>
-
+                                                            <td>{{ $form->jobcat }}</td>
                                                             <td>{{ $form->positionofnow }}</td>
-                                                            <td>{{ $form->level }}</td>
-                                                            <td>{{ $form->fee }}</td>
+                                                            <td>{{ $form->ethinicity }}</td>
+                                                            <td>{{ $form->birth_date }}</td>
                                                             <td>{{ $form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->servicPeriodAtUniversity }}</td>
                                                             <td>{{ $form->servicPeriodAtAnotherPlace }}</td>
@@ -502,7 +501,7 @@
                                                 <label for="performance">ለትምህርት ዝግጅት የሚሰጥ ነጥብ</label>
                                                 <input class="form-control @error('performance') is-invalid @enderror"
                                                     id="performance" placeholder="ለትምህርት ዝግጅት"
-                                                    value="{{ old('performance') }}" type="number" name="performance">
+                                                    value="{{ old('performance') }}" type="float" name="performance">
                                                 @error('performance')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>

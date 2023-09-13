@@ -197,9 +197,8 @@
 
                                                             <td>
                                                                 @foreach ($edu as $type)
-                                                                    (({{ $type->level }},{{ $type->discipline }},
-                                                                    {{ $type->completion_date }})
-                                                                    ,)
+                                                                    ({{ $type->level }},{{ $type->discipline }})
+                                                                    ,
                                                                 @endforeach
 
                                                             </td>
@@ -258,9 +257,11 @@
                                                         <tr>
 
 
+                                                            <th>አሁን ያሉበት የስራ ክፍል</th>
+
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
-                                                            <th>ደረጃ</th>
-                                                            <th>ደምወዝ</th>
+                                                            <th>ብሔር</th>
+                                                            <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
                                                             <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
@@ -281,10 +282,10 @@
 
                                                     <tbody>
                                                         <tr>
-
+                                                            <td>{{ $pres->secondhr->form->jobcat }}</td>
                                                             <td>{{ $pres->secondhr->form->positionofnow }}</td>
-                                                            <td>{{ $pres->secondhr->form->level }}</td>
-                                                            <td>{{ $pres->secondhr->form->fee }}</td>
+                                                            <td>{{ $pres->secondhr->form->ethinicity }}</td>
+                                                            <td>{{ $pres->secondhr->form->birth_date }}</td>
                                                             <td>{{ $pres->secondhr->form->UniversityHiringEra }}</td>
                                                             <td>{{ $pres->secondhr->form->servicPeriodAtUniversity }}</td>
                                                             <td>{{ $pres->secondhr->form->servicPeriodAtAnotherPlace }}
