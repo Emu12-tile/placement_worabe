@@ -76,11 +76,11 @@
                                                     <input name="email" type="email"
                                                         class="form-control
                                                         @error('email') is-invalid @enderror"
-                                                        id="email" placeholder="@aastu.edu.et"
+                                                        id="email" placeholder="@wku.edu.et"
                                                         value="{{ old('email') }}">
                                                     @error('email')
                                                         <span class=" error invalid-feedback">
-                                                            <strong> ኢሜይል ይጠቀሙ</strong>
+                                                            <strong>የወልቂጤ ኢሜይል ብቻ ይጠቀሙ</strong>
                                                         </span>
                                                     @enderror
 
