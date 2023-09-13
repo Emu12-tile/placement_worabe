@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('firstName')->nullable();
             $table->string('middleName')->nullable();
             $table->string('lastName')->nullable();
+            $table->string('ethinicity')->nullable();
+            $table->string('birth_date')->nullable();
+            $table->string('jobcat')->nullable();
+
+
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('sex')->nullable();

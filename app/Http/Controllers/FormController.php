@@ -34,13 +34,20 @@ class FormController extends Controller
 
     public function index()
     {
-        // $forms = Form::all()->where('hrs', null);
-        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id', 'isEditable')->get();
-        // dd($forms);
+        // $level = Level::all();
+        // $form = Form::all();
 
-        // $forms = Form::where('hrs', null)->paginate(10);
-        // dd($forms);
-        // $forms = Form::whereNotNull('hrs')->select('firstName', 'middleName', 'lastName', 'id')->get();
+        // $edu_level = EduLevel::all();
+        // $job_category = JobCategory::all();
+
+        // $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
+        //     ->where('categories.catstatus', 'active')->get();
+        // $jobcat2 = jobcat2::all();
+        // $edutype = EducationType::all();
+        // return view('try2', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
+
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id', 'isEditable')->get();
+
 
         return view('hr.index', ['forms' => $forms]);
     }
@@ -144,6 +151,13 @@ class FormController extends Controller
         $edutype = EducationType::all();
         return view('try', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
     }
+    public function createforms()
+    {
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id', 'isEditable')->get();
+        //   dd($forms);
+
+        return view('hr.index', ['forms' => $forms]);
+    }
 
 
 
@@ -156,7 +170,7 @@ class FormController extends Controller
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
-            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@du.edu.et/i'],
+            'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i'],
 
             'phone' => 'required|numeric|digits:10',
             'fee' => 'required',
@@ -334,18 +348,32 @@ class FormController extends Controller
 
 
         $form->sex = $request->Input('sex');
-        $form->email = $request->Input('phone');
+        $form->email = $request->Input('email');
         $form->positionofnow = $request->Input('positionofnow');
 
 
 
-        // $edu = Education::where('form_id', $form->id)->get();
 
-        //   try
+        foreach ($request->MoreFields as $key => $value) {
+            // Check if the required fields have values
+            if (
+                isset($value['level']) &&
+                isset($value['discipline'])
+                // &&
+                // isset($value['completion_date'])
+            ) {
+                Education::create([
+                    'form_id' => $form->id,
+                    'level' => $value['level'],
+                    'discipline' => $value['discipline'],
+                    // 'completion_date' => $value['completion_date'],
+                ]);
+            }
+        }
 
 
         $field = $request->input('addMoreFields');
-        // dd($field);
+
         foreach ($form->education as $education) {
 
 
@@ -359,7 +387,7 @@ class FormController extends Controller
                     $education->level = $value['level'];
                     $education->discipline = $value['discipline'];
 
-                    $education->completion_date = $value['completion_date'];
+                    // $education->completion_date = $value['completion_date'];
                     // dd($experience);
                     $education->update();
                 }

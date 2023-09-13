@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.form')
 @section('content')
     <div class="hk-pg-wrapper">
         <div class="container">
@@ -8,21 +8,7 @@
                     <section class="hk-sec-wrapper mt-100">
 
 
-                        {{-- <h3 class="hk-sec-title text-white text-center color-wrap  "
-                            style=" background-color:#456896; padding:10px;">አዳማ  ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
-                            ድልድል ማወዳደርያ ቅፅ</h3>
-                        <p class="mb-25"> </p>
 
-                        <div class="row">
-                            <div class="col-sm">
-                                <h1 class="text-center text-wrap font-30 font-weight-600">ይቅርታ!!!</h1>
-                                <h1 class="text-center text-wrap font-24 font-weight-600">የመወዳደርያ ቅፅ ለመሙላት የተሰጠዎት ጊዜ አልቋል ።
-                                </h1>
-
-
-
-                            </div>
-                        </div> --}}
 
                         <h3 class="hk-sec-title text-white text-center color-wrap  "
                             style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
@@ -80,8 +66,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label class="control-label mb-10" for="email">ኢሜይል (የአ.አ.ሳ.ቴን ኢሜይል ብቻ
-                                                    ይጠቀሙ) *</label>
+                                                <label class="control-label mb-10" for="email">ኢሜይል ( ኢሜይል ብቻ
+                                                    ይጠቀሙ) </label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
@@ -94,7 +80,7 @@
                                                         value="{{ old('email') }}">
                                                     @error('email')
                                                         <span class=" error invalid-feedback">
-                                                            <strong>የአ.አ.ሳ.ቴን ኢሜይል ይጠቀሙ</strong>
+                                                            <strong> ኢሜይል ይጠቀሙ</strong>
                                                         </span>
                                                     @enderror
 
@@ -109,14 +95,14 @@
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label class="control-label mb-10">ስልክ
-                                                    ቁጥር(09...) *</label>
+                                                    ቁጥር</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                                     </div>
                                                     <input type="tel"name="phone" id="phone"
                                                         class="form-control @error('phone') is-invalid @enderror"
-                                                        placeholder="09..." value="{{ old('phone') }}">
+                                                        placeholder="phone" value="{{ old('phone') }}">
                                                     @error('phone')
                                                         <span class=" error invalid-feedback">
                                                             <strong>ትክክለኛዉን ስልክ
@@ -132,18 +118,53 @@
 
                                     <div class="form-section">
                                         <div class="row">
-                                            <div class="col-md-4 form-group">
+                                            <div class="col-md-6 form-group">
+                                                <label for="ethinicity">ብሔር</label>
+                                                <input type="text" value="{{ old('ethinicity') }}"
+                                                    class="form-control @error('ethinicity') is-invalid @enderror"
+                                                    id="ethinicity" placeholder="ብሔር" name="ethinicity">
+                                                @error('ethinicity')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="birth_date">የትውልድ ዘመን</label>
+                                                <input type="text" value="{{ old('birth_date') }}"
+                                                    class="form-control @error('birth_date') is-invalid @enderror"
+                                                    id="birth_date" placeholder="የትውልድ ዘመን" name="birth_date">
+                                                @error('birth_date')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="jobcat">አሁን ያሉበት የስራ ክፍል</label>
+                                                <input type="text" value="{{ old('jobcat') }}"
+                                                    class="form-control @error('jobcat') is-invalid @enderror"
+                                                    id="jobcat" placeholder="አሁን ያሉበት የስራ መደብ" name="jobcat">
+                                                @error('jobcat')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6 form-group">
                                                 <label for="positionofnow">አሁን ያሉበት የስራ መደብ</label>
                                                 <input type="text" value="{{ old('positionofnow') }}"
                                                     class="form-control @error('positionofnow') is-invalid @enderror"
-                                                    id="positionofnow" placeholder="አሁን ያሉበት የስራ መደብ" name="positionofnow">
+                                                    id="positionofnow" placeholder="አሁን ያሉበት የስራ መደብ"
+                                                    name="positionofnow">
                                                 @error('positionofnow')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-4 form-group">
+
+                                            {{-- <div class="col-md-4 form-group">
                                                 <label for="level_id">ደረጃ </label>
                                                 <select class="form-control custom-select d-block w-100 " id="level_id"
                                                     name="level_id">
@@ -153,8 +174,8 @@
                                                             {{ $col->level }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                            <div class="col-md-4 form-group">
+                                            </div> --}}
+                                            {{-- <div class="col-md-4 form-group">
                                                 <label for="fee">ደምወዝ (ETB)</label>
                                                 <input class="form-control @error('fee') is-invalid @enderror"
                                                     id="fee" placeholder="ደምወዝ" value="{{ old('fee') }}"
@@ -164,7 +185,7 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <h3 class="text-white text-center mt-3 mb-4  "
                                             style=" background-color:#456896; margin:center">
@@ -176,33 +197,47 @@
 
                                                 <div class=" educ row">
 
-                                                    <div class="col-md-6 form-group">
-                                                        <label for="">የትምህርት ዝግጅት</label>
 
+                                                    <div class="col-md-5">
 
-                                                        <select class="form-control custom-select d-block w-100 "
-                                                            value="{{ old('education_type_id') }}" id="education_type_id"
-                                                            name="addMoreFields[0][education_type_id]">
-                                                            @foreach ($edutype as $col)
-                                                                <option value="{{ $col->id }}"
-                                                                    {{ old('education_type_id') == $col->id ? 'selected' : '' }}>
-                                                                    {{ $col->education_type }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <label for="level">የትምህርት ደረጃ</label>
+                                                        <input type="text" name="addMoreFields[0][level]"
+                                                            value="{{ old('level') }}"
+                                                            class="form-control  @error('level') is-invalid @enderror"
+                                                            id="level" placeholder="educational level ">
+                                                        @error('level')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
                                                     </div>
-                                                    <div class="col-md-5 form-group">
-                                                        <label for="edu_level_id">የትምህርት ደረጃ</label>
-                                                        <select class="form-control custom-select d-block w-100 masters "
-                                                            value="{{ old('edu_level_id') }}"
-                                                            name="addMoreFields[0][edu_level_id]">
-                                                            <option value="">Chose </option>
-                                                            @foreach ($edu_level as $col)
-                                                                <option value="{{ $col->id }}"
-                                                                    {{ old('edu_level_id') == $col->id ? 'selected' : '' }}>
-                                                                    {{ $col->education_level }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                    <div class="col-md-5">
+                                                        <label for="discipline">የትምህርት ዝግጅት </label>
+                                                        <input type="text" name="addMoreFields[0][discipline]"
+                                                            value="{{ old('discipline') }}"
+                                                            class="form-control  @error('discipline') is-invalid @enderror"
+                                                            id="discipline" placeholder=" discipline">
+                                                        @error('discipline')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                     </div>
+
+                                                    {{-- <div class="col-md-4">
+                                                        <label for="completion_date">completion_date </label>
+                                                        <input type="text" name="addMoreFields[0][completion_date]"
+                                                            value="{{ old('completion_date') }}"
+                                                            class="form-control  @error('completion_date') is-invalid @enderror"
+                                                            id="completion_date" placeholder="completion_date">
+                                                        @error('completion_date')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div> --}}
+
                                                     <div>
                                                         <a href="javascript:void(0)"
                                                             class="btn color-wrap text-white bg-blue-dark-4  addrow mt-40 "
@@ -214,11 +249,9 @@
 
 
                                         <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                            style=" background-color:#456896; margin:center"> የሚወዳደሩበት የስራ ክፍልና
-                                            የስራ
-                                            መደብ
+                                            style=" background-color:#456896; margin:center">
                                         </h3>
-                                        <button class="text-white text-left mt-3 mb-4 mr-150"
+                                        {{-- <button class="text-white text-left mt-3 mb-4 mr-150"
                                             style=" background-color:#456896">
                                             ምርጫ 1</button>
 
@@ -322,7 +355,7 @@
 
 
 
-                                        </div>
+                                        </div> --}}
 
                                     </div>
 
@@ -331,7 +364,7 @@
 
 
 
-                                    <div class="form-section">
+                                    <div class="form-section ">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
@@ -389,7 +422,8 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ መደብ)</label>
+                                                <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ
+                                                    መደብ)</label>
                                                 <input class="form-control mt-25"
                                                     @error('serviceAfterDiplo') is-invalid @enderror"
                                                     id="serviceAfterDiplo" placeholder=" አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ"
@@ -402,7 +436,8 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
+                                                <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ
+                                                    የሥራ
                                                     አፈጻፀም አማካይ
                                                     ውጤት(ከ100 በቁጥር)</label>
                                                 <input class="form-control mt-25"
@@ -515,8 +550,8 @@
                                             Previous</button>
                                         <button type="button" class="next btn bg-blue-dark-3 text-white float-right">Next
                                             &gt;</button>
-                                        <button type="submit" class="btn bg-green-dark-3 text-white float-right"
-                                            disabled>Submit</button>
+                                        <button type="submit"
+                                            class="btn bg-green-dark-3 text-white float-right">Submit</button>
 
                                     </div>
                                 </form>
@@ -529,8 +564,6 @@
     </div>
 @endsection
 @section('javascript')
-    {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> --}}
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
         integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
@@ -616,44 +649,45 @@
                 e.preventDefault();
                 $(".navigation").before(`
                 <div class="row">
-                                    <div class="col-sm">
+                    <div class="col-sm">
+                        <div class=" educ row">
+                            <div class="col-md-5">
 
-                                        <div class=" educ row">
+                                <label for="level">የትምህርት ደረጃ</label>
+                                <input type="text" name="addMoreFields[${j}][level]"
+                                value="{{ old('level') }}"
+                                class="form-control  @error('level') is-invalid @enderror"
+                                id="level" placeholder="educational level ">
+                                @error('level')
+                                <span class=" error invalid-feedback">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                 @enderror
 
-                          <div class="col-md-6 form-group">
-                                        <label for=""></label>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="discipline">የትምህርት ዝግጅት </label>
+                                <input type="text"
+                                    name="addMoreFields[${j}][discipline]"
+                                    value="{{ old('discipline') }}"
+                                    class="form-control  @error('discipline') is-invalid @enderror"
+                                    id="discipline" placeholder=" discipline">
+                                @error('discipline')
+                                    <span class=" error invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
 
-                                        <select class="form-control custom-select d-block w-100 " id="education_type_id"
-                                            name="addMoreFields[${j}][education_type_id]">
-                                            @foreach ($edutype as $col)
-                                                <option value="{{ $col->id }}"
-                                                    {{ old('education_type_id') == $col->id ? 'selected' : '' }}>
-                                                    {{ $col->education_type }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-md-5 form-group">
-                                        <label for="edu_level_id"></label>
-                                        <select
-                                            class="form-control custom-select d-block w-100 masters "value="{{ old('edu_level_id') }}"
-                                            name="addMoreFields[${j}][edu_level_id]">
-                                            <option value="">Chose </option>
-                                            @foreach ($edu_level as $col)
-                                                <option value="{{ $col->id }}"
-                                                    {{ old('edu_level_id') == $col->id ? 'selected' : '' }}>
-                                                    {{ $col->education_level }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                      <div>
 
-                                                    <a href="javascript:void(0)" class="btn btn-danger  removerow mt-20 "
+                            <div>
+                               <a href="javascript:void(0)" class="btn btn-danger  removerow mt-20 "
                                                         style=" border-radius:50%">-</a>
-                                                </div>
-                          </div>
-                     </div>
-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 

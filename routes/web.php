@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Prestwo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HRController;
@@ -9,10 +10,14 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\Choice2Controller;
 use App\Http\Controllers\JobCat2Controller;
+use App\Http\Controllers\PrestwoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\SecondhrController;
 use App\Http\Controllers\MultiformController;
+use App\Http\Controllers\CreateFormController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\LowPositionController;
@@ -20,10 +25,6 @@ use App\Http\Controllers\PresidentialController;
 use App\Http\Controllers\EducationTypeController;
 use App\Http\Controllers\EducationLevelController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PrestwoController;
-use App\Http\Controllers\SecondhrController;
-use App\Models\Prestwo;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ use App\Models\Prestwo;
 
 Route::get('/', [FormController::class, 'create'])->name('try');
 Route::post('/', [FormController::class, 'store'])->name('add.form');
+
 // Route::get('/hr/try/job', [FormController::class, 'position']);
 // Route::get('/hr/try/categ2', [FormController::class, 'position2']);
 // Route::get('/hr/try/selection', [FormController::class, 'selection']);
@@ -98,12 +100,31 @@ Route::middleware([
 Route::middleware([
     'auth:sanctum',
     'verified',
+    'role:staff',
+])->group(
+    function () {
+        Route::post('/', [CreateFormController::class, 'store'])->name('add.form');
+        Route::resource('/createform', CreateFormController::class);
+        // Route::get('/hr/try/job', [FormController::class, 'position']);
+        // Route::get('/hr/try/categ2', [FormController::class, 'position2']);
+        // Route::get('/hr/try/selection', [FormController::class, 'selection']);
+        // Route::get('/hr/try/selection2', [FormController::class, 'selection2']);
+
+        // Route::get('/hr',[FormController::class, 'createforms'] )->name('hr.index');
+        // Route::post('/hr/form', [FormController::class, 'store'])->name('add.form');
+    }
+);
+Route::middleware([
+    'auth:sanctum',
+    'verified',
     'role:hr|admin|president|user',
 
 ])->group(
     function () {
-        Route::resource('/hr', FormController::class);
 
+        Route::resource('/hr', FormController::class);
+        // Route::get('/hr',[FormController::class, 'createforms'] )->name('hr.index');
+        // Route::post('/hr/form', [FormController::class, 'store'])->name('add.form');
         Route::get('/hr/try/job', [FormController::class, 'position']);
         Route::get('/hr/try/categ2', [FormController::class, 'position2']);
         Route::get('/hr/try/selection', [FormController::class, 'selection']);
