@@ -1,2 +1,2 @@
-placement for Wolkite
+placement for Madda walabu
 univeristy
