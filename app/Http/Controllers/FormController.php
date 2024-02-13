@@ -20,6 +20,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Spipu\Html2Pdf\Html2Pdf;
 use App\Models\EducationType;
+use App\Models\EmployerSupport;
+use App\Models\Morerole;
 use Illuminate\Http\Response;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Validation\Rule;
@@ -34,22 +36,36 @@ class FormController extends Controller
 
     public function index()
     {
-        // $level = Level::all();
-        // $form = Form::all();
+        $forms = null;
+        $searchValue = request()->input('search');
 
-        // $edu_level = EduLevel::all();
-        // $job_category = JobCategory::all();
+        if ($searchValue) {
+            $searchWords = explode(' ', $searchValue);
 
-        // $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
-        //     ->where('categories.catstatus', 'active')->get();
-        // $jobcat2 = jobcat2::all();
-        // $edutype = EducationType::all();
-        // return view('try2', compact('level', 'edu_level', 'job_category', 'position', 'jobcat2', 'edutype', 'form'));
+            $forms = Form::where('hrs', null)
+                ->where(function ($query) use ($searchWords) {
+                    foreach ($searchWords as $word) {
+                        $query->where(function ($innerQuery) use ($word) {
+                            $innerQuery->where('firstName', 'like', '%' . $word . '%')
+                                ->orWhere('middleName', 'like', '%' . $word . '%')
+                                ->orWhere('lastName', 'like', '%' . $word . '%');
+                        });
+                    }
+                })
+                ->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id',  'isEditable')
+                ->paginate(10);
+        } else {
+            $searchValue = null;
+            // Only fetch all data when there's no search value
+            $forms = Form::where('hrs', null)
+                ->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id',  'isEditable')
+                ->paginate(10);
+        }
 
-        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id', 'isEditable')->get();
-
-
-        return view('hr.index', ['forms' => $forms]);
+        return view('hr.index', [
+            'forms' => $forms,
+            'searchValue' => $searchValue,
+        ]);
     }
 
     public function form()
@@ -334,7 +350,7 @@ class FormController extends Controller
 
         $form->resultOfrecentPerform = $request->Input('resultOfrecentPerform');
         $form->DisciplineFlaw = $request->Input('DisciplineFlaw');
-        $form->fee = $request->Input('fee');
+        $form->level = $request->Input('level');
 
         $form->UniversityHiringEra = $request->Input('UniversityHiringEra');
         $form->servicPeriodAtUniversity = $request->Input('servicPeriodAtUniversity');
@@ -343,63 +359,55 @@ class FormController extends Controller
 
         $form->serviceBeforeDiplo = $request->Input('serviceBeforeDiplo');
         $form->serviceAfterDiplo = $request->Input('serviceAfterDiplo');
-        $form->MoreRoles = $request->Input('MoreRoles');
+        $form->employee_situation = $request->Input('employee_situation');
 
 
 
         $form->sex = $request->Input('sex');
         $form->email = $request->Input('email');
         $form->positionofnow = $request->Input('positionofnow');
+        $form->jobcat = $request->Input('jobcat');
 
 
 
 
         foreach ($request->MoreFields as $key => $value) {
-            // Check if the required fields have values
             if (
                 isset($value['level']) &&
-                isset($value['discipline'])
-                // &&
-                // isset($value['completion_date'])
+                isset(
+                    $value['discipline']
+                ) &&
+                isset(
+                    $value['academicPreparationCOC']
+                )
+                &&
+                isset($value['completion_date'])
             ) {
                 Education::create([
                     'form_id' => $form->id,
                     'level' => $value['level'],
                     'discipline' => $value['discipline'],
-                    // 'completion_date' => $value['completion_date'],
+                    'academicPreparationCOC' => $value['academicPreparationCOC'],
+                    'completion_date' => $value['completion_date'],
                 ]);
             }
         }
 
 
         $field = $request->input('addMoreFields');
-
         foreach ($form->education as $education) {
-
-
-
             foreach ($field as $key => $value) {
-
-
                 if ($value['id'] == $education->id) {
                     $education = Education::findOrFail($education->id);
-
                     $education->level = $value['level'];
                     $education->discipline = $value['discipline'];
-
-                    // $education->completion_date = $value['completion_date'];
+                    $education->academicPreparationCOC = $value['academicPreparationCOC'];
+                    $education->completion_date = $value['completion_date'];
                     // dd($experience);
                     $education->update();
                 }
             }
         }
-
-
-
-        //     $inputFields = $request->input('addMoreInputFields') ?? [];
-
-        //    $exper=experience::findOrFail()
-
         $inputFields = $request->input('addMoreInputFields');
         // dd($inputFields);
         foreach ($request->addFields as $key => $value) {
@@ -419,54 +427,71 @@ class FormController extends Controller
         }
 
         foreach ($form->experiences as $experience) {
-
-
-
             foreach ($inputFields as $key => $value) {
-
-
                 if ($value['id'] == $experience->id) {
                     $experience = Experience::findOrFail($experience->id);
-
                     $experience->positionyouworked = $value['positionyouworked'];
                     $experience->startingDate = $value['startingDate'];
-
                     $experience->endingDate = $value['endingDate'];
-                    // dd($experience);
-                    // dd($experience);
                     $experience->update();
                 }
             }
         }
+        // more roles
 
+            foreach ($request-> addMoreroleFields as $key => $value) {
+                // Check if the required fields have values
+                if (
+                    isset($value['more_role'])
+                ) {
+                    Morerole::create([
+                        'form_id' => $form->id,
+                        'more_role' => $value['more_role'],
+                    ]);
+                }
+            }
 
+        $inputMoreroleFields = $request->input('addMoreInputRoles');
+        foreach ($form->moreroles as $morerole) {
+            if (!empty($inputMoreroleFields)) {
+                foreach ($inputMoreroleFields as $key => $value) {
+                    if ($value['id'] == $morerole->id) {
+                        $morerole = Morerole::findOrFail($morerole->id);
+                        $morerole->more_role = $value['more_role'];
+                        $morerole->update();
+                    }
+                }
+            }
+        }
+
+        foreach ($request->addEmployeeFields as $key => $value) {
+            // Check if the required fields have values
+            if (
+                isset($value['employer_support'])
+            ) {
+                EmployerSupport::create([
+                    'form_id' => $form->id,
+                    'employer_support' => $value['employer_support'],
+                ]);
+            }
+        }
+
+        $inputEmployeeFields = $request->input('addMoreInputEmployee');
+        foreach ($form->employer_supports as $employer_support) {
+            if (!empty($inputEmployeeFields)) {
+                foreach ($inputEmployeeFields as $key => $value) {
+                    if ($value['id'] == $employer_support->id) {
+                        $employer_support = EmployerSupport::findOrFail($employer_support->id);
+                        $employer_support->employer_support = $value['employer_support'];
+                        $employer_support->update();
+                    }
+                }
+            }
+        }
 
         $form->update();
         return redirect('hr');
     }
-
-
-
-    public function updateForms(Request $request, $id)
-    {
-        $form = Form::find($id);
-        $form->firstName = $request->Input('firstName');
-        $form->middleName = $request->Input('middleName');
-
-        $form->choice2_id = $request->choice2_id;
-        $form->position_id = $request->position_id;
-        $form->job_category_id = $request->job_category_id;
-        $form->jobcat2_id = $request->jobcat2_id;
-
-        $form->update();
-        return redirect('forms');
-    }
-
-
-
-
-
-
     public function position(Request $request)
     {
 

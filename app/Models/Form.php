@@ -19,7 +19,6 @@ class Form extends Model
         'phone',
         'startingDate',
         'endingDate',
-
         'sex',
         'fee',
         'positionofnow',
@@ -31,7 +30,7 @@ class Form extends Model
         'serviceAfterDiplo',
         'resultOfrecentPerform',
         'DisciplineFlaw',
-        'MoreRoles',
+        'employee_situation',
         'position_id',
         // 'edu_level_id',
         // 'education_type_id',
@@ -56,7 +55,7 @@ class Form extends Model
 
     ];
 
-    protected $with = ['education', 'experiences'];
+    protected $with = ['education', 'experiences','moreroles','employer_supports'];
     public function h_r_s()
     {
         return $this->belongsTo(HR::class, 'h_r_id', 'id');
@@ -71,6 +70,15 @@ class Form extends Model
     {
         return $this->hasMany(experience::class, 'form_id', 'id');
     }
+    public function moreroles()
+    {
+        return $this->hasMany(Morerole::class, 'form_id', 'id');
+    }
+    public function employer_supports()
+    {
+        return $this->hasMany(EmployerSupport::class, 'form_id', 'id');
+    }
+
     public function education()
     {
         return $this->hasMany(Education::class, 'form_id', 'id');

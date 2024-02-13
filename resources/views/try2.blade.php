@@ -4,14 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-
                     <section class="hk-sec-wrapper mt-100">
-
-
-
-
                         <h3 class="hk-sec-title text-white text-center color-wrap  "
-                            style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
+                            style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <div class="row">
                             <div class="col-sm">
@@ -80,12 +75,9 @@
                                                         value="{{ old('email') }}">
                                                     @error('email')
                                                         <span class=" error invalid-feedback">
-                                                            <strong>የወልቂጤ ኢሜይል ብቻ ይጠቀሙ</strong>
+                                                            <strong>የመደ ወላቡ ኢሜይል ብቻ ይጠቀሙ</strong>
                                                         </span>
                                                     @enderror
-
-
-
                                                 </div>
                                                 @if ($errors->any())
                                                     <span class=" error" style="color:red">
@@ -110,12 +102,9 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-section">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
@@ -140,7 +129,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-4 form-group">
                                                 <label for="jobcat">አሁን ያሉበት የስራ ክፍል</label>
                                                 <input type="text" value="{{ old('jobcat') }}"
                                                     class="form-control @error('jobcat') is-invalid @enderror"
@@ -151,7 +140,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            <div class="col-md-4 form-group">
                                                 <label for="positionofnow">አሁን ያሉበት የስራ መደብ</label>
                                                 <input type="text" value="{{ old('positionofnow') }}"
                                                     class="form-control @error('positionofnow') is-invalid @enderror"
@@ -164,17 +153,26 @@
                                                 @enderror
                                             </div>
 
-                                            {{-- <div class="col-md-4 form-group">
-                                                <label for="level_id">ደረጃ </label>
-                                                <select class="form-control custom-select d-block w-100 " id="level_id"
-                                                    name="level_id">
+                                            <div class="col-md-4 form-group">
+                                                <label for="level">አሁን ያሉበት ደረጃ </label>
+                                                 <input type="text" value="{{ old('level') }}"
+                                                    class="form-control @error('level') is-invalid @enderror"
+                                                    id="level" placeholder="አሁን ያሉበት ደረጃ"
+                                                    name="level">
+                                                @error('level')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                                {{-- <select class="form-control custom-select d-block w-100 " id="level"
+                                                    name="level">
                                                     @foreach ($level as $col)
                                                         <option value="{{ $col->id }}"
                                                             {{ old('level_id') == $col->id ? 'selected' : '' }}>
                                                             {{ $col->level }}</option>
                                                     @endforeach
-                                                </select>
-                                            </div> --}}
+                                                </select> --}}
+                                            </div>
                                             {{-- <div class="col-md-4 form-group">
                                                 <label for="fee">ደምወዝ (ETB)</label>
                                                 <input class="form-control @error('fee') is-invalid @enderror"
@@ -188,17 +186,13 @@
                                             </div> --}}
                                         </div>
                                         <h3 class="text-white text-center mt-3 mb-4  "
-                                            style=" background-color:#456896; margin:center">
+                                            style=" background-color:rgb(17,40,77); margin:center">
                                             ያለዎትን የትምህርት ዝግጅትና የትምህርት ደረጃ ያስገቡ
                                         </h3>
-
                                         <div class="row">
                                             <div class="col-sm">
-
                                                 <div class=" educ row">
-
-
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
 
                                                         <label for="level">የትምህርት ደረጃ</label>
                                                         <input type="text" name="addMoreFields[0][level]"
@@ -212,20 +206,33 @@
                                                         @enderror
 
                                                     </div>
-                                                    <div class="col-md-5">
-                                                        <label for="discipline">የትምህርት ዝግጅት </label>
+                                                    <div class="col-md-3">
+                                                        <label for="discipline">የትምህርት ዝግጅት (በተቋም) </label>
                                                         <input type="text" name="addMoreFields[0][discipline]"
                                                             value="{{ old('discipline') }}"
                                                             class="form-control  @error('discipline') is-invalid @enderror"
-                                                            id="discipline" placeholder=" discipline">
+                                                            id="discipline" placeholder=" የትምህርት ዝግጅት (በተቋም)">
                                                         @error('discipline')
                                                             <span class=" error invalid-feedback">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
                                                     </div>
+                                                    <div class="col-md-3">
+                                                        <label for="academicPreparationCOC">የትምህርት ዝግጅት (ሲኦሲ) </label>
+                                                        <input type="text"
+                                                            name="addMoreFields[0][academicPreparationCOC]"
+                                                            value="{{ old('academicPreparationCOC') }}"
+                                                            class="form-control  @error('academicPreparationCOC') is-invalid @enderror"
+                                                            id="academicPreparationCOC" placeholder=" የትምህርት ዝግጅት (ሲኦሲ)">
+                                                        @error('academicPreparationCOC')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
 
-                                                    {{-- <div class="col-md-4">
+                                                    <div class="col-md-2">
                                                         <label for="completion_date">completion_date </label>
                                                         <input type="text" name="addMoreFields[0][completion_date]"
                                                             value="{{ old('completion_date') }}"
@@ -236,8 +243,7 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
-                                                    </div> --}}
-
+                                                    </div>
                                                     <div>
                                                         <a href="javascript:void(0)"
                                                             class="btn color-wrap text-white bg-blue-dark-4  addrow mt-40 "
@@ -246,13 +252,11 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                            style=" background-color:#456896; margin:center">
+                                            style=" background-color:rgb(17,40,77); margin:center">
                                         </h3>
                                         {{-- <button class="text-white text-left mt-3 mb-4 mr-150"
-                                            style=" background-color:#456896">
+                                            style=" background-color:rgb(17,40,77)">
                                             ምርጫ 1</button>
 
                                         <div class="row">
@@ -306,7 +310,7 @@
 
 
                                         </div>
-                                        <button class="text-white text-left mt-3 mb-4" style=" background-color:#456896">
+                                        <button class="text-white text-left mt-3 mb-4" style=" background-color:rgb(17,40,77)">
                                             ምርጫ 2</button>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
@@ -358,12 +362,6 @@
                                         </div> --}}
 
                                     </div>
-
-
-
-
-
-
                                     <div class="form-section ">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
@@ -465,21 +463,76 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="MoreRoles"> ተጨማሪ የሥራ ድርሻ</label>
-                                                <input class="form-control" @error('MoreRoles') is-invalid @enderror"
-                                                    id="MoreRoles" placeholder="ተጨማሪ የሥራ ድርሻ"
-                                                    value="{{ old('MoreRoles') }}" type="text" name="MoreRoles">
-                                                @error('MoreRoles')
+                                                <label for="employee_situation"> ሰራተኛው ያለበት ሁኔታ </label>
+                                                <input class="form-control"
+                                                    @error('employee_situation') is-invalid @enderror"
+                                                    id="employee_situation" placeholder="ሰራተኛው  ያለበት ሁኔታ "
+                                                    value="{{ old('employee_situation') }}" type="text"
+                                                    name="employee_situation">
+                                                @error('employee_situation')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-
-
                                         </div>
+                                        <div id="employee">
+                                            <div class="row">
+                                                <div class="col-sm">
+
+                                                    <div class=" form_employee row">
+                                                        <div class="col-md-6 ">
+                                                            <label for="employer_support"> የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
+                                                            <input class="form-control"
+                                                                @error('employer_support') is-invalid @enderror"
+                                                                id="employer_support" placeholder=" የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት"
+                                                                value="{{ old('employer_support') }}" type="text"
+                                                                name="addEmployeeSupport[0][employer_support]">
+                                                            @error('employer_support')
+                                                                <span class=" error invalid-feedback">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div>
+                                                            <a href="javascript:void(0)"
+                                                                class="btn color-wrap text-white bg-blue-dark-4  addEmployee mt-40 "
+                                                                style=" border-radius:50%">+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="morerole">
+                                            <div class="row">
+                                                <div class="col-sm">
+
+                                                    <div class=" form_more_role row">
+                                                        <div class="col-md-6 ">
+                                                            <label for="more_role"> ተጨማሪ የሥራ ድርሻ</label>
+                                                            <input class="form-control"
+                                                                @error('more_role') is-invalid @enderror" id="MoreRoles"
+                                                                placeholder="ተጨማሪ የሥራ ድርሻ" value="{{ old('more_role') }}"
+                                                                type="text" name="addMoreRoles[0][more_role]">
+                                                            @error('more_role')
+                                                                <span class=" error invalid-feedback">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div>
+                                                            <a href="javascript:void(0)"
+                                                                class="btn color-wrap text-white bg-blue-dark-4  addMorerole mt-40 "
+                                                                style=" border-radius:50%">+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <h3 class="text-white text-center mt-3 mb-4   "
-                                            style=" background-color:#456896; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                            style=" background-color:rgb(17,40,77); margin:center nav navmore">የስራ
+                                            ልምድ(በኢትዮጵያ አቆጣጠር
                                             ብቻ)</h3>
                                         <div id="myform">
                                             <div class="row">
@@ -538,12 +591,8 @@
 
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
-
-
                                     <div class="form-navigation mt-3">
                                         <button type="button"
                                             class="previous btn bg-red-dark-3 text-white float-left">&lt;
@@ -581,7 +630,7 @@
                                             <div class=" formgr row">
 
                                                 <div class="col-md-3">
-                                       <label for="startingDate"></label>
+                                                <label for="startingDate"></label>
 
                                                     <input type="date" name="addMoreInputFields[${i}][startingDate]" value="{{ old('startingDate') }}"
                                                         class="form-control  @error('startingDate') is-invalid @enderror"
@@ -651,7 +700,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class=" educ row">
-                            <div class="col-md-5">
+                            <div class="col-md-3">
 
                                 <label for="level">የትምህርት ደረጃ</label>
                                 <input type="text" name="addMoreFields[${j}][level]"
@@ -665,23 +714,46 @@
                                  @enderror
 
                             </div>
-                            <div class="col-md-5">
-                                <label for="discipline">የትምህርት ዝግጅት </label>
+                            <div class="col-md-3">
+                                <label for="discipline">የትምህርት ዝግጅት (በተቋም) </label>
                                 <input type="text"
                                     name="addMoreFields[${j}][discipline]"
                                     value="{{ old('discipline') }}"
                                     class="form-control  @error('discipline') is-invalid @enderror"
-                                    id="discipline" placeholder=" discipline">
+                                    id="discipline" placeholder=" የትምህርት ዝግጅት (በተቋም)">
                                 @error('discipline')
                                     <span class=" error invalid-feedback">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                              <div class="col-md-3">
+                                                        <label for="academicPreparationCOC">የትምህርት ዝግጅት (ሲኦሲ) </label>
+                                                        <input type="text" name="addMoreFields[${j}][academicPreparationCOC]"
+                                                            value="{{ old('academicPreparationCOC') }}"
+                                                            class="form-control  @error('academicPreparationCOC') is-invalid @enderror"
+                                                            id="academicPreparationCOC" placeholder=" የትምህርት ዝግጅት (ሲኦሲ)">
+                                                        @error('academicPreparationCOC')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
 
+                                                    <div class="col-md-2">
+                                                        <label for="completion_date">completion_date </label>
+                                                        <input type="text" name="addMoreFields[${j}][completion_date]"
+                                                            value="{{ old('completion_date') }}"
+                                                            class="form-control  @error('completion_date') is-invalid @enderror"
+                                                            id="completion_date" placeholder="completion_date">
+                                                        @error('completion_date')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
 
-
-                            <div>
+                                <div>
                                <a href="javascript:void(0)" class="btn btn-danger  removerow mt-20 "
                                                         style=" border-radius:50%">-</a>
                             </div>
@@ -701,7 +773,91 @@
                 let row_item = $(this).parents('.educ');
                 $(row_item).remove();
             });
+            var m = 0;
+            $(".addMorerole").click(function(e) {
+                ++m;
+                e.preventDefault();
+                $("#morerole").append(`
 
+                                                <div class="row">
+                                                    <div class="col-sm">
+
+                                                        <div class=" form_more_role row">
+                                                            <div class="col-md-6 ">
+                                                                <label for="more_role"> ተጨማሪ የሥራ ድርሻ</label>
+                                                                <input class="form-control"
+                                                                    @error('more_role') is-invalid @enderror"
+                                                                    id="MoreRoles" placeholder="ተጨማሪ የሥራ ድርሻ"
+                                                                    value="{{ old('more_role') }}" type="text"
+                                                                    name="addMoreRoles[${m}][more_role]">
+                                                                @error('more_role')
+                                                                    <span class=" error invalid-feedback">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div>
+                                                                <a href="javascript:void(0)"
+                                                                    class="btn color-wrap text-white bg-red-dark-4  removeMorerole mt-40 "
+                                                                    style=" border-radius:50%">-</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                    `);
+            });
+
+            $(document).on('click', '.removeMorerole', function(e) {
+
+                e.preventDefault();
+                // $this.parents('')
+                let row_item = $(this).parents('.form_more_role');
+                $(row_item).remove();
+            });
+            var b= 0;
+            $(".addEmployee").click(function(e) {
+                ++b;
+                e.preventDefault();
+                $("#employee").append(`
+
+                                                <div class="row">
+                                                    <div class="col-sm">
+                                                        <div class=" form_employee row">
+                                                            <div class="col-md-6 ">
+                                                                <label for="employer_support"> የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
+                                                                <input class="form-control"
+                                                                    @error('employer_support') is-invalid @enderror"
+                                                                    id="employer_support" placeholder="የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት"
+                                                                    value="{{ old('employer_support') }}" type="text"
+                                                                    name="addEmployeeSupport[${b}][employer_support]">
+                                                                @error('employer_support')
+                                                                    <span class=" error invalid-feedback">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div>
+                                                                <a href="javascript:void(0)"
+                                                                    class="btn color-wrap text-white bg-red-dark-4  removeEmployee mt-40 "
+                                                                    style=" border-radius:50%">-</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    `);
+            });
+
+            $(document).on('click', '.removeEmployee', function(e) {
+
+                e.preventDefault();
+                // $this.parents('')
+                let row_item = $(this).parents('.form_employee');
+                $(row_item).remove();
+            });
 
             $(document).on('change', '.dynamic', function() {
                 // console.log("hmm its change");

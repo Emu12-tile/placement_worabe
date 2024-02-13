@@ -3,23 +3,15 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-
                 <section class="hk-sec-wrapper mt-100">
-
-
-
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
                             <form action="{{ route('update_education', $form->id) }}"method="POST">
-
                                 @csrf
                                 @method('PUT')
-
-
-
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for="firstName"> ስም *</label>
@@ -43,11 +35,7 @@
                                             <input type="email" value="{{ $form->email }}"
                                                 name="email"class="form-control" id="inputname" placeholder="email"
                                                 readonly>
-
-
-
                                         </div>
-
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="control-label mb-10">ስልክ
@@ -97,7 +85,7 @@
 
 
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:#456896; margin:center">
+                                    style=" background-color:rgb(17,40,77); margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -127,15 +115,13 @@
                                     <div class="col-md-6 form-group">
                                         <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት,የስራ መደብ)</label>
                                         <input type="text" value="{{ $form->serviceBeforeDiplo }}"
-                                            name="serviceBeforeDiplo"class="form-control " id="serviceBeforeDiplo"
-                                            readonly>
+                                            name="serviceBeforeDiplo"class="form-control " id="serviceBeforeDiplo" readonly>
 
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ መደብ)</label>
                                         <input type="text" value="{{ $form->serviceAfterDiplo }}"
-                                            name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo"
-                                            readonly>
+                                            name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo" readonly>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ

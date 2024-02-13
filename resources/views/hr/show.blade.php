@@ -9,17 +9,13 @@
 
 
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:#456896; padding:10px;">ወልቂጤ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
                             <form action="{{ route('addposition', $form->id) }}"method="POST">
-
                                 @csrf
                                 @method('PUT')
-
-
-
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for="firstName"> የመጀምርያ ስም *</label>
@@ -89,119 +85,89 @@
                                             class="form-control " id="inputEmail3">
                                     </div>
                                     {{-- value="{{ $form->level ?? '' }}" --}}
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-4 form-group">
                                         <label for="jobcat">አሁን ያሉበት የስራ ክፍል </label>
                                         <input type="text" value="{{ $form->jobcat }}"
                                             name="jobcat"class="form-control " id="jobcat">
                                     </div>
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-4 form-group">
                                         <label for="positionofnow">አሁን ያሉበት የስራ መደብ</label>
                                         <input type="text" value="{{ $form->positionofnow }}"
                                             name="positionofnow"class="form-control " id="inputEmail3">
                                     </div>
 
-
+                                    <div class="col-md-4 form-group">
+                                        <label for="level_id"> አሁን ያሉበት ደረጃ </label>
+                                        <input type="text" value="{{ $form->level ?? '' }}" name="level"
+                                            class="form-control " id="inputEmail3">
+                                    </div>
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:#456896; margin:center">
+                                    style=" background-color:rgb(17,40,77); margin:center">
                                     ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
                                 </h3>
-                                {{-- <div class="row">
-                                    <div class="col-sm">
-                                        <div class="table-wrap">
-                                            <div class="table-responsive">
-                                                <table id="edit_datable_2" class="table table-hover mb-0">
-                                                    <thead>
-                                                        <tr>
 
-                                                            <th>የትምህርት ደረጃ</th>
-                                                            <th>የትምህርት ዝግጅት</th>
-
-
-
-
-                                                        </tr>
-
-
-
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($edu as $i => $fo)
-                                                            <tr>
-
-                                                                <td> {{ $fo->certificate ?? '' }}</td>
-                                                                <td> {{ $fo->discipline1 ?? '' }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>{{ $fo->diploma ?? '' }} </td>
-                                                                <td>{{ $fo->discipline2 ?? '' }} </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td> {{ $fo->bsc ?? '' }}</td>
-                                                                <td> {{ $fo->discipline3 ?? '' }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>{{ $fo->msc ?? '' }} </td>
-
-
-
-                                                                <td>{{ $fo->discipline4 ?? '' }} </td>
-
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-
-
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                                 @foreach ($form->education ?? [] as $i => $fo)
                                     <div class="row">
                                         <input type="hidden" value="{{ $fo->id }} "
                                             name="addMoreFields[{{ $i }}][id]"class="form-control "
                                             id="inputEmail3">
-                                        <div class="col-md-5 form-group">
+                                        <div class="col-md-3 form-group">
                                             <label for="level">የትምህርት ደረጃ</label>
                                             <input type="text" value="{{ $fo->level }} "
                                                 name="addMoreFields[{{ $i }}][level]"class="form-control "
                                                 id="inputEmail3">
                                         </div>
 
-                                        <div class="col-md-5 form-group">
+                                        <div class="col-md-3 form-group">
                                             <label for="discipline">የትምህርት ዝግጅት</label>
                                             <input type="text" value="{{ $fo->discipline }}"
                                                 name="addMoreFields[{{ $i }}][discipline]"class="form-control "
                                                 id="inputEmail3">
                                         </div>
-                                        {{-- <div class="col-md-4 form-group">
+                                        <div class="col-md-3 form-group">
+                                            <label for="academicPreparationCOC">የትምህርት ዝግጅት (ሲኦሲ)</label>
+                                            <input type="text" value="{{ $fo->academicPreparationCOC }}"
+                                                name="addMoreFields[{{ $i }}][academicPreparationCOC]"class="form-control "
+                                                id="inputEmail3">
+                                        </div>
+                                        <div class="col-md-3 form-group">
                                             <label for="completion_date">completion_date</label>
                                             <input type="text" value="{{ $fo->completion_date }}"
                                                 name="addMoreFields[{{ $i }}][completion_date]"class="form-control "
                                                 id="inputEmail3">
-                                        </div> --}}
+                                        </div>
 
                                     </div>
                                 @endforeach
                                 <div id="myformone">
                                     <div class="row">
                                         <div class="col-sm">
-
                                             <div class=" educ row">
-
-                                                <div class="col-md-5 form-group">
+                                                <div class="col-md-3 form-group">
                                                     <label for="level">የትምህርት ደረጃ</label>
                                                     <input type="text" value="{{ old('level') }} "
                                                         name="MoreFields[0][level]"class="form-control " id="inputEmail3"
                                                         placeholder="level">
                                                 </div>
 
-                                                <div class="col-md-5 form-group">
+                                                <div class="col-md-3 form-group">
                                                     <label for="discipline">የትምህርት ዝግጅት</label>
                                                     <input type="text" value="{{ old('discipline') }}"
                                                         name="MoreFields[0][discipline]"class="form-control "
                                                         id="inputEmail3" placeholder="discipline">
+                                                </div>
+                                                <div class="col-md-3 form-group">
+                                                    <label for="academicPreparationCOC">የትምህርት ዝግጅት (ሲኦሲ)</label>
+                                                    <input type="text" value="{{ old('academicPreparationCOC') }}"
+                                                        name="MoreFields[0][academicPreparationCOC]"class="form-control "
+                                                        id="inputEmail3" placeholder="academicPreparationCOC">
+                                                </div>
+                                                <div class="col-md-2 form-group">
+                                                    <label for="completion_date">Completion date</label>
+                                                    <input type="text" value="{{ old('completion_date') }}"
+                                                        name="MoreFields[0][completion_date]"class="form-control "
+                                                        id="inputEmail3" placeholder="completion_date">
                                                 </div>
 
                                                 <div>
@@ -213,20 +179,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
                                 <h3 class="text-white text-center me
                                         mt-3 mb-4 "
-                                    style=" background-color:#456896; margin:center">
+                                    style=" background-color:rgb(17,40,77); margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -278,15 +233,116 @@
                                             name="DisciplineFlaw"class="form-control " id="DisciplineFlaw">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label for="MoreRoles"> ተጨማሪ የሥራ ድርሻ</label>
-                                        <input type="text" value="{{ $form->MoreRoles }}"
-                                            name="MoreRoles"class="form-control " id="MoreRoles">
+                                        <label for="employee_situation"> ሰራተኛው  ያለበት ሁኔታ </label>
+                                        <input type="text" value="{{ $form->employee_situation }}"
+                                            name="employee_situation"class="form-control " id="employee_situation">
+                                    </div>
+                                </div>
+
+                                @foreach ($form->moreroles ?? [] as $i => $fo)
+                                    <div class="row ">
+                                        <input type="hidden" value="{{ $fo->id }} "
+                                            name="addMoreInputRoles[{{ $i }}][id]"class="form-control "
+                                            id="inputEmail3">
+                                        <div class="col-md-4 form-group">
+                                            <label for="more_role">ተጨማሪ የሥራ ድርሻ</label>
+                                            <input type="text" value="{{ $fo->more_role }}"
+                                                name="addMoreInputRoles[{{ $i }}][more_role]"class="form-control "
+                                                id="inputEmail3">
+                                            @error('more_role')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                                <div id="myformMore">
+                                    <div class="row">
+                                        <div class="col-sm">
+
+                                            <div class=" formMore row">
+
+                                                <div class="col-md-6">
+
+                                                    <label for="more_role">ተጨማሪ የሥራ ድርሻ</label>
+                                                    <input type="text" name="addMoreroleFields[0][more_role]"
+                                                        value="{{ old('more_role') }}"
+                                                        class="form-control  @error('more_role') is-invalid @enderror"
+                                                        id="more_role" placeholder="ተጨማሪ የሥራ ድርሻ">
+                                                    @error('more_role')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+
+                                                </div>
+
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="btn color-wrap text-white bg-blue-dark-4  addRowMoreRole mt-40 "
+                                                        style=" border-radius:50%">+</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                @foreach ($form->employer_supports ?? [] as $i => $fo)
+                                    <div class="row ">
+                                        <input type="hidden" value="{{ $fo->id }} "
+                                            name="addMoreInputEmployee[{{ $i }}][id]"class="form-control "
+                                            id="inputEmail3">
+                                        <div class="col-md-4 form-group">
+                                            <label for="employer_support">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
+                                            <input type="text" value="{{ $fo->employer_support }}"
+                                                name="addMoreInputEmployee[{{ $i }}][employer_support]"class="form-control "
+                                                id="inputEmail3">
+                                            @error('employer_support')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                                <div id="myformEmployee">
+                                    <div class="row">
+                                        <div class="col-sm">
+
+                                            <div class=" formEmployee row">
+
+                                                <div class="col-md-6">
+
+                                                    <label for="employer_support">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
+                                                    <input type="text" name="addEmployeeFields[0][employer_support]"
+                                                        value="{{ old('employer_support') }}"
+                                                        class="form-control  @error('employer_support') is-invalid @enderror"
+                                                        id="employer_support" placeholder="የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት">
+                                                    @error('employer_support')
+                                                        <span class=" error invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+
+                                                </div>
+
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="btn color-wrap text-white bg-blue-dark-4  addRowEmployee mt-40 "
+                                                        style=" border-radius:50%">+</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
 
 
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4   "
-                                    style=" background-color:#456896; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                    style=" background-color:rgb(17,40,77); margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
 
                                 @foreach ($form->experiences ?? [] as $i => $fo)
@@ -317,13 +373,7 @@
                                                 name="addMoreInputFields[{{ $i }}][positionyouworked]"class="form-control "
                                                 id="inputEmail3">
                                         </div>
-                                        {{-- <div>
-                                                <a href="javascript:void(0)"
-                                                    class="btn color-wrap text-white bg-blue-dark-4  addRow mt-40 "
-                                                    style=" border-radius:50%">+</a>
-                                            </div> --}}
 
-                                        {{-- </div> --}}
                                     </div>
                                 @endforeach
                                 <div id="myform">
@@ -383,24 +433,18 @@
 
 
                                 </div>
-
-
-
-
-
                                 <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                    style=" background-color:#456896; margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                    style=" background-color:rgb(17,40,77); margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
                                 </h3>
-                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#456896">
+                                <button class="text-white text-left mt-3 mb-4 mr-150"
+                                    style=" background-color:rgb(17,40,77)">
                                     ምርጫ 1</button>
 
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for=""> የስራ ክፍሉ</label>
-
-
                                         <select class="form-control custom-select d-block w-100 dynamic"
                                             name="job_category_id" id="job_category_id">
                                             <option value="">Choose</option>
@@ -420,9 +464,6 @@
                                             <option value="0" disabled="true" selected="true">
                                                 position
                                             </option>
-
-
-
                                         </select>
                                         <div id="detailsd" class=" font-20 ">
 
@@ -447,7 +488,7 @@
 
 
                                 </div>
-                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#456896">
+                                <button class="text-white text-left mt-3 mb-4" style=" background-color:rgb(17,40,77)">
                                     ምርጫ 2</button>
                                 <div class="row">
                                     <div class="col-md-6 form-group">
@@ -496,25 +537,11 @@
 
 
                                 </div>
-
-
-
-
-
-
                                 <button type="submit" class="btn bg-blue-dark-3 text-white float-right ">Save
                                 </button>
-
-
-
-
                             </form>
-
-
                         </div>
-
                     </div>
-
                 </section>
             </div>
         </div>
@@ -527,7 +554,9 @@
         $(document).ready(function() {
 
             var i = 0
-            var j=0
+            var j = 0
+            var m = 0
+            var b = 0
             $(".addRow").click(function(e) {
                 ++i;
                 e.preventDefault();
@@ -605,18 +634,30 @@
                 <div class="row">
                     <div class="col-sm">
                        <div class=" educ row">
-                            <div class="col-md-5 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="level">የትምህርት ደረጃ</label>
                                 <input type="text" value="{{ old('level') }} " placeholder="level"
                                 name="MoreFields[${j}][level]"class="form-control "
                                 id="inputEmail3" >
                             </div>
 
-                            <div class="col-md-5 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="discipline">የትምህርት ዝግጅት</label>
                                 <input type="text" value="{{ old('discipline') }}"
                                 name="MoreFields[${j}][discipline]"class="form-control "
                                 id="inputEmail3" placeholder="discipline">
+                            </div>
+                              <div class="col-md-3 form-group">
+                                <label for="academicPreparationCOC">የትምህርት ዝግጅት (ሲኦሲ)</label>
+                                <input type="text" value="{{ old('academicPreparationCOC') }}"
+                                name="MoreFields[${j}][academicPreparationCOC]"class="form-control "
+                                id="inputEmail3" placeholder="academicPreparationCOC">
+                            </div>
+                              <div class="col-md-2 form-group">
+                                <label for="completion_date">Completion date</label>
+                                <input type="text" value="{{ old('completion_date') }}"
+                                name="MoreFields[${j}][completion_date]"class="form-control "
+                                id="inputEmail3" placeholder="completion_date">
                             </div>
 
                             <div>
@@ -639,6 +680,76 @@
                 e.preventDefault();
                 // $this.parents('')
                 let row_item = $(this).parents('.educ');
+                $(row_item).remove();
+            });
+            $(".addRowMoreRole").click(function(e) {
+                ++m;
+                e.preventDefault();
+                $("#myformMore").append(`
+                <div class="row">
+                    <div class="col-sm">
+                       <div class=" formMore row">
+                            <div class="col-md-6 form-group">
+                                <label for="more_role"></label>
+                                <input type="text" value="{{ old('more_role') }} " placeholder="more_role"
+                                name="addMoreroleFields[${m}][more_role]"class="form-control "
+                                id="inputEmail3" >
+                            </div>
+                            <div>
+
+                                <a href="javascript:void(0)" class="btn btn-danger  removeMorerole mt-20 "
+                                style=" border-radius:50%">-</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                    `);
+            });
+
+            $(document).on('click', '.removeMorerole', function(e) {
+                // console.log('hi')
+                e.preventDefault();
+                // $this.parents('')
+                let row_item = $(this).parents('.formMore');
+                $(row_item).remove();
+            });
+            $(".addRowEmployee").click(function(e) {
+                ++b;
+                e.preventDefault();
+                $("#myformEmployee").append(`
+                <div class="row">
+                    <div class="col-sm">
+                       <div class=" formEmployee row">
+                            <div class="col-md-6 form-group">
+                                <label for="employer_support"></label>
+                                <input type="text" value="{{ old('employer_support') }} " placeholder="employer_support"
+                                name="addEmployeeFields[${b}][employer_support]"class="form-control "
+                                id="inputEmail3" >
+                            </div>
+                            <div>
+
+                                <a href="javascript:void(0)" class="btn btn-danger  removeEmployee mt-20 "
+                                style=" border-radius:50%">-</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                    `);
+            });
+
+            $(document).on('click', '.removeEmployee', function(e) {
+                // console.log('hi')
+                e.preventDefault();
+                // $this.parents('')
+                let row_item = $(this).parents('.formEmployee');
                 $(row_item).remove();
             });
 

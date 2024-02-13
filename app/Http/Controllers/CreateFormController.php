@@ -12,6 +12,8 @@ use App\Models\experience;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use App\Models\EducationType;
+use App\Models\EmployerSupport;
+use App\Models\Morerole;
 
 class CreateFormController extends Controller
 {
@@ -52,23 +54,17 @@ class CreateFormController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'firstName' => 'required',
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
             'email' => ['nullable', 'string', 'email', 'max:255',  'regex:/(.*)@wku.edu.et/i'],
-
             'phone' => 'nullable',
-
-
             'positionofnow' => 'required',
             'ethinicity' => 'required',
             'birth_date' => 'required',
             'jobcat' => 'required',
-
-
             'addMoreInputFields.*.startingDate' => 'date|nullable',
             'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
             'addMoreInputFields.*.positionyouworked' => 'nullable',
@@ -79,7 +75,8 @@ class CreateFormController extends Controller
             'serviceAfterDiplo' => 'required',
             'resultOfrecentPerform' => 'required', 'regex:/^(?:d*.d{1,2}|d+)$/', 'min:1', 'max:100',
             'DisciplineFlaw' => 'required',
-            'MoreRoles' => 'required',
+            'employee_situation' => 'required',
+            'level_id' => 'nullable',
 
         ]);
 
@@ -116,9 +113,7 @@ class CreateFormController extends Controller
                     'ethinicity' => $request->ethinicity,
                     'birth_date' => $request->birth_date,
                     'jobcat' => $request->jobcat,
-
-
-
+                    'level' => $request->level,
                     'positionofnow' => $request->positionofnow,
                     // 'firstdergee' => $request->firstdergee,
                     'sex' => $request->sex,
@@ -130,28 +125,49 @@ class CreateFormController extends Controller
                     "serviceAfterDiplo" => $request->serviceAfterDiplo,
                     "resultOfrecentPerform" => $request->resultOfrecentPerform,
                     "DisciplineFlaw" => $request->DisciplineFlaw,
-                    "MoreRoles" => $request->MoreRoles,
+                    "employee_situation" => $request->employee_situation,
                 ]
             );
 
+        if (!empty($request->addMoreFields)) {
+            foreach ($request->addMoreFields as $key => $val) {
 
-        foreach ($request->addMoreFields as $key => $val) {
+                Education::create([
+                    "form_id" => $form->id,
+                    "discipline" => $val["discipline"],
+                    "level" => $val["level"],
+                    "completion_date" => $val["completion_date"],
+                    "academicPreparationCOC" => $val["academicPreparationCOC"]
 
-            Education::create([
-                "form_id" => $form->id,
-                "discipline" => $val["discipline"],
-                "level" => $val["level"],
-                // "completion_date" => $val["completion_date"],
-
-            ]);
+                ]);
+            }
         }
-        foreach ($request->addMoreInputFields as $key => $value) {
-            experience::create([
-                "form_id" => $form->id,
-                "positionyouworked" => $value["positionyouworked"],
-                "startingDate" => $value["startingDate"],
-                "endingDate" => $value["endingDate"],
-            ]);
+        if (!empty($request->addMoreFields)) {
+            foreach ($request->addMoreInputFields as $key => $value) {
+                experience::create([
+                    "form_id" => $form->id,
+                    "positionyouworked" => $value["positionyouworked"],
+                    "startingDate" => $value["startingDate"],
+                    "endingDate" => $value["endingDate"],
+                ]);
+            }
+        }
+        if (!empty($request->addMoreRoles)) {
+            foreach ($request->addMoreRoles as $key => $valm) {
+                Morerole::create([
+                    "form_id" => $form->id,
+                    "more_role" => $valm["more_role"],
+                ]);
+            }
+        }
+        if (!empty($request->addEmployeeSupport)) {
+            foreach ($request->addEmployeeSupport as $key => $vale) {
+                EmployerSupport::create([
+                    "form_id" => $form->id,
+                    "employer_support" => $vale["employer_support"],
+
+                ]);
+            }
         }
 
         // dd($form);

@@ -13,7 +13,8 @@ class Education extends Model
         'form_id',
         'level',
         'discipline',
-        'completion_date'
+        'completion_date',
+        'academicPreparationCOC'
         // 'edu_level_id',
         // 'education_type_id'
     ];
