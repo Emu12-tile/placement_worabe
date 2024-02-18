@@ -71,7 +71,7 @@
                                                     <input name="email" type="email"
                                                         class="form-control
                                                         @error('email') is-invalid @enderror"
-                                                        id="email" placeholder="@wku.edu.et"
+                                                        id="email" placeholder="@mwu.edu.et"
                                                         value="{{ old('email') }}">
                                                     @error('email')
                                                         <span class=" error invalid-feedback">
@@ -155,10 +155,9 @@
 
                                             <div class="col-md-4 form-group">
                                                 <label for="level">አሁን ያሉበት ደረጃ </label>
-                                                 <input type="text" value="{{ old('level') }}"
+                                                <input type="text" value="{{ old('level') }}"
                                                     class="form-control @error('level') is-invalid @enderror"
-                                                    id="level" placeholder="አሁን ያሉበት ደረጃ"
-                                                    name="level">
+                                                    id="level" placeholder="አሁን ያሉበት ደረጃ" name="level">
                                                 @error('level')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -485,7 +484,8 @@
                                                             <label for="employer_support"> የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
                                                             <input class="form-control"
                                                                 @error('employer_support') is-invalid @enderror"
-                                                                id="employer_support" placeholder=" የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት"
+                                                                id="employer_support"
+                                                                placeholder=" የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት"
                                                                 value="{{ old('employer_support') }}" type="text"
                                                                 name="addEmployeeSupport[0][employer_support]">
                                                             @error('employer_support')
@@ -599,7 +599,7 @@
                                             Previous</button>
                                         <button type="button" class="next btn bg-blue-dark-3 text-white float-right">Next
                                             &gt;</button>
-                                        <button type="submit"
+                                        <button type="submit" id="submit_form"
                                             class="btn bg-green-dark-3 text-white float-right">Submit</button>
 
                                     </div>
@@ -617,6 +617,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
         integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         $(document).ready(function() {
             var i = 0
@@ -818,7 +820,7 @@
                 let row_item = $(this).parents('.form_more_role');
                 $(row_item).remove();
             });
-            var b= 0;
+            var b = 0;
             $(".addEmployee").click(function(e) {
                 ++b;
                 e.preventDefault();
@@ -1070,5 +1072,23 @@
 
 
         })
+
+
+            document.getElementById('submit_form').addEventListener('submit', function(event) {
+            
+                event.preventDefault(); // Prevent the default form submission behavior
+
+                // Perform any additional form processing or validation here
+
+                // Display the SweetAlert popup
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+
     </script>
 @endsection

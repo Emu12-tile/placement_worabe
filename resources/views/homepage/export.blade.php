@@ -68,63 +68,40 @@
         <h1 style="font-family: Noto Sans Ethiopic, sans-serif; text-align:center ">መደ ወላቡ ዩኒቨርሲቲ </h1>
         <h3 style="text-align:center">የአስተዳደር ሠራተኞች ፕሮፋይል</h3>
         <p>1/ የሠራተኛው ሙሉ ስም:-{{ $form->firstName }} {{ $form->middleName }} {{ $form->lastName }} </p>
-        <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->jobcat }} </p>
-        <p>2/ አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp;
-            ብሔር:-{{ $form->ethinicity }} &emsp; የትውልድ ዘመን:-{{ $form->birth_date }}
+        <p>2/ አሁን ያሉበት የስራ ክፍል፦{{ $form->jobcat }} &emsp; አሁን ያሉበት የስራ መደብ መጠርያ:-{{ $form->positionofnow }} &emsp; ደረጃ:-{{ $form->level }}</p>
+        <p>3/ ብሔር:-{{ $form->ethinicity }} &emsp; የትውልድ ዘመን:-{{ $form->birth_date }}
         </p>
-        <p>3/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:-
+        <p>4/ የተማሩት የት/ት ዝግጅትና የት/ት ደረጃ:-
         </p>
         <table id="customers" class="mb-15">
             <thead>
                 <tr>
 
                     <th>የትምህርት ደረጃ</th>
-                    <th>የትምህርት ዝግጅት</th>
-                    {{-- <th>የጨረሱበት ዓመት</th> --}}
-
-
-
-
+                    <th>የትምህርት ዝግጅት(በተቋም)</th>
+                    <th>የትምህርት ዝግጅት((ሲኦሲ))</th>
+                    <th>የጨረሱበት ዓመት</th>
                 </tr>
-
-
-
             </thead>
             <tbody>
                 @foreach ($form->education as $i => $fo)
                     <tr>
-
                         <td> {{ $fo->level ?? '' }}</td>
                         <td> {{ $fo->discipline ?? '' }}</td>
-                        {{-- <td>{{ $fo->completion_date ?? '' }} </td> --}}
+                        <td> {{ $fo->academicPreparationCOC ?? '' }}</td>
+                        <td>{{ $fo->completion_date ?? '' }} </td>
                     </tr>
-                    {{-- <tr>
-
-                        <td>{{ $fo->discipline2 ?? '' }} </td>
-                    </tr>
-                    <tr>
-                        <td> {{ $fo->bsc ?? '' }}</td>
-                        <td> {{ $fo->discipline3 ?? '' }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ $fo->msc ?? '' }} </td>
-
-
-
-                        <td>{{ $fo->discipline4 ?? '' }} </td>
-
-                    </tr> --}}
                 @endforeach
             </tbody>
         </table>
-        <p>4/ በዩኒቨርስቲዉ የቅጥር
+        <p>5/ በዩኒቨርስቲዉ የቅጥር
             ዘመን በኢትዮጵያ አቆጣጠር:-
             {{ $form->UniversityHiringEra }}
 
         </p>
-        <p>5/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
-        <p>6/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
-        <h5>5/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
+        <p>6/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
+        <p>7/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
+        <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
         <p> ምርጫ 1</p>
 
         <p> የስራ ክፍል :-{{ $form->job_category->job_category ?? '' }}</p>
@@ -134,7 +111,7 @@
         <p> የስራ ክፍል:- {{ $form->jobcat2->job_category ?? '' }} </p>
         <p> የስራ መደብ:- {{ $form->choice2->position ?? '' }}</p>
         <div class="html2pdf__page-break"></div>
-        <p>6/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
+        <p>9/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
 
         <table id="customers">
             <thead>
@@ -231,11 +208,17 @@
             </tbody>
         </table>
         <div class="html2pdf__page-break"></div>
-        <p>9/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
+        <p>10/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
             {{ $form->serviceAfterDiplo }}</p>
-        <p>7/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
-        <p>8/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
-        <p>9/ ተጨማሪ የሥራ ድርሻ:-{{ $form->MoreRoles }}</p>
+        <p>11/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
+        <p>12/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
+        <p>13/ የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት:-@foreach ($employer_support as $i => $fo)
+            {{$fo->employer_support ??''}},
+        @endforeach</p>
+         <p>14/ የዲስፕሊን ጉድለት:-{{ $form->employer_situation }}</p>
+        <p>15/ ተጨማሪ የሥራ ድርሻ:-@foreach ($morerole as $i => $fo)
+            {{$fo->more_role ??''}},
+        @endforeach</p>
         <p>ቅጹን የሞላው ሰራተኛ ስም
             &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>

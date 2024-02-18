@@ -19,6 +19,8 @@ use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use App\Models\EducationType;
+use App\Models\EmployerSupport;
+use App\Models\Morerole;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -302,8 +304,10 @@ class MultiformController extends Controller
         $form = Form::find($id);
         $edu = Education::where('form_id', $form->id)->get();
         $forms = experience::where('form_id', $form->id)->get();
+        $morerole = Morerole::where('form_id', $form->id)->get();
+        $employer_support = EmployerSupport::where('form_id', $form->id)->get();
 
-        return view('homepage.export', compact('form', 'forms', 'edu'))
+        return view('homepage.export', compact('form', 'forms', 'edu', 'employer_support', 'morerole'))
             ->with('success', 'Export completed successfully.')
             ->with('redirect', Redirect::to('/hr'));
     }
