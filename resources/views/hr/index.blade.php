@@ -576,14 +576,9 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form>
-
-
-
-
                                                                         <div class="form-group row">
                                                                             <label for="inputEmail3"
                                                                                 class="col-sm-2 col-form-label">ሙሉ ስም</label>
-
 
                                                                             <div class="col-sm-10">
                                                                                 <input type="text"
@@ -631,8 +626,38 @@
                                                                                     readonly>
                                                                             </div>
                                                                         </div>
-
-
+                                                                        <div class="form-group row">
+                                                                            <label for="inputname"
+                                                                                class="col-sm-2 col-form-label">አሁን ያሉበት የስራ
+                                                                                ክፍል</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text"
+                                                                                    value="{{ $form->jobcat }}"
+                                                                                    name="positionofnow"class="form-control "
+                                                                                    id="inputEmail3" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="ethinicity"
+                                                                                class="col-sm-2 col-form-label">ብሔር</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text"
+                                                                                    value="{{ $form->ethinicity }}"
+                                                                                    name="ethinicity"class="form-control "
+                                                                                    id="ethinicity" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="birth_date"
+                                                                                class="col-sm-2 col-form-label">የትውልድ
+                                                                                ዘመን</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text"
+                                                                                    value="{{ $form->birth_date }}"
+                                                                                    name="birth_date"class="form-control "
+                                                                                    id="birth_date" readonly>
+                                                                            </div>
+                                                                        </div>
 
                                                                         <div class="form-group row">
                                                                             <label for="inputname"
@@ -656,20 +681,12 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="form-group row">
-                                                                            <label for="fee"
-                                                                                class="col-sm-2 col-form-label">ደምወዝ</label>
-                                                                            <div class="col-sm-10">
-                                                                                <input type="text"
-                                                                                    value="{{ $form->fee }}"
-                                                                                    name="fee"class="form-control "
-                                                                                    id="fee" readonly>
-                                                                            </div>
-                                                                        </div>
+
                                                                         <h4 class="text-white text-center mt-50 mb-4"
                                                                             style=" background-color:rgb(17,40,77)">
                                                                             የትምህርት
-                                                                            ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
+                                                                            ደረጃ ፣ የትምህርት ዝግጅት (በተቋም) ፣ የትምህርት ዝግጅት(ሲኦሲ)ና ያበቃበት
+                                                                            ዓመት በቅድመ ተከተል</h4>
                                                                         <div class="form-group  mb-100">
 
                                                                             <label for="inputname"></label>
@@ -677,7 +694,7 @@
 
                                                                             @foreach ($form->education as $fo)
                                                                                 <input type="text"
-                                                                                    value="[{{ $fo->level }} , {{ $fo->discipline }}, {{ $fo->completion_date }}]"
+                                                                                    value="[{{ $fo->level }} , {{ $fo->discipline }},{{ $fo->academicPreparationCOC }}, {{ $fo->completion_date }}]"
                                                                                     name="education_level"class="form-control "
                                                                                     id="inputEmail3" readonly>
                                                                             @endforeach
@@ -820,13 +837,33 @@
 
                                                                         </div>
                                                                         <div class="form-group  ">
-                                                                            <label for="MoreRoles">ተጨማሪ የሥራ ድርሻ
+                                                                            <label for="MoreRoles">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት
+                                                                            </label>
+                                                                            @foreach ($form->employer_supports as $fo)
+                                                                                <input type="text"
+                                                                                    value="{{ $fo->employer_support }}"
+                                                                                    name="employer_support"class="form-control "
+                                                                                    id="employer_support" readonly>
+                                                                                    @endforeach
+                                                                        </div>
+                                                                        <div class="form-group  ">
+                                                                            <label for="MoreRoles">ሰራተኛው ያለበት ሁኔታ
                                                                             </label>
 
                                                                             <input type="text"
-                                                                                value="{{ $form->MoreRoles }}"
+                                                                                value="{{ $form->employee_situation }}"
                                                                                 name="MoreRoles"class="form-control "
                                                                                 id="MoreRoles" readonly>
+                                                                        </div>
+                                                                        <div class="form-group  ">
+                                                                            <label for="MoreRoles">ተጨማሪ የሥራ ድርሻ
+                                                                            </label>
+                                                                            @foreach ($form->moreroles as $fo)
+                                                                                <input type="text"
+                                                                                    value="{{ $fo->more_role }}"
+                                                                                    name="more_role"class="form-control "
+                                                                                    id="more_role" readonly>
+                                                                                    @endforeach
                                                                         </div>
                                                                         <h4 class="text-white text-center mt-50 mb-4"
                                                                             style=" background-color:rgb(17,40,77)">

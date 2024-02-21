@@ -75,8 +75,8 @@ class CreateFormController extends Controller
             'serviceAfterDiplo' => 'required',
             'resultOfrecentPerform' => 'required', 'regex:/^(?:d*.d{1,2}|d+)$/', 'min:1', 'max:100',
             'DisciplineFlaw' => 'required',
-            'employee_situation' => 'required',
-            'level_id' => 'nullable',
+            'employee_situation' => 'nullable',
+            'level' => 'nullable',
 
         ]);
 
@@ -96,12 +96,6 @@ class CreateFormController extends Controller
         //         return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
         //     }
         // }
-
-
-
-
-
-
         $form =
             Form::create(
                 [

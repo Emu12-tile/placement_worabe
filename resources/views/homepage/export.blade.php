@@ -215,7 +215,7 @@
         <p>13/ የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት:-@foreach ($employer_support as $i => $fo)
             {{$fo->employer_support ??''}},
         @endforeach</p>
-         <p>14/ የዲስፕሊን ጉድለት:-{{ $form->employer_situation }}</p>
+         <p>14/ ሰራተኛው ያለበት ሁኔታ:-{{ $form->employee_situation }}</p>
         <p>15/ ተጨማሪ የሥራ ድርሻ:-@foreach ($morerole as $i => $fo)
             {{$fo->more_role ??''}},
         @endforeach</p>

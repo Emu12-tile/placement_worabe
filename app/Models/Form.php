@@ -20,7 +20,7 @@ class Form extends Model
         'startingDate',
         'endingDate',
         'sex',
-        'fee',
+
         'positionofnow',
         'positionyouworked',
         'UniversityHiringEra',
@@ -47,11 +47,6 @@ class Form extends Model
         'ethinicity',
         'birth_date',
         'jobcat',
-
-
-
-
-
 
     ];
 
