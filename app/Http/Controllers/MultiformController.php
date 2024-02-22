@@ -55,8 +55,8 @@ class MultiformController extends Controller
                 'middleName' => 'required',
                 'lastName' => 'required',
                 'sex' => 'required',
-                'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@aastu.edu.et/i', 'unique:' . Form::class],
-                'phone' => 'required|numeric|digits:10',
+                'email' => ['nullable', 'string', 'email', 'max:255',  'regex:/(.*)@mwu.edu.et/i', 'unique:' . Form::class],
+                'phone' => 'nullable',
             ]
         );
 
@@ -74,63 +74,14 @@ class MultiformController extends Controller
     public function createStepTwo(Request $request)
     {
 
-        $level = Level::all();
-        $edu_level = EduLevel::all();
-        $job_category = JobCategory::all();
-        $position = Position::all();
-        $choice2 = choice2::all();
 
-        $jobcat2 = jobcat2::all();
-        // $edutype = EducationType::all();
-        $edutype = EducationType::all();
-        $level2 = Level::all();
 
-        $position2 = Position::all();
         $form = $request->session()->get('form');
 
 
-        return view('multiforms.create-step-two', compact('level', 'level2', 'position', 'position2', 'jobcat2', 'edu_level', 'job_category', 'edutype', 'form', 'choice2'));
-    }
-    // public function position($id)
-    // {
-    //     $position = DB::table("positions")
-    //         ->where("job_category_id", $id)
-    //         ->pluck('position', 'id');
-
-
-    //     return json_encode($position);
-    // }
-    public function position(Request $request)
-    {
-        $position = Position::select('position', 'id')
-            ->where("job_category_id", $request->id)->take(100)->get();
-
-
-        return response()->json($position);
-    }
-    public function position2(Request $request)
-    {
-        $position2 = choice2::select('position', 'id')
-            ->where("jobcat2_id", $request->id)->take(100)->get();
-
-
-        return response()->json($position2);
+        return view('multiforms.create-step-two', compact('form'));
     }
 
-    public function selection(Request $request)
-    {
-        $selected = Position::all()->where("id", $request->id)->first();
-
-
-        return response()->json($selected);
-    }
-    public function selection2(Request $request)
-    {
-        $selected = choice2::all()->where("id", $request->id)->first();
-
-
-        return response()->json($selected);
-    }
     public function postCreateStepTwo(Request $request)
     {
         // dd($request);
@@ -138,39 +89,26 @@ class MultiformController extends Controller
         $validatedData = $request->validate(
             [
                 // 'firstdergee' => 'required',
-                'fee' => 'required',
-                'position_id' => 'required',
-                'job_category_id' => 'required',
-                'jobcat2_id' => 'required',
-                'level_id' => 'required',
-                'addMoreFields.*.edu_level_id' => 'required',
-                'addMoreFields.*.education_type_id' => 'required',
-                // 'edu_level_id' => 'required',
-                // 'education_type_id' => 'required',
+                'ethinicity' => 'required',
+
+                'level' => 'required',
+                'addMoreFields.*.level' => 'required',
+                'addMoreFields.*.discipline' => 'required',
+                'addMoreFields.*.academicPreparationCOC' => 'required',
+                'addMoreFields.*.completion_date' => 'required',
+
                 'positionofnow' => 'required',
-                'choice2_id' => 'required',
+                'birth_date' => 'required',
+                'jobcat' => 'required',
+
             ]
         );
 
+        // dd($validatedData);
 
-
-
-
-
-        if (empty($request->session()->get('form'))) {
-            $form = new Form();
-
-            $form->fill($validatedData);
-
-            $request->session()->put('form', $form);
-        } else {
-            $form = $request->session()->get('form');
-
-            $form->fill($validatedData);
-
-            $request->session()->put('form', $form, 'fo');
-        }
-
+        $form = $request->session()->get('form');
+        $form->fill($validatedData);
+        $request->session()->put('form', $form);
         return redirect()->route('multiforms.create.step.three');
     }
     public function createStepThree(Request $request)
@@ -194,12 +132,11 @@ class MultiformController extends Controller
                 'addMoreInputFields.*.positionyouworked' => 'nullable',
                 'UniversityHiringEra' => 'required',
                 'servicPeriodAtUniversity' => 'required',
-                'servicPeriodAtAnotherPlace' => 'required',
                 'serviceBeforeDiplo' => 'required',
                 'serviceAfterDiplo' => 'required',
                 'resultOfrecentPerform' => 'required', 'regex:/^(?:d*.d{1,2}|d+)$/', 'min:1', 'max:100',
                 'DisciplineFlaw' => 'required',
-                'MoreRoles' => 'required',
+                'MoreRoles' => 'nullable',
 
 
             ]
@@ -213,11 +150,8 @@ class MultiformController extends Controller
                 'lastName' => $data->lastName,
                 'email' => $data->email,
                 'phone' => $data->phone,
-                // slug
-                'tag_slug' => Str::slug($data->lastName, '-' . Str::random()),
 
-                // 'education_type_id' => $data->education_type_id,
-                'level_id' => $data->level_id,
+                'level' => $data->level,
                 // 'edu_level_id' => $data->edu_level_id,
                 'position_id' => $data->position_id,
                 'choice2_id' => $data->choice2_id,
@@ -226,7 +160,10 @@ class MultiformController extends Controller
                 'positionofnow' => $data->positionofnow,
                 'firstdergee' => $data->firstdergee,
                 'sex' => $data->sex,
-                'fee' => $data->fee,
+                'ethinicity' => $data->ethinicity,
+                'birth_date' => $data->birth_date,
+                'jobcat' => $data->jobcat,
+
                 "UniversityHiringEra" => $request->UniversityHiringEra,
                 "servicPeriodAtUniversity" => $request->servicPeriodAtUniversity,
                 "servicPeriodAtAnotherPlace" => $request->servicPeriodAtAnotherPlace,
@@ -242,8 +179,10 @@ class MultiformController extends Controller
         foreach ($request->addMoreFields as $key => $val) {
             Education::create([
                 "form_id" => $form->id,
-                "edu_level_id" => $val["edu_level_id"],
-                "education_type_id" => $val["education_type_id"],
+                "level" => $val["level"],
+                "discipline" => $val["discipline"],
+                "academicPreparationCOC" => $val["academicPreparationCOC"],
+                "completion_date" => $val["completion_date"],
 
             ]);
         }
@@ -290,15 +229,7 @@ class MultiformController extends Controller
         // dd($form);
         return view('homepage.submit', ['form' => $form]);
     }
-    // public function export_pdf($id)
-    // {
 
-    //     $form = Form::find($id);
-    //     $edu = Education::where('form_id', $form->id)->get();
-    //     $forms = experience::where('form_id', $form->id)->get();
-
-    //     return view('homepage.export', compact('form', 'forms','edu'));
-    // }
     public function export_pdf($id)
     {
         $form = Form::find($id);

@@ -112,6 +112,15 @@ Route::middleware([
 
         // Route::get('/hr',[FormController::class, 'createforms'] )->name('hr.index');
         // Route::post('/hr/form', [FormController::class, 'store'])->name('add.form');
+        Route::get('/step-one', [MultiformController::class, 'createStepOne'])->name('multiforms.create-step-one');
+Route::post('/step-one', [MultiformController::class, 'postCreateStepOne'])->name('multiforms.create.step.one.post');
+
+Route::get('/step-two', [MultiformController::class, 'createStepTwo'])->name('multiforms.create.step.two');
+        Route::post('/steptwo',  [MultiformController::class, 'postCreateStepTwo'])->name('multiforms.create.step.two.post');
+ Route::get('/step-three', [MultiformController::class, 'createStepThree'])->name('multiforms.create.step.three');
+
+ Route::post('/stepthree', [MultiformController::class, 'postCreateStepThree'])->name('multiforms.create.step.three.post');
+
     }
 );
 Route::middleware([
@@ -218,6 +227,7 @@ Route::middleware([
 // Route::get('/table', [FormController::class, 'table']);
 
 Route::get('/export_pdf/{id}', [MultiformController::class, 'export_pdf'])->name('export_pdf');
+
 // Route::get('/export_pdf/{id}', [FormController::class, 'generatePdf'])->name('export_pdf');
 Route::get('/submitted/{id}', [MultiformController::class, 'submit'])->name('submit');
 

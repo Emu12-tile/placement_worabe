@@ -47,6 +47,10 @@ class Form extends Model
         'ethinicity',
         'birth_date',
         'jobcat',
+        'DisciplineFlawDate',
+        'registeredBy',
+        'employer_support'
+
 
     ];
 

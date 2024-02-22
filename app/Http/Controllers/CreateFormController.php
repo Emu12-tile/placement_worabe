@@ -70,13 +70,15 @@ class CreateFormController extends Controller
             'addMoreInputFields.*.positionyouworked' => 'nullable',
             'UniversityHiringEra' => 'required',
             'servicPeriodAtUniversity' => 'required',
-            'servicPeriodAtAnotherPlace' => 'required',
+            'servicPeriodAtAnotherPlace' => 'nullable',
             'serviceBeforeDiplo' => 'required',
             'serviceAfterDiplo' => 'required',
             'resultOfrecentPerform' => 'required', 'regex:/^(?:d*.d{1,2}|d+)$/', 'min:1', 'max:100',
-            'DisciplineFlaw' => 'required',
+            'DisciplineFlaw' => 'nullable',
             'employee_situation' => 'nullable',
-            'level' => 'nullable',
+            'level' => 'required',
+            'DisciplineFlawDate' => 'nullable',
+            'employer_support' => 'required',
 
         ]);
 
@@ -120,6 +122,9 @@ class CreateFormController extends Controller
                     "resultOfrecentPerform" => $request->resultOfrecentPerform,
                     "DisciplineFlaw" => $request->DisciplineFlaw,
                     "employee_situation" => $request->employee_situation,
+                    'registeredBy' => auth()->user()->name,
+                    'DisciplineFlawDate' => $request->DisciplineFlawDate,
+                    'employer_support' => $request->employer_support,
                 ]
             );
 
@@ -154,18 +159,10 @@ class CreateFormController extends Controller
                 ]);
             }
         }
-        if (!empty($request->addEmployeeSupport)) {
-            foreach ($request->addEmployeeSupport as $key => $vale) {
-                EmployerSupport::create([
-                    "form_id" => $form->id,
-                    "employer_support" => $vale["employer_support"],
 
-                ]);
-            }
-        }
 
         // dd($form);
-        return redirect('createform');
+        return redirect('createform')->with('success', 'Form submitted successfully!')->with('fadeout', true);;
     }
 
     /**

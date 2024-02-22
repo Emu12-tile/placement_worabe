@@ -12,7 +12,196 @@
 
 
                 @role('admin')
-                    <div class="col-lg-8 col-sm  ml-25 mt-100">
+                    <div class="hk-row mt-100">
+                        <div class="col-lg-4 col-md-8">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Teshome Oljira</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32b">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Teshome Oljira')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Feben Bekele</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32ba">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Feben Bekele')->count() }}</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Zerihun demeke</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32bb">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Zerihun demeke')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+
+                                        <small class="d-block"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-8">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">weyneshet</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32b">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'weyneshet')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Bezawit Mulugeta
+                                                w/mariam</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32ba">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Bezawit Mulugeta w/mariam')->count() }}</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">yeshareg Sisay</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32bb">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'yeshareg Sisay')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+
+                                        <small class="d-block"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-8">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Birhane teshome
+                                                kitaba</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32b">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Birhane teshome kitaba')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Genet Befkadu</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32ba">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Genet Befkadu')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Firehiwot Gezahegn</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32bb">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'firehiwotgezahegn')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+
+                                        <small class="d-block"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-8">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Betelihem Firdu</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32b">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Betelihem Firdu')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Betelehem Alemu</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32ba">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Betelehem Alemu')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Abubeker</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32bb">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Abubeker')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+
+                                        <small class="d-block"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card card-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">bedriya feki</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32b">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'bedriya feki')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Mohammedaman Kemal</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32ba">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Mohammedaman Kemal')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <div>
+                                            <span class="d-block font-16 text-dark font-weight-500">Ahmedrashid oumer</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-success font-20 font-weight-500" id="data_32bb">
+                                                {{ $hrs = DB::table('forms')->where('registeredBy', 'Ahmedrashid oumer')->count() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+
+                                        <small class="d-block"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col-lg-8 col-sm  ml-25 mt-100">
                         <div class=" card card-sm ">
                             <div class="card-body  ">
                                 <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight">
@@ -20,7 +209,7 @@
                                 </h2>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 @endrole
                 @role('hr|president')
                     <div class="hk-row mt-100">

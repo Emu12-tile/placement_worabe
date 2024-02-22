@@ -5,6 +5,12 @@
             <div class="row">
                 <div class="col-xl-12">
                     <section class="hk-sec-wrapper mt-100">
+                        @if (session('success'))
+                            <div class="alert alert-success" id="success-message"
+                                style="background-color: green; color: white;">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <h3 class="hk-sec-title text-white text-center color-wrap  "
                             style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
@@ -12,12 +18,12 @@
                             <div class="col-sm">
                                 <form action="{{ route('add.form') }}" class="employee-form" id='add_form' method="POST">
                                     @csrf
-
                                     <div class="form-section">
+                                        <input type="hidden" name="page" value="1">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="firstName">የመጀመሪያ ስም *</label>
-                                                <input class="form-control" @error('firstName') is-invalid @enderror"
+                                                <input class="form-control @error('firstName') is-invalid @enderror"
                                                     id="firstName" placeholder="የመጀመሪያ ስም" value="{{ old('firstName') }}"
                                                     type="text" name="firstName">
                                                 @error('firstName')
@@ -28,7 +34,7 @@
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label for="lastName">የአያት ስም *</label>
-                                                <input class="form-control" @error('lastName') is-invalid @enderror"
+                                                <input class="form-control @error('lastName') is-invalid @enderror"
                                                     id="lastName" placeholder="የአያት ስም" value="{{ old('lastName') }}"
                                                     type="text" name="lastName">
                                                 @error('lastName')
@@ -39,7 +45,7 @@
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label for="middleName">የአባት ስም *</label>
-                                                <input class="form-control" @error('middleName') is-invalid @enderror"
+                                                <input class="form-control @error('middleName') is-invalid @enderror"
                                                     id="middleName" placeholder="የአባት ስም" value="{{ old('middleName') }}"
                                                     type="text" name="middleName">
                                                 @error('middleName')
@@ -61,7 +67,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label class="control-label mb-10" for="email">ኢሜይል ( ኢሜይል ብቻ
+                                                <label class="control-label mb-10" for="email">ኢሜይል (የመደ ወላቡ ኢሜይል ብቻ
                                                     ይጠቀሙ) </label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -106,6 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="form-section">
+                                        <input type="hidden" name="page" value="2">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="ethinicity">ብሔር</label>
@@ -133,7 +140,7 @@
                                                 <label for="jobcat">አሁን ያሉበት የስራ ክፍል</label>
                                                 <input type="text" value="{{ old('jobcat') }}"
                                                     class="form-control @error('jobcat') is-invalid @enderror"
-                                                    id="jobcat" placeholder="አሁን ያሉበት የስራ መደብ" name="jobcat">
+                                                    id="jobcat" placeholder="አሁን ያሉበት የስራ ክፍል" name="jobcat">
                                                 @error('jobcat')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -362,11 +369,13 @@
 
                                     </div>
                                     <div class="form-section ">
+                                        <input type="hidden" name="page" value="3">
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label for="UniversityHiringEra">በዩኒቨርስቲዉ የቅጥር ዘመን በኢትዮጵያ
                                                     አቆጣጠር(ወር/ቀን/ዓመት)</label>
-                                                <input class="form-control"
+                                                <input
+                                                    class="form-control
                                                     @error('UniversityHiringEra') is-invalid @enderror"
                                                     id="UniversityHiringEra" placeholder="UniversityHiringEra"
                                                     value="{{ old('UniversityHiringEra') }}" type="date"
@@ -378,11 +387,11 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="servicPeriodAtUniversity">በዩኒቨርስቲዉ አገልግሎት ዘመን (በዓመት,የስራ
-                                                    መደብ)</label>
-                                                <input class="form-control"
+                                                <label for="servicPeriodAtUniversity">ጠቅላላ አገልግሎት ዘመን (በዓመት)</label>
+                                                <input
+                                                    class="form-control
                                                     @error('servicPeriodAtUniversity') is-invalid @enderror"
-                                                    id="servicPeriodAtUniversity" placeholder="በዩኒቨርስቲዉ አገልግሎት ዘመን"
+                                                    id="servicPeriodAtUniversity" placeholder="ጠቅላላ አገልግሎት ዘመን "
                                                     value="{{ old('servicPeriodAtUniversity') }}" type="text"
                                                     name="servicPeriodAtUniversity">
                                                 @error('servicPeriodAtUniversity')
@@ -391,7 +400,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-6 form-group">
+                                            {{-- <div class="col-md-6 form-group">
                                                 <label for="servicPeriodAtAnotherPlace">በሌላ መስርያ ቤት አገልግሎት ዘመን(በዓመት,የስራ
                                                     መደብ)</label>
                                                 <input class="form-control"
@@ -404,10 +413,11 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-6 form-group">
-                                                <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት,የስራ መደብ)</label>
-                                                <input class="form-control "
+                                                <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት)</label>
+                                                <input
+                                                    class="form-control
                                                     @error('serviceBeforeDiplo') is-invalid @enderror"
                                                     id="serviceBeforeDiplo" placeholder="አገልግሎት ከዲፕሎማ በፊት"
                                                     value="{{ old('serviceBeforeDiplo') }}" type="text"
@@ -419,9 +429,9 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ
-                                                    መደብ)</label>
-                                                <input class="form-control mt-25"
+                                                <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት)</label>
+                                                <input
+                                                    class="form-control mt-25
                                                     @error('serviceAfterDiplo') is-invalid @enderror"
                                                     id="serviceAfterDiplo" placeholder=" አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ"
                                                     value="{{ old('serviceAfterDiplo') }}" type="text"
@@ -437,7 +447,8 @@
                                                     የሥራ
                                                     አፈጻፀም አማካይ
                                                     ውጤት(ከ100 በቁጥር)</label>
-                                                <input class="form-control mt-25"
+                                                <input
+                                                    class="form-control mt-25
                                                     @error('resultOfrecentPerform') is-invalid @enderror"
                                                     id="resultOfrecentPerform" placeholder=" የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም"
                                                     value="{{ old('resultOfrecentPerform') }}" type="decimal"
@@ -450,8 +461,25 @@
                                             </div>
 
                                             <div class="col-md-6 form-group">
+                                                <label for="employee_situation">ሰራተኛው ያለበት ሁኔታ</label>
+                                                <select
+                                                    class="form-control custom-select "value="{{ old('employee_situation') }}"
+                                                    id="employee_situation" name="employee_situation">
+
+                                                    <option value="በስራ ላይ ናቸዉ "
+                                                        {{ old('employee_situation') == 'በስራ ላይ ናቸዉ' ? 'selected' : '' }}>
+                                                        በስራ ላይ ናቸዉ
+                                                    </option>
+                                                    <option
+                                                        value="በስራ ላይ አይደሉም"{{ old('employee_situation') == 'በስራ ላይ አይደሉም' ? 'selected' : '' }}>
+                                                        በስራ ላይ አይደሉም
+                                                    </option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 form-group">
                                                 <label for="DisciplineFlaw"> የዲስፕሊን ጉድለት</label>
-                                                <input class="form-control" @error('DisciplineFlaw') is-invalid @enderror"
+                                                <input class="form-control @error('DisciplineFlaw') is-invalid @enderror"
                                                     id="DisciplineFlaw" placeholder=" የዲስፕሊን ጉድለት"
                                                     value="{{ old('DisciplineFlaw') }}" type="text"
                                                     name="DisciplineFlaw">
@@ -462,47 +490,46 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="employee_situation"> ሰራተኛው ያለበት ሁኔታ </label>
-                                                <input class="form-control"
-                                                    @error('employee_situation') is-invalid @enderror"
-                                                    id="employee_situation" placeholder="ሰራተኛው  ያለበት ሁኔታ "
-                                                    value="{{ old('employee_situation') }}" type="text"
-                                                    name="employee_situation">
-                                                @error('employee_situation')
+                                                <label for="DisciplineFlawDate">ቀን (የዲስፕሊን ጉድለት ካለ )</label>
+                                                <input
+                                                    class="form-control @error('DisciplineFlawDate') is-invalid @enderror"
+                                                    id="DisciplineFlawDate" placeholder=" የዲስፕሊን ጉድለት ቀን "
+                                                    value="{{ old('DisciplineFlawDate') }}" type="date"
+                                                    name="DisciplineFlawDate">
+                                                @error('DisciplineFlawDate')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                        </div>
-                                        <div id="employee">
-                                            <div class="row">
-                                                <div class="col-sm">
 
-                                                    <div class=" form_employee row">
-                                                        <div class="col-md-6 ">
-                                                            <label for="employer_support"> የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
-                                                            <input class="form-control"
-                                                                @error('employer_support') is-invalid @enderror"
-                                                                id="employer_support"
-                                                                placeholder=" የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት"
-                                                                value="{{ old('employer_support') }}" type="text"
-                                                                name="addEmployeeSupport[0][employer_support]">
-                                                            @error('employer_support')
-                                                                <span class=" error invalid-feedback">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div>
-                                                            <a href="javascript:void(0)"
-                                                                class="btn color-wrap text-white bg-blue-dark-4  addEmployee mt-40 "
-                                                                style=" border-radius:50%">+</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
+                                        <div class="col-md-6 form-group">
+                                            <label for="employer_support">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
+                                            <select
+                                                class="form-control custom-select "value="{{ old('employer_support') }}"
+                                                id="employer_support" name="employer_support">
+
+                                                <option value="not disable "
+                                                    {{ old('employer_support') == 'not disable' ? 'selected' : '' }}>
+                                                    not disable
+                                                </option>
+                                                <option
+                                                    value="disable"{{ old('employer_support') == 'disable' ? 'selected' : '' }}>
+                                                    disable
+                                                </option>
+                                                <option
+                                                    value="disable and military"{{ old('employer_support') == 'disable and military' ? 'selected' : '' }}>
+                                                    disable and military
+                                                </option>
+                                                <option
+                                                    value="military"{{ old('employer_support') == ' military' ? 'selected' : '' }}>
+                                                    military
+                                                </option>
+
+                                            </select>
+                                        </div>
+
                                         <div id="morerole">
                                             <div class="row">
                                                 <div class="col-sm">
@@ -510,10 +537,12 @@
                                                     <div class=" form_more_role row">
                                                         <div class="col-md-6 ">
                                                             <label for="more_role"> ተጨማሪ የሥራ ድርሻ</label>
-                                                            <input class="form-control"
-                                                                @error('more_role') is-invalid @enderror" id="MoreRoles"
-                                                                placeholder="ተጨማሪ የሥራ ድርሻ" value="{{ old('more_role') }}"
-                                                                type="text" name="addMoreRoles[0][more_role]">
+                                                            <input
+                                                                class="form-control
+                                                                @error('more_role') is-invalid @enderror"
+                                                                id="MoreRoles" placeholder="ተጨማሪ የሥራ ድርሻ"
+                                                                value="{{ old('more_role') }}" type="text"
+                                                                name="addMoreRoles[0][more_role]">
                                                             @error('more_role')
                                                                 <span class=" error invalid-feedback">
                                                                     <strong>{{ $message }}</strong>
@@ -617,11 +646,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
         integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://raw.github.com/mattpowell/localstorageshim/master/localstorageshim.min.js" type="text/javascript">
+    </script>
 
     <script>
         $(document).ready(function() {
             var i = 0
+            setTimeout(function() {
+                $('#success-message').fadeOut('slow');
+            }, 5000);
             $(".addRow").click(function(e) {
                 ++i;
                 e.preventDefault();
@@ -820,46 +853,7 @@
                 let row_item = $(this).parents('.form_more_role');
                 $(row_item).remove();
             });
-            var b = 0;
-            $(".addEmployee").click(function(e) {
-                ++b;
-                e.preventDefault();
-                $("#employee").append(`
 
-                                                <div class="row">
-                                                    <div class="col-sm">
-                                                        <div class=" form_employee row">
-                                                            <div class="col-md-6 ">
-                                                                <label for="employer_support"> የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
-                                                                <input class="form-control"
-                                                                    @error('employer_support') is-invalid @enderror"
-                                                                    id="employer_support" placeholder="የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት"
-                                                                    value="{{ old('employer_support') }}" type="text"
-                                                                    name="addEmployeeSupport[${b}][employer_support]">
-                                                                @error('employer_support')
-                                                                    <span class=" error invalid-feedback">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div>
-                                                                <a href="javascript:void(0)"
-                                                                    class="btn color-wrap text-white bg-red-dark-4  removeEmployee mt-40 "
-                                                                    style=" border-radius:50%">-</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                    `);
-            });
-
-            $(document).on('click', '.removeEmployee', function(e) {
-
-                e.preventDefault();
-                // $this.parents('')
-                let row_item = $(this).parents('.form_employee');
-                $(row_item).remove();
-            });
 
             $(document).on('change', '.dynamic', function() {
                 // console.log("hmm its change");
@@ -1067,28 +1061,8 @@
                 });
                 navigateTo(0);
             });
+        });
 
-
-
-
-        })
-
-
-            document.getElementById('submit_form').addEventListener('submit', function(event) {
-            
-                event.preventDefault(); // Prevent the default form submission behavior
-
-                // Perform any additional form processing or validation here
-
-                // Display the SweetAlert popup
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Your work has been saved",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            });
-
+        // Function to handle form submission
     </script>
 @endsection

@@ -14,7 +14,7 @@
                         <p class="mb-25"> </p>
 
                         <div class="row">
-                            <div class="col-sm">
+                            <div class="col-sm" id='formContainer'>
                                 <form action="{{ route('multiforms.create.step.one.post') }}" method="POST">
                                     @csrf
 
@@ -115,9 +115,9 @@
 
 
                                     <div class="form-navigation mt-3">
-
-                                        <button type="submit" class="next btn bg-blue-dark-3 text-white float-right">ቀጣይ <i
-                                                class="fa fa-angle-right"></i> </button>
+                                        <a href="{{ route('multiforms.create.step.two') }}">
+                                            <button type="submit" class="next btn bg-blue-dark-3 text-white float-right"
+                                                id='step-two'>ቀጣይ <i class="fa fa-angle-right"></i></button></a>
 
                                     </div>
 
@@ -129,4 +129,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('javascript')
+   
 @endsection
