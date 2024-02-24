@@ -1,2 +1,2 @@
-placement for Madda walabu
-univeristy
+placement for Werabe
+university
