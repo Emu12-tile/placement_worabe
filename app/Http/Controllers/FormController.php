@@ -115,10 +115,7 @@ class FormController extends Controller
     }
     public function posDetail2($id)
     {
-
-
         $pos_id = (int) $id;
-
         $forms = Form::join(
             'choice2s',
             'choice2s.id',
@@ -142,8 +139,6 @@ class FormController extends Controller
     }
     public function pos2()
     {
-
-
         $forms = choice2::join('forms', 'forms.choice2_id', '=', 'choice2s.id')
             ->join('categories', 'categories.id', '=', 'choice2s.category_id')
             ->where('categories.catstatus', 'active')
@@ -157,10 +152,8 @@ class FormController extends Controller
     {
         $level = Level::all();
         $form = Form::all();
-
         $edu_level = EduLevel::all();
         $job_category = JobCategory::all();
-
         $position = Position::join('categories', 'categories.id', '=', 'positions.category_id')
             ->where('categories.catstatus', 'active')->get();
         $jobcat2 = jobcat2::all();
@@ -183,7 +176,6 @@ class FormController extends Controller
             'lastName' => 'required',
             'sex' => 'required',
             'email' => ['required', 'string', 'email', 'max:255',  'regex:/(.*)@mwu.edu.et/i'],
-
             'phone' => 'required|numeric|digits:10',
             'fee' => 'required',
             'position_id' => 'required',
@@ -192,7 +184,6 @@ class FormController extends Controller
             'level_id' => 'required',
             'position_id' => 'required',
             'choice2_id' => 'required',
-
             'positionofnow' => 'required',
             'choice2_id' => 'required',
             // 'addMoreFields.*.level' => 'required',
@@ -230,12 +221,6 @@ class FormController extends Controller
                 return  redirect()->back()->withErrors(['custom_email_error' => ' በዚህ ስራ መደብ መወዳደር አይችሉም'])->withInput();
             }
         }
-
-
-
-
-
-
         $form =
             Form::create(
                 [
@@ -244,12 +229,7 @@ class FormController extends Controller
                     'lastName' => $request->lastName,
                     'email' => $request->email,
                     'phone' => $request->phone,
-                    // slug
-                    // 'tag_slug' => Str::slug($request->email),
-
-
                     'level_id' => $request->level_id,
-
                     'position_id' => $request->position_id,
                     'choice2_id' => $request->choice2_id,
                     'job_category_id' => $request->job_category_id,
@@ -333,9 +313,6 @@ class FormController extends Controller
             'addMoreInputFields.*.startingDate' => 'date|nullable',
             'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
         ]);
-
-
-
         $form->choice2_id = $request->choice2_id;
         $form->position_id = $request->position_id;
         $form->job_category_id = $request->job_category_id;
@@ -343,30 +320,19 @@ class FormController extends Controller
         $form->firstName = $request->Input('firstName');
         $form->middleName = $request->Input('middleName');
         $form->lastName = $request->Input('lastName');
-
         $form->resultOfrecentPerform = $request->Input('resultOfrecentPerform');
         $form->DisciplineFlaw = $request->Input('DisciplineFlaw');
         $form->level = $request->Input('level');
-
         $form->UniversityHiringEra = $request->Input('UniversityHiringEra');
         $form->servicPeriodAtUniversity = $request->Input('servicPeriodAtUniversity');
         $form->servicPeriodAtAnotherPlace = $request->Input('servicPeriodAtAnotherPlace');
-
-
         $form->serviceBeforeDiplo = $request->Input('serviceBeforeDiplo');
         $form->serviceAfterDiplo = $request->Input('serviceAfterDiplo');
         $form->employee_situation = $request->Input('employee_situation');
-
-
-
         $form->sex = $request->Input('sex');
         $form->email = $request->Input('email');
         $form->positionofnow = $request->Input('positionofnow');
         $form->jobcat = $request->Input('jobcat');
-
-
-
-
         foreach ($request->MoreFields as $key => $value) {
             if (
                 isset($value['level']) &&
@@ -459,7 +425,6 @@ class FormController extends Controller
                 }
             }
         }
-
         foreach ($request->addEmployeeFields as $key => $value) {
             // Check if the required fields have values
             if (
