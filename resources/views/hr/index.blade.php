@@ -271,7 +271,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <h4 class="text-white text-center mt-50 mb-4"
-                                                                                style=" background-color:rgb(17,40,77)">
+                                                                                style=" background-color:#8696FE">
                                                                                 የትምህርት
                                                                                 ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
                                                                             <div class="form-group  mb-100">
@@ -289,11 +289,11 @@
 
                                                                             </div>
                                                                             <h4 class="text-white  text-center mt-3 mb-4 "
-                                                                                style=" background-color:rgb(17,40,77)">
+                                                                                style=" background-color:#8696FE">
                                                                                 የ
                                                                                 መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
                                                                             <button
-                                                                                class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
+                                                                                class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:#8696FE">
                                                                                 ምርጫ 1</button>
                                                                             <div class="form-group row">
                                                                                 <label for="inputname"
@@ -318,7 +318,7 @@
 
                                                                             <button
                                                                                 class="text-white text-left mt-3 mb-4 mr-150 text-left"
-                                                                                style=" background-color:rgb(17,40,77)"> ምርጫ
+                                                                                style=" background-color:#8696FE"> ምርጫ
                                                                                 2</button>
                                                                             <div class="form-group row">
                                                                                 <label for="inputname"
@@ -438,7 +438,7 @@
 
 
                                                                             <h4 class="text-white text-center mt-50 mb-4"
-                                                                                style=" background-color:rgb(17,40,77)">
+                                                                                style=" background-color:#8696FE">
                                                                                 የስራ
                                                                                 ልምድ</h4>
 
@@ -683,7 +683,7 @@
 
 
                                                                         <h4 class="text-white text-center mt-50 mb-4"
-                                                                            style=" background-color:rgb(17,40,77)">
+                                                                            style=" background-color:#8696FE">
                                                                             የትምህርት
                                                                             ደረጃ ፣ የትምህርት ዝግጅት (በተቋም) ፣ የትምህርት ዝግጅት(ሲኦሲ)ና ያበቃበት
                                                                             ዓመት በቅድመ ተከተል</h4>
@@ -702,11 +702,11 @@
 
                                                                         </div>
                                                                         <h4 class="text-white  text-center mt-3 mb-4 "
-                                                                            style=" background-color:rgb(17,40,77)">
+                                                                            style=" background-color:#8696FE">
                                                                             የ
                                                                             መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
                                                                         <button
-                                                                            class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
+                                                                            class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:#8696FE">
                                                                             ምርጫ 1</button>
                                                                         <div class="form-group row">
                                                                             <label for="inputname"
@@ -731,7 +731,7 @@
 
                                                                         <button
                                                                             class="text-white text-left mt-3 mb-4 mr-150 text-left"
-                                                                            style=" background-color:rgb(17,40,77)"> ምርጫ
+                                                                            style=" background-color:#8696FE"> ምርጫ
                                                                             2</button>
                                                                         <div class="form-group row">
                                                                             <label for="inputname"
@@ -844,7 +844,7 @@
                                                                                     value="{{ $fo->employer_support }}"
                                                                                     name="employer_support"class="form-control "
                                                                                     id="employer_support" readonly>
-                                                                                    @endforeach
+                                                                            @endforeach
                                                                         </div>
                                                                         <div class="form-group  ">
                                                                             <label for="MoreRoles">ሰራተኛው ያለበት ሁኔታ
@@ -863,10 +863,10 @@
                                                                                     value="{{ $fo->more_role }}"
                                                                                     name="more_role"class="form-control "
                                                                                     id="more_role" readonly>
-                                                                                    @endforeach
+                                                                            @endforeach
                                                                         </div>
                                                                         <h4 class="text-white text-center mt-50 mb-4"
-                                                                            style=" background-color:rgb(17,40,77)">
+                                                                            style=" background-color:#8696FE">
                                                                             የስራ
                                                                             ልምድ</h4>
 

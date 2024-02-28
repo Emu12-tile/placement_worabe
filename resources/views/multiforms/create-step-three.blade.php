@@ -7,7 +7,7 @@
                     <section class="hk-sec-wrapper mt-100">
 
                         <h3 class="hk-sec-title text-white text-center color-wrap  "
-                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            style=" background-color:#8696FE; padding:10px;">አዲስ አበባ ሳይንስና ቴክኖልጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
 
@@ -145,68 +145,67 @@
                                         </div>
 
                                     </div>
-                             <h3 class="text-white text-center mt-3 mb-4   "
-                                            style=" background-color:rgb(17,40,77); margin:center nav navmore">የስራ
-                                            ልምድ(በኢትዮጵያ አቆጣጠር
-                                            ብቻ)</h3>
-                                        <div id="myform">
-                                            <div class="row">
-                                                <div class="col-sm">
+                                    <h3 class="text-white text-center mt-3 mb-4   "
+                                        style=" background-color:#8696FE; margin:center nav navmore">የስራ
+                                        ልምድ(በኢትዮጵያ አቆጣጠር
+                                        ብቻ)</h3>
+                                    <div id="myform">
+                                        <div class="row">
+                                            <div class="col-sm">
 
-                                                    <div class=" formgr row">
+                                                <div class=" formgr row">
 
-                                                        <div class="col-md-3">
+                                                    <div class="col-md-3">
 
-                                                            <label for="startingDate">የጀመሩበት ዓመት(ወር/ቀን/ዓመት)</label>
-                                                            <input type="date"
-                                                                name="addMoreInputFields[0][startingDate]"
-                                                                value="{{ old('startingDate') }}"
-                                                                class="form-control  @error('startingDate') is-invalid @enderror"
-                                                                id="startingDate" placeholder=" ">
-                                                            @error('startingDate')
-                                                                <span class=" error invalid-feedback">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        <label for="startingDate">የጀመሩበት ዓመት(ወር/ቀን/ዓመት)</label>
+                                                        <input type="date" name="addMoreInputFields[0][startingDate]"
+                                                            value="{{ old('startingDate') }}"
+                                                            class="form-control  @error('startingDate') is-invalid @enderror"
+                                                            id="startingDate" placeholder=" ">
+                                                        @error('startingDate')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
 
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="endingDate">ያበቃበት ቀን(ወር/ቀን/ዓመት) </label>
-                                                            <input type="date" min="startingDate"
-                                                                name="addMoreInputFields[0][endingDate]"
-                                                                value="{{ old('endingDate') }}"
-                                                                class="form-control  @error('endingDate') is-invalid @enderror"
-                                                                id="endingDate" placeholder=" endingDate">
-                                                            @error('endingDate')
-                                                                <span class=" error invalid-feedback">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-4">
-                                                            <label for="positionyouworked">የስራ መደብ </label>
-                                                            <input type="text"
-                                                                name="addMoreInputFields[0][positionyouworked]"
-                                                                value="{{ old('positionyouworked') }}"
-                                                                class="form-control  @error('positionyouworked') is-invalid @enderror"
-                                                                id="positionyouworked" placeholder="የሰሩበት የስራ መደብ">
-                                                            @error('positionyouworked')
-                                                                <span class=" error invalid-feedback">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div>
-                                                            <a href="javascript:void(0)"
-                                                                class="btn color-wrap text-white bg-blue-dark-4  addRow mt-40 "
-                                                                style=" border-radius:50%">+</a>
-                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="endingDate">ያበቃበት ቀን(ወር/ቀን/ዓመት) </label>
+                                                        <input type="date" min="startingDate"
+                                                            name="addMoreInputFields[0][endingDate]"
+                                                            value="{{ old('endingDate') }}"
+                                                            class="form-control  @error('endingDate') is-invalid @enderror"
+                                                            id="endingDate" placeholder=" endingDate">
+                                                        @error('endingDate')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                     </div>
 
+                                                    <div class="col-md-4">
+                                                        <label for="positionyouworked">የስራ መደብ </label>
+                                                        <input type="text"
+                                                            name="addMoreInputFields[0][positionyouworked]"
+                                                            value="{{ old('positionyouworked') }}"
+                                                            class="form-control  @error('positionyouworked') is-invalid @enderror"
+                                                            id="positionyouworked" placeholder="የሰሩበት የስራ መደብ">
+                                                        @error('positionyouworked')
+                                                            <span class=" error invalid-feedback">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div>
+                                                        <a href="javascript:void(0)"
+                                                            class="btn color-wrap text-white bg-blue-dark-4  addRow mt-40 "
+                                                            style=" border-radius:50%">+</a>
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </div>
+                                    </div>
 
                                     <div class="form-navigation mt-3">
                                         {{-- <button type="button" class="previous btn btn-primary  float-left">&lt;

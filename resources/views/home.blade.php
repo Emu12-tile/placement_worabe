@@ -12,7 +12,7 @@
 
 
                 @role('admin')
-                    <div class="hk-row mt-100">
+                    {{-- <div class="hk-row mt-100">
                         <div class="col-lg-4 col-md-8">
                             <div class="card card-sm">
                                 <div class="card-body">
@@ -75,11 +75,10 @@
                                     </div>
                                     <div class="d-flex justify-content-between mb-5">
                                           <div>
-                                            {{-- <span class="d-block font-16 text-dark font-weight-500">yeshareg Sisay</span> --}}
                                         </div>
                                         <div>
                                             <span class="text-success font-20 font-weight-500" id="data_32bb">
-                                                {{-- {{ $hrs = DB::table('forms')->where('registeredBy', 'yeshareg Sisay')->count() }}</span> --}}
+
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between mb-5">
@@ -152,8 +151,8 @@
                         </div>
 
 
-                    </div>
-                    {{-- <div class="col-lg-8 col-sm  ml-25 mt-100">
+                    </div> --}}
+                    <div class="col-lg-8 col-sm  ml-25 mt-100">
                         <div class=" card card-sm ">
                             <div class="card-body  ">
                                 <h2 class="font-semibold text-center text-xl text-gray-800 leading-tight">
@@ -161,7 +160,7 @@
                                 </h2>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 @endrole
                 @role('hr|president')
                     <div class="hk-row mt-100">

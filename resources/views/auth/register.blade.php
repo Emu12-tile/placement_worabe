@@ -128,7 +128,7 @@
                         <div class="auth-form-wrap pt-xl-0 pt-70">
                             <div class="auth-form w-xl-30 w-lg-55 w-sm-75 w-100">
                                 <a class="auth-brand text-center d-block mb-20" href="#">
-                                    <img class="brand-img" src="{{ asset('assets/dist/img/Madda walabu.jpg') }}"
+                                    <img class="brand-img" src="{{ asset('assets/dist/img/wer.png') }}"
                                         style="width:100px; height:100px" alt="brand" />
                                 </a>
                                 <form method="POST" action="{{ route('register') }}">

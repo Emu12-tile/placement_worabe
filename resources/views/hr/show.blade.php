@@ -9,7 +9,7 @@
 
 
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:#8696FE; padding:10px;">ወራቤ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:rgb(17,40,77); margin:center">
+                                    style=" background-color:#8696FE; margin:center">
                                     ያለዎት የትምህርት ዝግጅትና የትምህርት ደረጃ
                                 </h3>
 
@@ -181,7 +181,7 @@
                                 </div>
                                 <h3 class="text-white text-center me
                                         mt-3 mb-4 "
-                                    style=" background-color:rgb(17,40,77); margin:center">
+                                    style=" background-color:#8696FE; margin:center">
                                     አገልግሎት
                                 </h3>
 
@@ -233,7 +233,7 @@
                                             name="DisciplineFlaw"class="form-control " id="DisciplineFlaw">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label for="employee_situation"> ሰራተኛው  ያለበት ሁኔታ </label>
+                                        <label for="employee_situation"> ሰራተኛው ያለበት ሁኔታ </label>
                                         <input type="text" value="{{ $form->employee_situation }}"
                                             name="employee_situation"class="form-control " id="employee_situation">
                                     </div>
@@ -342,7 +342,7 @@
 
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4   "
-                                    style=" background-color:rgb(17,40,77); margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
+                                    style=" background-color:#8696FE; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር
                                     ብቻ)</h3>
 
                                 @foreach ($form->experiences ?? [] as $i => $fo)
@@ -434,12 +434,11 @@
 
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                    style=" background-color:rgb(17,40,77); margin:center"> የሚወዳደሩበት የስራ ክፍልና
+                                    style=" background-color:#8696FE; margin:center"> የሚወዳደሩበት የስራ ክፍልና
                                     የስራ
                                     መደብ
                                 </h3>
-                                <button class="text-white text-left mt-3 mb-4 mr-150"
-                                    style=" background-color:rgb(17,40,77)">
+                                <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#8696FE">
                                     ምርጫ 1</button>
 
                                 <div class="row">
@@ -488,7 +487,7 @@
 
 
                                 </div>
-                                <button class="text-white text-left mt-3 mb-4" style=" background-color:rgb(17,40,77)">
+                                <button class="text-white text-left mt-3 mb-4" style=" background-color:#8696FE">
                                     ምርጫ 2</button>
                                 <div class="row">
                                     <div class="col-md-6 form-group">

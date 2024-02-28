@@ -5,7 +5,7 @@
             <div class="col-xl-12">
                 <section class="hk-sec-wrapper mt-100">
                     <h3 class="hk-sec-title text-white text-center color-wrap  "
-                        style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
+                        style=" background-color:#8696FE; padding:10px;">ወራቤ ዩኒቨርሲቲ የሰራተኞች የስራ
                         ድልድል ማወዳደርያ ቅፅ</h3>
                     <div class="row">
                         <div class="col-sm">
@@ -85,7 +85,7 @@
 
 
                                 <h3 class="text-white text-center mt-3 mb-4  "
-                                    style=" background-color:rgb(17,40,77); margin:center">
+                                    style=" background-color:#8696FE; margin:center">
                                     አገልግሎት
                                 </h3>
 

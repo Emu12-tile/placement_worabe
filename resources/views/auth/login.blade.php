@@ -101,8 +101,8 @@ License: You must have a valid license purchased only from themeforest to legall
                         <div class="auth-form-wrap pt-xl-0 pt-70">
                             <div class="auth-form w-xl-30 w-lg-55 w-sm-75 w-100">
                                 <a class="auth-brand text-center d-block mb-20" href="#">
-                                    <img class="brand-img" src="{{ asset('assets/dist/img/Madda walabu.jpg') }}"
-                                        style="width:100px; height:100px" alt="brand" />
+                                    <img class="brand-img" src="{{ asset('assets/dist/img/wer.png') }}"
+                                        style="width:100px; height:100px" alt="Werabe University logo" />
                                 </a>
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf

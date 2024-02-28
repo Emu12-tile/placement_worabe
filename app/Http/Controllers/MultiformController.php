@@ -55,7 +55,7 @@ class MultiformController extends Controller
                 'middleName' => 'required',
                 'lastName' => 'required',
                 'sex' => 'required',
-                'email' => ['nullable', 'string', 'email', 'max:255',  'regex:/(.*)@mwu.edu.et/i', 'unique:' . Form::class],
+                'email' => ['nullable', 'string', 'email', 'max:255',  'regex:/(.*)@wru.edu.et/i', 'unique:' . Form::class],
                 'phone' => 'nullable',
             ]
         );

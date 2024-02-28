@@ -59,7 +59,7 @@ class CreateFormController extends Controller
             'middleName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
-            'email' => ['nullable', 'string', 'email', 'max:255',  'regex:/(.*)@mwu.edu.et/i'],
+            'email' => ['nullable', 'string', 'email', 'max:255',  'regex:/(.*)@wru.edu.et/i'],
             'phone' => 'nullable',
             'positionofnow' => 'required',
             'ethinicity' => 'required',

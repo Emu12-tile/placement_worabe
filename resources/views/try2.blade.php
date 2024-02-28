@@ -12,7 +12,7 @@
                             </div>
                         @endif
                         <h3 class="hk-sec-title text-white text-center color-wrap  "
-                            style=" background-color:rgb(17,40,77); padding:10px;">መደ ወላቡ ዩኒቨርሲቲ የሰራተኞች የስራ
+                            style=" background-color:#8696FE; padding:10px;">ወራቤ ዩኒቨርሲቲ የሰራተኞች የስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <div class="row">
                             <div class="col-sm">
@@ -67,7 +67,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label class="control-label mb-10" for="email">ኢሜይል (የመደ ወላቡ ኢሜይል ብቻ
+                                                <label class="control-label mb-10" for="email">ኢሜይል (የወራቤ ኢሜይል ብቻ
                                                     ይጠቀሙ) </label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -81,7 +81,7 @@
                                                         value="{{ old('email') }}">
                                                     @error('email')
                                                         <span class=" error invalid-feedback">
-                                                            <strong>የመደ ወላቡ ኢሜይል ብቻ ይጠቀሙ</strong>
+                                                            <strong>የወራቤ ኢሜይል ብቻ ይጠቀሙ</strong>
                                                         </span>
                                                     @enderror
                                                 </div>
@@ -192,7 +192,7 @@
                                             </div> --}}
                                         </div>
                                         <h3 class="text-white text-center mt-3 mb-4  "
-                                            style=" background-color:rgb(17,40,77); margin:center">
+                                            style=" background-color:#8696FE; margin:center">
                                             ያለዎትን የትምህርት ዝግጅትና የትምህርት ደረጃ ያስገቡ
                                         </h3>
                                         <div class="row">
@@ -259,10 +259,10 @@
                                             </div>
                                         </div>
                                         <h3 class="text-white text-center mt-3 mb-4 navigation "
-                                            style=" background-color:rgb(17,40,77); margin:center">
+                                            style=" background-color:#8696FE; margin:center">
                                         </h3>
                                         {{-- <button class="text-white text-left mt-3 mb-4 mr-150"
-                                            style=" background-color:rgb(17,40,77)">
+                                            style=" background-color:#8696FE">
                                             ምርጫ 1</button>
 
                                         <div class="row">
@@ -316,7 +316,7 @@
 
 
                                         </div>
-                                        <button class="text-white text-left mt-3 mb-4" style=" background-color:rgb(17,40,77)">
+                                        <button class="text-white text-left mt-3 mb-4" style=" background-color:#8696FE">
                                             ምርጫ 2</button>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
@@ -560,7 +560,7 @@
                                         </div>
 
                                         <h3 class="text-white text-center mt-3 mb-4   "
-                                            style=" background-color:rgb(17,40,77); margin:center nav navmore">የስራ
+                                            style=" background-color:#8696FE; margin:center nav navmore">የስራ
                                             ልምድ(በኢትዮጵያ አቆጣጠር
                                             ብቻ)</h3>
                                         <div id="myform">

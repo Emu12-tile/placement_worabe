@@ -8,7 +8,7 @@
                     <section class="hk-sec-wrapper mt-100">
 
                         <h3 class="hk-sec-title text-white text-center color-wrap  "
-                            style=" background-color:rgb(17,40,77); padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
+                            style=" background-color:#8696FE; padding:10px;">አዲስ አበባ ሳይንስና ቴክኖሎጂ ዩኒቨርሲቲ የሰራተኞች የ ስራ
                             ድልድል ማወዳደርያ ቅፅ</h3>
                         <p class="mb-25"> </p>
 
@@ -86,10 +86,10 @@
                                     </div>
 
                                     <h3 class="text-white text-center mt-3 mb-4 "
-                                        style=" background-color:rgb(17,40,77); margin:center"> የሚወዳደሩበት የስራ ክፍልና የስራ መደብ
+                                        style=" background-color:#8696FE; margin:center"> የሚወዳደሩበት የስራ ክፍልና የስራ መደብ
                                     </h3>
-                                    <button class="text-white text-left mt-3 mb-4 mr-150"
-                                        style=" background-color:rgb(17,40,77)"> ምርጫ 1</button>
+                                    <button class="text-white text-left mt-3 mb-4 mr-150" style=" background-color:#8696FE">
+                                        ምርጫ 1</button>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for=""> የስራ ክፍሉ</label>
@@ -139,7 +139,7 @@
 
 
                                     </div>
-                                    <button class="text-white text-left mt-3 mb-4" style=" background-color:rgb(17,40,77)">
+                                    <button class="text-white text-left mt-3 mb-4" style=" background-color:#8696FE">
                                         ምርጫ 2</button>
                                     <div class="row">
                                         <div class="col-md-6 form-group">

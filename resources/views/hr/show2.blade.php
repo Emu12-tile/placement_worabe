@@ -18,7 +18,7 @@
 
                         </div>
                     @endrole
-                    <h3 class="hk-sec-title text-center  text-white mt-50 mb-50" style=" background-color:rgb(17,40,77)">
+                    <h3 class="hk-sec-title text-center  text-white mt-50 mb-50" style=" background-color:#8696FE">
                         የተወዳዳሪዉ ዝርዝር
                         መረጃ </h3>
 
@@ -93,7 +93,7 @@
                                             name="fee"class="form-control " id="fee" readonly>
                                     </div>
                                 </div>
-                                <h4 class="text-white text-center mt-50 mb-4" style=" background-color:rgb(17,40,77)">
+                                <h4 class="text-white text-center mt-50 mb-4" style=" background-color:#8696FE">
                                     የትምህርት
                                     ደረጃና የትምህርት ዝግጅት በቅድመ ተከተል</h4>
                                 <div class="form-group row mb-100">
@@ -109,10 +109,10 @@
                                     </div>
 
                                 </div>
-                                {{-- <h4 class="text-white  text-center mt-3 mb-4 " style=" background-color:rgb(17,40,77)"> የ
+                                {{-- <h4 class="text-white  text-center mt-3 mb-4 " style=" background-color:#8696FE"> የ
                                     መወዳደርያ የስራ ክፍልና የስራ መደብ</h4>
                                 <button
-                                    class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:rgb(17,40,77)">
+                                    class="text-white text-left mt-3 mb-4 mr-150 text-left"style=" background-color:#8696FE">
                                     ምርጫ 1</button>
                                 <div class="form-group row">
                                     <label for="inputname" class="col-sm-2 col-form-label">የስራ ክፍሉ</label>
@@ -130,7 +130,7 @@
                                 </div>
 
                                 <button class="text-white text-left mt-3 mb-4 mr-150 text-left"
-                                    style=" background-color:rgb(17,40,77)"> ምርጫ 2</button>
+                                    style=" background-color:#8696FE"> ምርጫ 2</button>
                                 <div class="form-group row">
                                     <label for="inputname" class="col-sm-2 col-form-label">የስራ ክፍሉ</label>
                                     <div class="col-sm-10">
@@ -193,8 +193,7 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="text" value="{{ $form->serviceAfterDiplo }}"
-                                            name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo"
-                                            readonly>
+                                            name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row ">
@@ -229,7 +228,7 @@
 
 
 
-                                <h4 class="text-white text-center mt-50 mb-4" style=" background-color:rgb(17,40,77)">የስራ
+                                <h4 class="text-white text-center mt-50 mb-4" style=" background-color:#8696FE">የስራ
                                     ልምድ</h4>
 
                                 <div class="form-group row">
