@@ -184,7 +184,6 @@
                                     style=" background-color:#8696FE; margin:center">
                                     አገልግሎት
                                 </h3>
-
                                 <div class="row">
                                     <div class="col-md-6 form-group">
                                         <label for="UniversityHiringEra"> የቅጥር ዘመን በኢትዮጵያ
@@ -194,31 +193,19 @@
 
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label for="servicPeriodAtUniversity">በዩኒቨርስቲዉ አገልግሎት ዘመን (በዓመት,የስራ
-                                            መደብ)</label>
+                                        <label for="servicPeriodAtUniversity">አጠቃላይ የአገልግሎት ዘመን</label>
                                         <input type="text" value="{{ $form->servicPeriodAtUniversity }}"
                                             name="servicPeriodAtUniversity"class="form-control "
                                             id="servicPeriodAtUniversity">
                                     </div>
 
                                     <div class="col-md-6 form-group">
-                                        <label for="servicPeriodAtAnotherPlace">በሌላ መስርያ ቤት አገልግሎት ዘመን(በዓመት,የስራ
-                                            መደብ)</label>
-                                        <input type="text" value="{{ $form->servicPeriodAtAnotherPlace }}"
-                                            name="servicPeriodAtAnotherPlace"class="form-control "
-                                            id="servicPeriodAtAnotherPlace">
+                                        <label for="places_where_they_worked"> የሰሩባቸው ቦታዎች </label>
+                                        <input type="text" value="{{ $form->places_where_they_worked }}"
+                                            name="places_where_they_worked"class="form-control "
+                                            id="places_where_they_worked">
                                     </div>
-                                    <div class="col-md-6 form-group">
-                                        <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት,የስራ መደብ)</label>
-                                        <input type="text" value="{{ $form->serviceBeforeDiplo }}"
-                                            name="serviceBeforeDiplo"class="form-control " id="serviceBeforeDiplo">
 
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት, የስራ መደብ)</label>
-                                        <input type="text" value="{{ $form->serviceAfterDiplo }}"
-                                            name="serviceAfterDiplo"class="form-control " id="serviceAfterDiplo">
-                                    </div>
                                     <div class="col-md-6 form-group">
                                         <label for="resultOfrecentPerform" class=""> የሁለት ተከታታይ የቅርብ ጊዜ የሥራ
                                             አፈጻፀም አማካይ
@@ -228,7 +215,7 @@
                                     </div>
 
                                     <div class="col-md-6 form-group">
-                                        <label for="DisciplineFlaw">የዲሲፕሊን ጉድለት</label>
+                                        <label for="DisciplineFlaw">የፋይል ጥራት</label>
                                         <input type="text" value="{{ $form->DisciplineFlaw }}"
                                             name="DisciplineFlaw"class="form-control " id="DisciplineFlaw">
                                     </div>
@@ -237,109 +224,22 @@
                                         <input type="text" value="{{ $form->employee_situation }}"
                                             name="employee_situation"class="form-control " id="employee_situation">
                                     </div>
-                                </div>
-
-                                @foreach ($form->moreroles ?? [] as $i => $fo)
-                                    <div class="row ">
-                                        <input type="hidden" value="{{ $fo->id }} "
-                                            name="addMoreInputRoles[{{ $i }}][id]"class="form-control "
-                                            id="inputEmail3">
-                                        <div class="col-md-4 form-group">
-                                            <label for="more_role">ተጨማሪ የሥራ ድርሻ</label>
-                                            <input type="text" value="{{ $fo->more_role }}"
-                                                name="addMoreInputRoles[{{ $i }}][more_role]"class="form-control "
-                                                id="inputEmail3">
-                                            @error('more_role')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="employer_support">የአካል ጉዳተኛ(Disability) </label>
+                                        <input type="text" value="{{ $form->employer_support }}"
+                                            name="employer_support"class="form-control " id="employer_support">
 
                                     </div>
-                                @endforeach
-                                <div id="myformMore">
-                                    <div class="row">
-                                        <div class="col-sm">
-
-                                            <div class=" formMore row">
-
-                                                <div class="col-md-6">
-
-                                                    <label for="more_role">ተጨማሪ የሥራ ድርሻ</label>
-                                                    <input type="text" name="addMoreroleFields[0][more_role]"
-                                                        value="{{ old('more_role') }}"
-                                                        class="form-control  @error('more_role') is-invalid @enderror"
-                                                        id="more_role" placeholder="ተጨማሪ የሥራ ድርሻ">
-                                                    @error('more_role')
-                                                        <span class=" error invalid-feedback">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-
-                                                </div>
-
-                                                <div>
-                                                    <a href="javascript:void(0)"
-                                                        class="btn color-wrap text-white bg-blue-dark-4  addRowMoreRole mt-40 "
-                                                        style=" border-radius:50%">+</a>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="MoreRoles"> ተጨማሪ የስራ ድርሻ</label>
+                                        <input type="text" value="{{ $form->MoreRoles }}"
+                                            name="MoreRoles"class="form-control " id="MoreRoles">
                                     </div>
-
-
-                                </div>
-                                @foreach ($form->employer_supports ?? [] as $i => $fo)
-                                    <div class="row ">
-                                        <input type="hidden" value="{{ $fo->id }} "
-                                            name="addMoreInputEmployee[{{ $i }}][id]"class="form-control "
-                                            id="inputEmail3">
-                                        <div class="col-md-4 form-group">
-                                            <label for="employer_support">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
-                                            <input type="text" value="{{ $fo->employer_support }}"
-                                                name="addMoreInputEmployee[{{ $i }}][employer_support]"class="form-control "
-                                                id="inputEmail3">
-                                            @error('employer_support')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-
+                                    <div class="col-md-6 form-group">
+                                        <label for="remark"> Remark</label>
+                                        <input type="text" value="{{ $form->remark }}"
+                                            name="remark"class="form-control " id="remark">
                                     </div>
-                                @endforeach
-                                <div id="myformEmployee">
-                                    <div class="row">
-                                        <div class="col-sm">
-
-                                            <div class=" formEmployee row">
-
-                                                <div class="col-md-6">
-
-                                                    <label for="employer_support">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
-                                                    <input type="text" name="addEmployeeFields[0][employer_support]"
-                                                        value="{{ old('employer_support') }}"
-                                                        class="form-control  @error('employer_support') is-invalid @enderror"
-                                                        id="employer_support" placeholder="የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት">
-                                                    @error('employer_support')
-                                                        <span class=" error invalid-feedback">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-
-                                                </div>
-
-                                                <div>
-                                                    <a href="javascript:void(0)"
-                                                        class="btn color-wrap text-white bg-blue-dark-4  addRowEmployee mt-40 "
-                                                        style=" border-radius:50%">+</a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
                                 </div>
                                 <h3 class="text-white text-center mt-3 mb-4   "
                                     style=" background-color:#8696FE; margin:center nav">የስራ ልምድ(በኢትዮጵያ አቆጣጠር

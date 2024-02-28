@@ -235,10 +235,10 @@ class MultiformController extends Controller
         $form = Form::find($id);
         $edu = Education::where('form_id', $form->id)->get();
         $forms = experience::where('form_id', $form->id)->get();
-        $morerole = Morerole::where('form_id', $form->id)->get();
-        $employer_support = EmployerSupport::where('form_id', $form->id)->get();
+        // $morerole = Morerole::where('form_id', $form->id)->get();
+        // $employer_support = EmployerSupport::where('form_id', $form->id)->get();
 
-        return view('homepage.export', compact('form', 'forms', 'edu', 'employer_support', 'morerole'))
+        return view('homepage.export', compact('form', 'forms', 'edu',))
             ->with('success', 'Export completed successfully.')
             ->with('redirect', Redirect::to('/hr'));
     }

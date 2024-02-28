@@ -99,9 +99,9 @@
             {{ $form->UniversityHiringEra }}
 
         </p>
-        <p>6/ በዩኒቨርስቲዉ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
-        <p>7/ በሌላ መስርያ ቤት አገልግሎት ዘመን:-{{ $form->servicPeriodAtAnotherPlace }} </p>
-        <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
+        <p>6/ ጠቅላላ አገልግሎት ዘመን:-{{ $form->servicPeriodAtUniversity }} </p>
+        <p>7/ የሰሩባቸው ቦታዎች:-{{ $form->places_where_they_worked }} </p>
+        {{-- <h5>8/ የሚወዳደሩበት የስራ ክፍልና የስራ መደብ</h5>
         <p> ምርጫ 1</p>
 
         <p> የስራ ክፍል :-{{ $form->job_category->job_category ?? '' }}</p>
@@ -109,9 +109,9 @@
         <p>
             ምርጫ 2</p>
         <p> የስራ ክፍል:- {{ $form->jobcat2->job_category ?? '' }} </p>
-        <p> የስራ መደብ:- {{ $form->choice2->position ?? '' }}</p>
-        <div class="html2pdf__page-break"></div>
-        <p>9/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
+        <p> የስራ መደብ:- {{ $form->choice2->position ?? '' }}</p> --}}
+        {{-- <div class="html2pdf__page-break"></div> --}}
+        <p>8/ ጠቅላላ የስራ ልምድ ብዛትና የስራው አይነት</p>
 
         <table id="customers">
             <thead>
@@ -207,18 +207,18 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="html2pdf__page-break"></div>
-        <p>10/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
-            {{ $form->serviceAfterDiplo }}</p>
-        <p>11/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
-        <p>12/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
-        <p>13/ የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት:-@foreach ($employer_support as $i => $fo)
-            {{$fo->employer_support ??''}},
-        @endforeach</p>
-         <p>14/ ሰራተኛው ያለበት ሁኔታ:-{{ $form->employee_situation }}</p>
-        <p>15/ ተጨማሪ የሥራ ድርሻ:-@foreach ($morerole as $i => $fo)
-            {{$fo->more_role ??''}},
-        @endforeach</p>
+        {{-- <div class="html2pdf__page-break"></div> --}}
+        {{-- <p>10/ አገልግሎት ከዲፕሎማ/ዲግሪ በፊት:- {{ $form->serviceBeforeDiplo }} ፣ አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ
+            {{ $form->serviceAfterDiplo }}</p> --}}
+        <p>9/ የሁለት ተከታታይ የቅርብ ጊዜ የሥራ አፈጻፀም አማካይ ውጤት:-{{ $form->resultOfrecentPerform }}</p>
+        <p>10/ የዲስፕሊን ጉድለት:-{{ $form->DisciplineFlaw }}</p>
+        <p>11/ የአካል ጉዳተኛ (disability):-
+            {{$form->employer_support }}
+       </p>
+         <p>12/ ሰራተኛው ያለበት ሁኔታ:-{{ $form->employee_situation }}</p>
+        <p>13/ ተጨማሪ የሥራ ድርሻ:-
+            {{$form->MoreRoles }}
+        </p>
         <p>ቅጹን የሞላው ሰራተኛ ስም
             &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
             ፊርማ&mdash;&mdash;&mdash;&mdash; ቀን&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>

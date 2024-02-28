@@ -32,17 +32,16 @@ class Form extends Model
         'DisciplineFlaw',
         'employee_situation',
         'position_id',
-        // 'edu_level_id',
-        // 'education_type_id',
+        'more_educational_reform',
+        'MoreRoles',
         'job_category_id',
         'level_id',
-        // 'h_r_id',
+        'remark',
         'choice2_id',
         'jobcat2_id',
         // 'secondhr_id',
         'level',
-        // 'tag_slug',
-        // 'firstdergee'
+        'places_where_they_worked',
 
         'ethinicity',
         'birth_date',
@@ -54,7 +53,7 @@ class Form extends Model
 
     ];
 
-    protected $with = ['education', 'experiences','moreroles','employer_supports'];
+    protected $with = ['education', 'experiences'];
     public function h_r_s()
     {
         return $this->belongsTo(HR::class, 'h_r_id', 'id');
@@ -69,14 +68,7 @@ class Form extends Model
     {
         return $this->hasMany(experience::class, 'form_id', 'id');
     }
-    public function moreroles()
-    {
-        return $this->hasMany(Morerole::class, 'form_id', 'id');
-    }
-    public function employer_supports()
-    {
-        return $this->hasMany(EmployerSupport::class, 'form_id', 'id');
-    }
+
 
     public function education()
     {

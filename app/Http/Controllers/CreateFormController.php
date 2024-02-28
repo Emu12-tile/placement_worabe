@@ -64,21 +64,24 @@ class CreateFormController extends Controller
             'positionofnow' => 'required',
             'ethinicity' => 'required',
             'birth_date' => 'required',
-            'jobcat' => 'required',
+            'jobcat' => 'nullable',
             'addMoreInputFields.*.startingDate' => 'date|nullable',
             'addMoreInputFields.*.endingDate' => 'date|after:starting_date|nullable',
             'addMoreInputFields.*.positionyouworked' => 'nullable',
             'UniversityHiringEra' => 'required',
-            'servicPeriodAtUniversity' => 'required',
-            'servicPeriodAtAnotherPlace' => 'nullable',
-            'serviceBeforeDiplo' => 'required',
-            'serviceAfterDiplo' => 'required',
+            'servicPeriodAtUniversity' => 'nullable',
+            // 'servicPeriodAtAnotherPlace' => 'nullable',
+            // 'serviceBeforeDiplo' => 'nullable',
+            // 'serviceAfterDiplo' => 'nullable',
             'resultOfrecentPerform' => 'required', 'regex:/^(?:d*.d{1,2}|d+)$/', 'min:1', 'max:100',
             'DisciplineFlaw' => 'nullable',
             'employee_situation' => 'nullable',
             'level' => 'required',
             'DisciplineFlawDate' => 'nullable',
-            'employer_support' => 'required',
+            'employer_support' => 'nullable',
+            'places_where_they_worked' => 'nullable',
+            'more_educational_reform' => 'nullable',
+            'MoreRoles' => 'nullable',
 
         ]);
 
@@ -116,15 +119,18 @@ class CreateFormController extends Controller
                     // 'fee' => $request->fee,
                     "UniversityHiringEra" => $request->UniversityHiringEra,
                     "servicPeriodAtUniversity" => $request->servicPeriodAtUniversity,
-                    "servicPeriodAtAnotherPlace" => $request->servicPeriodAtAnotherPlace,
-                    "serviceBeforeDiplo" => $request->serviceBeforeDiplo,
-                    "serviceAfterDiplo" => $request->serviceAfterDiplo,
+                    // "servicPeriodAtAnotherPlace" => $request->servicPeriodAtAnotherPlace,
+                    // "serviceBeforeDiplo" => $request->serviceBeforeDiplo,
+                    // "serviceAfterDiplo" => $request->serviceAfterDiplo,
                     "resultOfrecentPerform" => $request->resultOfrecentPerform,
                     "DisciplineFlaw" => $request->DisciplineFlaw,
                     "employee_situation" => $request->employee_situation,
-                    'registeredBy' => auth()->user()->name,
-                    'DisciplineFlawDate' => $request->DisciplineFlawDate,
+                    // /'registeredBy' => auth()->user()->name,
+                    // 'DisciplineFlawDate' => $request->DisciplineFlawDate,
                     'employer_support' => $request->employer_support,
+                    "places_where_they_worked" => $request->places_where_they_worked,
+                    "more_educational_reform" => $request->more_educational_reform,
+                    "MoreRoles" => $request->MoreRoles,
                 ]
             );
 
@@ -148,14 +154,6 @@ class CreateFormController extends Controller
                     "positionyouworked" => $value["positionyouworked"],
                     "startingDate" => $value["startingDate"],
                     "endingDate" => $value["endingDate"],
-                ]);
-            }
-        }
-        if (!empty($request->addMoreRoles)) {
-            foreach ($request->addMoreRoles as $key => $valm) {
-                Morerole::create([
-                    "form_id" => $form->id,
-                    "more_role" => $valm["more_role"],
                 ]);
             }
         }

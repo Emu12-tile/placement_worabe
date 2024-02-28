@@ -77,7 +77,7 @@
                                                     <input name="email" type="email"
                                                         class="form-control
                                                         @error('email') is-invalid @enderror"
-                                                        id="email" placeholder="@mwu.edu.et"
+                                                        id="email" placeholder="@wru.edu.et"
                                                         value="{{ old('email') }}">
                                                     @error('email')
                                                         <span class=" error invalid-feedback">
@@ -386,20 +386,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-6 form-group">
-                                                <label for="servicPeriodAtUniversity">ጠቅላላ አገልግሎት ዘመን (በዓመት)</label>
-                                                <input
-                                                    class="form-control
-                                                    @error('servicPeriodAtUniversity') is-invalid @enderror"
-                                                    id="servicPeriodAtUniversity" placeholder="ጠቅላላ አገልግሎት ዘመን "
-                                                    value="{{ old('servicPeriodAtUniversity') }}" type="text"
-                                                    name="servicPeriodAtUniversity">
-                                                @error('servicPeriodAtUniversity')
-                                                    <span class=" error invalid-feedback">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+
                                             {{-- <div class="col-md-6 form-group">
                                                 <label for="servicPeriodAtAnotherPlace">በሌላ መስርያ ቤት አገልግሎት ዘመን(በዓመት,የስራ
                                                     መደብ)</label>
@@ -415,28 +402,42 @@
                                                 @enderror
                                             </div> --}}
                                             <div class="col-md-6 form-group">
-                                                <label for="serviceBeforeDiplo"> አገልግሎት ከዲፕሎማ በፊት(በዓመት)</label>
+                                                <label for="more_educational_reform"> ተጨማሪ የትምህርት ማሻሻያ  </label>
                                                 <input
                                                     class="form-control
-                                                    @error('serviceBeforeDiplo') is-invalid @enderror"
-                                                    id="serviceBeforeDiplo" placeholder="አገልግሎት ከዲፕሎማ በፊት"
-                                                    value="{{ old('serviceBeforeDiplo') }}" type="text"
-                                                    name="serviceBeforeDiplo">
-                                                @error('serviceBeforeDiplo')
+                                                    @error('more_educational_reform') is-invalid @enderror"
+                                                    id="more_educational_reform" placeholder="ተጨማሪ የትምህርት ማሻሻያ "
+                                                    value="{{ old('more_educational_reform') }}" type="text"
+                                                    name="more_educational_reform">
+                                                @error('more_educational_reform')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="serviceAfterDiplo"> አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ(በዓመት)</label>
+                                                <label for="places_where_they_worked"> የሰሩባቸው ቦታዎች  </label>
                                                 <input
                                                     class="form-control mt-25
-                                                    @error('serviceAfterDiplo') is-invalid @enderror"
-                                                    id="serviceAfterDiplo" placeholder=" አገልግሎት ከዲፕሎማ/ዲግሪ በኋላ"
-                                                    value="{{ old('serviceAfterDiplo') }}" type="text"
-                                                    name="serviceAfterDiplo">
-                                                @error('serviceAfterDiplo')
+                                                    @error('places_where_they_worked') is-invalid @enderror"
+                                                    id="places_where_they_worked" placeholder="የሰሩባቸው ቦታዎች  "
+                                                    value="{{ old('places_where_they_worked') }}" type="text"
+                                                    name="places_where_they_worked">
+                                                @error('places_where_they_worked')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="servicPeriodAtUniversity">ጠቅላላ አገልግሎት ዘመን (በዓመት)</label>
+                                                <input
+                                                    class="form-control
+                                                    @error('servicPeriodAtUniversity') is-invalid @enderror"
+                                                    id="servicPeriodAtUniversity" placeholder="ጠቅላላ አገልግሎት ዘመን "
+                                                    value="{{ old('servicPeriodAtUniversity') }}" type="text"
+                                                    name="servicPeriodAtUniversity">
+                                                @error('servicPeriodAtUniversity')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -489,75 +490,51 @@
                                                     </span>
                                                 @enderror
                                             </div>
+
+
+                                        <div class="col-md-6 form-group">
+                                            <label for="employer_support">የአካል ጉዳተኛ (disability)</label>
+                                            <select
+                                                class="form-control custom-select "value="{{ old('employer_support') }}"
+                                                id="employer_support" name="employer_support">
+
+                                                <option value="No "
+                                                    {{ old('employer_support') == 'No' ? 'selected' : '' }}>
+                                                    No
+                                                </option>
+                                                <option
+                                                    value="Yes"{{ old('Yes') == 'Yes' ? 'selected' : '' }}>
+                                                    Yes
+                                                </option>
+                                            </select>
+                                        </div>
                                             <div class="col-md-6 form-group">
-                                                <label for="DisciplineFlawDate">ቀን (የዲስፕሊን ጉድለት ካለ )</label>
-                                                <input
-                                                    class="form-control @error('DisciplineFlawDate') is-invalid @enderror"
-                                                    id="DisciplineFlawDate" placeholder=" የዲስፕሊን ጉድለት ቀን "
-                                                    value="{{ old('DisciplineFlawDate') }}" type="date"
-                                                    name="DisciplineFlawDate">
-                                                @error('DisciplineFlawDate')
+                                                <label for="MoreRoles"> ተጨማሪ የስራ ድርሻ</label>
+                                                <input class="form-control @error('MoreRoles') is-invalid @enderror"
+                                                    id="MoreRoles" placeholder="ተጨማሪ የስራ ድርሻ"
+                                                    value="{{ old('MoreRoles') }}" type="text"
+                                                    name="MoreRoles">
+                                                @error('MoreRoles')
                                                     <span class=" error invalid-feedback">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="employer_support">የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</label>
-                                            <select
-                                                class="form-control custom-select "value="{{ old('employer_support') }}"
-                                                id="employer_support" name="employer_support">
-
-                                                <option value="not disable "
-                                                    {{ old('employer_support') == 'not disable' ? 'selected' : '' }}>
-                                                    not disable
-                                                </option>
-                                                <option
-                                                    value="disable"{{ old('employer_support') == 'disable' ? 'selected' : '' }}>
-                                                    disable
-                                                </option>
-                                                <option
-                                                    value="disable and military"{{ old('employer_support') == 'disable and military' ? 'selected' : '' }}>
-                                                    disable and military
-                                                </option>
-                                                <option
-                                                    value="military"{{ old('employer_support') == ' military' ? 'selected' : '' }}>
-                                                    military
-                                                </option>
-
-                                            </select>
-                                        </div>
-
-                                        <div id="morerole">
-                                            <div class="row">
-                                                <div class="col-sm">
-
-                                                    <div class=" form_more_role row">
-                                                        <div class="col-md-6 ">
-                                                            <label for="more_role"> ተጨማሪ የሥራ ድርሻ</label>
-                                                            <input
-                                                                class="form-control
-                                                                @error('more_role') is-invalid @enderror"
-                                                                id="MoreRoles" placeholder="ተጨማሪ የሥራ ድርሻ"
-                                                                value="{{ old('more_role') }}" type="text"
-                                                                name="addMoreRoles[0][more_role]">
-                                                            @error('more_role')
-                                                                <span class=" error invalid-feedback">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div>
-                                                            <a href="javascript:void(0)"
-                                                                class="btn color-wrap text-white bg-blue-dark-4  addMorerole mt-40 "
-                                                                style=" border-radius:50%">+</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                             <div class="col-md-6 form-group">
+                                                <label for="MoreRoles"> Remark</label>
+                                                <input class="form-control @error('remark') is-invalid @enderror"
+                                                    id="remark" placeholder=" remark"
+                                                    value="{{ old('remark') }}" type="text"
+                                                    name="remark">
+                                                @error('remark')
+                                                    <span class=" error invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
+
+
 
                                         <h3 class="text-white text-center mt-3 mb-4   "
                                             style=" background-color:#8696FE; margin:center nav navmore">የስራ

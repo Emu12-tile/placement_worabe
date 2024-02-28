@@ -62,8 +62,8 @@ License: You must have a valid license purchased only from themeforest to legall
                         aria-expanded="false" aria-label="Toggle navigation"><span class="feather-icon"><i
                                 data-feather="menu"></i></span></a>
                     <a class="navbar-brand" href="">
-                        <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/Werabe.png') }}"
-                            style="width:auto; height:100px" alt="brand" />
+                        <img class="brand-img d-inline-block align-top " src="{{ asset('assets/dist/img/wer.png') }}"
+                            style="width:auto; height:100px" alt="Werabe university logo" />
                     </a>
                     {{-- <h1 class="text-white font-24 font-weight-600 ml-50 " style="">ወራቤ ዩኒቨርሲቲ</h1> --}}
                     <div class="collapse navbar-collapse ml-auto" id="navbarCollapseAlt">

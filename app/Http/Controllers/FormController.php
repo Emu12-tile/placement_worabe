@@ -325,14 +325,17 @@ class FormController extends Controller
         $form->level = $request->Input('level');
         $form->UniversityHiringEra = $request->Input('UniversityHiringEra');
         $form->servicPeriodAtUniversity = $request->Input('servicPeriodAtUniversity');
-        $form->servicPeriodAtAnotherPlace = $request->Input('servicPeriodAtAnotherPlace');
-        $form->serviceBeforeDiplo = $request->Input('serviceBeforeDiplo');
-        $form->serviceAfterDiplo = $request->Input('serviceAfterDiplo');
+        $form->places_where_they_worked = $request->Input('places_where_they_worked');
+        $form->more_educational_reform = $request->Input('more_educational_reform');
+        $form->employer_support = $request->Input('employer_support');
         $form->employee_situation = $request->Input('employee_situation');
         $form->sex = $request->Input('sex');
         $form->email = $request->Input('email');
         $form->positionofnow = $request->Input('positionofnow');
         $form->jobcat = $request->Input('jobcat');
+        $form->MoreRoles = $request->Input('MoreRoles');
+        $form->remark = $request->Input('remark');
+
         foreach ($request->MoreFields as $key => $value) {
             if (
                 isset($value['level']) &&
@@ -401,54 +404,10 @@ class FormController extends Controller
         }
         // more roles
 
-            foreach ($request-> addMoreroleFields as $key => $value) {
-                // Check if the required fields have values
-                if (
-                    isset($value['more_role'])
-                ) {
-                    Morerole::create([
-                        'form_id' => $form->id,
-                        'more_role' => $value['more_role'],
-                    ]);
-                }
-            }
 
-        $inputMoreroleFields = $request->input('addMoreInputRoles');
-        foreach ($form->moreroles as $morerole) {
-            if (!empty($inputMoreroleFields)) {
-                foreach ($inputMoreroleFields as $key => $value) {
-                    if ($value['id'] == $morerole->id) {
-                        $morerole = Morerole::findOrFail($morerole->id);
-                        $morerole->more_role = $value['more_role'];
-                        $morerole->update();
-                    }
-                }
-            }
-        }
-        foreach ($request->addEmployeeFields as $key => $value) {
-            // Check if the required fields have values
-            if (
-                isset($value['employer_support'])
-            ) {
-                EmployerSupport::create([
-                    'form_id' => $form->id,
-                    'employer_support' => $value['employer_support'],
-                ]);
-            }
-        }
 
-        $inputEmployeeFields = $request->input('addMoreInputEmployee');
-        foreach ($form->employer_supports as $employer_support) {
-            if (!empty($inputEmployeeFields)) {
-                foreach ($inputEmployeeFields as $key => $value) {
-                    if ($value['id'] == $employer_support->id) {
-                        $employer_support = EmployerSupport::findOrFail($employer_support->id);
-                        $employer_support->employer_support = $value['employer_support'];
-                        $employer_support->update();
-                    }
-                }
-            }
-        }
+
+
 
         $form->update();
         return redirect('hr');
