@@ -14,6 +14,28 @@ $(document).ready(function() {
 
 		}
 	});
+	$('#datable_8').DataTable({
+		responsive: true,
+		autoWidth: false,
+        deferRender:true,
+		language: { search: "",
+		searchPlaceholder: "Search",
+		sLengthMenu: "_MENU_items",
+
+
+		}
+	});
+	$('#datable_7').DataTable({
+		responsive: true,
+		autoWidth: false,
+        deferRender:true,
+		language: { search: "",
+		searchPlaceholder: "Search",
+		sLengthMenu: "_MENU_items",
+
+
+		}
+	});
 
     $('#datable_2').DataTable({
 		autoWidth: false,

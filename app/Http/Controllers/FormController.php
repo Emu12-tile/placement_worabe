@@ -36,36 +36,10 @@ class FormController extends Controller
 
     public function index()
     {
-        $forms = null;
-        $searchValue = request()->input('search');
+        
 
-        if ($searchValue) {
-            $searchWords = explode(' ', $searchValue);
-
-            $forms = Form::where('hrs', null)
-                ->where(function ($query) use ($searchWords) {
-                    foreach ($searchWords as $word) {
-                        $query->where(function ($innerQuery) use ($word) {
-                            $innerQuery->where('firstName', 'like', '%' . $word . '%')
-                                ->orWhere('middleName', 'like', '%' . $word . '%')
-                                ->orWhere('lastName', 'like', '%' . $word . '%');
-                        });
-                    }
-                })
-                ->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id',  'isEditable')
-                ->paginate(10);
-        } else {
-            $searchValue = null;
-            // Only fetch all data when there's no search value
-            $forms = Form::where('hrs', null)
-                ->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id',  'isEditable')
-                ->paginate(10);
-        }
-
-        return view('hr.index', [
-            'forms' => $forms,
-            'searchValue' => $searchValue,
-        ]);
+        $forms = Form::where('hrs', null)->select('firstName', 'middleName', 'lastName', 'id', 'job_category_id', 'jobcat2_id', 'position_id', 'choice2_id', 'isEditable', 'submit')->get();
+        return view('hr.index', ['forms' => $forms]);
     }
 
     public function form()
@@ -90,25 +64,41 @@ class FormController extends Controller
             ->where('positions.id', $pos_id)
             ->select('forms.*', 'positions.position')
             ->get();
+            $forms2 = Form::join(
+                'choice2s',
+                'choice2s.id',
+                '=',
+                'forms.choice2_id'
+            )
+                ->join(
+                    'categories',
+                    'categories.id',
+                    '=',
+                    'choice2s.category_id'
+                )
+                ->where('categories.catstatus', 'active')
+                ->where('secondhrs', null)
+                ->where('choice2s.id', $pos_id)
+                ->select('forms.*')
+                ->get();
+    
 
-        return view('hr.index', compact('forms'));
+        return view('hr.index', compact('forms','forms2'));
     }
     public function pos()
     {
 
 
-
-
-
-
-
-        $forms = Position::join('forms', 'forms.position_id', '=', 'positions.id')
-            ->join('categories', 'categories.id', '=', 'positions.category_id')
+        $forms = Position::
+            // join('forms', 'forms.position_id', '=', 'positions.id')
+            join('categories', 'categories.id', '=', 'positions.category_id')
             ->where('categories.catstatus', 'active')
+            // ->where('forms.hrs',NULL)
             ->distinct('positions.id')
-            ->get(['positions.id', 'positions.position', 'positions.job_category_id']);
+            ->get(['positions.id', 'positions.position', 'positions.job_category_id','categories.category']);
 
 
+        // $form->category->category=='general'
 
 
         return view('hr.pos', compact('forms'));

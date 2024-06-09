@@ -254,101 +254,63 @@
                             <form action="{{ route('resource.update', $hr->id) }}" method="POST" id="add_evaluation">
                                 @csrf
                                 @method('PUT')
+                            
                                 <div class="row">
-                                    {{-- <div class="col-md-6"> --}}
-
-
                                     <div class="col-sm">
                                         <div class="table-wrap">
                                             <div class="table-responsive">
                                                 <table class="table table-sm table-bordered mb-0">
                                                     <thead class="thead-active">
                                                         <tr>
-
-                                                            <th>ሙሉ ስም</th>
-
-                                                            {{-- <th>የትምህርት ደረጃ</th> --}}
-                                                            <th>ጾታ</th>
-                                                            <th>የትምህርት ደረጃና የትምህርት ዝግጅት</th>
-
-                                                            <th>የሚወዳደሩበት የስራ መደብ</th>
-                                                            <th> ያለዎት የስራ ልምድ </th>
-
-                                                            <th>የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት </th>
-                                                            <th>ተጨማሪ ይመልከቱ</th>
-
-
+                                                            <th rowspan="2">ሙሉ ስም</th>
+                                                            <th rowspan="2">ጾታ</th>
+                                                            <th rowspan="2">የሚወዳደሩበት የስራ ክፍል- የስራ መደብ</th>
+                                                            <th colspan="4">አሁን ያሉበት የትምህርት ደረጃና የትምህርት ዝግጅት</th>
+                                                            <th rowspan="2">የሁለት ተከታታይ የስራ አፈጻጸም አማካይ ውጤት</th>
+                                                            <th rowspan="2">ተጨማሪ ይመልከቱ</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th> የትምህርት ደረጃ </th>
+                                                            <th>የትምህርት ዝግጅት</th>
+                                                            <th> የትምህርት ዝግጅት (ሲኦሲ) </th>
+                                                            <th> completion_date</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
                                                         <tr>
-
-                                                            <td>{{ $hr->form->full_name }}
-                                                            </td>
-                                                            <td>{{ $hr->form->sex }}
-                                                            </td>
-
-
-                                                            <td>
-                                                                @foreach ($edu as $type)
-                                                                    ({{ $type->level }},
-                                                                    {{ $type->discipline }})
-                                                                    ,
-                                                                @endforeach
-                                                            </td>
-
-                                                            <td>{{ $hr->form->position->position }}</td>
-
-                                                            <td>
-                                                                @foreach ($forms as $fo)
-                                                                    <?php
-
-                                                                    $fdate = Carbon::parse($fo->startingDate);
-
-                                                                    $tdate = Carbon::parse($fo->endingDate);
-
-                                                                    // $years = $tdate - $fdate;
-                                                                    $days = $tdate->diffInDays($fdate);
-                                                                    $months = $tdate->diffInMonths($fdate);
-
-                                                                    $years = $tdate->diffInYears($fdate);
-                                                                    // dd($fdate->diffForHumans($tdate));
-                                                                    // dd($years,$months,$days);
-
-                                                                    $time = $tdate->diff($fdate);
-                                                                    // echo $time->y;
-
-                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-
-                                                                    ?>
-                                                                @endforeach
-                                                            </td>
-
-                                                            <td>
-                                                                {{ $hr->form->resultOfrecentPerform }}
-                                                            </td>
-                                                            <td data-toggle="collapse" data-target="#more"
-                                                                aria-expanded="false" aria-controls="collapseExample">more
-                                                                <i class='ion ion-md-arrow-round-forward'></i>
-
-
-                                                            </td>
-
-
-
-
-
+                                                            <td rowspan="{{ count($edu) + 1 }}">{{ $hr->form->full_name }}</td>
+                                                            <td rowspan="{{ count($edu) + 1 }}">{{ $hr->form->sex }}</td>
+                                                            <td rowspan="{{ count($edu) + 1 }}">{{ $hr->form->job_category->job_category }}/
+                                                                {{ $hr->form->position->position }}</td>
+                                                            @foreach ($edu as $index => $type)
+                                                                @if ($index === 0)
+                                                                    <td>{{ $type->level }}</td>
+                                                                    <td>{{ $type->discipline }}</td>
+                                                                    <td>{{ $type->academicPreparationCOC }}</td>
+                                                                    <td>{{ $type->completion_date }}</td>
+                                                                    <td rowspan="{{ count($edu) }}">
+                                                                        {{ $hr->form->resultOfrecentPerform }}</td>
+                                                                    <td data-toggle="collapse" data-target="#more"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapseExample"
+                                                                        rowspan="{{ count($edu) }}">more <i
+                                                                            class="ion ion-md-arrow-round-forward"></i>
+                                                                    </td>
+                                                                @else
+                                                        <tr>
+                                                            <td>{{ $type->level }}</td>
+                                                            <td>{{ $type->discipline }}</td>
+                                                            <td>{{ $type->academicPreparationCOC }}</td>
+                                                            <td>{{ $type->completion_date }}</td>
                                                         </tr>
-
+                                                        @endif
+                                                        @endforeach
+                                                        </tr>
                                                     </tbody>
                                                 </table>
-                                                {{-- {!! $hrs->links() !!} --}}
-
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- </div> --}}
                                 </div>
                                 <div class="collapse" id="more">
                                     <div class="card card-body">
@@ -358,8 +320,7 @@
                                                 <table class="table table-active table-bordered mb-0">
                                                     <thead class="thead-active">
                                                         <tr>
-
-
+                                                            {{-- <th> የስራ ልምድዎ </th> --}}
                                                             <th>አሁን ያሉበት የስራ ክፍል</th>
 
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
@@ -367,39 +328,40 @@
                                                             <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
-                                                            <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
-                                                                (በዓመት,የስራ
-                                                                መደብ)</th>
-                                                            <th>በሌላ መስርያ ቤት አገልግሎት
-                                                                ዘመን(በዓመት,የስራ
-                                                                መደብ)</th>
-                                                            <th>አገልግሎት ከዲፕሎማ
+                                                            <th>አጠቃላይ የአገልግሎት ዘመን</th>
+                                                            <th>የሰሩባቸው ቦታዎች</th>
+                                                            {{-- <th>አገልግሎት ከዲፕሎማ
                                                                 በፊት(በዓመት,የስራ መደብ)</th>
                                                             <th>አገልግሎት ከዲፕሎማ/ዲግሪ
-                                                                በኋላ(በዓመት, የስራ መደብ)</th>
-                                                            <th>የዲስፕሊን ጉድለት</th>
+                                                                በኋላ(በዓመት, የስራ መደብ)</th> --}}
+                                                            <th>የፋይል ጥራት</th>
+                                                            <th>የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</th>
+                                                            <th>ሰራተኛው ያለበት ሁኔታ </th>
                                                             <th>ተጨማሪ የሥራ ድርሻ</th>
-
+                                                            <th>Remark</th>
 
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
                                                         <tr>
+                                                            
                                                             <td>{{ $hr->form->jobcat }}</td>
                                                             <td>{{ $hr->form->positionofnow }}</td>
                                                             <td>{{ $hr->form->ethinicity }}</td>
                                                             <td>{{ $hr->form->birth_date }}</td>
                                                             <td>{{ $hr->form->UniversityHiringEra }}</td>
                                                             <td>{{ $hr->form->servicPeriodAtUniversity }}</td>
-                                                            <td>{{ $hr->form->servicPeriodAtAnotherPlace }}</td>
-                                                            <td>{{ $hr->form->serviceBeforeDiplo }}</td>
-                                                            <td>{{ $hr->form->serviceAfterDiplo }}</td>
+                                                            {{-- <td>{{ $form->servicPeriodAtAnotherPlace }}</td> --}}
+                                                            <td>{{ $hr->form->places_where_they_worked }}</td>
+                                                            {{-- <td>{{ $form->serviceAfterDiplo }}</td> --}}
                                                             <td>{{ $hr->form->DisciplineFlaw }}</td>
-                                                            <td>{{ $hr->form->MoreRoles }}</td>
-
+                                                            <td> {{ $hr->form->employer_support }}
+                                                                
+                                                             </td>
+                                                            <td>{{ $hr->form->employee_situation }}</td>
+                                                            <td>{{ $hr->form->remark }}</td>
                                                         </tr>
-
                                                     </tbody>
 
                                                 </table>
@@ -470,6 +432,7 @@
 
                                                                 <th>ብዜት</th>
                                                                 <th>ዓመት-ወር-ቀን</th>
+                                                                <th></th>
 
 
                                                             </tr>
@@ -525,6 +488,7 @@
                                                                 <td colspan="2" class="text-center">ድምር</td>
                                                                 {{-- <td></td> --}}
                                                                 <td id="total-year"></td>
+                                                                <td>- {{ preg_replace('/[^0-9]/', '', $hr->form->position->experience) }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -562,3 +526,162 @@
         </div>
     </div>
 @endsection
+@section('javascript')
+    <script>
+        $(document).ready(function() {
+            var totalYear = 0;
+            var totalMonth = 0;
+            var totalDay = 0;
+
+            $('.select').on('change', function() {
+                // Reset the totals when a new value is selected
+                totalYear = 0;
+                totalMonth = 0;
+                totalDay = 0;
+
+                // Iterate over each select element and calculate the sum
+                $('.select').each(function() {
+                    var selectedValue = parseFloat($(this).val());
+
+                    var data = $(this).closest('tr').data('id');
+                    var myData = {!! json_encode($forms) !!};
+
+                    var row = myData.find(function(obj) {
+                        return obj.id === data;
+                    });
+
+                    var startdate = new Date(row.startingDate);
+                    var enddate = new Date(row.endingDate);
+                    // var date = new Date(row.startingDate);
+                    // console.log(startdate);
+                    // var unix = Math.floor(date.getTime() / 1000);
+                    const years = startdate.getFullYear();
+                    const months = startdate.getMonth() + 1;
+                    const days = startdate.getDate();
+                    const years2 = enddate.getFullYear();
+                    const months2 = enddate.getMonth() + 1;
+                    const days2 = enddate.getDate();
+                    let dayDifferenceb = (days2 - days);
+                    let monthDifferenceb = (months2 - months);
+                    let yearDifferenceb = (years2 - years);
+                    if (dayDifferenceb < 0) {
+                        dayDifferenceb += 30;
+                        monthDifferenceb -= 1;
+
+                    } else {
+                        dayDifferenceb = (days2 - days);
+                        monthDifferenceb = monthDifferenceb;
+
+                    }
+                    if (monthDifferenceb < 0) {
+                        monthDifferenceb += 12;
+                        yearDifferenceb -= 1;
+                    } else {
+                        monthDifferenceb = (months2 - months);
+                        yearDifferenceb = yearDifferenceb;
+                    }
+
+                    let dayDifference = dayDifferenceb * selectedValue;
+                    let monthDifference = monthDifferenceb * selectedValue;
+                    let yearDifference = yearDifferenceb * selectedValue;
+
+                    if (selectedValue == 0.5) {
+                        if (yearDifferenceb % 2 != 0) {
+                            yearDifference = parseInt(yearDifference);
+                            console.log(yearDifference);
+                            // monthDifference+=6
+                            monthDifference = 6 + (monthDifference);
+                            //    console.log(monthDifference);
+                            if (monthDifference >= 12) {
+                                monthDifference = 0;
+                                yearDifference = yearDifference + 1
+
+                            }
+
+
+                        } else {
+                            yearDifference = parseInt(yearDifference);
+                            monthDifference = monthDifference;
+
+                        }
+                        if (monthDifferenceb % 2 != 0) {
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference + 15
+
+                        } else {
+                            monthDifference = parseInt(monthDifference)
+                            dayDifference = dayDifference
+                        }
+                        if (dayDifferenceb % 2 != 0) {
+                            dayDifference = parseInt(dayDifference);
+                        }
+
+
+                    }
+                    console.log(yearDifference);
+                    console.log(monthDifference);
+                    console.log(dayDifference);
+
+
+
+
+
+
+                    if (dayDifference < 0) {
+                        dayDifference += 30;
+                        monthDifference -= 1;
+                    }
+
+                    if (monthDifference < 0) {
+                        monthDifference += 12;
+                        yearDifference -= 1;
+                    }
+                    // console.log(dayDifference);
+                    // console.log(monthDifference);
+                    // console.log(yearDifference);
+                    var all = yearDifference + '-' + monthDifference + '-' + dayDifference;
+
+
+
+
+
+
+
+
+                    // var evaluate = enddate - startdate;
+
+                    // var diffInDays = Math.floor(evaluate / (1000 * 60 * 60 * 24));
+                    // var multiply = diffInDays * selectedValue;
+
+                    // var year = parseInt(multiply / 365)
+                    // var diff = multiply % 365;
+
+                    // var month = parseInt(diff / 30)
+                    // var diffday = parseInt(diff - (month * 30))
+
+                    // var all = year + '-' + month + '-' + diffday;
+
+                    totalYear += yearDifference;
+                    totalMonth += monthDifference;
+                    totalDay += dayDifference;
+
+                    if (totalDay > 30) {
+                        totalMonth = totalMonth + 1;
+                        totalDay = totalDay - 30;
+                    }
+                    if (totalMonth > 12) {
+                        totalYear = totalYear + 1;
+                        totalMonth = totalMonth - 12;
+                    }
+
+
+                    $(this).closest('tr').find('#add').text(all);
+                });
+
+                var total = totalYear + '-' + totalMonth + '-' + totalDay;
+                $('#total-year').text(total);
+            });
+        });
+    </script>
+@endsection
+

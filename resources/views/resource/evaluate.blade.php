@@ -326,9 +326,9 @@
                                                         </tr>
                                                         <tr>
                                                             <th> የትምህርት ደረጃ </th>
-                                                            <th> የትምህርት ደረጃ </th>
-                                                            <th> የትምህርት ደረጃ </th>
-                                                            <th> የትምህርት ደረጃ </th>
+                                                            <th>የትምህርት ዝግጅት</th>
+                                                            <th> የትምህርት ዝግጅት (ሲኦሲ) </th>
+                                                            <th> completion_date</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -375,7 +375,7 @@
                                                 <table class="table table-active table-bordered mb-0">
                                                     <thead class="thead-active">
                                                         <tr>
-                                                            <th> የስራ ልምድዎ </th>
+                                                            {{-- <th> የስራ ልምድዎ </th> --}}
                                                             <th>አሁን ያሉበት የስራ ክፍል</th>
 
                                                             <th>አሁን ያሉበት የስራ መደብ</th>
@@ -383,59 +383,39 @@
                                                             <th>የትውልድ ዘመን</th>
                                                             <th>በዩኒቨርስቲዉ የቅጥር ዘመን
                                                                 በኢትዮጵያ</th>
-                                                            <th>በዩኒቨርስቲዉ አገልግሎት ዘመን
-                                                                (በዓመት,የስራ
-                                                                መደብ)</th>
-                                                            <th>በሌላ መስርያ ቤት አገልግሎት
-                                                                ዘመን(በዓመት,የስራ
-                                                                መደብ)</th>
-                                                            <th>አገልግሎት ከዲፕሎማ
+                                                            <th>አጠቃላይ የአገልግሎት ዘመን</th>
+                                                            <th>የሰሩባቸው ቦታዎች</th>
+                                                            {{-- <th>አገልግሎት ከዲፕሎማ
                                                                 በፊት(በዓመት,የስራ መደብ)</th>
                                                             <th>አገልግሎት ከዲፕሎማ/ዲግሪ
-                                                                በኋላ(በዓመት, የስራ መደብ)</th>
-                                                            <th>የዲስፕሊን ጉድለት</th>
+                                                                በኋላ(በዓመት, የስራ መደብ)</th> --}}
+                                                            <th>የፋይል ጥራት</th>
                                                             <th>የሰራተኛው አዎንታዊ ድጋፍ ተጠቃሚነት</th>
                                                             <th>ሰራተኛው ያለበት ሁኔታ </th>
                                                             <th>ተጨማሪ የሥራ ድርሻ</th>
+                                                            <th>Remark</th>
 
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
                                                         <tr>
-                                                            <td>
-                                                                @foreach ($forms as $fo)
-                                                                    <?php
-
-                                                                    $fdate = Carbon::parse($fo->startingDate);
-
-                                                                    $tdate = Carbon::parse($fo->endingDate);
-
-                                                                    // $years = $tdate - $fdate;
-                                                                    $days = $tdate->diffInDays($fdate);
-                                                                    $months = $tdate->diffInMonths($fdate);
-
-                                                                    $years = $tdate->diffInYears($fdate);
-                                                                    $time = $tdate->diff($fdate);
-                                                                    echo $time->y, 'ዓመት', 'ከ', $time->m, ' ወር በ(', $fo->positionyouworked, '), ';
-
-                                                                    ?>
-                                                                @endforeach
-                                                            </td>
+                                                            
                                                             <td>{{ $form->jobcat }}</td>
                                                             <td>{{ $form->positionofnow }}</td>
                                                             <td>{{ $form->ethinicity }}</td>
                                                             <td>{{ $form->birth_date }}</td>
                                                             <td>{{ $form->UniversityHiringEra }}</td>
                                                             <td>{{ $form->servicPeriodAtUniversity }}</td>
-                                                            <td>{{ $form->servicPeriodAtAnotherPlace }}</td>
-                                                            <td>{{ $form->serviceBeforeDiplo }}</td>
-                                                            <td>{{ $form->serviceAfterDiplo }}</td>
+                                                            {{-- <td>{{ $form->servicPeriodAtAnotherPlace }}</td> --}}
+                                                            <td>{{ $form->places_where_they_worked }}</td>
+                                                            {{-- <td>{{ $form->serviceAfterDiplo }}</td> --}}
                                                             <td>{{ $form->DisciplineFlaw }}</td>
-                                                            <td> @foreach($form->employer_supports as $fo){{ $fo->employer_support }}
-                                                                @endforeach
+                                                            <td> {{ $form->employer_support }}
+                                                                
                                                              </td>
                                                             <td>{{ $form->employee_situation }}</td>
+                                                            <td>{{ $form->remark }}</td>
                                                         </tr>
                                                     </tbody>
 
@@ -528,6 +508,7 @@
 
                                                                 <th>ብዜት</th>
                                                                 <th>ዓመት-ወር-ቀን</th>
+                                                                <th></th>
 
 
                                                             </tr>
@@ -581,6 +562,7 @@
                                                                 <td colspan="2" class="text-center">ድምር</td>
 
                                                                 <td id="total-year"></td>
+                                                                <td>- {{ preg_replace('/[^0-9]/', '', $form->position->experience) }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
