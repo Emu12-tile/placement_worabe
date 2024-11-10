@@ -91,7 +91,7 @@
                                                 </td>
                                                 <td>
                                         @if ($data->source == 'first_choice')
-                                                    @if ($data->form->sex == 'Female')
+                                                    @if ($data->form->sex == 'ሴ'||$data->form->sex == 'ሴት')
                                                         {{-- Calculate total and apply 3% increase --}}
                                                         @php
                                                             $total =
@@ -107,7 +107,7 @@
                                                     @endif
                                                 @elseif($data->source == 'second_choice')
                                                     {{-- Add decision logic here --}}
-                                                    @if ($data->form->sex == 'Female')
+                                                    @if ($data->form->sex == 'ሴ'||$data->form->sex == 'ሴት')
                                                         {{-- Calculate total and apply 3% increase --}}
 
                                                         @php
@@ -126,7 +126,7 @@
 
                                                 <td>
                                                 @if ($data->source == 'first_choice')
-                                                        @if ($data->form->sex == 'Female')
+                                                        @if ($data->form->sex == 'ሴ'||$data->form->sex == 'ሴት')
                                                             {{-- Calculate total and apply 3% increase --}}
                                                             @php
                                                                 $total =
@@ -141,7 +141,7 @@
                                                         @endif
                                                    
                                                 @elseif($data->source == 'second_choice')
-                                                        @if ($data->form->sex == 'Female')
+                                                        @if ($data->form->sex == 'ሴ'||$data->form->sex == 'ሴት')
                                                             {{-- Calculate total and apply 3% increase --}}
 
                                                             @php

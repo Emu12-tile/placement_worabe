@@ -121,8 +121,23 @@ class SecondhrController extends Controller
             ->get();
             
             $combinedData = $hrs->concat($secondhrs);
+
+            // 
+            $groupedData = $combinedData->groupBy('position_id')->map(function ($group) {
+                return $group->sortByDesc(function ($item) {
+                    // Calculate the total score for each item
+                    $total = $item->performance + $item->experience + $item->resultbased;
+                    
+                    // Apply 3% increase for females
+                    if ($item->form->sex === 'ሴ'||$item->form->sex === 'ሴት') {
+                        $total *= 1.03;
+                    }
+                    
+                    return $total;
+                });
+            });
             // dd($combinedData);
-            $groupedData = $combinedData->groupBy('position_id');
+            // $groupedData = $combinedData->groupBy('position_id');
         return view('secondchoice.postwo', compact('groupedData'));
     }
     public function posDetailtwo($id)

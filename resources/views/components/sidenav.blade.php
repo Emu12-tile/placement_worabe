@@ -257,85 +257,43 @@
                             </li>
                         @endrole
                         @role('president')
-                            <li class="nav-item">
+                        <li class="nav-item">
 
-                                <a class="nav-link" href="{{ route('posall') }}">
-                                    <i class="ion ion-ios-list-box"></i>
-                                    <span class="nav-link-text">
-                                        አጠቃላይ ውጤት(100%)
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item active">
-
-                                <span class="nav-link-text"> ምርጫ 1</span>
-
-
-                            <li class="nav-item">
-
-                                <a class="nav-link" href="{{ url('positionhigh') }}">
-                                    <i class="ion ion-ios-list-box"></i>
-                                    <span class="nav-link-text">
-                                        ያወዳዳሪ ኮሚቴ ውጤት
-                                    </span>
-                                </a>
-                            </li>
-                            {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('evaluation.index') }}">
+                            <a class="nav-link" href="{{ route('posall') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    አጠቃላይ ውጤት
+                                    አጠቃላይ ውጤት(100%)
                                 </span>
                             </a>
-                        </li> --}}
+                        </li>
+                        <li class="nav-item active">
 
-                            <li class="nav-item">
-
-                                <a class="nav-link" href="{{ url('positionpres') }}">
-                                    <i class="ion ion-ios-list-box"></i>
-                                    <span class="nav-link-text">
-                                        አጠቃላይ ውጤት(100%)
-                                    </span>
-                                </a>
-                            </li>
+                            <span class="nav-link-text"> ምርጫ 1 </span>
 
 
-
-
-                            </li>
-                            <li class="nav-item active">
-
-                                <span class="nav-link-text"> ምርጫ 2</span>
-                            <li class="nav-item">
-
-                                <a class="nav-link" href="{{ url('choicesecond') }}">
-                                    <i class="ion ion-ios-list-box"></i>
-                                    <span class="nav-link-text">
-                                        የኮሚቴ ውጤት
-                                    </span>
-                                </a>
-                            </li>
-                            {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('choice2evaluation.index') }}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('positionhigh') }}">
                                 <i class="ion ion-ios-list-box"></i>
                                 <span class="nav-link-text">
-                                    አጠቃላይ ውጤት
+                                    የተወዳዳሪዎች 1ኛ ና 2ኛ ምርጫ
                                 </span>
                             </a>
-                        </li> --}}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('positionpres2') }}">
-                                    <i class="ion ion-ios-list-box"></i>
-                                    <span class="nav-link-text">
-                                        አጠቃላይ ውጤት(100%)
-                                    </span>
-                                </a>
-                            </li>
+                        </li>
 
 
-                            </li>
-                        @endrole
+                        <li class="nav-item">
 
+                            <a class="nav-link" href="{{ url('positionpres') }}">
+                                <i class="ion ion-ios-list-box"></i>
+                                <span class="nav-link-text">
+                                    አጠቃላይ ውጤት(100%)
+                                </span>
+                            </a>
+                        </li>
+
+
+                        </li>
+                    @endrole
 
 
 
